@@ -1,7 +1,7 @@
 /* PyPath design system. Brand colours follow the build brief. */
 /* PyPath design system. Warm, Claude-style palette: dark by default, with a matching light mode. */
 :root {
-  --primary: #3F7473; --primary-hover: #356665; --primary-soft: rgba(63, 116, 115, 0.12); --accent: #5A9290;
+  --primary: #367572; --primary-hover: #2f6965; --primary-soft: rgba(95, 168, 165, 0.14); --accent: #78BDB9;
   --success: #3F8F5A; --warning: #B28A3E; --error: #B7473F;
   --bg: #FAF9F5; --surface: #FFFFFF; --surface-2: #F0EEE6; --pane-bg: #F0EEE6;
   --text: #141413; --muted: #5E5D59; --border: #E8E6DC; --border-strong: #D6D3C6;

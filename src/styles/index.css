@@ -16,7 +16,7 @@
   --mono: "JetBrains Mono Variable", "JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 :root[data-theme="dark"] {
-  --primary: #5FA8A5; --primary-hover: #70B8B5; --primary-soft: rgba(95, 168, 165, 0.14); --accent: #78BDB9;
+  --primary: #4c918e; --primary-hover: #428581; --primary-soft: rgba(95, 168, 165, 0.14); --accent: #78BDB9;
   --success: #75C48A; --warning: #D8B46A; --error: #E07B73;
   --bg: #0B0D0D; --surface: #111414; --surface-2: #181C1B; --pane-bg: #0E1110;
   --text: #F5F7F6; --muted: #A7AEAC; --border: #252B29; --border-strong: #343B38;

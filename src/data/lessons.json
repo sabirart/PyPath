@@ -1,0 +1,673 @@
+[
+  {
+    "id": "l01",
+    "kind": "lesson",
+    "day": 1,
+    "number": 1,
+    "part": "Basic Python",
+    "partNumber": 1,
+    "title": "What is Programming",
+    "summary": "Understand what code is and write your very first Python program.",
+    "definition": "Programming means writing step-by-step instructions that a computer follows. Python is a readable language used by beginners and professionals.",
+    "codeExample": "print(\"Hello, world!\")",
+    "howItWorks": [
+      "print() is a function that shows text on the screen.",
+      "Text goes inside quotes so Python knows it is a string of characters.",
+      "Python runs your lines from top to bottom, one at a time."
+    ],
+    "fullExample": "# A program is a list of instructions\nprint(\"Welcome to PyPath\")\nprint(\"Computers follow instructions in order\")\nprint(\"This line runs third\")",
+    "practiceTask": "Change the program so it prints your name on one line and something you want to build with Python on the next line.",
+    "starterCode": "# Print two lines about yourself\nprint(\"Hello!\")\n",
+    "minutes": 15
+  },
+  {
+    "id": "l02",
+    "kind": "lesson",
+    "day": 2,
+    "number": 2,
+    "part": "Basic Python",
+    "partNumber": 1,
+    "title": "Variables",
+    "summary": "Store and reuse information with named variables.",
+    "definition": "A variable is a name that stores a value so you can use it later.",
+    "codeExample": "score = 10\nprint(score)",
+    "howItWorks": [
+      "The = sign stores the value on the right under the name on the left.",
+      "You can change a variable by assigning a new value to the same name.",
+      "Use clear lowercase names, with underscores between words, such as player_score."
+    ],
+    "fullExample": "name = \"Sam\"\nscore = 10\nprint(name, \"has\", score, \"points\")\n\nscore = score + 5\nprint(name, \"now has\", score, \"points\")",
+    "practiceTask": "Create one variable for your favourite colour and one for a number. Print a sentence that uses both.",
+    "starterCode": "# Create your variables here\ncolour = \"blue\"\nnumber = 7\nprint(colour, number)\n",
+    "minutes": 15
+  },
+  {
+    "id": "l03",
+    "kind": "lesson",
+    "day": 3,
+    "number": 3,
+    "part": "Basic Python",
+    "partNumber": 1,
+    "title": "Data Types",
+    "summary": "Meet strings, integers, floats and booleans, the building blocks of data.",
+    "definition": "Every value has a type. The most common types are str (text), int (whole numbers), float (decimal numbers) and bool (True or False).",
+    "codeExample": "print(type(42))\nprint(type(\"hi\"))",
+    "howItWorks": [
+      "type() tells you what kind of value you have.",
+      "Whole numbers are int, numbers with a decimal point are float.",
+      "True and False are bool values and are written with a capital letter."
+    ],
+    "fullExample": "text = \"Python\"\ncount = 3\nprice = 2.5\nis_fun = True\n\nfor value in [text, count, price, is_fun]:\n    print(value, \"is a\", type(value).__name__)\n\nprint(int(\"12\") + 1)\nprint(str(12) + \"1\")",
+    "practiceTask": "Make one value of each type (str, int, float, bool) and print its type. Then convert the string \"8\" to an int and add 2.",
+    "starterCode": "word = \"hello\"\nprint(type(word))\n",
+    "minutes": 15
+  },
+  {
+    "id": "l04",
+    "kind": "lesson",
+    "day": 4,
+    "number": 4,
+    "part": "Basic Python",
+    "partNumber": 1,
+    "title": "Input and Output",
+    "summary": "Talk to the user with print() and input().",
+    "definition": "print() shows information to the user. input() asks the user to type something. input() always gives you text.",
+    "codeExample": "name = input(\"Your name? \")\nprint(\"Hi\", name)",
+    "howItWorks": [
+      "input() shows its question, then waits for a line of text.",
+      "The answer is a string, so use int() or float() when you need a number.",
+      "In PyPath, type one answer per line in the Input box under the console before you press Run."
+    ],
+    "fullExample": "name = input(\"What is your name? \")\nage = int(input(\"How old are you? \"))\n\nprint(\"Hi\", name)\nprint(\"Next year you will be\", age + 1)",
+    "practiceTask": "Ask for the user's favourite food and print a sentence that uses the answer. Add your answer in the Input box.",
+    "starterCode": "food = input(\"Favourite food? \")\nprint(\"You like\", food)\n",
+    "sampleInput": "Ada\n12",
+    "minutes": 15
+  },
+  {
+    "id": "l05",
+    "kind": "lesson",
+    "day": 5,
+    "number": 5,
+    "part": "Basic Python",
+    "partNumber": 1,
+    "title": "Operators",
+    "summary": "Do maths and comparisons with Python's operators.",
+    "definition": "Operators are symbols that work on values: arithmetic (+ - * /), comparison (== != < >) and logic (and, or, not).",
+    "codeExample": "print(7 + 3)\nprint(7 > 3)",
+    "howItWorks": [
+      "Arithmetic operators return numbers: // is whole-number division, % is the remainder and ** is the power.",
+      "Comparison operators return True or False.",
+      "and, or and not combine True/False answers."
+    ],
+    "fullExample": "a = 17\nb = 5\n\nprint(a + b, a - b, a * b)\nprint(a / b, a // b, a % b, a ** 2)\n\nprint(a > b, a == b, a != b)\nprint(a > 10 and b < 3)\nprint(a > 10 or b < 3)\nprint(not a > 10)",
+    "practiceTask": "Calculate the area of a rectangle that is 8 wide and 5 high, then print whether the area is greater than 30.",
+    "starterCode": "width = 8\nheight = 5\nprint(width * height)\n",
+    "minutes": 15
+  },
+  {
+    "id": "l06",
+    "kind": "lesson",
+    "day": 6,
+    "number": 6,
+    "part": "Beginner Python",
+    "partNumber": 2,
+    "title": "Conditions",
+    "summary": "Make decisions in code with if, elif and else.",
+    "definition": "Conditions let your program choose what to do. Python uses if, elif and else.",
+    "codeExample": "age = 15\nif age >= 13:\n    print(\"Teen\")",
+    "howItWorks": [
+      "The line with if ends with a colon.",
+      "The indented lines belong to that if and only run when the condition is True.",
+      "elif checks another condition, and else runs when nothing above matched."
+    ],
+    "fullExample": "temperature = 22\n\nif temperature >= 30:\n    print(\"It is hot\")\nelif temperature >= 15:\n    print(\"It is pleasant\")\nelse:\n    print(\"It is cold\")",
+    "practiceTask": "Write a program that stores a score from 0 to 100 and prints A for 90 or more, B for 80 or more, C for 70 or more, otherwise Try again.",
+    "starterCode": "score = 85\n# Add if / elif / else here\nprint(score)\n",
+    "minutes": 20
+  },
+  {
+    "id": "l07",
+    "kind": "lesson",
+    "day": 7,
+    "number": 7,
+    "part": "Beginner Python",
+    "partNumber": 2,
+    "title": "Loops",
+    "summary": "Repeat work automatically with for and while loops.",
+    "definition": "A loop repeats instructions. A for loop repeats over a sequence, and a while loop repeats while a condition is True.",
+    "codeExample": "for i in range(3):\n    print(i)",
+    "howItWorks": [
+      "range(3) gives 0, 1, 2.",
+      "A while loop checks its condition before every repeat, so something inside must change or it never stops.",
+      "break leaves a loop early and continue skips to the next repeat."
+    ],
+    "fullExample": "for number in range(1, 6):\n    print(\"Number\", number)\n\ncountdown = 3\nwhile countdown > 0:\n    print(countdown)\n    countdown = countdown - 1\nprint(\"Liftoff\")",
+    "practiceTask": "Use a for loop to print the 5 times table from 5 x 1 up to 5 x 10.",
+    "starterCode": "for i in range(1, 11):\n    print(i)\n",
+    "minutes": 20
+  },
+  {
+    "id": "l08",
+    "kind": "lesson",
+    "day": 8,
+    "number": 8,
+    "part": "Beginner Python",
+    "partNumber": 2,
+    "title": "Loop Control: break and continue",
+    "summary": "Take control of loops with break, continue and loop else.",
+    "definition": "break stops a loop immediately, continue skips to the next round, and a loop's else block runs only when the loop was not stopped by break.",
+    "codeExample": "for n in range(1, 10):\n    if n == 5:\n        break\n    print(n)",
+    "howItWorks": [
+      "break leaves the loop as soon as it runs, so this example prints 1 to 4 only.",
+      "continue jumps straight to the next round and skips the rest of the loop body.",
+      "A loop's else block runs only if the loop finished without hitting break."
+    ],
+    "fullExample": "numbers = [3, 8, 12, 15, 21, 28, 30]\n\nfor n in numbers:\n    if n % 2 == 0:\n        continue  # skip even numbers\n    print(\"Checking\", n)\n    if n % 7 == 0:\n        print(\"Found a multiple of 7:\", n)\n        break\nelse:\n    print(\"No odd multiple of 7 in the list\")",
+    "practiceTask": "Change 21 to 22 in the list and run again. Which message appears now, and why?",
+    "starterCode": "numbers = [4, 9, 14, 17, 22, 25]\n\n# TODO: loop over numbers, skip multiples of 2 with continue,\n# and stop with break at the first number bigger than 15\nfor n in numbers:\n    print(n)\n",
+    "minutes": 20
+  },
+  {
+    "id": "l09",
+    "kind": "lesson",
+    "day": 9,
+    "number": 9,
+    "part": "Beginner Python",
+    "partNumber": 2,
+    "title": "Functions",
+    "summary": "Package reusable logic into your own functions.",
+    "definition": "A function is a named block of code you can reuse. Functions take inputs (parameters) and can give back a result with return.",
+    "codeExample": "def greet(name):\n    return \"Hello \" + name",
+    "howItWorks": [
+      "def starts the function and the indented lines are its body.",
+      "Parameters are the names for the values you pass in.",
+      "return sends a value back to the code that called the function."
+    ],
+    "fullExample": "def greet(name):\n    return \"Hello, \" + name + \"!\"\n\ndef add(a, b=0):\n    return a + b\n\nprint(greet(\"Ada\"))\nprint(add(2, 3))\nprint(add(10))",
+    "practiceTask": "Write a function square(n) that returns n times n, then print square(4) and square(9).",
+    "starterCode": "def square(n):\n    pass  # replace pass with your code\n\nprint(square(4))\n",
+    "minutes": 20
+  },
+  {
+    "id": "l10",
+    "kind": "lesson",
+    "day": 10,
+    "number": 10,
+    "part": "Beginner Python",
+    "partNumber": 2,
+    "title": "Lists",
+    "summary": "Keep ordered collections of values in lists.",
+    "definition": "A list stores many values in order. Lists are written with square brackets and can be changed.",
+    "codeExample": "fruits = [\"apple\", \"pear\"]\nfruits.append(\"plum\")",
+    "howItWorks": [
+      "Positions start at 0, so fruits[0] is the first item and fruits[-1] is the last.",
+      "append() adds an item, remove() deletes one and len() counts the items.",
+      "A for loop can visit every item in a list."
+    ],
+    "fullExample": "scores = [70, 85, 90]\nscores.append(100)\n\nprint(scores)\nprint(\"First:\", scores[0], \"Last:\", scores[-1])\nprint(\"Count:\", len(scores))\nprint(\"Total:\", sum(scores))\n\nfor s in sorted(scores, reverse=True):\n    print(s)",
+    "practiceTask": "Make a list of five of your favourite things. Add one more item, then print each item on its own line.",
+    "starterCode": "things = [\"music\", \"football\"]\nprint(things)\n",
+    "minutes": 20
+  },
+  {
+    "id": "l11",
+    "kind": "lesson",
+    "day": 11,
+    "number": 11,
+    "part": "Intermediate Python",
+    "partNumber": 3,
+    "title": "Dictionaries",
+    "summary": "Look up values by key with dictionaries.",
+    "definition": "A dictionary stores data as key and value pairs, so you can look things up by name instead of position.",
+    "codeExample": "student = {\"name\": \"Ada\", \"age\": 12}\nprint(student[\"name\"])",
+    "howItWorks": [
+      "Keys inside the curly braces are joined to values with a colon.",
+      "dict[key] reads a value and dict[key] = value adds or changes one.",
+      "get() returns a default instead of an error when a key is missing."
+    ],
+    "fullExample": "student = {\"name\": \"Ada\", \"age\": 12}\nstudent[\"grade\"] = \"A\"\nstudent[\"age\"] = 13\n\nprint(student[\"name\"])\nprint(student.get(\"city\", \"unknown\"))\n\nfor key, value in student.items():\n    print(key, \"->\", value)",
+    "practiceTask": "Create a dictionary for a book with title, author and year. Print each pair on its own line.",
+    "starterCode": "book = {\"title\": \"My Book\"}\nprint(book)\n",
+    "minutes": 25
+  },
+  {
+    "id": "l12",
+    "kind": "lesson",
+    "day": 12,
+    "number": 12,
+    "part": "Intermediate Python",
+    "partNumber": 3,
+    "title": "Tuples and Sets",
+    "summary": "Use immutable tuples and duplicate-free sets.",
+    "definition": "A tuple is an ordered group that cannot be changed. A set is a collection of unique items with no order.",
+    "codeExample": "point = (3, 4)\nletters = {\"a\", \"b\", \"a\"}",
+    "howItWorks": [
+      "Tuples use round brackets and are good for fixed groups such as coordinates.",
+      "Sets remove duplicates automatically.",
+      "Sets support union (|), intersection (&) and difference (-)."
+    ],
+    "fullExample": "point = (3, 4)\nx, y = point\nprint(\"x =\", x, \"y =\", y)\n\na = {1, 2, 3, 3}\nb = {3, 4}\nprint(a)\nprint(a | b)\nprint(a & b)\nprint(a - b)\nprint(3 in a)",
+    "practiceTask": "Remove the duplicates from the list [1, 2, 2, 3, 3, 3] by turning it into a set, then print how many unique numbers there are.",
+    "starterCode": "numbers = [1, 2, 2, 3, 3, 3]\nprint(numbers)\n",
+    "minutes": 25
+  },
+  {
+    "id": "l13",
+    "kind": "lesson",
+    "day": 13,
+    "number": 13,
+    "part": "Intermediate Python",
+    "partNumber": 3,
+    "title": "String Methods",
+    "summary": "Clean, search and reshape text with string methods.",
+    "definition": "Strings have built-in methods for changing, searching and splitting text.",
+    "codeExample": "print(\"hello\".upper())",
+    "howItWorks": [
+      "Methods are called with a dot, like text.upper().",
+      "Strings cannot be changed, so each method returns a new string.",
+      "split() breaks text into a list and join() joins a list into text."
+    ],
+    "fullExample": "text = \"  Learn Python Step By Step  \"\nclean = text.strip()\n\nprint(clean.upper())\nprint(clean.lower())\nprint(clean.replace(\"Step\", \"Small step\"))\nprint(clean.startswith(\"Learn\"))\n\nwords = clean.split(\" \")\nprint(words)\nprint(\"-\".join(words))\nprint(f\"The text has {len(words)} words\")",
+    "practiceTask": "Take the sentence \"python is fun\", capitalise each word and print it. Hint: split, title or capitalize, then join.",
+    "starterCode": "sentence = \"python is fun\"\nprint(sentence)\n",
+    "minutes": 25
+  },
+  {
+    "id": "l14",
+    "kind": "lesson",
+    "day": 14,
+    "number": 14,
+    "part": "Intermediate Python",
+    "partNumber": 3,
+    "title": "File Handling",
+    "summary": "Read and write files so data outlives your program.",
+    "definition": "Programs can write text to files and read it back. The with statement closes the file for you.",
+    "codeExample": "with open(\"note.txt\", \"w\") as f:\n    f.write(\"Hi\")",
+    "howItWorks": [
+      "Mode \"w\" writes (and replaces the file), \"a\" appends and \"r\" reads.",
+      "with closes the file automatically, even if there is an error.",
+      "In PyPath the files live in temporary browser memory and disappear when you refresh."
+    ],
+    "fullExample": "with open(\"notes.txt\", \"w\") as f:\n    f.write(\"Line one\\n\")\n    f.write(\"Line two\\n\")\n\nwith open(\"notes.txt\", \"r\") as f:\n    for line in f:\n        print(line.strip())\n\nimport os\nprint(os.path.exists(\"notes.txt\"))\nos.remove(\"notes.txt\")\nprint(os.path.exists(\"notes.txt\"))",
+    "practiceTask": "Write three names to a file called names.txt, then read the file and print how many lines it has.",
+    "starterCode": "with open(\"names.txt\", \"w\") as f:\n    f.write(\"Ada\\n\")\n\nwith open(\"names.txt\") as f:\n    print(f.read())\n",
+    "minutes": 25
+  },
+  {
+    "id": "l15",
+    "kind": "lesson",
+    "day": 15,
+    "number": 15,
+    "part": "Intermediate Python",
+    "partNumber": 3,
+    "title": "Error Handling",
+    "summary": "Handle problems gracefully with try and except.",
+    "definition": "Errors happen. try and except let your program deal with them instead of stopping.",
+    "codeExample": "try:\n    int(\"abc\")\nexcept ValueError:\n    print(\"Not a number\")",
+    "howItWorks": [
+      "Code that might fail goes in the try block.",
+      "except runs only if that kind of error happens.",
+      "finally always runs, which is useful for tidy-up work."
+    ],
+    "fullExample": "def safe_divide(a, b):\n    try:\n        return a / b\n    except ZeroDivisionError:\n        return \"Cannot divide by zero\"\n    finally:\n        print(\"Division attempted\")\n\nprint(safe_divide(10, 2))\nprint(safe_divide(1, 0))\n\ntry:\n    number = int(\"twelve\")\nexcept ValueError:\n    print(\"That is not a whole number\")",
+    "practiceTask": "Write a function to_number(text) that returns an int, or 0 if the text is not a number. Test it with \"5\" and \"five\".",
+    "starterCode": "def to_number(text):\n    return int(text)\n\nprint(to_number(\"5\"))\n",
+    "minutes": 25
+  },
+  {
+    "id": "l16",
+    "kind": "lesson",
+    "day": 16,
+    "number": 16,
+    "part": "Intermediate Python",
+    "partNumber": 3,
+    "title": "Modules and Imports",
+    "summary": "Reuse code from Python's standard library and your own modules.",
+    "definition": "A module is a file of ready-made Python code. import lets you use it, and the standard library has many useful modules.",
+    "codeExample": "import math\nprint(math.sqrt(16))",
+    "howItWorks": [
+      "import brings in a whole module and you call things as module.name.",
+      "from module import name brings in just one name.",
+      "Popular modules include math, random, datetime, json and statistics."
+    ],
+    "fullExample": "import math\nimport statistics\nfrom random import randint, seed\n\nprint(math.sqrt(49), math.pi)\nprint(math.ceil(4.2), math.floor(4.8))\n\nmarks = [60, 70, 80, 90]\nprint(statistics.mean(marks))\nprint(statistics.median(marks))\n\nseed(1)\nprint(randint(1, 100))",
+    "practiceTask": "Use the math module to print the circumference of a circle with radius 5 (2 * pi * r).",
+    "starterCode": "import math\nprint(math.pi)\n",
+    "minutes": 25
+  },
+  {
+    "id": "l17",
+    "kind": "lesson",
+    "day": 17,
+    "number": 17,
+    "part": "Intermediate Python",
+    "partNumber": 3,
+    "title": "Function Arguments",
+    "summary": "Write flexible functions with defaults, *args and **kwargs.",
+    "definition": "Functions can have default values, keyword arguments, *args for any number of positional values and **kwargs for any number of named values.",
+    "codeExample": "def greet(name, greeting=\"Hello\"):\n    return f\"{greeting}, {name}!\"",
+    "howItWorks": [
+      "A default value is used when the caller leaves that argument out.",
+      "*args collects extra positional values into a tuple.",
+      "**kwargs collects extra named values into a dictionary."
+    ],
+    "fullExample": "def greet(name, greeting=\"Hello\"):\n    return f\"{greeting}, {name}!\"\n\ndef total(*numbers):\n    return sum(numbers)\n\ndef describe(**details):\n    for key, value in details.items():\n        print(f\"{key}: {value}\")\n\nprint(greet(\"Ada\"))\nprint(greet(\"Ada\", greeting=\"Welcome\"))\nprint(total(1, 2, 3, 4))\ndescribe(name=\"Ada\", language=\"Python\", day=17)",
+    "practiceTask": "Write a function average(*numbers) that returns the average of any amount of numbers. Call it with two, three and five numbers.",
+    "starterCode": "def average(*numbers):\n    # TODO: return the sum divided by how many numbers there are\n    pass\n\nprint(average(2, 4))\nprint(average(1, 2, 3))\n",
+    "minutes": 25
+  },
+  {
+    "id": "l18",
+    "kind": "lesson",
+    "day": 18,
+    "number": 18,
+    "part": "Advanced Python",
+    "partNumber": 4,
+    "title": "Classes and Objects",
+    "summary": "Model real things with classes and objects.",
+    "definition": "A class is a blueprint. An object is one thing built from that blueprint, with its own data and actions.",
+    "codeExample": "class Dog:\n    def __init__(self, name):\n        self.name = name",
+    "howItWorks": [
+      "__init__ runs when a new object is created and sets its starting data.",
+      "self is the object itself, and self.name is data stored on it.",
+      "Functions inside a class are called methods."
+    ],
+    "fullExample": "class BankAccount:\n    def __init__(self, owner, balance=0):\n        self.owner = owner\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance += amount\n\n    def describe(self):\n        return f\"{self.owner} has {self.balance}\"\n\naccount = BankAccount(\"Ada\", 100)\naccount.deposit(50)\nprint(account.describe())",
+    "practiceTask": "Create a class Rectangle with width and height and a method area() that returns the area. Make two rectangles and print both areas.",
+    "starterCode": "class Rectangle:\n    def __init__(self, width, height):\n        self.width = width\n        self.height = height\n\nprint(Rectangle(2, 3).width)\n",
+    "minutes": 30
+  },
+  {
+    "id": "l19",
+    "kind": "lesson",
+    "day": 19,
+    "number": 19,
+    "part": "Advanced Python",
+    "partNumber": 4,
+    "title": "Inheritance",
+    "summary": "Build new classes on top of existing ones with inheritance.",
+    "definition": "Inheritance lets a new class reuse and extend another class. The new class is the child and the original is the parent.",
+    "codeExample": "class Cat(Animal):\n    pass",
+    "howItWorks": [
+      "Put the parent class name in brackets after the child name.",
+      "The child gets every method of the parent automatically.",
+      "A child can override a method, and super() reaches the parent version."
+    ],
+    "fullExample": "class Animal:\n    def __init__(self, name):\n        self.name = name\n\n    def speak(self):\n        return f\"{self.name} makes a sound\"\n\nclass Dog(Animal):\n    def speak(self):\n        return f\"{self.name} says Woof\"\n\nclass Cat(Animal):\n    def __init__(self, name, indoor=True):\n        super().__init__(name)\n        self.indoor = indoor\n\nfor pet in [Animal(\"Thing\"), Dog(\"Rex\"), Cat(\"Mia\")]:\n    print(pet.speak())",
+    "practiceTask": "Add a Bird class that inherits from Animal and overrides speak() to say Tweet. Create a bird and print what it says.",
+    "starterCode": "class Animal:\n    def speak(self):\n        return \"...\"\n\nprint(Animal().speak())\n",
+    "minutes": 30
+  },
+  {
+    "id": "l20",
+    "kind": "lesson",
+    "day": 20,
+    "number": 20,
+    "part": "Advanced Python",
+    "partNumber": 4,
+    "title": "List Comprehensions",
+    "summary": "Create lists in a single expressive line.",
+    "definition": "A list comprehension builds a new list in one short line.",
+    "codeExample": "squares = [n * n for n in range(5)]",
+    "howItWorks": [
+      "The pattern is [expression for item in sequence].",
+      "Add if at the end to keep only some items.",
+      "If the loop body gets complicated, use a normal for loop instead."
+    ],
+    "fullExample": "numbers = list(range(1, 11))\n\nsquares = [n * n for n in numbers]\nevens = [n for n in numbers if n % 2 == 0]\nwords = [w.upper() for w in [\"red\", \"green\", \"blue\"]]\n\nprint(squares)\nprint(evens)\nprint(words)",
+    "practiceTask": "Use a list comprehension to make a list of the cubes (n * n * n) of the odd numbers from 1 to 9.",
+    "starterCode": "odds = [n for n in range(1, 10) if n % 2 == 1]\nprint(odds)\n",
+    "minutes": 30
+  },
+  {
+    "id": "l21",
+    "kind": "lesson",
+    "day": 21,
+    "number": 21,
+    "part": "Advanced Python",
+    "partNumber": 4,
+    "title": "Lambda Functions",
+    "summary": "Write tiny anonymous functions with lambda.",
+    "definition": "A lambda is a tiny nameless function written on one line. It is often used with sorted, map and filter.",
+    "codeExample": "double = lambda n: n * 2",
+    "howItWorks": [
+      "lambda arguments: expression returns the expression's value.",
+      "sorted(items, key=...) sorts using the value your lambda returns.",
+      "map transforms every item and filter keeps items that pass a test."
+    ],
+    "fullExample": "people = [(\"Ada\", 30), (\"Bo\", 25), (\"Cy\", 35)]\n\nprint(sorted(people, key=lambda p: p[1]))\n\nnumbers = [1, 2, 3, 4, 5, 6]\nprint(list(map(lambda n: n * 10, numbers)))\nprint(list(filter(lambda n: n % 2 == 0, numbers)))",
+    "practiceTask": "Sort the list of words [\"pear\", \"fig\", \"banana\"] by length using a lambda.",
+    "starterCode": "words = [\"pear\", \"fig\", \"banana\"]\nprint(sorted(words))\n",
+    "minutes": 30
+  },
+  {
+    "id": "l22",
+    "kind": "lesson",
+    "day": 22,
+    "number": 22,
+    "part": "Advanced Python",
+    "partNumber": 4,
+    "title": "Generators and Iterators",
+    "summary": "Produce values one at a time with iterators and generators.",
+    "definition": "A generator makes values one at a time with yield, instead of building a whole list in memory.",
+    "codeExample": "def count_up(n):\n    for i in range(n):\n        yield i",
+    "howItWorks": [
+      "yield pauses the function and hands back one value.",
+      "The function continues from the same place when the next value is asked for.",
+      "Generators are ideal for long or endless sequences."
+    ],
+    "fullExample": "def count_up(limit):\n    n = 1\n    while n <= limit:\n        yield n\n        n += 1\n\nfor value in count_up(3):\n    print(value)\n\ndef fibonacci():\n    a, b = 0, 1\n    while True:\n        yield a\n        a, b = b, a + b\n\ngen = fibonacci()\nprint([next(gen) for _ in range(10)])",
+    "practiceTask": "Write a generator evens(limit) that yields the even numbers from 2 up to limit. Print the values for limit = 12.",
+    "starterCode": "def evens(limit):\n    yield 2\n\nprint(list(evens(12)))\n",
+    "minutes": 30
+  },
+  {
+    "id": "l23",
+    "kind": "lesson",
+    "day": 23,
+    "number": 23,
+    "part": "Advanced Python",
+    "partNumber": 4,
+    "title": "Decorators",
+    "summary": "Wrap functions with extra behaviour using decorators.",
+    "definition": "A decorator wraps a function to add behaviour before or after it runs, without changing the function itself.",
+    "codeExample": "@my_decorator\ndef hello():\n    print(\"hi\")",
+    "howItWorks": [
+      "A decorator is a function that takes a function and returns a new one.",
+      "The @ line is a short way to write hello = my_decorator(hello).",
+      "The wrapper uses *args and **kwargs so it works with any function."
+    ],
+    "fullExample": "def shout(func):\n    def wrapper(*args, **kwargs):\n        print(\"Calling\", func.__name__)\n        result = func(*args, **kwargs)\n        print(\"Done\")\n        return result\n    return wrapper\n\n@shout\ndef add(a, b):\n    return a + b\n\nprint(add(2, 3))",
+    "practiceTask": "Write a decorator called twice that runs the function two times. Use it on a function that prints Hello.",
+    "starterCode": "def twice(func):\n    return func\n\n@twice\ndef hello():\n    print(\"Hello\")\n\nhello()\n",
+    "minutes": 30
+  },
+  {
+    "id": "l24",
+    "kind": "lesson",
+    "day": 24,
+    "number": 24,
+    "part": "Advanced Python",
+    "partNumber": 4,
+    "title": "Working with APIs",
+    "summary": "Understand how programs talk to web services and read JSON.",
+    "definition": "An API is a way for programs to ask other programs for data. Most web APIs reply with JSON, which Python turns into dictionaries and lists.",
+    "codeExample": "import json\ndata = json.loads('{\"a\": 1}')",
+    "howItWorks": [
+      "json.loads() converts JSON text into Python dictionaries and lists.",
+      "urllib.parse builds safe request URLs from parts.",
+      "PyPath does not send network requests from your code, so this lesson uses a sample reply that works offline."
+    ],
+    "fullExample": "import json\nfrom urllib.parse import urlencode\n\nurl = \"https://api.example.com/weather?\" + urlencode({\"city\": \"Karachi\", \"units\": \"metric\"})\nprint(\"Request:\", url)\n\nreply = '{\"city\": \"Karachi\", \"temp\": 31.5, \"conditions\": [\"sunny\", \"humid\"]}'\ndata = json.loads(reply)\n\nprint(data[\"city\"], \"is\", data[\"temp\"], \"degrees\")\nfor item in data[\"conditions\"]:\n    print(\"-\", item)\n\nprint(json.dumps(data, indent=2))",
+    "practiceTask": "Parse this sample reply: {\"user\": \"ada\", \"repos\": 12}. Print a sentence that says how many repositories the user has.",
+    "starterCode": "import json\nreply = '{\"user\": \"ada\", \"repos\": 12}'\ndata = json.loads(reply)\nprint(data)\n",
+    "minutes": 30
+  },
+  {
+    "id": "l25",
+    "kind": "lesson",
+    "day": 25,
+    "number": 25,
+    "part": "Advanced Python",
+    "partNumber": 4,
+    "title": "Type Hints, Docstrings and Testing",
+    "summary": "Write clearer, safer code with type hints, docstrings and tests.",
+    "definition": "Good Python code explains itself with type hints and docstrings, and proves it works with small tests written using assert.",
+    "codeExample": "def double(n: int) -> int:\n    \"\"\"Return n multiplied by two.\"\"\"\n    return n * 2\n\nassert double(4) == 8",
+    "howItWorks": [
+      "Type hints (n: int, -> int) document what a function expects and returns.",
+      "A docstring in triple quotes describes what the function does.",
+      "assert raises an error when a condition is false, so a test fails loudly instead of silently."
+    ],
+    "fullExample": "def is_palindrome(text: str) -> bool:\n    \"\"\"Return True if text reads the same forwards and backwards.\"\"\"\n    cleaned = \"\".join(ch.lower() for ch in text if ch.isalnum())\n    return cleaned == cleaned[::-1]\n\ndef test_is_palindrome() -> None:\n    assert is_palindrome(\"level\")\n    assert is_palindrome(\"A man, a plan, a canal: Panama\")\n    assert not is_palindrome(\"python\")\n    print(\"All tests passed\")\n\ntest_is_palindrome()\nprint(is_palindrome.__doc__)",
+    "practiceTask": "Add a function is_even(n: int) -> bool with a docstring, then write three assert tests for it.",
+    "starterCode": "def is_even(n):\n    # TODO: add type hints and a docstring, then return True for even numbers\n    pass\n\n# TODO: write three assert tests, then print \"All tests passed\"\n",
+    "minutes": 30
+  },
+  {
+    "id": "l26",
+    "kind": "project",
+    "day": 26,
+    "number": 26,
+    "part": "Practical Projects",
+    "partNumber": 5,
+    "title": "Project 1: Calculator",
+    "summary": "Project 1: Build a working four-operation calculator.",
+    "definition": "A calculator project combines input, functions and conditions to solve a practical problem.",
+    "codeExample": "def add(a, b):\n    return a + b",
+    "howItWorks": [
+      "Each operation lives in its own small function.",
+      "input() collects two numbers and an operator.",
+      "if / elif chooses the right function, and a check stops division by zero."
+    ],
+    "fullExample": "def add(a, b):\n    return a + b\n\ndef subtract(a, b):\n    return a - b\n\ndef multiply(a, b):\n    return a * b\n\ndef divide(a, b):\n    if b == 0:\n        return \"Cannot divide by zero\"\n    return a / b\n\nfirst = float(input(\"First number: \"))\nsecond = float(input(\"Second number: \"))\nop = input(\"Operator (+ - * /): \")\n\nif op == \"+\":\n    print(add(first, second))\nelif op == \"-\":\n    print(subtract(first, second))\nelif op == \"*\":\n    print(multiply(first, second))\nelif op == \"/\":\n    print(divide(first, second))\nelse:\n    print(\"Unknown operator\")",
+    "practiceTask": "Extend the calculator with a % (remainder) operation and a ** (power) operation. Try different Input box values.",
+    "starterCode": "def add(a, b):\n    return a + b\n\nfirst = float(input(\"First number: \"))\nsecond = float(input(\"Second number: \"))\nop = input(\"Operator (+ - * /): \")\n\n# TODO: add subtract, multiply and divide, then choose with if / elif\nif op == \"+\":\n    print(add(first, second))\nelse:\n    print(\"Not built yet\")\n",
+    "sampleInput": "12\n3\n+",
+    "tags": [
+      "input",
+      "functions",
+      "conditions"
+    ],
+    "difficulty": "Beginner",
+    "minutes": 45,
+    "outcome": "A calculator that adds, subtracts, multiplies and divides numbers you type."
+  },
+  {
+    "id": "l27",
+    "kind": "project",
+    "day": 27,
+    "number": 27,
+    "part": "Practical Projects",
+    "partNumber": 5,
+    "title": "Project 2: Guess the Number",
+    "summary": "Project 2: Build a higher-or-lower number guessing game.",
+    "definition": "A guessing game uses the random module, a while loop and conditions to compare the player's guess with a secret number.",
+    "codeExample": "import random\nsecret = random.randint(1, 10)",
+    "howItWorks": [
+      "random.randint(1, 10) picks a whole number from 1 to 10.",
+      "The while loop repeats until the guess is right or the attempts run out.",
+      "if / elif / else tells the player whether to go higher or lower."
+    ],
+    "fullExample": "import random\n\nsecret = random.randint(1, 10)\nattempts = 0\nguess = 0\n\nprint(\"I am thinking of a number from 1 to 10.\")\nwhile guess != secret and attempts < 10:\n    guess = int(input(\"Your guess: \"))\n    attempts = attempts + 1\n    if guess < secret:\n        print(\"Too low\")\n    elif guess > secret:\n        print(\"Too high\")\n    else:\n        print(\"Correct! You needed\", attempts, \"guesses.\")",
+    "practiceTask": "Change the range to 1-50 and update the guesses in the Input box. Then add a message that tells the player how many guesses are left.",
+    "starterCode": "import random\n\nsecret = random.randint(1, 10)\nprint(\"I am thinking of a number from 1 to 10.\")\nguess = int(input(\"Your guess: \"))\n# TODO: compare guess with secret, then turn this into a loop\nprint(\"The secret was\", secret)\n",
+    "sampleInput": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10",
+    "tags": [
+      "loops",
+      "random",
+      "conditions"
+    ],
+    "difficulty": "Beginner",
+    "minutes": 45,
+    "outcome": "A higher-or-lower game where you hunt for a secret number."
+  },
+  {
+    "id": "l28",
+    "kind": "project",
+    "day": 28,
+    "number": 28,
+    "part": "Practical Projects",
+    "partNumber": 5,
+    "title": "Project 3: Quiz Game",
+    "summary": "Project 3: Build an interactive quiz that keeps score.",
+    "definition": "A quiz game stores questions in a list of dictionaries, loops over them, checks each answer and reports a final score.",
+    "codeExample": "questions = [{\"question\": \"2 + 2?\", \"answer\": \"4\"}]",
+    "howItWorks": [
+      "Each question is a dictionary with a question and an answer.",
+      "A for loop with enumerate() asks the questions in order and numbers them.",
+      "strip() and lower() make the answer check forgiving, and a score counter is shown at the end."
+    ],
+    "fullExample": "questions = [\n    {\"question\": \"Which keyword defines a function?\", \"answer\": \"def\"},\n    {\"question\": \"What type is the value 3.14?\", \"answer\": \"float\"},\n    {\"question\": \"Which built-in returns the length of a list?\", \"answer\": \"len\"},\n]\n\nscore = 0\nfor number, item in enumerate(questions, start=1):\n    reply = input(f\"Q{number}: {item['question']} \").strip().lower()\n    if reply == item[\"answer\"]:\n        print(\"Correct!\")\n        score += 1\n    else:\n        print(\"Not quite. The answer is\", item[\"answer\"])\n\nprint(f\"You scored {score} out of {len(questions)}\")\nif score == len(questions):\n    print(\"Perfect score!\")",
+    "practiceTask": "Add two more questions of your own, then print the score as a percentage. Try different answers in the Input box.",
+    "starterCode": "questions = [\n    {\"question\": \"Which keyword defines a function?\", \"answer\": \"def\"},\n]\n\nscore = 0\n# TODO: loop over the questions, ask each with input(), compare the answer and count the score\nprint(\"Questions:\", len(questions))\n",
+    "sampleInput": "def\nfloat\nlength",
+    "tags": [
+      "lists",
+      "dictionaries",
+      "loops"
+    ],
+    "difficulty": "Intermediate",
+    "minutes": 60,
+    "outcome": "A quiz that asks questions, checks answers and keeps score."
+  },
+  {
+    "id": "l29",
+    "kind": "project",
+    "day": 29,
+    "number": 29,
+    "part": "Practical Projects",
+    "partNumber": 5,
+    "title": "Project 4: Expense Tracker",
+    "summary": "Project 4: Build an object-oriented expense tracker.",
+    "definition": "An expense tracker uses classes to model real data, dictionaries to group it and small functions to report on it.",
+    "codeExample": "class Expense:\n    def __init__(self, title, amount, category):\n        self.title = title\n        self.amount = amount\n        self.category = category",
+    "howItWorks": [
+      "An Expense object holds one purchase: a title, an amount and a category.",
+      "A Tracker class keeps a list of expenses and offers methods such as add() and total().",
+      "A dictionary adds up the spending for each category, and max() with a lambda finds the biggest expense."
+    ],
+    "fullExample": "class Expense:\n    def __init__(self, title, amount, category):\n        self.title = title\n        self.amount = amount\n        self.category = category\n\nclass Tracker:\n    def __init__(self):\n        self.items = []\n\n    def add(self, title, amount, category):\n        self.items.append(Expense(title, amount, category))\n\n    def total(self):\n        return sum(e.amount for e in self.items)\n\n    def by_category(self):\n        totals = {}\n        for e in self.items:\n            totals[e.category] = totals.get(e.category, 0) + e.amount\n        return totals\n\n    def biggest(self):\n        return max(self.items, key=lambda e: e.amount)\n\ntracker = Tracker()\ntracker.add(\"Groceries\", 54.20, \"Food\")\ntracker.add(\"Bus pass\", 30.00, \"Transport\")\ntracker.add(\"Lunch\", 12.50, \"Food\")\ntracker.add(\"Book\", 18.99, \"Learning\")\n\nprint(f\"Total spent: {tracker.total():.2f}\")\nfor category, amount in tracker.by_category().items():\n    print(f\"{category}: {amount:.2f}\")\nbig = tracker.biggest()\nprint(f\"Biggest expense: {big.title} ({big.amount:.2f})\")",
+    "practiceTask": "Add a method average() that returns the average expense, and print it. Then add two expenses of your own.",
+    "starterCode": "class Expense:\n    def __init__(self, title, amount, category):\n        self.title = title\n        self.amount = amount\n        self.category = category\n\nclass Tracker:\n    def __init__(self):\n        self.items = []\n\n    def add(self, title, amount, category):\n        self.items.append(Expense(title, amount, category))\n\n    # TODO: add total() and by_category() methods\n\ntracker = Tracker()\ntracker.add(\"Groceries\", 54.20, \"Food\")\nprint(len(tracker.items), \"expense added\")\n",
+    "tags": [
+      "classes",
+      "dictionaries",
+      "lambda"
+    ],
+    "difficulty": "Advanced",
+    "minutes": 75,
+    "outcome": "An expense tracker built from classes that totals spending by category."
+  },
+  {
+    "id": "l30",
+    "kind": "project",
+    "day": 30,
+    "number": 30,
+    "part": "Practical Projects",
+    "partNumber": 5,
+    "title": "Final Project: To-Do Application",
+    "summary": "Final Project: Build a complete command-line to-do application.",
+    "definition": "The final project joins functions, lists, dictionaries, loops, conditions, string methods and JSON into one practical program.",
+    "codeExample": "tasks = []\ntasks.append({\"title\": \"Study\", \"done\": False})",
+    "howItWorks": [
+      "Each task is a dictionary stored in a list.",
+      "Small functions add, show and complete tasks.",
+      "A while loop reads commands until you type quit."
+    ],
+    "fullExample": "import json\n\ntasks = []\n\ndef add_task(title):\n    tasks.append({\"title\": title, \"done\": False})\n    print(\"Added:\", title)\n\ndef show_tasks():\n    if not tasks:\n        print(\"No tasks yet.\")\n        return\n    for i, task in enumerate(tasks, 1):\n        mark = \"x\" if task[\"done\"] else \" \"\n        print(f\"{i}. [{mark}] {task['title']}\")\n\ndef complete_task(number):\n    if 1 <= number <= len(tasks):\n        tasks[number - 1][\"done\"] = True\n        print(\"Completed task\", number)\n    else:\n        print(\"No task with that number\")\n\nwhile True:\n    command = input(\"> \").strip()\n    if command == \"quit\":\n        break\n    elif command.startswith(\"add \"):\n        add_task(command[4:])\n    elif command.startswith(\"done \"):\n        complete_task(int(command[5:]))\n    elif command == \"list\":\n        show_tasks()\n    elif command == \"save\":\n        print(json.dumps(tasks))\n    else:\n        print(\"Commands: add <text>, done <n>, list, save, quit\")",
+    "practiceTask": "Add a delete <n> command that removes a task, and a count command that prints how many tasks are still not done.",
+    "starterCode": "tasks = []\n\ndef add_task(title):\n    tasks.append({\"title\": title, \"done\": False})\n\n# TODO: add show_tasks and complete_task, then build the command loop\nwhile True:\n    command = input(\"> \").strip()\n    if command == \"quit\":\n        break\n    elif command.startswith(\"add \"):\n        add_task(command[4:])\n        print(\"Added\")\n    else:\n        print(\"Commands: add <text>, quit\")\n",
+    "sampleInput": "add Buy milk\nadd Learn Python\nlist\ndone 1\nlist\nquit",
+    "tags": [
+      "lists",
+      "dictionaries",
+      "functions",
+      "json"
+    ],
+    "difficulty": "Advanced",
+    "minutes": 90,
+    "outcome": "A complete to-do app that adds, lists, completes and saves tasks."
+  }
+]

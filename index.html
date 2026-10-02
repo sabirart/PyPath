@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#242726" id="theme-color" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="PyPath - Learn Python. Step by Step. Run real Python in your browser." />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <title>PyPath - Learn Python. Step by Step.</title>
+      <script>
+        (() => {
+          const saved = localStorage.getItem("pypath_theme");
+          const theme = saved === "light" ? "light" : "dark";
+          document.documentElement.dataset.theme = theme;
+          document.documentElement.style.colorScheme = theme;
+          document.getElementById("theme-color").setAttribute("content", theme === "dark" ? "#242726" : "#FAF9F5");
+        })();
+      </script>
+      <style>
+      html, body { margin: 0; background: #242726; }
+      html[data-theme="light"], html[data-theme="light"] body { background: #FAF9F5; }
+      .boot { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: #242726; color: #f4f6f5; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+      html[data-theme="light"] .boot { background: #FAF9F5; color: #141413; }
+      .boot-mark { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 12px; overflow: hidden; animation: boot-pulse 1.6s ease-in-out infinite; }
+      .boot-mark img { display: block; width: 100%; height: 100%; }
+      .boot-name { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+      .boot-bar { width: 120px; height: 3px; border-radius: 3px; background: rgba(127, 135, 132, 0.3); overflow: hidden; }
+      .boot-bar span { display: block; width: 40%; height: 100%; border-radius: 3px; background: #4F8987; animation: boot-slide 1.1s ease-in-out infinite; }
+      @keyframes boot-slide { from { transform: translateX(-110%); } to { transform: translateX(300%); } }
+      @keyframes boot-pulse { 50% { transform: scale(1.06); } }
+      @media (prefers-reduced-motion: reduce) { .boot-mark, .boot-bar span { animation: none; } }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="boot" role="status" aria-label="Loading PyPath">
+        <div class="boot-mark"><img src="./favicon.svg" alt="" width="48" height="48" /></div>
+        <div class="boot-name">PyPath</div>
+        <div class="boot-bar"><span></span></div>
+      </div>
+    </div>
+    <noscript>PyPath needs JavaScript to run Python in your browser.</noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

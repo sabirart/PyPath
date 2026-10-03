@@ -2,7 +2,7 @@ import { CheckCircle2, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { navigate, pathFor } from "../router";
 
 // The centre button follows the lesson's state: Start -> Mark Complete -> Completed.
-export default function NavButtons({ prev, next, status, onStart, onComplete }) {
+export default function NavButtons({ prev, next, status, canStart, onStart, onComplete }) {
   const done = status === "completed";
   const active = status === "active";
   return (
@@ -11,18 +11,18 @@ export default function NavButtons({ prev, next, status, onStart, onComplete }) 
         <ChevronLeft size={16} /> Previous
       </button>
       {done ? (
-        <button className="btn btn-sm btn-success" onClick={onStart} aria-pressed="true" title="Click to reopen this day">
+        <button className="btn btn-sm btn-success" disabled aria-pressed="true" title="This day is complete">
           <CheckCircle2 size={16} /> Completed
         </button>
       ) : active ? (
         <button className="btn btn-sm btn-primary" onClick={onComplete}>
           <CheckCircle2 size={16} /> Mark Complete
         </button>
-      ) : (
+      ) : canStart ? (
         <button className="btn btn-sm btn-primary" onClick={onStart}>
           <Play size={15} /> Start Day
         </button>
-      )}
+      ) : null}
       <button className="btn btn-ghost btn-sm" disabled={!next} onClick={() => navigate(pathFor(next))}>
         Next Day <ChevronRight size={16} />
       </button>

@@ -19,7 +19,7 @@ function Section({ title, icon: Icon, step, children, ok = true, id }) {
 }
 
 // Lesson text is rendered as plain text by React, so lesson data can never inject HTML.
-export default function LessonContent({ lesson, onLoadExample, onStart }) {
+export default function LessonContent({ lesson, onLoadExample, onStart, canStart }) {
   const { progress, lessons } = useApp();
   const st = progress[lesson.id] || "not-started";
   const how = Array.isArray(lesson.howItWorks) ? lesson.howItWorks : [];
@@ -42,7 +42,7 @@ export default function LessonContent({ lesson, onLoadExample, onStart }) {
         </ul>
         {project && lesson.outcome && <p className="project-brief"><strong>You will build:</strong> {lesson.outcome}</p>}
       </header>
-      {st === "not-started" && (
+      {st === "not-started" && canStart && (
         <div className="preview-note" role="note">
           <p>You are previewing this {noun}. It is not marked as started until you choose to study it.</p>
           <button className="btn btn-primary btn-sm" onClick={onStart}><Play size={14} /> Start Day {lesson.day}</button>

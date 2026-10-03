@@ -4,7 +4,6 @@ import { navigate, useRoute } from "./router";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ProgressPopup from "./components/ProgressPopup";
-import Toast from "./components/Toast";
 import Welcome from "./pages/Welcome";
 import Missing from "./components/Missing";
 import PageSkeleton from "./components/Skeletons";
@@ -18,7 +17,7 @@ function Shell() {
   useEffect(() => { if (user) prefetchPages(); }, [user]);
 
   if (!user) {
-    return (<><Welcome onStart={(name) => { setUser(name); navigate("/dashboard"); }} /><Toast /></>);
+    return <Welcome onStart={(name) => { setUser(name); navigate("/dashboard"); }} />;
   }
 
   const page = route.page || "dashboard";
@@ -57,7 +56,6 @@ function Shell() {
         </main>
       </div>
       <ProgressPopup />
-      <Toast />
     </div>
   );
 }

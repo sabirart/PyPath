@@ -12,13 +12,13 @@ const CodeEditor = lazy(() => import("../components/CodeEditor"));
 const DEFAULT = '# Free Compiler: write any Python here\nprint("Hello from PyPath")\n';
 
 export default function Compiler() {
-  const { theme, toast } = useApp();
+  const { theme } = useApp();
   const py = usePython();
   const wide = useMedia("(min-width: 900px)");
   const [code, setCode] = useState(() => getItem(KEYS.code("free")) ?? DEFAULT);
   const [size, setSize] = useState(60);
   const change = (v) => { setCode(v); setItem(KEYS.code("free"), v); };
-  const download = () => { try { downloadPython(code, "pypath.py"); } catch { toast("The download failed. Please try again.", "error"); } };
+  const download = () => { try { downloadPython(code, "pypath.py"); } catch { /* browser download errors do not use a toast */ } };
   return (
     <div className={`compiler-page ${wide ? "is-wide" : ""}`}>
       <div className="stack-item" style={{ flex: `${size} 1 0` }}>

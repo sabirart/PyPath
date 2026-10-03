@@ -63,7 +63,7 @@ export default function ProgressPopup() {
               const st = progress[l.id] || "not-started";
               return (
                 <li key={l.id}>
-                  <a href={`#${pathFor(l)}`} className={`dot dot-${st}`} onClick={() => bp === "mobile" && close()}
+                  <a href={`#${pathFor(l)}`} className={`dot dot-${st}`} onClick={close}
                     aria-label={`Day ${l.day}, ${l.title}: ${STATUS_LABEL[st]}`} title={`Day ${l.day}. ${l.title}`}>
                     {st === "completed" ? <Check size={14} strokeWidth={3} aria-hidden="true" /> : l.number}
                   </a>

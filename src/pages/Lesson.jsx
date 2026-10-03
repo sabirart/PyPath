@@ -1,4 +1,4 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { ArrowLeft, BookOpen, Code2 } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import { KEYS, getItem, setItem } from "../services/storage";
@@ -18,37 +18,56 @@ const CodeEditor = lazy(() => import("../components/CodeEditor"));
 // Wide screens: lesson and editor sit side by side and scroll independently.
 // Narrower screens: a Lesson / Code switch shows one full-height pane at a time.
 function LessonView({ lesson, base, prev, next }) {
-  const { touchLesson, startLesson, completeLesson, progress, panels, togglePanel, theme, toast, lessons } = useApp();
+  const { touchLesson, startLesson, completeLesson, progress, panels, togglePanel, theme, lessons, activeId } = useApp();
   const split = useMedia("(min-width: 1180px)");
+  const mobile = useMedia("(max-width: 767px)");
   const py = usePython();
+  const gestureStart = useRef(null);
   const [code, setCode] = useState(() => getItem(KEYS.code(lesson.id)) ?? lesson.starterCode ?? "");
   const [colSize, setColSize] = useState(46);
-  const [rowSize, setRowSize] = useState(60);
+  const [rowSize, setRowSize] = useState(mobile ? 70 : 60);
   const status = progress[lesson.id] || "not-started";
-  const noun = lesson.kind === "project" ? "project" : "lesson";
+  const firstIncomplete = lessons.find((l) => progress[l.id] !== "completed");
+  const canStart = !activeId && firstIncomplete?.id === lesson.id;
   const showCode = panels.compiler;
   const showLesson = split || !showCode;
   const sideBySide = split && showCode;
   const samples = lesson.sampleInput ? lesson.sampleInput.split("\n") : [];
 
   useEffect(() => { touchLesson(lesson.id); }, [lesson.id, touchLesson]);
+  useEffect(() => { if (mobile) setRowSize(70); }, [mobile]);
 
   const change = (v) => { setCode(v); setItem(KEYS.code(lesson.id), v); };
-  const loadExample = () => { change(lesson.fullExample); togglePanel("compiler", true); toast("Example loaded into the editor.", "success"); };
-  const download = () => { try { downloadPython(code, `${lesson.id}.py`); } catch { toast("The download failed. Please try again.", "error"); } };
+  const loadExample = () => { change(lesson.fullExample); togglePanel("compiler", true); };
+  const download = () => { try { downloadPython(code, `${lesson.id}.py`); } catch { /* browser download errors do not use a toast */ } };
   const start = () => {
     startLesson(lesson.id);
-    toast(`Day ${lesson.day} started. It is now your pending ${noun}.`, "success");
   };
   const complete = () => {
     completeLesson(lesson.id);
     const following = lessons[lesson.day];
-    toast(following ? `Day ${lesson.day} complete! Come back for Day ${following.day}.` : "Day 30 complete! You finished the challenge.", "success");
   };
-  const reset = () => { change(lesson.starterCode); toast("Starter code restored.", "success"); };
+  const reset = () => { change(lesson.starterCode); };
+
+  const onTouchStart = (e) => {
+    if (split || e.touches.length !== 1) return;
+    const target = e.target;
+    if (target.closest("button, a, input, textarea, select, .cm-editor")) return;
+    gestureStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  };
+  const onTouchEnd = (e) => {
+    const startPoint = gestureStart.current;
+    gestureStart.current = null;
+    if (split || !startPoint || e.changedTouches.length !== 1) return;
+    const dx = e.changedTouches[0].clientX - startPoint.x;
+    const dy = e.changedTouches[0].clientY - startPoint.y;
+    if (Math.abs(dx) < 60 || Math.abs(dx) <= Math.abs(dy) * 1.25) return;
+    if (dx < 0 && !showCode) togglePanel("compiler", true);
+    if (dx > 0 && showCode) togglePanel("compiler", false);
+  };
 
   return (
-    <div className="workspace">
+    <div className="workspace" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       {!split && (
         <div className="tabbar" role="tablist" aria-label="Lesson view">
           <button role="tab" className="tab" aria-selected={!showCode} onClick={() => togglePanel("compiler", false)}><BookOpen size={16} /> Lesson</button>
@@ -59,11 +78,11 @@ function LessonView({ lesson, base, prev, next }) {
         <section className={`pane pane-lesson ${showLesson ? "is-visible" : "is-hidden"}`} aria-label="Lesson" aria-hidden={!showLesson} style={sideBySide ? { flex: `${colSize} 1 0` } : undefined}>
             <div className="pane-scroll">
               {base === "projects" && <a href="#/projects" className="back-link"><ArrowLeft size={16} /> All projects</a>}
-              <LessonContent lesson={lesson} onLoadExample={loadExample} onStart={start} />
+              <LessonContent lesson={lesson} onLoadExample={loadExample} onStart={start} canStart={canStart} />
               {lesson.practiceTask ? <TaskCard task={lesson.practiceTask} /> : <p className="content-error" role="alert">The practice task is missing from the lesson data.</p>}
             </div>
             <footer className="lesson-footer">
-              <NavButtons prev={prev} next={next} status={status} onStart={start} onComplete={complete} />
+              <NavButtons prev={prev} next={next} status={status} canStart={canStart} onStart={start} onComplete={complete} />
             </footer>
           </section>
         {sideBySide && <Splitter orientation="col" value={colSize} onChange={setColSize} min={30} max={70} label="Resize lesson and editor" />}

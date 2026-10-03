@@ -97,7 +97,21 @@ export function AppProvider({ children }) {
   }, []);
 
   const togglePanel = useCallback((name, value) => {
-    setPanels((p) => ({ ...p, [name]: value === undefined ? !p[name] : value }));
+    setPanels((p) => {
+      const nextValue = value === undefined ? !p[name] : value;
+      if (!nextValue) return { ...p, [name]: false };
+
+      // The code workspace is independent from utility/navigation panels.
+      // Opening the sidebar or progress panel must not hide the editor.
+      if (name === "compiler") return { ...p, compiler: true };
+
+      // Sidebar and progress are utility panels, so opening one closes the
+      // other, while leaving the code workspace exactly as it is.
+      if (name === "sidebar") return { ...p, sidebar: true, progress: false };
+      if (name === "progress") return { ...p, progress: true, sidebar: false };
+
+      return { ...p, [name]: true };
+    });
   }, []);
 
   // Opening a lesson only remembers where the person was. It never changes the lesson's status.
@@ -106,37 +120,39 @@ export function AppProvider({ children }) {
     setLast(id);
   }, []);
 
-  // Starting makes this the one active ("Pending") lesson. Completed lessons stay completed.
+  // Only the first uncompleted lesson can be started. After completion, the next
+  // lesson becomes the single pending ("active") lesson automatically.
   const startLesson = useCallback((id) => {
     if (!lessons.some((l) => l.id === id)) return;
-    setCompleted((c) => {
-      if (!c[id]) return c;
-      const next = { ...c };
-      delete next[id];
-      removeItem(KEYS.progress(id));
-      return next;
-    });
+    const firstIncomplete = lessons.find((l) => getItem(KEYS.progress(l.id)) !== "completed");
+    if (!firstIncomplete || firstIncomplete.id !== id || activeId) return;
     setItem(KEYS.active, id);
     setActiveId(id);
-  }, []);
+  }, [activeId]);
 
-  // Only a lesson that has been started (or is already completed) can be completed.
+  // Completion is sequential: only the current pending lesson can be completed.
   const completeLesson = useCallback((id) => {
-    if (!lessons.some((l) => l.id === id)) return;
+    if (!lessons.some((l) => l.id === id) || activeId !== id) return;
     setItem(KEYS.progress(id), "completed");
     setCompleted((c) => ({ ...c, [id]: "completed" }));
-    setActiveId((a) => {
-      if (a === id) { removeItem(KEYS.active); return null; }
-      return a;
-    });
+
+    const next = lessons.find((l) => l.id !== id && getItem(KEYS.progress(l.id)) !== "completed");
+    if (next) {
+      setItem(KEYS.active, next.id);
+      setActiveId(next.id);
+    } else {
+      removeItem(KEYS.active);
+      setActiveId(null);
+    }
+
     const today = dayKey();
     setStudyDays((d) => {
       if (d.includes(today)) return d;
-      const next = [...d, today].slice(-400);
-      setItem(KEYS.days, JSON.stringify(next));
-      return next;
+      const nextDays = [...d, today].slice(-400);
+      setItem(KEYS.days, JSON.stringify(nextDays));
+      return nextDays;
     });
-  }, []);
+  }, [activeId]);
 
   const progress = useMemo(() => {
     const map = { ...completed };

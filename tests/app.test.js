@@ -1,0 +1,104 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+
+const root = new URL("../", import.meta.url);
+const lessons = JSON.parse(readFileSync(new URL("../src/data/lessons.json", import.meta.url), "utf8"));
+
+test("hash router handles dashboard, lessons, projects and invalid ids", async () => {
+  global.window = { location: { hash: "#/lessons/l04" } };
+  const { parseHash, pathFor } = await import("../src/routerCore.js");
+  assert.deepEqual(parseHash(), { path: "/lessons/l04", page: "lessons", id: "l04" });
+  global.window.location.hash = "#/projects/l30";
+  assert.deepEqual(parseHash(), { path: "/projects/l30", page: "projects", id: "l30" });
+  global.window.location.hash = "#/unknown/nope";
+  assert.deepEqual(parseHash(), { path: "/unknown/nope", page: "unknown", id: "nope" });
+  assert.equal(pathFor(lessons[0]), "/lessons/l01");
+  assert.equal(pathFor(lessons[25]), "/projects/l26");
+});
+
+test("storage survives unavailable localStorage through memory fallback and handles corrupted progress", async () => {
+  const store = new Map();
+  global.window = {
+    localStorage: {
+      getItem: (k) => { throw new Error("blocked"); },
+      setItem: (k, v) => { throw new Error("blocked"); },
+      removeItem: () => { throw new Error("blocked"); },
+      key: () => null,
+      get length() { return 0; },
+    },
+  };
+  const storage = await import(`../src/services/storage.js?test=${Date.now()}`);
+  assert.equal(storage.setItem("test_key", "value"), false);
+  assert.equal(storage.getItem("test_key"), "value");
+  assert.doesNotThrow(() => storage.resetProgressData());
+  void store;
+});
+
+test("lesson Python examples are syntactically valid Python", () => {
+  const snippets = [];
+  for (const lesson of lessons) {
+    for (const key of ["codeExample", "fullExample", "starterCode"]) {
+      if (typeof lesson[key] === "string") snippets.push({ id: lesson.id, key, code: lesson[key] });
+    }
+  }
+  const payload = JSON.stringify(snippets);
+  try {
+    execFileSync("python", ["-c", `
+import json, sys
+items = json.loads(sys.stdin.read())
+for item in items:
+    compile(item["code"], item["id"] + "." + item["key"], "exec")
+`], { input: payload, stdio: ["pipe", "pipe", "pipe"] });
+  } catch (error) {
+    assert.fail(`A lesson Python snippet is invalid: ${error.stderr?.toString() || error.message}`);
+  }
+});
+
+test("critical audit content fixes are present", () => {
+  const p1 = lessons.find((x) => x.id === "l26");
+  assert.equal(p1.sampleInput, "12\n3\n+");
+  const final = lessons.find((x) => x.id === "l30");
+  assert.match(final.fullExample, /command == "export"/);
+  assert.doesNotMatch(final.definition, /persistent-style/i);
+  const api = lessons.find((x) => x.id === "l24");
+  assert.doesNotMatch(api.fullExample, /Karachi/i);
+});
+
+test("compiler source has valid line breaks and quiet editor/input focus styling", () => {
+  const compiler = readFileSync(new URL("../src/pages/Compiler.jsx", import.meta.url), "utf8");
+  const css = readFileSync(new URL("../src/styles/index.css", import.meta.url), "utf8");
+  assert.doesNotMatch(compiler, /useApp\(\);\\n\s+const py/);
+  assert.match(compiler, /const \{ toast \} = useApp\(\);\n  const py = usePython\(\);/);
+  assert.match(css, /\.sr-only \{/);
+  assert.doesNotMatch(css, /\.cm-editor\.cm-focused \{ outline:/);
+  assert.match(css, /\.prompt-input:focus-visible \{ outline: 0; background:/);
+  const editor = readFileSync(new URL("../src/components/CodeEditor.jsx", import.meta.url), "utf8");
+  assert.match(editor, /onClick=\{running \? onStop : onRun\}/);
+  assert.doesNotMatch(editor, /onClick=\{onRun\} disabled=\{running\}/);
+  assert.match(css, /body\.resizing \.compiler-page > \.stack-item \{ transition: none; \}/);
+});
+
+test("worker execution architecture contains timeout, cancellation and worker-side input handling", () => {
+  const worker = readFileSync(new URL("../src/workers/python.worker.js", import.meta.url), "utf8");
+  const hook = readFileSync(new URL("../src/hooks/usePython.js", import.meta.url), "utf8");
+  assert.match(hook, /new Worker\(new URL\("\.\.\/workers\/python\.worker\.js"/);
+  assert.match(hook, /TIMEOUT_MS = 30000/);
+  assert.match(hook, /workerRef\.current\?\.terminate/);
+  assert.match(worker, /setStdin/);
+  assert.match(worker, /Atomics\.wait/);
+  assert.match(worker, /input-request/);
+  assert.match(worker, /postMessage\(\{ type: "input-request", output: collector\.value \}\)/);
+});
+
+
+test("compiler uses a single in-output status line and shows input prompts before waiting", () => {
+  const consoleSource = readFileSync(new URL("../src/components/Console.jsx", import.meta.url), "utf8");
+  const css = readFileSync(new URL("../src/styles/index.css", import.meta.url), "utf8");
+  const worker = readFileSync(new URL("../src/workers/python.worker.js", import.meta.url), "utf8");
+  assert.doesNotMatch(consoleSource, /<span className=\{`state state-/);
+  assert.match(consoleSource, /console-status/);
+  assert.match(css, /\.console-status \{/);
+  assert.match(worker, /postMessage\(\{ type: "input-request", output: collector\.value \}\)/);
+});

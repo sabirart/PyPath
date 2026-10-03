@@ -7,14 +7,13 @@ import ProgressPopup from "./components/ProgressPopup";
 import Welcome from "./pages/Welcome";
 import Missing from "./components/Missing";
 import PageSkeleton from "./components/Skeletons";
-import { Dashboard, LessonPage, Compiler, Projects, About, prefetchPages } from "./pages/lazy";
+import { Dashboard, LessonPage, Compiler, Projects, About } from "./pages/lazy";
 
 function Shell() {
   const { user, setUser, getLesson } = useApp();
   const route = useRoute();
   const main = useRef(null);
   useEffect(() => { main.current?.scrollTo(0, 0); }, [route.path]);
-  useEffect(() => { if (user) prefetchPages(); }, [user]);
 
   if (!user) {
     return <Welcome onStart={(name) => { setUser(name); navigate("/dashboard"); }} />;

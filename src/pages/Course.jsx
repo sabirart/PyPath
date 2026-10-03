@@ -23,7 +23,7 @@ export default function Course() {
       <header className="course-head">
         <p className="eyebrow">30-Day Python Challenge</p>
         <h2 className="page-title">Course overview</h2>
-        <p className="muted course-lead">25 daily classes take you from Basic Python to Advanced Python. Days 26 to 30 are practical projects. Study one day at a time, and come back tomorrow.</p>
+        <p className="muted course-lead">25 classes cover Python fundamentals through advanced topics. Days 26 to 30 are practical projects. Continue at your own pace.</p>
         <div className="course-stats">
           <div className="bar course-bar" role="progressbar" aria-valuemin={0} aria-valuemax={stats.total} aria-valuenow={stats.completed} aria-label="Course progress">
             <div className="bar-fill" style={{ width: `${stats.percent}%` }} />

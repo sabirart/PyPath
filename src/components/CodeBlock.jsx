@@ -9,15 +9,26 @@ export default function CodeBlock({ code, label = "Python", copy = true }) {
   useEffect(() => () => window.clearTimeout(copyTimer.current), []);
   const doCopy = async () => {
     try {
-      await navigator.clipboard.writeText(code);
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(code);
+      } else {
+        const area = document.createElement("textarea");
+        area.value = code;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        const copied = document.execCommand("copy");
+        area.remove();
+        if (!copied) throw new Error("Clipboard copy was not available");
+      }
       setCopyState("copied");
-      window.clearTimeout(copyTimer.current);
-      copyTimer.current = window.setTimeout(() => setCopyState("idle"), 1000);
     } catch {
       setCopyState("error");
-      window.clearTimeout(copyTimer.current);
-      copyTimer.current = window.setTimeout(() => setCopyState("idle"), 1000);
     }
+    window.clearTimeout(copyTimer.current);
+    copyTimer.current = window.setTimeout(() => setCopyState("idle"), 1800);
   };
   return (
     <figure className="codeblock">

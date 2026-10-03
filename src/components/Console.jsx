@@ -23,6 +23,18 @@ function PromptLine({ prompt, onSubmit, hint }) {
 
 export default function Console({ py, samples = [] }) {
   const { status, loadError, running, output, error, waiting, hasRun, answerCount, clear, retry, submit } = py;
+  const [showStatus, setShowStatus] = useState(true);
+  const statusTimer = useRef(null);
+  const statusKey = `${status}-${running}-${waiting}`;
+  useEffect(() => {
+    setShowStatus(true);
+    if (statusTimer.current) clearTimeout(statusTimer.current);
+    statusTimer.current = setTimeout(() => setShowStatus(false), 3000);
+    return () => {
+      if (statusTimer.current) clearTimeout(statusTimer.current);
+      statusTimer.current = null;
+    };
+  }, [statusKey]);
   const hint = samples[answerCount] ?? "";
   const cut = output.lastIndexOf("\n") + 1;
   // While waiting, the unfinished last line is the prompt and the answer field sits right after it.
@@ -33,18 +45,21 @@ export default function Console({ py, samples = [] }) {
 
   return (
     <section className="console-card" aria-label="Output console">
+      <span className="sr-only" role="status" aria-live="polite">{status === "loading" ? "Loading Python" : status === "error" ? "Python engine unavailable" : running ? "Python is running" : waiting ? "Waiting for input" : hasRun ? (error ? "Python execution ended with an error" : "Python execution finished") : "Python compiler ready"}</span>
       <div className="toolbar">
         <span className="filetab"><TerminalSquare size={15} aria-hidden="true" /> Output</span>
-        <span className={`state state-${waiting && !running ? "waiting" : status}`} aria-live="polite">
-          {status === "loading" && (<><Loader2 size={12} className="spin" /> Loading Python</>)}
-          {status === "ready" && (running ? "Running" : waiting ? "Waiting for input" : "Ready")}
-          {status === "error" && "Unavailable"}
-          {status === "idle" && "Starting"}
-        </span>
+        {showStatus && (
+          <div className={`console-status status-${waiting && !running ? "waiting" : status}`} role="status" aria-live="polite">
+            {status === "loading" && (<><Loader2 size={12} className="spin" /> Loading Python</>)}
+            {status === "ready" && (running ? "Running" : waiting ? "Waiting for input" : "Ready")}
+            {status === "error" && "Python unavailable"}
+            {status === "idle" && "Starting"}
+          </div>
+        )}
         <span className="toolbar-spacer" />
         <button className="btn btn-ghost btn-sm" onClick={clear} disabled={!hasRun}><Eraser size={15} /> Clear</button>
       </div>
-      <div className="console-body" role="log" aria-live="polite" ref={body} onClick={() => document.getElementById("py-input")?.focus()}>
+      <div className="console-body" ref={body} onClick={() => document.getElementById("py-input")?.focus()}>
         {status === "error" && (
           <div className="msg msg-error">
             <p><strong>The Python engine did not load.</strong> {loadError}</p>

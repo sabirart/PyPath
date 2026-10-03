@@ -40,7 +40,7 @@ export default function Dashboard() {
     { icon: Flame, label: "Day streak", value: stats.streak, of: null },
   ];
   const links = [
-    { to: pathFor(firstLesson), icon: BookOpen, title: "Lessons", text: "25 daily classes from Basic to Advanced Python." },
+    { to: pathFor(firstLesson), icon: BookOpen, title: "Lessons", text: "25 classes covering Python fundamentals through advanced topics." },
     { to: "/projects", icon: Trophy, title: "Projects", text: "Days 26 to 30: five programs you build yourself." },
     { to: "/compiler", icon: Terminal, title: "Free Compiler", text: "Try any Python idea with no lesson attached." },
   ];
@@ -51,7 +51,7 @@ export default function Dashboard() {
         <div>
           <p className="eyebrow">30-Day Python Challenge</p>
           <h2 className="dash-title">{greeting()}, {user}</h2>
-          <p className="muted dash-sub">{stats.studiedToday ? "Today's day is done. Rest up and come back tomorrow." : started ? "One focused day at a time. Pick up where you left off." : "Your journey from absolute beginner to advanced Python starts here."}</p>
+          <p className="muted dash-sub">{stats.studiedToday ? "Today's day is done. Rest up and You can continue whenever you are ready." : started ? "One focused day at a time. Pick up where you left off." : "Build Python skills from the fundamentals through advanced topics, then practise with projects."}</p>
         </div>
         <div className={`streak-pill ${stats.streak ? "is-lit" : ""}`} title="Consecutive days you completed a lesson">
           <Flame size={18} aria-hidden="true" />
@@ -61,7 +61,7 @@ export default function Dashboard() {
 
       <section className="focus-card" aria-label="Today's focus">
         <div className="focus-main">
-          <span className="focus-tag"><Target size={14} aria-hidden="true" /> {finished ? "Challenge complete" : activeId ? "Pending now" : started ? "Up next" : "Start here"}</span>
+          <span className="focus-tag"><Target size={14} aria-hidden="true" /> {finished ? "Challenge complete" : activeId ? "In progress" : started ? "Up next" : "Start here"}</span>
           {finished ? (
             <>
               <h3 className="focus-title">You finished all 30 days</h3>

@@ -55,7 +55,7 @@ export default function ProgressPopup() {
           </div>
           <ul className="pp-stats" aria-label="Day counts">
             <li><strong>{stats.completed}</strong> completed</li>
-            <li><strong>{stats.active}</strong> pending</li>
+            <li><strong>{stats.active}</strong> in progress</li>
             <li><strong>{stats.notStarted}</strong> not started</li>
           </ul>
           <ol className="dots" aria-label="All 30 days">

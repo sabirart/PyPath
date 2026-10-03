@@ -523,7 +523,7 @@
       "PyPath does not send network requests from your code, so this lesson uses a sample reply that works offline.",
       "APIs have contracts: read the endpoint, parameters, response shape, and error behavior before relying on external data."
     ],
-    "fullExample": "import json\nfrom urllib.parse import urlencode\n\nurl = \"https://api.example.com/weather?\" + urlencode({\"city\": \"Karachi\", \"units\": \"metric\"})\nprint(\"Request:\", url)\n\nreply = '{\"city\": \"Karachi\", \"temp\": 31.5, \"conditions\": [\"sunny\", \"humid\"]}'\ndata = json.loads(reply)\n\nprint(data[\"city\"], \"is\", data[\"temp\"], \"degrees\")\nfor item in data[\"conditions\"]:\n    print(\"-\", item)\n\nprint(json.dumps(data, indent=2))",
+    "fullExample": "import json\nfrom urllib.parse import urlencode\n\nurl = \"https://api.example.com/weather?\" + urlencode({\"city\": \"Sample City\", \"units\": \"metric\"})\nprint(\"Request:\", url)\n\nreply = '{\"city\": \"Sample City\", \"temp\": 31.5, \"conditions\": [\"sunny\", \"humid\"]}'\ndata = json.loads(reply)\n\nprint(data[\"city\"], \"is\", data[\"temp\"], \"degrees\")\nfor item in data[\"conditions\"]:\n    print(\"-\", item)\n\nprint(json.dumps(data, indent=2))",
     "practiceTask": "Parse this sample reply: {\"user\": \"ada\", \"repos\": 12}. Print a sentence that says how many repositories the user has.",
     "starterCode": "import json\nreply = '{\"user\": \"ada\", \"repos\": 12}'\ndata = json.loads(reply)\nprint(data)\n",
     "minutes": 30
@@ -570,7 +570,7 @@
     "fullExample": "def add(a, b):\n    return a + b\n\ndef subtract(a, b):\n    return a - b\n\ndef multiply(a, b):\n    return a * b\n\ndef divide(a, b):\n    if b == 0:\n        return \"Cannot divide by zero\"\n    return a / b\n\nfirst = float(input(\"First number: \"))\nsecond = float(input(\"Second number: \"))\nop = input(\"Operator (+ - * /): \")\n\nif op == \"+\":\n    print(add(first, second))\nelif op == \"-\":\n    print(subtract(first, second))\nelif op == \"*\":\n    print(multiply(first, second))\nelif op == \"/\":\n    print(divide(first, second))\nelse:\n    print(\"Unknown operator\")",
     "practiceTask": "Extend the calculator with a % (remainder) operation and a ** (power) operation. Try different Input box values.",
     "starterCode": "def add(a, b):\n    return a + b\n\nfirst = float(input(\"First number: \"))\nsecond = float(input(\"Second number: \"))\nop = input(\"Operator (+ - * /): \")\n\n# TODO: add subtract, multiply and divide, then choose with if / elif\nif op == \"+\":\n    print(add(first, second))\nelse:\n    print(\"Not built yet\")\n",
-    "sampleInput": "12\n+\n3",
+    "sampleInput": "12\n3\n+",
     "tags": [
       "input",
       "functions",
@@ -678,16 +678,16 @@
     "partNumber": 5,
     "title": "Final Project: To-Do Application",
     "summary": "Final Project: Build a complete command-line to-do application.",
-    "definition": "The final project joins functions, lists, dictionaries, loops, conditions, string methods and JSON into one practical program. The final project brings the course together into a complete command-line application with multiple commands and persistent-style data handling.",
+    "definition": "The final project joins functions, lists, dictionaries, loops, conditions, string methods and JSON into one practical program. The final project brings the course together into a complete command-line application with multiple commands and in-memory application state.",
     "codeExample": "tasks = []\ntasks.append({\"title\": \"Study\", \"done\": False})",
     "howItWorks": [
       "Each task is a dictionary stored in a list.",
       "Small functions add, show and complete tasks.",
       "A while loop reads commands until you type quit.",
-      "A complete application is built by combining small reliable pieces, validating user input, and keeping program state organized."
+      "The export command displays the current tasks as JSON; it does not persist them after the program exits."
     ],
-    "fullExample": "import json\n\ntasks = []\n\ndef add_task(title):\n    tasks.append({\"title\": title, \"done\": False})\n    print(\"Added:\", title)\n\ndef show_tasks():\n    if not tasks:\n        print(\"No tasks yet.\")\n        return\n    for i, task in enumerate(tasks, 1):\n        mark = \"x\" if task[\"done\"] else \" \"\n        print(f\"{i}. [{mark}] {task['title']}\")\n\ndef complete_task(number):\n    if 1 <= number <= len(tasks):\n        tasks[number - 1][\"done\"] = True\n        print(\"Completed task\", number)\n    else:\n        print(\"No task with that number\")\n\nwhile True:\n    command = input(\"> \").strip()\n    if command == \"quit\":\n        break\n    elif command.startswith(\"add \"):\n        add_task(command[4:])\n    elif command.startswith(\"done \"):\n        complete_task(int(command[5:]))\n    elif command == \"list\":\n        show_tasks()\n    elif command == \"save\":\n        print(json.dumps(tasks))\n    else:\n        print(\"Commands: add <text>, done <n>, list, save, quit\")",
-    "practiceTask": "Add a delete <n> command that removes a task, and a count command that prints how many tasks are still not done.",
+    "fullExample": "import json\n\ntasks = []\n\ndef add_task(title):\n    tasks.append({\"title\": title, \"done\": False})\n    print(\"Added:\", title)\n\ndef show_tasks():\n    if not tasks:\n        print(\"No tasks yet.\")\n        return\n    for i, task in enumerate(tasks, 1):\n        mark = \"x\" if task[\"done\"] else \" \"\n        print(f\"{i}. [{mark}] {task['title']}\")\n\ndef complete_task(number):\n    if 1 <= number <= len(tasks):\n        tasks[number - 1][\"done\"] = True\n        print(\"Completed task\", number)\n    else:\n        print(\"No task with that number\")\n\nwhile True:\n    command = input(\"> \").strip()\n    if command == \"quit\":\n        break\n    elif command.startswith(\"add \"):\n        add_task(command[4:])\n    elif command.startswith(\"done \"):\n        complete_task(int(command[5:]))\n    elif command == \"list\":\n        show_tasks()\n    elif command == \"export\":\n        print(json.dumps(tasks))\n    else:\n        print(\"Commands: add <text>, done <n>, list, export, quit\")",
+    "practiceTask": "Add a delete <n> command that removes a task, a count command that prints how many tasks are still not done.",
     "starterCode": "tasks = []\n\ndef add_task(title):\n    tasks.append({\"title\": title, \"done\": False})\n\n# TODO: add show_tasks and complete_task, then build the command loop\nwhile True:\n    command = input(\"> \").strip()\n    if command == \"quit\":\n        break\n    elif command.startswith(\"add \"):\n        add_task(command[4:])\n        print(\"Added\")\n    else:\n        print(\"Commands: add <text>, quit\")\n",
     "sampleInput": "add Buy milk\nadd Learn Python\nlist\ndone 1\nlist\nquit",
     "tags": [

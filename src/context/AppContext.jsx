@@ -121,7 +121,7 @@ export function AppProvider({ children }) {
   }, []);
 
   // Only the first uncompleted lesson can be started. After completion, the next
-  // lesson becomes the single pending ("active") lesson automatically.
+  // lesson becomes the single in-progress ("active") lesson automatically.
   const startLesson = useCallback((id) => {
     if (!lessons.some((l) => l.id === id)) return;
     const firstIncomplete = lessons.find((l) => getItem(KEYS.progress(l.id)) !== "completed");
@@ -130,7 +130,7 @@ export function AppProvider({ children }) {
     setActiveId(id);
   }, [activeId]);
 
-  // Completion is sequential: only the current pending lesson can be completed.
+  // Completion is sequential: only the current in-progress lesson can be completed.
   const completeLesson = useCallback((id) => {
     if (!lessons.some((l) => l.id === id) || activeId !== id) return;
     setItem(KEYS.progress(id), "completed");

@@ -26,15 +26,14 @@ const base = EditorView.theme({
   ".cm-activeLine": { backgroundColor: "var(--active-line)" },
   ".cm-activeLineGutter": { backgroundColor: "var(--active-line)", color: "var(--text)" },
   ".cm-cursor": { borderLeftColor: "var(--text)" },
-  "&.cm-focused": { outline: "none" },
   ".cm-selectionBackground, &.cm-focused .cm-selectionBackground": { backgroundColor: "var(--selection) !important" },
 });
 
-export default function CodeEditor({ value, onChange, onRun, running, onDownload, onReset, theme, fileName = "main.py", label = "Python code editor" }) {
+export default function CodeEditor({ value, onChange, onRun, onStop, running, onDownload, onReset, fileName = "main.py", label = "Python code editor" }) {
   const host = useRef(null);
   const view = useRef(null);
   const cb = useRef({});
-  cb.current = { onChange, onRun };
+  cb.current = { onChange, onRun, onStop, running };
 
   useEffect(() => {
     const v = new EditorView({
@@ -45,7 +44,7 @@ export default function CodeEditor({ value, onChange, onRun, running, onDownload
           basicSetup, python(), base,
           syntaxHighlighting(pyStyle),
           keymap.of([
-            { key: "Mod-Enter", run: () => { cb.current.onRun(); return true; } },
+            { key: "Mod-Enter", run: () => { if (cb.current.running) cb.current.onStop?.(); else cb.current.onRun(); return true; } },
             // Escape leaves the editor so keyboard users are never trapped.
             { key: "Escape", run: (ev) => { ev.dom.closest(".editor-card")?.querySelector(".toolbar button")?.focus(); return true; } },
             indentWithTab,
@@ -71,8 +70,8 @@ export default function CodeEditor({ value, onChange, onRun, running, onDownload
       <div className="toolbar">
         <span className="filetab"><FileCode2 size={15} aria-hidden="true" /> {fileName}</span>
         <span className="toolbar-spacer" />
-        <button className="btn btn-primary btn-sm" onClick={onRun} disabled={running} title="Run (Ctrl/Cmd + Enter)">
-          {running ? <Loader2 size={15} className="spin" /> : <Play size={15} />} {running ? "Running" : "Run Code"}
+        <button className={`btn ${running ? "btn-danger" : "btn-primary"} btn-sm`} onClick={running ? onStop : onRun} title={running ? "Stop execution" : "Run (Ctrl/Cmd + Enter)"}>
+          {running ? <Loader2 size={15} className="spin" /> : <Play size={15} />} {running ? "Stop" : "Run Code"}
         </button>
         <button className="icon-btn sm" onClick={onDownload} aria-label="Download as .py file" title="Download .py"><Download size={16} /></button>
         {onReset && <button className="icon-btn sm" onClick={onReset} aria-label="Reset to starter code" title="Reset to starter code"><RotateCcw size={16} /></button>}

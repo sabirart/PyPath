@@ -1,6 +1,6 @@
 # PyPath - Learn Python. Step by Step.
 
-A lightweight single-page **30-day Python challenge**: 25 daily classes (Days 1-25, Basic to Advanced Python), 5 practical projects (Days 26-30) and a free compiler. Python runs **inside your browser** using Pyodide (WebAssembly). There is no backend, account, database, analytics or tracking.
+A lightweight single-page **30-day Python challenge**: 25 classes (Days 1-25, from Python fundamentals through advanced topics), 5 practical projects (Days 26-30) and a free compiler. Python runs **inside your browser** using Pyodide (WebAssembly). There is no backend, account, database, analytics or tracking.
 
 ## Prerequisites
 - Node.js 18 or newer (npm included)
@@ -16,7 +16,7 @@ npm run preview    # serve dist/ locally to check the production build
 ```
 
 ## Deploy (static hosting)
-Upload the `dist/` folder, or connect the repository to a free host.
+Upload the `dist/` folder, or connect the repository to a free host. Worker-based direct input uses cross-origin isolation where the host supports custom headers; `public/_headers` provides this for compatible static hosts. Hosts that do not provide these headers use the documented worker-side input compatibility path.
 - **Netlify / Vercel:** build command `npm run build`, output directory `dist`.
 - **GitHub Pages:** publish the contents of `dist/`. The site uses `base: "./"` and hash routes (`#/lessons/l01`), so it works from a sub-folder with no server rewrite rules.
 
@@ -24,7 +24,7 @@ Upload the `dist/` folder, or connect the repository to a free host.
 `src/data/lessons.json` holds all course content. Navigation, the sidebar, progress and the project list are generated from it. Item ids (`l01` - `l30`) equal the day number and are used as storage keys. Days 1-25 are classes (`kind: "lesson"`); Days 26-30 are projects (`kind: "project"`, Day 30 is the Final Project).
 
 ## Lesson status
-Each day is **Completed**, **Pending** or **Not started**. Opening a day never changes its status. Pressing **Start Day** makes it the single Pending day (any other pending day goes back to Not started). **Mark Complete** is only available for the pending day. Future days can always be previewed, and earlier days never need to be finished first.
+Each day is **Completed**, **In Progress** or **Not started**. Opening a day never changes its status. Pressing **Start Day** makes it the single In Progress day. **Mark Complete** is only available for the active day. Future days can be previewed, and earlier days do not need to be finished first.
 
 ## Privacy and storage
 Everything stays in your browser. Keys used in `localStorage`:
@@ -33,7 +33,7 @@ Everything stays in your browser. Keys used in `localStorage`:
 | --- | --- |
 | `pypath_user` | first name |
 | `pypath_progress_<id>` | `completed` |
-| `pypath_active` | the one Pending day |
+| `pypath_active` | the one In Progress day |
 | `pypath_days` | dates a day was completed (for the streak) |
 | `pypath_schema` | storage version (migrates saved code from the old numbering) |
 | `pypath_code_<lessonId>` | your code for that lesson (`pypath_code_free` for the Free Compiler) |
@@ -46,8 +46,9 @@ If storage is blocked, PyPath keeps working from memory for that visit. "Reset p
 Your code is executed locally by Pyodide and is never uploaded. The only network request PyPath makes is downloading the Pyodide files. Python code in the lessons cannot call web APIs; the API lesson uses sample JSON.
 
 ## Known limits
-- Python runs on the main thread, so an endless loop in your own code will freeze the tab until it is closed or refreshed.
-- `input()` is interactive: the prompt appears in the Output panel with an inline field, and the answer is echoed like a terminal. Internally the program is replayed from the top with each new answer (with a fixed random seed per run), so code with side effects other than printing may repeat them.
+- Python runs inside a dedicated Web Worker, so user code cannot block React rendering. Runs are stopped after 10 seconds and can be cancelled.
+- `input()` is handled by the worker. On cross-origin-isolated hosting, answers are delivered directly to the running Python process. On hosts that do not provide the required isolation primitives, PyPath uses a worker-side compatibility replay for interactive input.
+- Pyodide is downloaded only when Python is first run and is cached by the browser. A network connection is required for the first runtime download unless the runtime is already cached.
 - Files created by lesson code live in temporary browser memory and vanish on refresh.
 - Inter and JetBrains Mono are bundled with the app through npm (`@fontsource-variable/*`), so no font is requested from a third party.
 
@@ -58,13 +59,13 @@ Your code is executed locally by Pyodide and is never uploaded. The only network
 - Scrollbars are thin and themed. The course outline starts open on screens 1360px and wider.
 
 ## Accessibility
-Semantic landmarks, no focus rings (a soft background tint marks keyboard focus), keyboard access to every control, focus trapping in the name dialog and in drawers, `Esc` to close, `Esc` to leave the editor, status shown with icon plus text, text size controls and full dark mode.
+Semantic landmarks, visible keyboard focus indicators, keyboard access to every control, focus trapping in the name dialog and drawers, `Esc` to close, `Esc` to leave the editor, status shown with icon plus text, text size controls and full dark mode.
 
 ## Side panel
 Choosing anything in the course outline opens it and hides the panel. Use the panel button in the header to bring it back.
 
 ## Lazy loading
-The first screen loads only the core app. Dashboard, Lesson, Projects, Compiler and the code editor are separate chunks, fetched on first visit with a skeleton placeholder, then prefetched while the browser is idle. Python itself (Pyodide) downloads only when needed. A small branded loader in `index.html` shows before the app starts.
+The first screen loads only the core app. Dashboard, Lesson, Projects, Compiler and the code editor are separate chunks and are fetched when first needed with a skeleton placeholder. Python itself (Pyodide) downloads only when the user runs code. A small branded loader in `index.html` shows before the app starts.
 
 ## Deployment
 

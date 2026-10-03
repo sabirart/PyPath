@@ -1,6 +1,8 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const TIMEOUT_MS = 30000;
+const TIMEOUT_MS = 30000; // maximum time a program may run
+const LOAD_TIMEOUT_MS = 180000; // maximum time to download and start Python the first time
 
 function createWorker() {
   return new Worker(new URL("../workers/python.worker.js", import.meta.url), { type: "module" });
@@ -31,25 +33,24 @@ export default function usePython() {
     session.current.waiting = false;
   }, [cleanup]);
 
-  useEffect(() => {
-    const warmupTimer = setTimeout(() => {
-      if (workerRef.current) return;
-      const worker = createWorker();
-      workerRef.current = worker;
-      worker.onmessage = (event) => {
-        const data = event.data || {};
-        if (data.type === "ready") setStatus("ready");
-      };
-      worker.onerror = () => {
-        workerRef.current = null;
-      };
-      worker.postMessage({ type: "warmup" });
-    }, 800);
-    return () => {
-      clearTimeout(warmupTimer);
-      terminate();
+  // Python (several MB) is downloaded only when the person shows intent: the first time they
+  // click into the editor, or press Run. Merely opening a page never starts the download.
+  const warmup = useCallback(() => {
+    if (workerRef.current) return;
+    const worker = createWorker();
+    workerRef.current = worker;
+    worker.onmessage = (event) => {
+      const data = event.data || {};
+      if (data.type === "loading") setStatus("loading");
+      if (data.type === "ready") setStatus("ready");
     };
-  }, [terminate]);
+    worker.onerror = () => {
+      workerRef.current = null;
+    };
+    worker.postMessage({ type: "warmup" });
+  }, []);
+
+  useEffect(() => terminate, [terminate]);
 
   const start = useCallback((code, answers = [], seed = Math.floor(Math.random() * 1000000) + 1) => {
     cleanup();
@@ -58,10 +59,33 @@ export default function usePython() {
       worker = createWorker();
       workerRef.current = worker;
     }
+    const onTimeout = () => {
+      terminate();
+      setRunning(false);
+      setWaiting(false);
+      setStatus("ready");
+      setError({
+        hint: "Your program took too long and was stopped. Check for an infinite loop or very large computation, then run your code again.",
+        detail: `Execution timeout after ${TIMEOUT_MS / 1000} seconds. Please run your code again.`,
+      });
+    };
+    const onLoadTimeout = () => {
+      terminate();
+      setRunning(false);
+      setWaiting(false);
+      setStatus("error");
+      setLoadError("Python took too long to download. Check your internet connection and try again.");
+    };
     worker.onmessage = (event) => {
       const data = event.data || {};
       if (data.type === "loading") {
         setStatus("loading");
+        return;
+      }
+      if (data.type === "started") {
+        // Python is loaded: replace the long loading limit with the program time limit.
+        cleanup();
+        timerRef.current = setTimeout(onTimeout, TIMEOUT_MS);
         return;
       }
       if (data.type === "ready") {
@@ -113,16 +137,7 @@ export default function usePython() {
     setAnswerCount(session.current.answers.length);
     setHasRun(true);
 
-    timerRef.current = setTimeout(() => {
-      terminate();
-      setRunning(false);
-      setWaiting(false);
-      setStatus("ready");
-      setError({
-        hint: "Your program took too long and was stopped. Check for an infinite loop or very large computation, then run your code again.",
-        detail: "Execution timeout after 30 seconds. Please run your code again.",
-      });
-    }, TIMEOUT_MS);
+    timerRef.current = setTimeout(onLoadTimeout, LOAD_TIMEOUT_MS);
 
     worker.postMessage({ type: "run", code, answers: session.current.answers, seed: session.current.seed });
   }, [cleanup, terminate]);
@@ -162,5 +177,5 @@ export default function usePython() {
     if (code) start(code, session.current.answers, session.current.seed);
   }, [start]);
 
-  return { status, loadError, running, output, error, waiting, hasRun, answerCount, run, submit, stop, clear, retry };
+  return { status, loadError, running, output, error, waiting, hasRun, answerCount, warmup, run, submit, stop, clear, retry };
 }

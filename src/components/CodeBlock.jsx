@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { tokenize } from "../services/highlight";

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useRef } from "react";
 
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));

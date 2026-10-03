@@ -1,23 +1,21 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { Suspense, useEffect, useRef } from "react";
 import { AppProvider, useApp } from "./context/AppContext";
 import { navigate, useRoute } from "./router";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import ProgressPopup from "./components/ProgressPopup";
+import Toast from "./components/Toast";
 import Welcome from "./pages/Welcome";
 import Missing from "./components/Missing";
 import PageSkeleton from "./components/Skeletons";
-import { Dashboard, LessonPage, Compiler, Projects, About } from "./pages/lazy";
+import { Dashboard, LessonPage, Compiler, Projects, About, Course } from "./pages/lazy";
 
 function Shell() {
   const { user, setUser, getLesson } = useApp();
   const route = useRoute();
   const main = useRef(null);
-  useEffect(() => { main.current?.scrollTo(0, 0); }, [route.path]);
-
-  if (!user) {
-    return <Welcome onStart={(name) => { setUser(name); navigate("/dashboard"); }} />;
-  }
+  const firstRoute = useRef(true);
 
   const page = route.page || "dashboard";
   let title = "Dashboard";
@@ -26,6 +24,7 @@ function Shell() {
   let lessonView = false;
 
   if (page === "dashboard") content = <Dashboard />;
+  else if (page === "lessons" && !route.id) { title = "Course overview"; content = <Course />; }
   else if (page === "lessons") {
     const l = getLesson(route.id);
     title = l ? `Day ${l.day}. ${l.title}` : "Lesson not found";
@@ -42,8 +41,23 @@ function Shell() {
   else if (page === "about") { title = "About"; content = <About />; }
   else { title = "Page not found"; content = <Missing what="page" />; }
 
+  // Route changes: reset scroll, update the document title, and move focus to the main area
+  // (except on the very first load) so screen-reader users hear that the page changed.
+  useEffect(() => {
+    main.current?.scrollTo(0, 0);
+    if (!user) return;
+    document.title = `${title} · PyPath`;
+    if (firstRoute.current) { firstRoute.current = false; return; }
+    main.current?.focus({ preventScroll: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [route.path, user]);
+
+  if (!user) {
+    return <Welcome onStart={(name) => { setUser(name); navigate("/dashboard"); }} />;
+  }
+
   const fill = lessonView || page === "compiler";
-  const variant = lessonView || (page === "lessons" || (page === "projects" && route.id)) ? "lesson" : page === "compiler" ? "editor" : page === "dashboard" ? "dashboard" : "cards";
+  const variant = lessonView || (page === "lessons" && route.id) || (page === "projects" && route.id) ? "lesson" : page === "compiler" ? "editor" : page === "dashboard" ? "dashboard" : "cards";
   return (
     <div className="app">
       <button className="skip" onClick={() => main.current?.focus()}>Skip to content</button>
@@ -55,6 +69,7 @@ function Shell() {
         </main>
       </div>
       <ProgressPopup />
+      <Toast />
     </div>
   );
 }

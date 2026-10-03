@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useEffect, useState } from "react";
 import { parseHash, pathFor } from "./routerCore";
 

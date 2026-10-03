@@ -1,0 +1,94 @@
+PyPath Proprietary License
+Version 1.0
+
+Copyright (c) 2026 Sabir Hussain. All rights reserved.
+
+"PyPath" means the software, source code, lesson and project content,
+exercises, examples, text, design, styling, graphics, logos, data files,
+build configuration and documentation in this repository and on any website
+that serves it (together, the "Work"). The Work is owned by Sabir Hussain
+("the Owner"). The Work is licensed, not sold.
+
+1. NO LICENSE GRANTED BY DEFAULT
+   Except for the limited permission in Section 2, no right or licence to the
+   Work is granted to you, whether by implication, estoppel or otherwise.
+   Having access to the source code, or seeing it in a browser, does not give
+   you any right to use it.
+
+2. PERMITTED USE (WEBSITE VISITORS)
+   If the Owner publishes PyPath as a website, you may use that website for
+   your own personal, non-commercial learning, and you may run the Python
+   code you write yourself in its editor. You may download the .py files you
+   create. This permission is revocable at any time and does not include
+   any right to the Work's source code.
+
+3. RESTRICTIONS
+   Without the Owner's prior written permission, you must not, and must not
+   allow anyone else to:
+   (a) copy, reproduce, mirror or host the Work, in whole or in part;
+   (b) modify, adapt, translate or create derivative works of the Work;
+   (c) distribute, sell, sublicense, rent, lend, publish or otherwise make
+       the Work available to any third party;
+   (d) use the Work, its lessons, projects or design to build, train or
+       improve a competing product, course or service, or to train or
+       fine-tune any machine-learning model;
+   (e) scrape, crawl, bulk-download or systematically extract the lessons,
+       projects or other content;
+   (f) remove, hide or alter any copyright, licence or ownership notice;
+   (g) use the PyPath name, logo or branding in a way that suggests
+       affiliation with or endorsement by the Owner;
+   (h) deploy, upload or run any copy or modified version of the Work on any
+       website, server, app store or hosting service;
+   (i) reverse engineer, decompile or disassemble any part of the Work, except
+       to the extent that applicable law expressly allows this despite this
+       restriction;
+   (j) probe, scan or test the security of the Work or its hosting, bypass
+       any technical protection, or interfere with its operation.
+
+4. ACCESS TO THE REPOSITORY
+   If you have been given access to the source repository (for example as a
+   reviewer, collaborator or contractor), that access is for the purpose
+   stated by the Owner only. You must keep the source code confidential,
+   must not share it, and must delete your copies when the Owner asks or the
+   purpose ends.
+
+5. CONTRIBUTIONS AND FEEDBACK
+   Any change, fix or idea you submit to the Owner becomes the Owner's
+   property, and you assign all rights in it to the Owner, unless the Owner
+   agrees otherwise in writing. You confirm that you have the right to do so.
+
+6. THIRD-PARTY COMPONENTS
+   The Work depends on open-source components (for example React, Vite,
+   CodeMirror, Lucide, Inter, JetBrains Mono and Pyodide). This licence
+   does not apply to them. They remain under their own licences, listed in
+   THIRD_PARTY_NOTICES.md, and nothing here limits your rights under those
+   licences. Code that you write and run in PyPath belongs to you.
+
+7. NO WARRANTY
+   THE WORK IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY
+   KIND, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS
+   FOR A PARTICULAR PURPOSE, ACCURACY AND NON-INFRINGEMENT. The lessons are
+   for general education and are not professional advice.
+
+8. LIMITATION OF LIABILITY
+   TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE OWNER IS NOT LIABLE FOR ANY
+   INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, OR FOR
+   LOSS OF DATA, PROFITS OR GOODWILL, ARISING FROM THE USE OF OR INABILITY TO
+   USE THE WORK. Progress and code are stored only in your own browser, and
+   you are responsible for keeping copies of anything you want to keep.
+
+9. TERMINATION
+   This licence ends automatically, without notice, if you breach it. When it
+   ends you must stop using the Work and delete every copy in your possession.
+   Sections 1, 3, 4, 5, 7, 8, 9 and 10 survive termination.
+
+10. GENERAL
+    The Owner may enforce this licence through injunctive relief and any
+    other remedy available by law. This licence is governed by the laws of
+    Pakistan, and the courts of Karachi, Sindh have jurisdiction, unless
+    mandatory law in your country says otherwise. If any part of this
+    licence is unenforceable, the rest stays in force. The Owner's failure to
+    enforce a right is not a waiver of it. This is the complete agreement
+    about the Work and may only be changed in writing by the Owner.
+
+Permission requests: sabirhussain@gmail.com

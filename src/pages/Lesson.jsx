@@ -1,12 +1,14 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { ArrowLeft, BookOpen, Code2 } from "lucide-react";
 import { useApp } from "../context/AppContext";
-import { KEYS, getItem, setItem } from "../services/storage";
+import { KEYS, getItem } from "../services/storage";
 import { downloadPython } from "../services/download";
 import Missing from "../components/Missing";
 import { EditorSkeleton } from "../components/Skeletons";
 import usePython from "../hooks/usePython";
 import useMedia from "../hooks/useMedia";
+import useAutosave from "../hooks/useAutosave";
 import LessonContent from "../components/LessonContent";
 import TaskCard from "../components/TaskCard";
 import Console from "../components/Console";
@@ -38,14 +40,17 @@ function LessonView({ lesson, base, prev, next }) {
   useEffect(() => { if (mobile) setRowSize(70); }, [mobile]);
 
   const change = (v) => setCode(v);
-  useEffect(() => { const t = setTimeout(() => { try { setItem(KEYS.code(lesson.id), code); } catch {} }, 300); return () => clearTimeout(t); }, [code, lesson.id]);
+  useAutosave(KEYS.code(lesson.id), code);
   const loadExample = () => { change(lesson.fullExample); togglePanel("compiler", true); };
   const download = () => { try { downloadPython(code, `${lesson.id}.py`); } catch (e) { toast(e.message, "error"); } };
   const start = () => {
     startLesson(lesson.id);
   };
   const complete = () => { completeLesson(lesson.id); };
-  const reset = () => { change(lesson.starterCode); };
+  const reset = () => {
+    if (code !== lesson.starterCode && !window.confirm("Replace your code with the starter code? Your current code will be lost.")) return;
+    change(lesson.starterCode);
+  };
 
   const onTouchStart = (e) => {
     if (split || e.touches.length !== 1) return;
@@ -73,7 +78,7 @@ function LessonView({ lesson, base, prev, next }) {
         </div>
       )}
       <div className="ws-panes">
-        <section className={`pane pane-lesson ${showLesson ? "is-visible" : "is-hidden"}`} aria-label="Lesson" aria-hidden={!showLesson} inert={!showLesson} style={sideBySide ? { flex: `${colSize} 1 0` } : undefined}>
+        <section className={`pane pane-lesson ${showLesson ? "is-visible" : "is-hidden"}`} aria-label="Lesson" aria-hidden={!showLesson} inert={showLesson ? undefined : ""} style={sideBySide ? { flex: `${colSize} 1 0` } : undefined}>
             <div className="pane-scroll">
               {base === "projects" && <a href="#/projects" className="back-link"><ArrowLeft size={16} /> All projects</a>}
               <LessonContent lesson={lesson} onLoadExample={loadExample} onStart={start} canStart={canStart} />
@@ -84,8 +89,8 @@ function LessonView({ lesson, base, prev, next }) {
             </footer>
           </section>
         {sideBySide && <Splitter orientation="col" value={colSize} onChange={setColSize} min={30} max={70} label="Resize lesson and editor" />}
-        <section className={`pane pane-code ${showCode ? "is-visible" : "is-hidden"}`} aria-label="Code workspace" aria-hidden={!showCode} inert={!showCode} style={sideBySide ? { flex: `${100 - colSize} 1 0` } : undefined}>
-          <div className="stack-item" style={{ flex: `${rowSize} 1 0` }}>
+        <section className={`pane pane-code ${showCode ? "is-visible" : "is-hidden"}`} aria-label="Code workspace" aria-hidden={!showCode} inert={showCode ? undefined : ""} style={sideBySide ? { flex: `${100 - colSize} 1 0` } : undefined}>
+          <div className="stack-item" style={{ flex: `${rowSize} 1 0` }} onFocusCapture={py.warmup} onPointerDownCapture={py.warmup}>
             <Suspense fallback={<EditorSkeleton />}>
               <CodeEditor value={code} onChange={change} onRun={() => py.run(code)} onStop={py.stop} running={py.running}
                 onDownload={download} onReset={reset} fileName={`${lesson.id}.py`} />

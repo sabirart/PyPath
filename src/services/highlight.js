@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 // Tiny Python tokenizer for read-only code blocks. Output is rendered as
 // React text nodes, so lesson code can never inject HTML.
 const KW = new Set("False None True and as assert async await break class continue def del elif else except finally for from global if import in is lambda nonlocal not or pass raise return try while with yield".split(" "));

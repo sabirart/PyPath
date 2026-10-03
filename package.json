@@ -2,8 +2,13 @@
   "name": "pypath",
   "private": true,
   "version": "1.0.0",
+  "license": "UNLICENSED",
+  "author": "Sabir Hussain <sabirhussain@gmail.com>",
   "description": "PyPath - a 30-day Python learning challenge. A static, browser-only Python learning site.",
   "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

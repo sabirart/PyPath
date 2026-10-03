@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { Target } from "lucide-react";
 
 export default function TaskCard({ task }) {

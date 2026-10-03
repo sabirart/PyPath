@@ -1,6 +1,7 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 
 const root = new URL("../", import.meta.url);
@@ -44,8 +45,10 @@ test("lesson Python examples are syntactically valid Python", () => {
     }
   }
   const payload = JSON.stringify(snippets);
+  const python = ["python3", "python"].find((cmd) => { try { execFileSync(cmd, ["--version"], { stdio: "pipe" }); return true; } catch { return false; } });
+  assert.ok(python, "Python 3 is required to run this test (install python3).");
   try {
-    execFileSync("python", ["-c", `
+    execFileSync(python, ["-c", `
 import json, sys
 items = json.loads(sys.stdin.read())
 for item in items:
@@ -139,14 +142,43 @@ test("Python runtime is warmed once and reused between runs", () => {
   assert.match(hook, /setStatus\("ready"\);/);
 });
 
-test("Python runtime uses the current stable Pyodide CDN", () => {
+test("Python runtime uses the pinned Pyodide CDN build as an ES module", () => {
   const worker = readFileSync(new URL("../src/workers/python.worker.js", import.meta.url), "utf8");
-  const service = readFileSync(new URL("../src/services/pyodide.js", import.meta.url), "utf8");
   assert.match(worker, /pyodide\/v314\.0\.7\/full\/pyodide\.mjs/);
-  assert.match(service, /pyodide\/v314\.0\.7\/full\/pyodide\.mjs/);
   assert.doesNotMatch(worker, /importScripts\s*\(/);
   const hook = readFileSync(new URL("../src/hooks/usePython.js", import.meta.url), "utf8");
   assert.match(hook, /type: "module"/);
-  assert.doesNotMatch(worker, /v0\.25\.0/);
-  assert.doesNotMatch(service, /v0\.25\.0/);
+});
+
+test("the execution timer starts only after Python has loaded, and output is capped", () => {
+  const worker = readFileSync(new URL("../src/workers/python.worker.js", import.meta.url), "utf8");
+  const hook = readFileSync(new URL("../src/hooks/usePython.js", import.meta.url), "utf8");
+  assert.match(worker, /postMessage\(\{ type: "started" \}\)/);
+  assert.match(hook, /data\.type === "started"/);
+  assert.match(hook, /LOAD_TIMEOUT_MS/);
+  assert.match(worker, /MAX_OUTPUT = 200000/);
+});
+
+test("Python is not downloaded on page load, only on editor intent or Run", () => {
+  const hook = readFileSync(new URL("../src/hooks/usePython.js", import.meta.url), "utf8");
+  assert.doesNotMatch(hook, /setTimeout\(\(\) => \{\s*if \(workerRef\.current\) return;/);
+  assert.match(hook, /const warmup = useCallback/);
+  for (const f of ["../src/pages/Lesson.jsx", "../src/pages/Compiler.jsx"]) {
+    assert.match(readFileSync(new URL(f, import.meta.url), "utf8"), /onFocusCapture=\{py\.warmup\}/);
+  }
+});
+
+test("React 18 gets string values for the inert attribute (booleans are dropped)", () => {
+  for (const f of ["../src/pages/Lesson.jsx", "../src/components/Sidebar.jsx"]) {
+    const src = readFileSync(new URL(f, import.meta.url), "utf8");
+    assert.doesNotMatch(src, /inert=\{!?\w+\}/, `${f} passes a boolean to inert`);
+    assert.match(src, /inert=\{/);
+  }
+});
+
+test("toasts are mounted, and obsolete files are gone", () => {
+  const app = readFileSync(new URL("../src/App.jsx", import.meta.url), "utf8");
+  assert.match(app, /<Toast \/>/);
+  assert.equal(existsSync(new URL("../src/services/pyodide.js", import.meta.url)), false);
+  assert.equal(existsSync(new URL("../test.py", import.meta.url)), false);
 });

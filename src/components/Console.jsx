@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useEffect, useRef, useState } from "react";
 import { Eraser, Loader2, RefreshCw, TerminalSquare } from "lucide-react";
 

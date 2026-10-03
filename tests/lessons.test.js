@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { CheckCircle2, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { navigate, pathFor } from "../router";
 

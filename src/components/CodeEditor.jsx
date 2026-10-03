@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useEffect, useRef } from "react";
 import { EditorView, keymap } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";

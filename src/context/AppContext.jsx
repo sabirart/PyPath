@@ -1,13 +1,17 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import lessonsData from "../data/lessons.json";
 import useBreakpoint from "../hooks/useBreakpoint";
 import { KEYS, getItem, setItem, removeItem, resetProgressData } from "../services/storage";
+import { dayKey, canStart, nextActiveAfter, summarize } from "../services/progress";
 
 const AppContext = createContext(null);
 export const useApp = () => useContext(AppContext);
 
 const lessons = Array.isArray(lessonsData) ? lessonsData : [];
 const PROJECT_IDS = lessons.filter((l) => l.kind === "project").map((l) => l.id);
+const BY_ID = new Map(lessons.map((l) => [l.id, l]));
+const getLesson = (id) => BY_ID.get(id) || null;
 const FONT_STEPS = [87.5, 100, 112.5, 125];
 
 // Only completed items are stored per lesson. The single active ("Pending") lesson has its own key.
@@ -23,17 +27,6 @@ const readActive = () => {
 const readDays = () => {
   try { const v = JSON.parse(getItem(KEYS.days) || "[]"); return Array.isArray(v) ? v.filter((d) => typeof d === "string") : []; } catch { return []; }
 };
-const dayKey = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-// Consecutive study days ending today (or yesterday, so the streak is not lost before today's lesson).
-const streakOf = (days) => {
-  const set = new Set(days);
-  const d = new Date();
-  if (!set.has(dayKey(d))) d.setDate(d.getDate() - 1);
-  let n = 0;
-  while (set.has(dayKey(d))) { n++; d.setDate(d.getDate() - 1); }
-  return n;
-};
-
 const mq = (q) => window.matchMedia(q).matches;
 // The lesson and editor sit side by side from 1180px; the outline starts open only on wide screens.
 const defaultsFor = (bp) => ({ sidebar: bp === "desktop" && mq("(min-width: 1360px)"), progress: false, compiler: mq("(min-width: 1180px)") });
@@ -81,20 +74,16 @@ export function AppProvider({ children }) {
   }, []);
 
   const toggleTheme = useCallback(() => {
-    setThemeState((t) => {
-      const next = t === "dark" ? "light" : "dark";
-      setItem(KEYS.theme, next);
-      return next;
-    });
-  }, []);
+    const next = theme === "dark" ? "light" : "dark";
+    setItem(KEYS.theme, next);
+    setThemeState(next);
+  }, [theme]);
 
   const changeFont = useCallback((dir) => {
-    setFontIdx((i) => {
-      const next = Math.min(FONT_STEPS.length - 1, Math.max(0, i + dir));
-      setItem(KEYS.font, FONT_STEPS[next]);
-      return next;
-    });
-  }, []);
+    const next = Math.min(FONT_STEPS.length - 1, Math.max(0, fontIdx + dir));
+    setItem(KEYS.font, FONT_STEPS[next]);
+    setFontIdx(next);
+  }, [fontIdx]);
 
   const togglePanel = useCallback((name, value) => {
     setPanels((p) => {
@@ -124,35 +113,33 @@ export function AppProvider({ children }) {
   // lesson becomes the single in-progress ("active") lesson automatically.
   const startLesson = useCallback((id) => {
     if (!lessons.some((l) => l.id === id)) return;
-    const firstIncomplete = lessons.find((l) => getItem(KEYS.progress(l.id)) !== "completed");
-    if (!firstIncomplete || firstIncomplete.id !== id || activeId) return;
+    if (!canStart(lessons, completed, activeId, id)) return;
     setItem(KEYS.active, id);
     setActiveId(id);
-  }, [activeId]);
+  }, [activeId, completed]);
 
   // Completion is sequential: only the current in-progress lesson can be completed.
   const completeLesson = useCallback((id) => {
     if (!lessons.some((l) => l.id === id) || activeId !== id) return;
     setItem(KEYS.progress(id), "completed");
-    setCompleted((c) => ({ ...c, [id]: "completed" }));
+    setCompleted({ ...completed, [id]: "completed" });
 
-    const next = lessons.find((l) => l.id !== id && getItem(KEYS.progress(l.id)) !== "completed");
-    if (next) {
-      setItem(KEYS.active, next.id);
-      setActiveId(next.id);
+    const nextId = nextActiveAfter(lessons, completed, id);
+    if (nextId) {
+      setItem(KEYS.active, nextId);
+      setActiveId(nextId);
     } else {
       removeItem(KEYS.active);
       setActiveId(null);
     }
 
     const today = dayKey();
-    setStudyDays((d) => {
-      if (d.includes(today)) return d;
-      const nextDays = [...d, today].slice(-400);
+    if (!studyDays.includes(today)) {
+      const nextDays = [...studyDays, today].slice(-400);
       setItem(KEYS.days, JSON.stringify(nextDays));
-      return nextDays;
-    });
-  }, [activeId]);
+      setStudyDays(nextDays);
+    }
+  }, [activeId, completed, studyDays]);
 
   const progress = useMemo(() => {
     const map = { ...completed };
@@ -182,23 +169,17 @@ export function AppProvider({ children }) {
     toast("Course reset. Day 1 is ready to start.", "success");
   }, [setUser, toast]);
 
-  const stats = useMemo(() => {
-    const total = lessons.length;
-    const done = lessons.filter((l) => progress[l.id] === "completed").length;
-    const active = activeId ? 1 : 0;
-    const lessonsDone = lessons.filter((l) => l.kind === "lesson" && progress[l.id] === "completed").length;
-    const projectsDone = lessons.filter((l) => l.kind === "project" && progress[l.id] === "completed").length;
-    return { total, completed: done, active, notStarted: total - done - active, lessonsDone, projectsDone, percent: total ? Math.round((done / total) * 100) : 0, streak: streakOf(studyDays), studiedToday: studyDays.includes(dayKey()) };
-  }, [progress, activeId, studyDays]);
+  const stats = useMemo(() => summarize(lessons, progress, activeId, studyDays), [progress, activeId, studyDays]);
 
   // Where "Continue" leads: the active lesson, otherwise the first day not yet completed.
   const nextItem = lessons.find((l) => l.id === activeId) || lessons.find((l) => progress[l.id] !== "completed") || null;
 
-  const value = {
-    lessons, projectIds: PROJECT_IDS, getLesson: (id) => lessons.find((l) => l.id === id) || null,
+  const value = useMemo(() => ({
+    lessons, projectIds: PROJECT_IDS, getLesson,
     user, setUser, theme, toggleTheme, fontIdx, fontMax: FONT_STEPS.length - 1, changeFont,
     progress, activeId, nextItem, startLesson, completeLesson, touchLesson, resetProgress, resetAndRestart, stats, lastLesson,
     bp, panels, togglePanel, toasts, toast,
-  };
+  }), [user, setUser, theme, toggleTheme, fontIdx, changeFont, progress, activeId, nextItem, startLesson, completeLesson,
+    touchLesson, resetProgress, resetAndRestart, stats, lastLesson, bp, panels, togglePanel, toasts, toast]);
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

@@ -10,21 +10,31 @@ A lightweight single-page **30-day Python challenge**: 25 classes (Days 1-25, fr
 ```bash
 npm install
 npm run dev        # development server, usually http://localhost:5173
-npm test           # checks the course data contract (25 classes + 5 projects, all required fields)
+npm test           # course data contract, progress rules, worker/hook behaviour checks (needs python3 on PATH)
 npm run build      # production build into dist/
 npm run preview    # serve dist/ locally to check the production build
 ```
 
 ## Deploy (static hosting)
-Upload the `dist/` folder, or connect the repository to a free host. Worker-based direct input uses cross-origin isolation where the host supports custom headers; `public/_headers` provides this for compatible static hosts. Hosts that do not provide these headers use the documented worker-side input compatibility path.
+Upload the `dist/` folder, or connect the repository to a free host. No special response headers or server rewrites are needed.
 - **Netlify / Vercel:** build command `npm run build`, output directory `dist`.
-- **GitHub Pages:** publish the contents of `dist/`. The site uses `base: "./"` and hash routes (`#/lessons/l01`), so it works from a sub-folder with no server rewrite rules.
+- **GitHub Pages:** publish the contents of `dist/`. The site uses `base: "./"` and hash routes (`#/lessons/l01`; `#/lessons` shows the course overview), so it works from a sub-folder with no server rewrite rules.
 
 ## Project layout
 `src/data/lessons.json` holds all course content. Navigation, the sidebar, progress and the project list are generated from it. Item ids (`l01` - `l30`) equal the day number and are used as storage keys. Days 1-25 are classes (`kind: "lesson"`); Days 26-30 are projects (`kind: "project"`, Day 30 is the Final Project).
 
 ## Lesson status
 Each day is **Completed**, **In Progress** or **Not started**. Opening a day never changes its status. Pressing **Start Day** makes it the single In Progress day. **Mark Complete** is only available for the active day. Future days can be previewed, and earlier days do not need to be finished first.
+
+## License and protection
+PyPath is **proprietary software**. Copyright (c) 2026 Sabir Hussain. All rights reserved. See `LICENSE`: visitors may use the website to learn, but nobody may copy, modify, host or redistribute the code or lesson content without written permission. Third-party components keep their own licences (`THIRD_PARTY_NOTICES.md`).
+
+What the project does to protect the work:
+- `LICENSE` (strict, all rights reserved), `"license": "UNLICENSED"` and `"private": true` in `package.json`, and a copyright header in every source file and in the built JavaScript.
+- No source maps are published (`sourcemap: false`), and production code is minified.
+- Security headers (`public/_headers` for Netlify/Cloudflare, `render.yaml` for Render): no framing of the site (clickjacking), no MIME sniffing, HTTPS-only, restricted browser features.
+
+Important limits: a website's JavaScript is delivered to every visitor's browser, so it can always be viewed and copied technically. Minifying is not encryption. The licence is what makes copying illegal; the technical steps only make it harder. Keep the **GitHub repository private** so the readable source is never public. Visitors cannot change your live site; only people with access to your hosting and repository can.
 
 ## Privacy and storage
 Everything stays in your browser. Keys used in `localStorage`:
@@ -43,12 +53,13 @@ Everything stays in your browser. Keys used in `localStorage`:
 
 If storage is blocked, PyPath keeps working from memory for that visit. "Reset progress" removes only progress, saved code and the last-lesson pointer.
 
-Your code is executed locally by Pyodide and is never uploaded. The only network request PyPath makes is downloading the Pyodide files. Python code in the lessons cannot call web APIs; the API lesson uses sample JSON.
+Your code is executed locally by Pyodide and is never uploaded. The only network request PyPath makes is downloading the Pyodide files from a CDN. The lessons themselves do not call web APIs (the API lesson uses sample JSON), but Pyodide can make network requests if a learner writes code that does.
 
 ## Known limits
-- Python runs inside a dedicated Web Worker, so user code cannot block React rendering. Runs are stopped after 10 seconds and can be cancelled.
-- `input()` is handled by the worker. On cross-origin-isolated hosting, answers are delivered directly to the running Python process. On hosts that do not provide the required isolation primitives, PyPath uses a worker-side compatibility replay for interactive input.
-- Pyodide is downloaded only when Python is first run and is cached by the browser. A network connection is required for the first runtime download unless the runtime is already cached.
+- Python runs inside a dedicated Web Worker, so user code cannot block React rendering. Programs are stopped after 30 seconds of running (time spent downloading Python is not counted; that has its own 3-minute limit) and can be cancelled with Stop.
+- Output is capped at 200,000 characters per run.
+- `input()` works by **replaying**: each time the program asks for an answer it does not have yet, the run stops, the console shows an inline field, and the program is run again from the top with all answers so far. A fixed random seed per session keeps replays identical. Side effects (printing, file writes) therefore repeat on each replay, and time-dependent code such as `datetime.now()` can differ between replays.
+- Pyodide (several MB) is downloaded the first time you click into an editor or press Run, then cached by the browser. Opening a page does not download it. A network connection is required for the first download. To self-host Pyodide for offline use, copy the files from the `pyodide` npm package to `public/pyodide/` and add a local source at the top of `PYODIDE_SOURCES` in `src/workers/python.worker.js`.
 - Files created by lesson code live in temporary browser memory and vanish on refresh.
 - Inter and JetBrains Mono are bundled with the app through npm (`@fontsource-variable/*`), so no font is requested from a third party.
 

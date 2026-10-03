@@ -1,9 +1,11 @@
-import { Suspense, lazy, useEffect, useState } from "react";
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
+import { Suspense, lazy, useState } from "react";
 import { useApp } from "../context/AppContext";
-import { KEYS, getItem, setItem } from "../services/storage";
+import { KEYS, getItem } from "../services/storage";
 import { downloadPython } from "../services/download";
 import usePython from "../hooks/usePython";
 import useMedia from "../hooks/useMedia";
+import useAutosave from "../hooks/useAutosave";
 import Console from "../components/Console";
 import Splitter from "../components/Splitter";
 import { EditorSkeleton } from "../components/Skeletons";
@@ -18,11 +20,11 @@ export default function Compiler() {
   const [code, setCode] = useState(() => getItem(KEYS.code("free")) ?? DEFAULT);
   const [size, setSize] = useState(60);
   const change = (v) => setCode(v);
-  useEffect(() => { const t = setTimeout(() => { try { setItem(KEYS.code("free"), code); } catch {} }, 300); return () => clearTimeout(t); }, [code]);
+  useAutosave(KEYS.code("free"), code);
   const download = () => { try { downloadPython(code, "pypath.py"); } catch (e) { toast(e.message, "error"); } };
   return (
     <div className={`compiler-page ${wide ? "is-wide" : ""}`}>
-      <div className="stack-item" style={{ flex: `${size} 1 0` }}>
+      <div className="stack-item" style={{ flex: `${size} 1 0` }} onFocusCapture={py.warmup} onPointerDownCapture={py.warmup}>
         <Suspense fallback={<EditorSkeleton />}>
           <CodeEditor value={code} onChange={change} onRun={() => py.run(code)} onStop={py.stop} running={py.running} onDownload={download} fileName="main.py" label="Free compiler code editor" />
         </Suspense>

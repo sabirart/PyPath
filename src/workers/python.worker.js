@@ -1,5 +1,7 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
+// Pyodide is fetched from a CDN. To self-host it, copy the files from the `pyodide` npm package to
+// public/pyodide/ and add { indexURL: "./pyodide/", moduleURL: "./pyodide/pyodide.mjs" } as the first entry.
 const PYODIDE_SOURCES = [
-  { indexURL: "/pyodide/", moduleURL: "/pyodide/pyodide.mjs" },
   { indexURL: "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/", moduleURL: "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/pyodide.mjs" },
   { indexURL: "https://unpkg.com/pyodide@314.0.7/full/", moduleURL: "https://unpkg.com/pyodide@314.0.7/full/pyodide.mjs" },
 ];
@@ -63,14 +65,25 @@ async function loadPython() {
   return loading;
 }
 
+// Output is capped so a runaway print loop cannot exhaust the tab's memory.
+const MAX_OUTPUT = 200000;
+const TRUNCATED_NOTE = "\n[Output truncated: too much text was printed.]\n";
+
 function stdoutCollector() {
   let out = "";
+  let truncated = false;
   const decoder = new TextDecoder();
-  return {
-    get value() { return out; },
-    stdout: { write: (buf) => { out += decoder.decode(buf, { stream: true }); return buf.length; } },
-    stderr: { write: (buf) => { out += decoder.decode(buf, { stream: true }); return buf.length; } },
+  const append = (text) => {
+    if (truncated) return;
+    if (out.length + text.length > MAX_OUTPUT) {
+      out += text.slice(0, Math.max(0, MAX_OUTPUT - out.length)) + TRUNCATED_NOTE;
+      truncated = true;
+    } else {
+      out += text;
+    }
   };
+  const sink = { write: (buf) => { append(decoder.decode(buf, { stream: true })); return buf.length; } };
+  return { get value() { return out; }, stdout: sink, stderr: sink };
 }
 
 async function execute(code, answers = [], seed = 1) {
@@ -79,6 +92,9 @@ async function execute(code, answers = [], seed = 1) {
     ready = true;
     postMessage({ type: "ready" });
   }
+  // Tells the page that the runtime is loaded and the program is about to run, so the
+  // execution timeout never counts the time spent downloading Python.
+  postMessage({ type: "started" });
   let collector = stdoutCollector();
   let answerIndex = 0;
   let waiting = false;
@@ -121,6 +137,7 @@ self.onmessage = async (event) => {
   if (type === "warmup") {
     if (ready || loading) return;
     try {
+      postMessage({ type: "loading" });
       await loadPython();
       ready = true;
       postMessage({ type: "ready" });

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 export default function BrandLogo({ compact = false, className = "" }) {
   return (
     <span className={`brand-logo ${compact ? "brand-logo-compact" : ""} ${className}`.trim()}>

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import React from "react";
 import { createRoot } from "react-dom/client";
 import "@fontsource-variable/inter";

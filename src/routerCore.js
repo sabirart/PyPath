@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 export function parseHash(hash = window.location.hash) {
   const raw = String(hash || "").replace(/^#/, "") || "/";
   const parts = raw.split("/").filter(Boolean);

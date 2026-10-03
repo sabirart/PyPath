@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 export function downloadPython(code, name = "pypath.py") {
   try {
     const blob = new Blob([code], { type: "text/x-python;charset=utf-8" });

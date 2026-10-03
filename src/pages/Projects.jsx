@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { ArrowRight, Calculator, Clock, Dices, Flag, HelpCircle, ListTodo, Receipt, Trophy } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import { pathFor } from "../router";
@@ -36,14 +37,14 @@ function ProjectCard({ item, index, featured = false }) {
 export default function Projects() {
   const { projectIds, getLesson, progress, stats } = useApp();
   const items = projectIds.map(getLesson).filter(Boolean);
-  const regular = items.filter((l) => l.id !== "l30");
-  const final = items.find((l) => l.id === "l30");
+  const final = items[items.length - 1]; // the last project is the Final Project
+  const regular = items.slice(0, -1);
   const done = items.filter((l) => progress[l.id] === "completed").length;
   return (
     <div className="projects">
       <header className="projects-head">
         <div>
-          <p className="eyebrow">Days 26 &ndash; 30</p>
+          <p className="eyebrow">Days {stats.classCount + 1} &ndash; {stats.total}</p>
           <h2 className="projects-title">Practical projects</h2>
           <p className="muted projects-sub">Turn what you learned into real programs. Each project opens with instructions and a working editor.</p>
         </div>
@@ -52,7 +53,7 @@ export default function Projects() {
           <div className="bar" role="progressbar" aria-valuemin={0} aria-valuemax={items.length} aria-valuenow={done} aria-label="Projects completed">
             <div className="bar-fill" style={{ width: `${(done / Math.max(items.length, 1)) * 100}%` }} />
           </div>
-          <p className="muted small">{stats.lessonsDone >= 25 ? "All classes done. You are ready." : `${stats.lessonsDone} of 25 classes finished. You can start a project any time.`}</p>
+          <p className="muted small">{stats.lessonsDone >= stats.classCount ? "All classes done. You are ready." : `${stats.lessonsDone} of ${stats.classCount} classes finished. You can start a project any time.`}</p>
         </div>
       </header>
       <div className="proj-grid">

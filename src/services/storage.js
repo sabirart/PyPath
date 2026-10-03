@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 // All localStorage access lives here. If storage is blocked or full,
 // PyPath keeps working from an in-memory copy for the current visit.
 const memory = new Map();

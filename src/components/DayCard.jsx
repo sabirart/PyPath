@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { ArrowRight } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import { pathFor } from "../router";

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 // Placeholder screens shown while a page or the editor is loading. They keep the layout stable
 // and use a soft shimmer, which is switched off for people who prefer reduced motion.
 const Bar = ({ w = "100%", h = 14, r = 8, style }) => <span className="sk" style={{ width: w, height: h, borderRadius: r, ...style }} />;

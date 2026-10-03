@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { PanelLeft, Sun, Moon, ZoomIn, ZoomOut, SquareTerminal } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import BrandLogo from "./BrandLogo";

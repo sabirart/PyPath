@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useApp } from "../context/AppContext";
 
 export default function Toast() {

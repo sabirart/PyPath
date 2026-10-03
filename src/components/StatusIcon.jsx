@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { CheckCircle2, Circle, Clock } from "lucide-react";
 
 // "active" is the single lesson the person has started and not yet finished; it is shown as In Progress.

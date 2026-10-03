@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { ArrowRight, BookOpen, CheckCircle2, Flame, Folder, Layers, Target, Terminal, Trophy } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import { Ring } from "../components/ProgressPopup";
@@ -14,7 +15,7 @@ const LEVEL_NOTE = {
 
 const greeting = () => {
   const h = new Date().getHours();
-  return h < 5 ? "Good evening" : h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening";
+  return h < 5 ? "Hello" : h < 12 ? "Good morning" : h < 18 ? "Good afternoon" : "Good evening";
 };
 
 export default function Dashboard() {
@@ -35,13 +36,13 @@ export default function Dashboard() {
 
   const tiles = [
     { icon: CheckCircle2, label: "Days completed", value: stats.completed, of: stats.total },
-    { icon: BookOpen, label: "Classes", value: stats.lessonsDone, of: 25 },
-    { icon: Folder, label: "Projects", value: stats.projectsDone, of: 5 },
+    { icon: BookOpen, label: "Classes", value: stats.lessonsDone, of: stats.classCount },
+    { icon: Folder, label: "Projects", value: stats.projectsDone, of: stats.projectCount },
     { icon: Flame, label: "Day streak", value: stats.streak, of: null },
   ];
   const links = [
-    { to: pathFor(firstLesson), icon: BookOpen, title: "Lessons", text: "25 classes covering Python fundamentals through advanced topics." },
-    { to: "/projects", icon: Trophy, title: "Projects", text: "Days 26 to 30: five programs you build yourself." },
+    { to: pathFor(firstLesson), icon: BookOpen, title: "Lessons", text: `${stats.classCount} classes covering Python fundamentals through advanced topics.` },
+    { to: "/projects", icon: Trophy, title: "Projects", text: `Days ${stats.classCount + 1} to ${stats.total}: ${stats.projectCount} programs you build yourself.` },
     { to: "/compiler", icon: Terminal, title: "Free Compiler", text: "Try any Python idea with no lesson attached." },
   ];
 
@@ -51,7 +52,7 @@ export default function Dashboard() {
         <div>
           <p className="eyebrow">30-Day Python Challenge</p>
           <h2 className="dash-title">{greeting()}, {user}</h2>
-          <p className="muted dash-sub">{stats.studiedToday ? "Today's day is done. Rest up and You can continue whenever you are ready." : started ? "One focused day at a time. Pick up where you left off." : "Build Python skills from the fundamentals through advanced topics, then practise with projects."}</p>
+          <p className="muted dash-sub">{stats.studiedToday ? "Today's day is done. Rest up. You can continue whenever you are ready." : started ? "One focused day at a time. Pick up where you left off." : "Build Python skills from the fundamentals through advanced topics, then practise with projects."}</p>
         </div>
         <div className={`streak-pill ${stats.streak ? "is-lit" : ""}`} title="Consecutive days you completed a lesson">
           <Flame size={18} aria-hidden="true" />

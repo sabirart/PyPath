@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useState } from "react";
 import { ArrowRight, BookOpen, Cpu, HardDrive, ShieldOff, Moon, Sun, Trophy, CalendarDays } from "lucide-react";
 import { useApp } from "../context/AppContext";

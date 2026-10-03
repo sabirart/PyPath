@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useRef, useState } from "react";
 import { X } from "lucide-react";
 import useFocusTrap from "../hooks/useFocusTrap";

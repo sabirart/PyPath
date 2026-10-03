@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { Check, CircleAlert } from "lucide-react";
 
 export default function ActionStatus({ message, type = "success" }) {

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useRef } from "react";
 import { LayoutDashboard, Folder, Terminal, Info } from "lucide-react";
 import { pathFor } from "../router";
@@ -31,7 +32,7 @@ export default function Sidebar({ page, activeId }) {
   return (
     <>
       {overlay && <div className="backdrop" onClick={close} aria-hidden="true" />}
-      <aside className="sidebar" data-bp={bp} data-open={open} ref={ref} aria-label="Course outline">
+      <aside className="sidebar" data-bp={bp} data-open={open} ref={ref} aria-label="Course outline" inert={bp === "desktop" && !open ? "" : undefined}>
         <div className="sidebar-inner">
           <nav aria-label="Main">
             {nav.map(({ href, label, icon: Icon, on }) => (

@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { BookOpen, Clock, Code2, FileInput, ListOrdered, Play, Sparkles } from "lucide-react";
 import CodeBlock from "./CodeBlock";
 import StatusIcon, { STATUS_LABEL } from "./StatusIcon";

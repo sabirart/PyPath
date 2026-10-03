@@ -1,3 +1,4 @@
+// Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useState } from "react";
 import { BookOpen, CheckCircle2, ChevronDown, Code2, ExternalLink, FileText, Mail, ShieldCheck, UserRound } from "lucide-react";
 
@@ -46,6 +47,7 @@ export default function About() {
         {more && <div className="about-more">
           <p>PyPath was created as a practical learning project focused on a clean study flow, accessible browser-based coding and a lightweight experience that can be hosted as a static website.</p>
           <div className="more-list">
+            <div><ShieldCheck size={17} /><span><strong>Copyright</strong><small>&copy; 2026 Sabir Hussain. All rights reserved. The code and lesson content may not be copied, modified or redistributed without written permission.</small></span></div>
             <div><FileText size={17} /><span><strong>Technology</strong><small>React, Vite, CodeMirror and browser-based Python execution.</small></span></div>
             <div><ShieldCheck size={17} /><span><strong>Data & storage</strong><small>Learning progress and preferences are kept in browser storage on the device.</small></span></div>
             <div><Mail size={17} /><span><strong>Contact</strong><small><a href="mailto:sabirhussain@gmail.com">sabirhussain@gmail.com</a></small></span></div>

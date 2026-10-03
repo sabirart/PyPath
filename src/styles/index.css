@@ -442,4 +442,4 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 .focus-card { --ring-track: var(--focus-ring-track); }
 
 
-@media (max-width:767px){.pp{right:.5rem;bottom:4.5rem;max-width:calc(100vw - 1rem)}} .pp-card { width: calc(100vw - 1rem); max-height: calc(100dvh - 105px); padding: 0.9rem; } .pp-stats { gap: 0.3rem; } .pp-stats li { min-width: 0; } .dots { gap: 5px; } .dot { height: 30px; }
+@media (max-width:767px){.pp{right:.5rem;bottom:4.5rem;max-width:calc(100vw - 1rem)}.pp-card{width:calc(100vw - 1rem);max-height:calc(100dvh - 105px);padding:.9rem}.pp-stats{gap:.3rem}.pp-stats li{min-width:0}.dots{gap:5px}.dot{height:30px}}

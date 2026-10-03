@@ -169,6 +169,19 @@ export function AppProvider({ children }) {
     toast("Progress and saved code were reset.", "success");
   }, [toast]);
 
+  // Reset everything related to course progress, then immediately start Day 1
+  // with the newly confirmed name.
+  const resetAndRestart = useCallback((name) => {
+    resetProgressData();
+    setCompleted({});
+    setStudyDays([]);
+    setLast("l01");
+    setUser(name);
+    setItem(KEYS.active, "l01");
+    setActiveId("l01");
+    toast("Course reset. Day 1 is ready to start.", "success");
+  }, [setUser, toast]);
+
   const stats = useMemo(() => {
     const total = lessons.length;
     const done = lessons.filter((l) => progress[l.id] === "completed").length;
@@ -184,7 +197,7 @@ export function AppProvider({ children }) {
   const value = {
     lessons, projectIds: PROJECT_IDS, getLesson: (id) => lessons.find((l) => l.id === id) || null,
     user, setUser, theme, toggleTheme, fontIdx, fontMax: FONT_STEPS.length - 1, changeFont,
-    progress, activeId, nextItem, startLesson, completeLesson, touchLesson, resetProgress, stats, lastLesson,
+    progress, activeId, nextItem, startLesson, completeLesson, touchLesson, resetProgress, resetAndRestart, stats, lastLesson,
     bp, panels, togglePanel, toasts, toast,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

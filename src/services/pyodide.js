@@ -1,38 +1,36 @@
-// Pyodide (Python compiled to WebAssembly) is downloaded only when needed,
-// then cached for the rest of the visit. Your code never leaves the browser.
-const PYODIDE_INDEX = "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/";
+// Pyodide is loaded as an ES module. Current Pyodide releases require a module
+// worker/module import; classic <script> injection and importScripts() are unsupported.
+const PYODIDE_SOURCES = [
+  { indexURL: "/pyodide/", moduleURL: "/pyodide/pyodide.mjs" },
+  { indexURL: "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/", moduleURL: "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/pyodide.mjs" },
+  { indexURL: "https://unpkg.com/pyodide@314.0.7/full/", moduleURL: "https://unpkg.com/pyodide@314.0.7/full/pyodide.mjs" },
+];
 
 let instance = null;
 let pending = null;
 
-function injectScript() {
-  return new Promise((resolve, reject) => {
-    if (window.loadPyodide) return resolve();
-    const s = document.createElement("script");
-    s.src = PYODIDE_INDEX + "pyodide.js";
-    s.async = true;
-    s.onload = () => resolve();
-    s.onerror = () => {
-      s.remove();
-      reject(new Error("The Python engine could not be downloaded. Check your internet connection and try again."));
-    };
-    document.head.appendChild(s);
-  });
+async function loadModule() {
+  const failures = [];
+  for (const source of PYODIDE_SOURCES) {
+    try {
+      const module = await import(/* @vite-ignore */ source.moduleURL);
+      if (typeof module.loadPyodide !== "function") {
+        throw new Error("The Pyodide module did not export loadPyodide().");
+      }
+      return module.loadPyodide({ indexURL: source.indexURL });
+    } catch (error) {
+      failures.push(`${source.moduleURL}: ${error?.message || error}`);
+    }
+  }
+  throw new Error("Python engine could not be loaded. The browser could not load the Pyodide ES module.\n\n" + failures.join("\n"));
 }
 
 export function loadPython() {
   if (instance) return Promise.resolve(instance);
   if (!pending) {
-    pending = injectScript()
-      .then(() => window.loadPyodide({ indexURL: PYODIDE_INDEX }))
-      .then((py) => {
-        instance = py;
-        return py;
-      })
-      .catch((err) => {
-        pending = null; // allow Retry
-        throw err;
-      });
+    pending = loadModule()
+      .then((py) => { instance = py; return py; })
+      .catch((err) => { pending = null; throw err; });
   }
   return pending;
 }

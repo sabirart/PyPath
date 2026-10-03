@@ -80,16 +80,19 @@ test("compiler source has valid line breaks and quiet editor/input focus styling
   assert.match(css, /body\.resizing \.compiler-page > \.stack-item \{ transition: none; \}/);
 });
 
-test("worker execution architecture contains timeout, cancellation and worker-side input handling", () => {
+test("worker execution architecture contains timeout, cancellation and reliable input replay", () => {
   const worker = readFileSync(new URL("../src/workers/python.worker.js", import.meta.url), "utf8");
   const hook = readFileSync(new URL("../src/hooks/usePython.js", import.meta.url), "utf8");
   assert.match(hook, /new Worker\(new URL\("\.\.\/workers\/python\.worker\.js"/);
   assert.match(hook, /TIMEOUT_MS = 30000/);
   assert.match(hook, /workerRef\.current\?\.terminate/);
+  assert.match(hook, /session\.current\.answers/);
   assert.match(worker, /setStdin/);
-  assert.match(worker, /Atomics\.wait/);
+  assert.match(worker, /answerIndex < answers\.length/);
+  assert.match(worker, /EOFError/);
   assert.match(worker, /input-request/);
-  assert.match(worker, /postMessage\(\{ type: "input-request", output: collector\.value \}\)/);
+  assert.match(worker, /postMessage\(\{ type: "input-request", output: result\.output \}\)/);
+  assert.doesNotMatch(worker, /Atomics\.wait/);
 });
 
 
@@ -100,5 +103,50 @@ test("compiler uses a single in-output status line and shows input prompts befor
   assert.doesNotMatch(consoleSource, /<span className=\{`state state-/);
   assert.match(consoleSource, /console-status/);
   assert.match(css, /\.console-status \{/);
-  assert.match(worker, /postMessage\(\{ type: "input-request", output: collector\.value \}\)/);
+  assert.match(worker, /postMessage\(\{ type: "input-request", output: result\.output \}\)/);
+});
+
+test("reset flow reuses the name modal and restarts Day 1", () => {
+  const progress = readFileSync(new URL("../src/components/ProgressPopup.jsx", import.meta.url), "utf8");
+  const context = readFileSync(new URL("../src/context/AppContext.jsx", import.meta.url), "utf8");
+  assert.match(progress, /<NameModal/);
+  assert.match(progress, /resetAndRestart\(name\)/);
+  assert.match(progress, /navigate\("\/lessons\/l01"\)/);
+  assert.match(context, /setItem\(KEYS\.active, "l01"\)/);
+  assert.match(context, /setActiveId\("l01"\)/);
+});
+
+test("ProgressPopup contains real JavaScript line breaks and editor has Python indentation rules", () => {
+  const progress = readFileSync(new URL("../src/components/ProgressPopup.jsx", import.meta.url), "utf8");
+  const editor = readFileSync(new URL("../src/components/CodeEditor.jsx", import.meta.url), "utf8");
+  assert.match(progress, /const \[confirming, setConfirming\] = useState\(false\);\n  const \[renaming, setRenaming\] = useState\(false\);/);
+  assert.doesNotMatch(progress, /useState\(false\);\\n\s+const \[renaming/);
+  assert.match(editor, /indentUnit\.of\("    "\)/);
+  assert.match(editor, /indentOnInput\(\)/);
+  assert.match(editor, /key: "Enter"/);
+  assert.match(editor, /dedentHeader/);
+  assert.match(editor, /key: "Shift-Tab"/);
+});
+
+test("Python runtime is warmed once and reused between runs", () => {
+  const hook = readFileSync(new URL("../src/hooks/usePython.js", import.meta.url), "utf8");
+  const worker = readFileSync(new URL("../src/workers/python.worker.js", import.meta.url), "utf8");
+  assert.match(hook, /postMessage\(\{ type: "warmup" \}\)/);
+  assert.match(worker, /type === "warmup"/);
+  assert.match(worker, /let ready = false/);
+  assert.match(worker, /if \(!ready && !pyodide\) postMessage\(\{ type: "loading" \}\)/);
+  assert.match(hook, /if \(!worker\) \{\n      worker = createWorker\(\);/);
+  assert.match(hook, /setStatus\("ready"\);/);
+});
+
+test("Python runtime uses the current stable Pyodide CDN", () => {
+  const worker = readFileSync(new URL("../src/workers/python.worker.js", import.meta.url), "utf8");
+  const service = readFileSync(new URL("../src/services/pyodide.js", import.meta.url), "utf8");
+  assert.match(worker, /pyodide\/v314\.0\.7\/full\/pyodide\.mjs/);
+  assert.match(service, /pyodide\/v314\.0\.7\/full\/pyodide\.mjs/);
+  assert.doesNotMatch(worker, /importScripts\s*\(/);
+  const hook = readFileSync(new URL("../src/hooks/usePython.js", import.meta.url), "utf8");
+  assert.match(hook, /type: "module"/);
+  assert.doesNotMatch(worker, /v0\.25\.0/);
+  assert.doesNotMatch(service, /v0\.25\.0/);
 });

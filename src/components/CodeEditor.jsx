@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import { EditorView, keymap } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
-import { indentWithTab } from "@codemirror/commands";
-import { syntaxHighlighting, HighlightStyle } from "@codemirror/language";
+import { indentLess, indentWithTab } from "@codemirror/commands";
+import { indentOnInput, indentUnit, syntaxHighlighting, HighlightStyle } from "@codemirror/language";
 import { tags as t } from "@lezer/highlight";
 import { python } from "@codemirror/lang-python";
 import { basicSetup } from "codemirror";
@@ -42,9 +42,30 @@ export default function CodeEditor({ value, onChange, onRun, onStop, running, on
         doc: value,
         extensions: [
           basicSetup, python(), base,
+          indentUnit.of("    "),
+          indentOnInput(),
           syntaxHighlighting(pyStyle),
           keymap.of([
             { key: "Mod-Enter", run: () => { if (cb.current.running) cb.current.onStop?.(); else cb.current.onRun(); return true; } },
+            { key: "Enter", run: (editor) => {
+              const { state } = editor;
+              const line = state.doc.lineAt(state.selection.main.head);
+              const before = line.text.slice(0, state.selection.main.head - line.from);
+              const leading = before.match(/^[ \t]*/)?.[0] || "";
+              const trimmed = before.trimEnd();
+              const content = trimmed.trimStart();
+              const blockHeader = /^(?:(?:async)\s+)?(?:if|elif|else|for|while|def|class|try|except|finally|with|match|case)\b.*:\s*(?:#.*)?$/;
+              const dedentHeader = /^(?:else|elif|except|finally|case)\b/;
+              let nextIndent = leading;
+              if (dedentHeader.test(content)) nextIndent = leading.replace(/(?:    |\t)$/, "");
+              else if (blockHeader.test(content)) nextIndent = `${leading}    `;
+              editor.dispatch({
+                changes: { from: state.selection.main.head, insert: `\n${nextIndent}` },
+                selection: { anchor: state.selection.main.head + 1 + nextIndent.length },
+              });
+              return true;
+            } },
+            { key: "Shift-Tab", run: indentLess },
             // Escape leaves the editor so keyboard users are never trapped.
             { key: "Escape", run: (ev) => { ev.dom.closest(".editor-card")?.querySelector(".toolbar button")?.focus(); return true; } },
             indentWithTab,

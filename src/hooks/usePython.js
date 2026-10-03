@@ -1,27 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-const INPUT_BUFFER_SIZE = 64 * 1024;
 const TIMEOUT_MS = 30000;
 
 function createWorker() {
-  return new Worker(new URL("../workers/python.worker.js", import.meta.url));
-}
-
-function makeInputBuffer() {
-  if (typeof SharedArrayBuffer === "undefined" || !window.crossOriginIsolated) return null;
-  return new SharedArrayBuffer(8 + INPUT_BUFFER_SIZE);
-}
-
-function writeAnswer(sab, answer) {
-  const control = new Int32Array(sab, 0, 2);
-  const bytes = new Uint8Array(sab, 8);
-  const encoded = new TextEncoder().encode(String(answer));
-  const length = Math.min(encoded.length, bytes.length);
-  bytes.fill(0);
-  bytes.set(encoded.subarray(0, length));
-  Atomics.store(control, 1, length);
-  Atomics.store(control, 0, 1);
-  Atomics.notify(control, 0);
+  return new Worker(new URL("../workers/python.worker.js", import.meta.url), { type: "module" });
 }
 
 export default function usePython() {
@@ -35,39 +17,59 @@ export default function usePython() {
   const [answerCount, setAnswerCount] = useState(0);
   const workerRef = useRef(null);
   const timerRef = useRef(null);
-  const session = useRef({ code: "", answers: [], sab: null, waiting: false });
+  const session = useRef({ code: "", answers: [], waiting: false });
 
   const cleanup = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = null;
+  }, []);
+
+  const terminate = useCallback(() => {
+    cleanup();
     workerRef.current?.terminate();
     workerRef.current = null;
     session.current.waiting = false;
-  }, []);
+  }, [cleanup]);
 
-  useEffect(() => cleanup, [cleanup]);
+  useEffect(() => {
+    const warmupTimer = setTimeout(() => {
+      if (workerRef.current) return;
+      const worker = createWorker();
+      workerRef.current = worker;
+      worker.onmessage = (event) => {
+        const data = event.data || {};
+        if (data.type === "ready") setStatus("ready");
+      };
+      worker.onerror = () => {
+        workerRef.current = null;
+      };
+      worker.postMessage({ type: "warmup" });
+    }, 800);
+    return () => {
+      clearTimeout(warmupTimer);
+      terminate();
+    };
+  }, [terminate]);
 
-  const start = useCallback((code, answers = []) => {
+  const start = useCallback((code, answers = [], seed = Math.floor(Math.random() * 1000000) + 1) => {
     cleanup();
-    const worker = createWorker();
-    const sab = makeInputBuffer();
-    workerRef.current = worker;
-    session.current = { code, answers: [...answers], sab, waiting: false };
-    setRunning(true);
-    setWaiting(false);
-    setStatus("loading");
-    setLoadError("");
-    setError(null);
-    setOutput("");
-    setHasRun(true);
-
+    let worker = workerRef.current;
+    if (!worker) {
+      worker = createWorker();
+      workerRef.current = worker;
+    }
     worker.onmessage = (event) => {
       const data = event.data || {};
       if (data.type === "loading") {
         setStatus("loading");
         return;
       }
+      if (data.type === "ready") {
+        setStatus("ready");
+        return;
+      }
       if (data.type === "input-request") {
+        cleanup();
         session.current.waiting = true;
         setWaiting(true);
         setRunning(false);
@@ -77,37 +79,42 @@ export default function usePython() {
         return;
       }
       if (data.type === "result") {
-        if (timerRef.current) clearTimeout(timerRef.current);
-        timerRef.current = null;
+        cleanup();
         setOutput(data.output || "");
         setError(data.error || null);
         setWaiting(false);
         setRunning(false);
         setStatus("ready");
-        cleanup();
         return;
       }
       if (data.type === "fatal") {
-        if (timerRef.current) clearTimeout(timerRef.current);
-        timerRef.current = null;
+        cleanup();
         setRunning(false);
         setWaiting(false);
         setStatus("error");
         setLoadError(data.message || "The Python engine failed.");
-        cleanup();
+        terminate();
       }
     };
-
     worker.onerror = (event) => {
       setRunning(false);
       setWaiting(false);
       setStatus("error");
       setLoadError(event.message || "The Python worker stopped unexpectedly.");
-      cleanup();
+      terminate();
     };
 
+    session.current = { code, answers: [...answers], waiting: false, seed };
+    setRunning(true);
+    setWaiting(false);
+    setLoadError("");
+    setError(null);
+    setOutput("");
+    setAnswerCount(session.current.answers.length);
+    setHasRun(true);
+
     timerRef.current = setTimeout(() => {
-      cleanup();
+      terminate();
       setRunning(false);
       setWaiting(false);
       setStatus("ready");
@@ -117,52 +124,42 @@ export default function usePython() {
       });
     }, TIMEOUT_MS);
 
-    worker.postMessage({ type: "run", code, sab });
-  }, [cleanup]);
+    worker.postMessage({ type: "run", code, answers: session.current.answers, seed: session.current.seed });
+  }, [cleanup, terminate]);
 
-  const run = useCallback((code) => {
-    start(code);
-  }, [start]);
+  const run = useCallback((code) => start(code, [], Math.floor(Math.random() * 1000000) + 1), [start]);
 
   const submit = useCallback((answer) => {
     const s = session.current;
     if (!s.waiting) return;
-    if (s.sab) {
-      s.answers.push(String(answer));
-      s.waiting = false;
-      setWaiting(false);
-      setRunning(true);
-      writeAnswer(s.sab, answer);
-      return;
-    }
-    // Non-isolated browsers cannot synchronously unblock Python input(). Run the
-    // same program in the worker with accumulated input as a compatibility fallback.
     s.answers.push(String(answer));
-    start(s.code, s.answers);
+    s.waiting = false;
+    start(s.code, s.answers, s.seed);
   }, [start]);
 
   const stop = useCallback(() => {
     if (!workerRef.current) return;
-    cleanup();
+    terminate();
     setRunning(false);
     setWaiting(false);
     setStatus("ready");
     setError({ hint: "Execution was stopped.", detail: "The run was cancelled by the user." });
-  }, [cleanup]);
+  }, [terminate]);
 
   const clear = useCallback(() => {
     cleanup();
-    session.current = { code: "", answers: [], sab: null, waiting: false };
+    session.current = { code: "", answers: [], waiting: false, seed: 1 };
     setOutput("");
     setError(null);
     setWaiting(false);
     setHasRun(false);
+    setAnswerCount(0);
     setStatus("idle");
   }, [cleanup]);
 
   const retry = useCallback(() => {
     const code = session.current.code;
-    if (code) start(code);
+    if (code) start(code, session.current.answers, session.current.seed);
   }, [start]);
 
   return { status, loadError, running, output, error, waiting, hasRun, answerCount, run, submit, stop, clear, retry };

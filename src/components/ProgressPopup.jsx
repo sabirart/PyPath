@@ -3,6 +3,7 @@ import { ArrowRight, Check, RotateCcw, X } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import { navigate, pathFor } from "../router";
 import { STATUS_LABEL } from "./StatusIcon";
+import NameModal from "./NameModal";
 
 export function Ring({ percent, size = 40, stroke = 4 }) {
   const r = (size - stroke) / 2;
@@ -19,12 +20,13 @@ export function Ring({ percent, size = 40, stroke = 4 }) {
 
 // Compact bottom-right widget: a small pill that expands into a progress card.
 export default function ProgressPopup() {
-  const { stats, lessons, progress, nextItem, activeId, panels, togglePanel, resetProgress, bp } = useApp();
+  const { stats, lessons, progress, nextItem, activeId, panels, togglePanel, resetAndRestart, bp } = useApp();
   const [confirming, setConfirming] = useState(false);
+  const [renaming, setRenaming] = useState(false);
   const pill = useRef(null);
   const open = panels.progress;
   const target = nextItem;
-  const close = () => { togglePanel("progress", false); setConfirming(false); };
+  const close = () => { togglePanel("progress", false); setConfirming(false); setRenaming(false); };
 
   useEffect(() => {
     if (!open) return undefined;
@@ -80,12 +82,23 @@ export default function ProgressPopup() {
             <div className="confirm" role="alertdialog" aria-label="Confirm reset">
               <p>Delete all progress and saved code on this device?</p>
               <div className="row">
-                <button className="btn btn-danger btn-sm" onClick={() => { resetProgress(); setConfirming(false); }}>Yes, reset</button>
+                <button className="btn btn-danger btn-sm" onClick={() => { setConfirming(false); setRenaming(true); }}>Yes, reset</button>
                 <button className="btn btn-ghost btn-sm" onClick={() => setConfirming(false)}>Cancel</button>
               </div>
             </div>
           )}
         </section>
+      )}
+      {renaming && (
+        <NameModal
+          onSubmit={(name) => {
+            resetAndRestart(name);
+            setRenaming(false);
+            togglePanel("progress", false);
+            navigate("/lessons/l01");
+          }}
+          onClose={() => setRenaming(false)}
+        />
       )}
     </div>
   );

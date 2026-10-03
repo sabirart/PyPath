@@ -1,10 +1,13 @@
-const PYODIDE_INDEX = "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/";
+const PYODIDE_SOURCES = [
+  { indexURL: "/pyodide/", moduleURL: "/pyodide/pyodide.mjs" },
+  { indexURL: "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/", moduleURL: "https://cdn.jsdelivr.net/pyodide/v314.0.7/full/pyodide.mjs" },
+  { indexURL: "https://unpkg.com/pyodide@314.0.7/full/", moduleURL: "https://unpkg.com/pyodide@314.0.7/full/pyodide.mjs" },
+];
+let pyodideIndex = null;
 let pyodide = null;
 let loading = null;
 let active = false;
-let control = null;
-let bytes = null;
-
+let ready = false;
 const EXPLAIN = {
   SyntaxError: "Python could not read a line. Check brackets, quotes and colons.",
   IndentationError: "The spaces at the start of a line do not line up.",
@@ -30,34 +33,30 @@ function friendly(err) {
   return { summary, detail, hint: EXPLAIN[name] || "Read the last line above to see what went wrong." };
 }
 
-function ensureControl(sab) {
-  if (!sab) return false;
-  control = new Int32Array(sab, 0, 2);
-  bytes = new Uint8Array(sab, 8);
-  return true;
-}
-
-function readAnswer() {
-  if (!control || !bytes) return null;
-  Atomics.store(control, 0, 0);
-  Atomics.wait(control, 0, 0);
-  const length = Atomics.load(control, 1);
-  if (length < 0) return null;
-  return new TextDecoder().decode(bytes.slice(0, Math.min(length, bytes.length)));
-}
 
 async function loadPython() {
   if (pyodide) return pyodide;
   if (!loading) {
-    loading = new Promise((resolve, reject) => {
-      if (typeof self.loadPyodide === "function") return resolve();
-      try {
-        importScripts(PYODIDE_INDEX + "pyodide.js");
-        resolve();
-      } catch (e) {
-        reject(new Error("The Python engine could not be downloaded. Check your internet connection and try again."));
+    loading = (async () => {
+      const failures = [];
+      for (const source of PYODIDE_SOURCES) {
+        try {
+          // Pyodide 314.x requires an ES-module worker.
+          // Load the runtime through its ES module entry point.
+          const module = await import(/* @vite-ignore */ source.moduleURL);
+          if (typeof module.loadPyodide !== "function") {
+            throw new Error("The Pyodide module did not export loadPyodide().");
+          }
+          pyodideIndex = source.indexURL;
+          return await module.loadPyodide({ indexURL: source.indexURL });
+        } catch (error) {
+          failures.push(`${source.moduleURL}: ${error?.message || error}`);
+        }
       }
-    }).then(() => self.loadPyodide({ indexURL: PYODIDE_INDEX }))
+      throw new Error(
+        "Python engine could not be loaded. The browser could not load the Pyodide ES module.\n\n" + failures.join("\n")
+      );
+    })()
       .then((py) => { pyodide = py; return py; })
       .catch((e) => { loading = null; throw e; });
   }
@@ -74,23 +73,20 @@ function stdoutCollector() {
   };
 }
 
-async function execute(code, sab, answers = []) {
+async function execute(code, answers = [], seed = 1) {
   const py = await loadPython();
-  ensureControl(sab);
+  if (!ready) {
+    ready = true;
+    postMessage({ type: "ready" });
+  }
   let collector = stdoutCollector();
   let answerIndex = 0;
+  let waiting = false;
+
   py.setStdout(collector.stdout);
   py.setStderr(collector.stderr);
   py.setStdin({
     stdin: () => {
-      if (control) {
-        // Publish everything Python has printed, including input() prompts,
-        // before blocking for the user's answer. This keeps prompts visible.
-        postMessage({ type: "input-request", output: collector.value });
-        const answer = readAnswer();
-        if (answer !== null) collector.stdout.write(new TextEncoder().encode(answer + "\n"));
-        return answer;
-      }
       if (answerIndex < answers.length) {
         const answer = String(answers[answerIndex++]);
         collector.stdout.write(new TextEncoder().encode(answer + "\n"));
@@ -99,38 +95,54 @@ async function execute(code, sab, answers = []) {
       return undefined;
     },
   });
+
   const scope = py.globals.get("dict")();
   let error = null;
   try {
-    py.runPython(`import random\nrandom.seed(${Math.floor(Math.random() * 1000000) + 1})`);
+    py.runPython(`import random\nrandom.seed(${Number(seed) || 1})`);
     py.runPython(code, { globals: scope });
   } catch (e) {
-    error = friendly(e);
+    const friendlyError = friendly(e);
+    if (friendlyError.summary.startsWith("EOFError") && answerIndex >= answers.length) {
+      waiting = true;
+    } else {
+      error = friendlyError;
+    }
   } finally {
     try { py.runPython("import sys; sys.stdout.flush()"); } catch {}
     scope.destroy();
-    control = null;
-    bytes = null;
   }
-  return { output: collector.value, error };
+
+  return { output: collector.value, error, waiting };
 }
 
 self.onmessage = async (event) => {
   const { type } = event.data || {};
-  if (type === "run") {
-    if (active) return;
-    active = true;
+  if (type === "warmup") {
+    if (ready || loading) return;
     try {
-      postMessage({ type: "loading" });
-      const result = await execute(event.data.code, event.data.sab, event.data.answers || []);
-      postMessage({ type: "result", ...result });
+      await loadPython();
+      ready = true;
+      postMessage({ type: "ready" });
     } catch (e) {
-      postMessage({ type: "fatal", message: e?.message || String(e) });
-    } finally {
-      active = false;
+      // Warmup is deliberately silent; a real Run will surface the detailed error.
     }
-  } else if (type === "input-fallback") {
-    // Used only when SharedArrayBuffer is unavailable. The main hook restarts
-    // execution inside this worker with the accumulated answers.
+    return;
+  }
+  if (type !== "run" || active) return;
+
+  active = true;
+  try {
+    if (!ready && !pyodide) postMessage({ type: "loading" });
+    const result = await execute(event.data.code, event.data.answers || [], event.data.seed || 1);
+    if (result.waiting) {
+      postMessage({ type: "input-request", output: result.output });
+    } else {
+      postMessage({ type: "result", output: result.output, error: result.error });
+    }
+  } catch (e) {
+    postMessage({ type: "fatal", message: e?.message || String(e) });
+  } finally {
+    active = false;
   }
 };

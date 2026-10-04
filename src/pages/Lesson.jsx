@@ -75,7 +75,7 @@ function LessonView({ lesson, base, prev, next }) {
   };
 
   const onTouchStart = (e) => {
-    if (split || e.touches.length !== 1) return;
+    if (!mobile || split || e.touches.length !== 1) return;
     const target = e.target;
     if (target.closest("button, a, input, textarea, select, .cm-editor")) return;
     gestureStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
@@ -83,12 +83,14 @@ function LessonView({ lesson, base, prev, next }) {
   const onTouchEnd = (e) => {
     const startPoint = gestureStart.current;
     gestureStart.current = null;
-    if (split || !startPoint || e.changedTouches.length !== 1) return;
+    if (!mobile || split || !startPoint || e.changedTouches.length !== 1) return;
     const dx = e.changedTouches[0].clientX - startPoint.x;
     const dy = e.changedTouches[0].clientY - startPoint.y;
-    if (Math.abs(dx) < 60 || Math.abs(dx) <= Math.abs(dy) * 1.25) return;
-    if (dx < 0 && !showCode) togglePanel("compiler", true);
+    if (Math.abs(dx) < 45 || Math.abs(dx) <= Math.abs(dy) * 1.15) return;
+    if (dx < 0 && !showCode && panels.sidebar) togglePanel("sidebar", false);
+    else if (dx < 0 && !showCode) togglePanel("compiler", true);
     if (dx > 0 && showCode) togglePanel("compiler", false);
+    if (dx > 0 && !showCode) togglePanel("sidebar", true);
   };
 
   return (

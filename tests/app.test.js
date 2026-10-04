@@ -208,3 +208,28 @@ test('progress popup shows only the 30 learning days and layout prevents page-wi
   assert.match(css, /\.main \{[^}]*overflow-x: hidden/);
   assert.match(css, /\.sidebar-inner \{[^}]*overflow-x: hidden/);
 });
+
+test("mobile sidebar swipes work across navigation pages", async () => {
+  const fs = await import("node:fs/promises");
+  const app = await fs.readFile(new URL("../src/App.jsx", import.meta.url), "utf8");
+  const css = await fs.readFile(new URL("../src/styles/index.css", import.meta.url), "utf8");
+  assert.match(app, /const onGlobalTouchStart = \(e\) =>/);
+  assert.match(app, /if \(bp !== "mobile" \|\| lessonView/);
+  assert.match(app, /if \(dx > 0 && !panels\.sidebar\) togglePanel\("sidebar", true\);/);
+  assert.match(app, /else if \(dx < 0 && panels\.sidebar\) togglePanel\("sidebar", false\);/);
+  assert.match(app, /<div className="body" onTouchStart=\{onGlobalTouchStart\} onTouchEnd=\{onGlobalTouchEnd\}>/);
+  assert.match(css, /\.workspace, \.sidebar\[data-bp="mobile"\], \.main \{ touch-action: pan-y; \}/);
+});
+
+test("mobile dashboard keeps the progress ring compact and lesson swipes control panels", async () => {
+  const fs = await import("node:fs/promises");
+  const css = await fs.readFile(new URL("../src/styles/index.css", import.meta.url), "utf8");
+  const lesson = await fs.readFile(new URL("../src/pages/Lesson.jsx", import.meta.url), "utf8");
+  assert.match(css, /\.focus-ring \{ position: static;/);
+  assert.match(css, /\.focus-main \{ min-width: 0; padding-right: 0;/);
+  assert.match(css, /\.focus-ring \{ position: static;[^}]*width: 100%;/);
+  assert.match(css, /\.focus-ring \.ring-wrap\.big \{ width: 132px; height: 132px;/);
+  assert.match(css, /touch-action: pan-y/);
+  assert.match(lesson, /if \(dx > 0 && !showCode\) togglePanel\("sidebar", true\);/);
+  assert.match(lesson, /if \(dx < 0 && !showCode && panels\.sidebar\) togglePanel\("sidebar", false\);/);
+});

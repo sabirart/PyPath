@@ -1,7 +1,7 @@
 {
   "name": "pypath",
   "private": true,
-  "version": "1.4.10",
+  "version": "1.4.16",
   "license": "UNLICENSED",
   "author": "Sabir Hussain <sabirhussain@gmail.com>",
   "description": "PyPath - a 30-day Python learning challenge with an online browser-based Python compiler.",

@@ -12,7 +12,7 @@ import PageSkeleton from "./components/Skeletons";
 import { Dashboard, LessonPage, Compiler, Projects, About, Course, Offline } from "./pages/lazy";
 
 function Shell() {
-  const { user, setUser, getLesson } = useApp();
+  const { user, setUser, getLesson, bp, panels, togglePanel } = useApp();
   const [online, setOnline] = useState(() => navigator.onLine);
   useEffect(() => {
     const on = () => setOnline(true);
@@ -24,8 +24,27 @@ function Shell() {
   const route = useRoute();
   const main = useRef(null);
   const firstRoute = useRef(true);
+  const swipeStart = useRef(null);
 
   const page = route.page || "dashboard";
+
+  // Mobile navigation swipe: available across non-lesson pages. Lesson pages
+  // keep their existing lesson/code/sidebar gesture handling.
+  const onGlobalTouchStart = (e) => {
+    if (bp !== "mobile" || e.touches.length !== 1) return;
+    if (e.target.closest("button, a, input, textarea, select, .cm-editor, .workspace")) return;
+    swipeStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  };
+  const onGlobalTouchEnd = (e) => {
+    const start = swipeStart.current;
+    swipeStart.current = null;
+    if (bp !== "mobile" || lessonView || !start || e.changedTouches.length !== 1) return;
+    const dx = e.changedTouches[0].clientX - start.x;
+    const dy = e.changedTouches[0].clientY - start.y;
+    if (Math.abs(dx) < 60 || Math.abs(dx) <= Math.abs(dy) * 1.25) return;
+    if (dx > 0 && !panels.sidebar) togglePanel("sidebar", true);
+    else if (dx < 0 && panels.sidebar) togglePanel("sidebar", false);
+  };
   let title = "Dashboard";
   let activeId = null;
   let content;
@@ -74,7 +93,7 @@ function Shell() {
     <div className="app">
       <button className="skip" onClick={() => main.current?.focus()}>Skip to content</button>
       <Header title={title} showCompilerToggle={lessonView} />
-      <div className="body">
+      <div className="body" onTouchStart={onGlobalTouchStart} onTouchEnd={onGlobalTouchEnd}>
         <Sidebar page={page} activeId={activeId} />
         <main className={`main ${fill ? "fill" : ""}`} ref={main} id="main" tabIndex={-1}>
           <Suspense fallback={<PageSkeleton variant={variant} />}><div className={`route ${fill ? "route-fill" : ""}`} key={route.path}>{content}</div></Suspense>

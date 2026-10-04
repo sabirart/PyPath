@@ -9,6 +9,7 @@ import StatusIcon from "./StatusIcon";
 export default function Sidebar({ page, activeId }) {
   const { lessons, progress, bp, panels, togglePanel } = useApp();
   const ref = useRef(null);
+  const gestureStart = useRef(null);
   const open = panels.sidebar;
   const overlay = bp !== "desktop" && open;
   const close = () => togglePanel("sidebar", false);
@@ -28,11 +29,24 @@ export default function Sidebar({ page, activeId }) {
   ];
   // Choosing anything in the panel opens it and hides the panel so the person can focus.
   const onNav = () => close();
+  const onTouchStart = (e) => {
+    if (bp === "desktop" || e.touches.length !== 1) return;
+    gestureStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  };
+  const onTouchEnd = (e) => {
+    const startPoint = gestureStart.current;
+    gestureStart.current = null;
+    if (bp === "desktop" || !open || !startPoint || e.changedTouches.length !== 1) return;
+    const dx = e.changedTouches[0].clientX - startPoint.x;
+    const dy = e.changedTouches[0].clientY - startPoint.y;
+    if (dx >= -45 || Math.abs(dx) <= Math.abs(dy) * 1.15) return;
+    close();
+  };
 
   return (
     <>
       {overlay && <div className="backdrop" onClick={close} aria-hidden="true" />}
-      <aside className="sidebar" data-bp={bp} data-open={open} ref={ref} aria-label="Course outline" inert={bp === "desktop" && !open ? "" : undefined}>
+      <aside className="sidebar" data-bp={bp} data-open={open} ref={ref} aria-label="Course outline" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd} inert={bp === "desktop" && !open ? "" : undefined}>
         <div className="sidebar-inner">
           <nav aria-label="Main">
             {nav.map(({ href, label, icon: Icon, on }) => (

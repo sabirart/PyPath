@@ -1,5 +1,5 @@
 // Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
-import { BookOpen, Clock, Code2, FileInput, ListOrdered, Play, Sparkles } from "lucide-react";
+import { BookOpen, Clock, Code2, FileInput, ListOrdered, Play, Sparkles, ShieldCheck } from "lucide-react";
 import CodeBlock from "./CodeBlock";
 import StatusIcon, { STATUS_LABEL } from "./StatusIcon";
 import { useApp } from "../context/AppContext";
@@ -24,6 +24,8 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
   const { progress, lessons } = useApp();
   const st = progress[lesson.id] || "not-started";
   const how = Array.isArray(lesson.howItWorks) ? lesson.howItWorks : [];
+  const teaching = Array.isArray(lesson.teachingPoints) ? lesson.teachingPoints : [];
+  const doDont = Array.isArray(lesson.doDont) ? lesson.doDont : [];
   const project = lesson.kind === "project";
   const noun = project ? "project" : "lesson";
   return (
@@ -39,6 +41,7 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
         <ul className="lesson-facts" aria-label="Details">
           {lesson.minutes && <li><Clock size={14} aria-hidden="true" /> ~{lesson.minutes} min</li>}
           {project && lesson.difficulty && <li><Sparkles size={14} aria-hidden="true" /> {lesson.difficulty}</li>}
+          {project && lesson.classFrom && lesson.afterLesson && <li>Classes {lesson.classFrom}–{lesson.afterLesson}</li>}
           {project && lesson.tags?.map((t) => <li key={t} className="fact-tag">{t}</li>)}
         </ul>
         {project && lesson.outcome && <p className="project-brief"><strong>You will build:</strong> {lesson.outcome}</p>}
@@ -50,12 +53,24 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
         </div>
       )}
       <Section title="Definition" icon={BookOpen} step={1} id="s-def" ok={!!lesson.definition}><p className="lede">{lesson.definition}</p></Section>
-      <Section title="Code Example" icon={Code2} step={2} id="s-ex" ok={!!lesson.codeExample}><CodeBlock code={lesson.codeExample} /></Section>
+      <Section title="Code Example" icon={Code2} step={2} id="s-ex" ok={!!lesson.codeExample}><CodeBlock code={lesson.codeExample} />{lesson.exampleOutput && <div className="lesson-example-output"><div className="lesson-example-output-title">Output</div><pre>{lesson.exampleOutput}</pre></div>}</Section>
       <Section title="How It Works" icon={ListOrdered} step={3} id="s-how" ok={how.length > 0}>
         <ol className="steps">{how.map((h, i) => <li key={i}>{h}</li>)}</ol>
       </Section>
-      <Section title="Full Example" icon={Play} step={4} id="s-full" ok={!!lesson.fullExample}>
-        <CodeBlock code={lesson.fullExample} label="Python - runnable example" />
+      {teaching.length > 0 && (
+        <section className="lesson-detail-block" aria-labelledby="s-details">
+          <div className="detail-head"><h3 id="s-details">Important details</h3></div>
+          <div className="detail-list">{teaching.map((item, i) => <div className="detail-item" key={i}><p>{typeof item === "string" ? item : item.text}</p>{typeof item === "object" && item.example && <pre className="detail-example"><code>{item.example}</code></pre>}</div>)}</div>
+        </section>
+      )}
+      {doDont.length > 0 && (
+        <section className="lesson-detail-block" aria-labelledby="s-dodont">
+          <div className="detail-head"><ShieldCheck size={16} aria-hidden="true" /><h3 id="s-dodont">Do &amp; Don't</h3></div>
+          <div className="dodont-wrap"><table className="dodont-table"><thead><tr><th>Don't</th><th>Do instead</th><th>Example</th></tr></thead><tbody>{doDont.map((row, i) => <tr key={i}><td>{row.dont}</td><td>{row.do}</td><td>{row.example || "See the lesson example above."}</td></tr>)}</tbody></table></div>
+        </section>
+      )}
+      <Section title="Complete Example" icon={Play} step={4} id="s-full" ok={!!lesson.fullExample}>
+        <CodeBlock code={lesson.fullExample} label={project ? "Python - complete project" : "Python - runnable example"} />
         <button className="btn btn-ghost btn-sm" onClick={onLoadExample}><FileInput size={15} /> Load in editor</button>
       </Section>
       {!project && lesson.projectId && (

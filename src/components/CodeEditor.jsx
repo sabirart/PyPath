@@ -9,7 +9,6 @@ import { python } from "@codemirror/lang-python";
 import { basicSetup } from "codemirror";
 import { Play, Download, RotateCcw, Loader2, FileCode2 } from "lucide-react";
 
-// Token colours come from CSS variables, so the editor follows the warm theme in both modes.
 const pyStyle = HighlightStyle.define([
   { tag: [t.keyword, t.controlKeyword, t.definitionKeyword, t.moduleKeyword, t.operatorKeyword], color: "var(--tok-kw)" },
   { tag: [t.string, t.special(t.string)], color: "var(--tok-str)" },
@@ -47,7 +46,6 @@ export default function CodeEditor({ value, onChange, onRun, onStop, running, on
           indentOnInput(),
           syntaxHighlighting(pyStyle),
           keymap.of([
-            { key: "Mod-Enter", run: () => { if (cb.current.running) cb.current.onStop?.(); else cb.current.onRun(); return true; } },
             { key: "Enter", run: (editor) => {
               const { state } = editor;
               const line = state.doc.lineAt(state.selection.main.head);
@@ -67,7 +65,6 @@ export default function CodeEditor({ value, onChange, onRun, onStop, running, on
               return true;
             } },
             { key: "Shift-Tab", run: indentLess },
-            // Escape leaves the editor so keyboard users are never trapped.
             { key: "Escape", run: (ev) => { ev.dom.closest(".editor-card")?.querySelector(".toolbar button")?.focus(); return true; } },
             indentWithTab,
           ]),
@@ -77,11 +74,25 @@ export default function CodeEditor({ value, onChange, onRun, onStop, running, on
       }),
     });
     view.current = v;
-    return () => v.destroy();
+
+    // Browser-level shortcut: capture Alt+Enter before CodeMirror can insert a newline.
+    const onKeyDown = (event) => {
+      if (!event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || event.key !== "Enter") return;
+      if (!host.current?.contains(event.target)) return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (cb.current.running) cb.current.onStop?.();
+      else cb.current.onRun?.();
+    };
+    host.current?.addEventListener("keydown", onKeyDown, true);
+
+    return () => {
+      host.current?.removeEventListener("keydown", onKeyDown, true);
+      v.destroy();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Replace the document when the value changes from outside (reset, load example).
   useEffect(() => {
     const v = view.current;
     if (v && v.state.doc.toString() !== value) v.dispatch({ changes: { from: 0, to: v.state.doc.length, insert: value } });
@@ -92,7 +103,7 @@ export default function CodeEditor({ value, onChange, onRun, onStop, running, on
       <div className="toolbar">
         <span className="filetab"><FileCode2 size={15} aria-hidden="true" /> {fileName}</span>
         <span className="toolbar-spacer" />
-        <button className={`btn ${running ? "btn-danger" : "btn-primary"} btn-sm`} onClick={running ? onStop : onRun} title={running ? "Stop execution" : "Run (Ctrl/Cmd + Enter)"}>
+        <button className={`btn ${running ? "btn-danger" : "btn-primary"} btn-sm`} onClick={running ? onStop : onRun} title={running ? "Stop execution" : "Run (Alt + Enter)"}>
           {running ? <Loader2 size={15} className="spin" /> : <Play size={15} />} {running ? "Stop" : "Run Code"}
         </button>
         <button className="icon-btn sm" onClick={onDownload} aria-label="Download as .py file" title="Download .py"><Download size={16} /></button>

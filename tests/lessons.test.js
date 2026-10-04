@@ -48,3 +48,37 @@ test("curriculum covers professional Python before projects", () => {
   assert.deepEqual(projects.map((p) => p.afterLesson), [6, 9, 15, 24, 30]);
   projects.forEach((p) => assert.ok(p.tags.length >= 4));
 });
+
+
+test("every lesson has substantial teaching support, Do/Don't guidance, and a five-question gate", () => {
+  classes.forEach((l) => {
+    assert.ok(Array.isArray(l.teachingPoints) && l.teachingPoints.length >= 5, `${l.id} needs detailed teaching points`);
+    assert.ok(Array.isArray(l.doDont) && l.doDont.length >= 4, `${l.id} needs Do/Don't guidance`);
+    assert.equal(l.quiz.length, 5, `${l.id} needs exactly 5 quiz questions`);
+    l.quiz.forEach((q) => { assert.equal(q.options.length, 4); assert.ok(q.answer >= 0 && q.answer < 4); });
+  });
+});
+
+test("projects contain complete runnable code", () => {
+  projects.forEach((p) => {
+    assert.ok(p.interactive === true);
+    assert.ok(p.fullExample.length >= 600, `${p.id} should contain a complete project, not a snippet`);
+    assert.equal(p.starterCode, p.fullExample);
+  });
+});
+
+test("important details include a short example for every teaching point", () => {
+  classes.forEach((l) => {
+    l.teachingPoints.forEach((item, i) => {
+      assert.equal(typeof item, "object", `${l.id} teaching point ${i + 1} should include text and example`);
+      assert.ok(item.text && item.example, `${l.id} teaching point ${i + 1} needs an example`);
+    });
+    l.doDont.forEach((row, i) => assert.ok(row.example, `${l.id} Do/Don't row ${i + 1} needs an example`));
+  });
+});
+
+test("projects have a clear difficulty progression, bio, and class readiness range", () => {
+  assert.deepEqual(projects.map((p) => p.difficulty), ["Beginner", "Beginner", "Intermediate", "Intermediate", "Advanced"]);
+  assert.deepEqual(projects.map((p) => [p.classFrom, p.afterLesson]), [[1, 6], [7, 9], [10, 15], [16, 24], [25, 30]]);
+  projects.forEach((p) => assert.ok(typeof p.bio === "string" && p.bio.length > 20, `${p.id} needs a short project bio`));
+});

@@ -1,6 +1,7 @@
 // Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { ArrowLeft, BookOpen, Code2 } from "lucide-react";
+import CompletionQuiz from "../components/CompletionQuiz";
 import { useApp } from "../context/AppContext";
 import { KEYS, getItem } from "../services/storage";
 import { downloadPython } from "../services/download";
@@ -14,6 +15,8 @@ import TaskCard from "../components/TaskCard";
 import Console from "../components/Console";
 import NavButtons from "../components/NavButtons";
 import Splitter from "../components/Splitter";
+import ProjectSuggestion from "../components/ProjectSuggestion";
+import { navigate, pathFor } from "../router";
 
 const CodeEditor = lazy(() => import("../components/CodeEditor"));
 
@@ -28,6 +31,8 @@ function LessonView({ lesson, base, prev, next }) {
   const [code, setCode] = useState(() => getItem(KEYS.code(lesson.id)) ?? lesson.starterCode ?? "");
   const [colSize, setColSize] = useState(46);
   const [rowSize, setRowSize] = useState(mobile ? 70 : 60);
+  const [quizOpen, setQuizOpen] = useState(false);
+  const [suggestedProject, setSuggestedProject] = useState(null);
   const status = progress[lesson.id] || "not-started";
   const dayLessons = lessons.filter((l) => l.kind === "lesson");
   const firstIncomplete = dayLessons.find((l) => progress[l.id] !== "completed");
@@ -48,7 +53,22 @@ function LessonView({ lesson, base, prev, next }) {
   const start = () => {
     if (!isProject) startLesson(lesson.id);
   };
-  const complete = () => { isProject ? completeProject(lesson.id) : completeLesson(lesson.id); };
+  const complete = () => {
+    if (isProject) completeProject(lesson.id);
+    else setQuizOpen(true);
+  };
+  const passQuiz = () => {
+    completeLesson(lesson.id);
+    if (next) {
+      window.setTimeout(() => navigate(pathFor(next)), 1700);
+      return;
+    }
+    setQuizOpen(false);
+    if (!isProject) {
+      const checkpoint = lessons.find((item) => item.kind === "project" && item.afterLesson === lesson.day);
+      if (checkpoint) setSuggestedProject(checkpoint);
+    }
+  };
   const reset = () => {
     if (code !== lesson.starterCode && !window.confirm("Replace your code with the starter code? Your current code will be lost.")) return;
     change(lesson.starterCode);
@@ -72,7 +92,8 @@ function LessonView({ lesson, base, prev, next }) {
   };
 
   return (
-    <div className="workspace" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+    <>
+      <div className="workspace" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       {!split && (
         <div className="tabbar" role="tablist" aria-label="Lesson view">
           <button role="tab" className="tab" aria-selected={!showCode} onClick={() => togglePanel("compiler", false)}><BookOpen size={16} /> Lesson</button>
@@ -104,7 +125,10 @@ function LessonView({ lesson, base, prev, next }) {
           </div>
         </section>
       </div>
-    </div>
+      </div>
+      {quizOpen && <CompletionQuiz lesson={lesson} nextLesson={next} onPass={passQuiz} onClose={() => setQuizOpen(false)} />}
+      {suggestedProject && <ProjectSuggestion project={suggestedProject} onClose={() => setSuggestedProject(null)} />}
+    </>
   );
 }
 

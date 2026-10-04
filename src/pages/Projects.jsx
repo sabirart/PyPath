@@ -6,7 +6,7 @@ import StatusIcon, { STATUS_LABEL } from "../components/StatusIcon";
 
 const ICONS = { p01: Calculator, p02: Dices, p03: Receipt, p04: HelpCircle, p05: Trophy };
 
-function ProjectCard({ item, index, featured = false }) {
+function ProjectCard({ item, index, featured = false, classRange }) {
   const { progress } = useApp();
   const st = progress[item.id] || "not-started";
   const Icon = ICONS[item.id] || Trophy;
@@ -20,9 +20,10 @@ function ProjectCard({ item, index, featured = false }) {
         <span className={`badge badge-${st}`}><StatusIcon status={st} size={13} /> {STATUS_LABEL[st]}</span>
       </div>
       <h3 className="proj-title">{item.title.replace(/^(Project \d+|Final Project): /, "")}</h3>
-      <p className="proj-outcome">{item.outcome}</p>
+      <p className="proj-outcome">{item.bio || item.outcome || item.summary}</p>
       <div className="proj-meta">
         <span className={`level level-${item.difficulty.toLowerCase()}`}>{item.difficulty}</span>
+        <span className="class-range">Classes {classRange?.from}–{classRange?.to}</span>
         <span className="proj-time"><Clock size={13} aria-hidden="true" /> ~{item.minutes} min</span>
       </div>
       <div className="proj-skills">
@@ -39,6 +40,7 @@ export default function Projects() {
   const items = projectIds.map(getLesson).filter(Boolean);
   const final = items[items.length - 1]; // the last project is the Final Project
   const regular = items.slice(0, -1);
+  const classRangeFor = (item, index) => ({ from: item.classFrom || (index === 0 ? 1 : (items[index - 1]?.afterLesson || 0) + 1), to: item.afterLesson });
   const done = items.filter((l) => progress[l.id] === "completed").length;
   return (
     <div className="projects">
@@ -57,8 +59,8 @@ export default function Projects() {
         </div>
       </header>
       <div className="proj-grid">
-        {regular.map((l, i) => <ProjectCard key={l.id} item={l} index={i} />)}
-        {final && <ProjectCard item={final} index={regular.length} />}
+        {regular.map((l, i) => <ProjectCard key={l.id} item={l} index={i} classRange={classRangeFor(l, i)} />)}
+        {final && <ProjectCard item={final} index={regular.length} classRange={classRangeFor(final, regular.length)} />}
       </div>
     </div>
   );

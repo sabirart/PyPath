@@ -19,7 +19,104 @@
     "fullExample": "print(\"PyPath Python Challenge\")\nname = \"Alex\"\nprint(\"Welcome,\", name)\nprint(\"Today I am learning Python.\")",
     "practiceTask": "Write a short introduction program that prints your name, a goal, and one sentence explaining why you want to learn Python.",
     "starterCode": "print(\"My name is ...\")\nprint(\"My goal is ...\")\nprint(\"I am learning Python because ...\")",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Python runs top to bottom unless control flow changes it.",
+        "example": "print(\"First\")\nprint(\"Second\")"
+      },
+      {
+        "text": "Expressions produce values; statements perform actions.",
+        "example": "x = 2 + 3\nprint(x)  # expression gives 5"
+      },
+      {
+        "text": "Use print() for quick checks and keep comments focused on intent.",
+        "example": "name = \"Ali\"\nprint(name)  # quick check"
+      },
+      {
+        "text": "Use return values or clear UI/logging in larger programs.",
+        "example": "def add(a, b):\n    return a + b"
+      },
+      {
+        "text": "Follow a simple read → run → debug cycle.",
+        "example": "Run → see error → read the traceback → fix → run again."
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "print(\"First\")\nprint(\"Second\")"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "x = 2 + 3\nprint(x)  # expression gives 5"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "name = \"Ali\"\nprint(name)  # quick check"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "def add(a, b):\n    return a + b"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What happens first?",
+        "options": [
+          "Python normally runs code from top to bottom.",
+          "A Python file runs bottom to top.",
+          "Python skips all lines until input is given.",
+          "Python waits for input before running code."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does an expression produce?",
+        "options": [
+          "A file",
+          "A value",
+          "A loop",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What is print() mainly useful for while learning?",
+        "options": [
+          "Saving packages",
+          "Creating classes",
+          "Quick output checks",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What should a good comment explain?",
+        "options": [
+          "Every obvious line",
+          "The entire program",
+          "It has no effect on the program.",
+          "Intent or a non-obvious choice"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Best debugging habit?",
+        "options": [
+          "Read, run, then fix the error",
+          "Guess and rewrite everything",
+          "Ignore the traceback",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "Hello, Python!"
   },
   {
     "id": "l02",
@@ -41,7 +138,104 @@
     "fullExample": "name = \"Alex\"\nage = 20\nbalance = 100.0\nbalance += 25\nprint(name, age, balance)",
     "practiceTask": "Create variables for a product name, price, quantity, and discount. Calculate and print the final total.",
     "starterCode": "product = \"Notebook\"\nprice = 5.0\nquantity = 3\ndiscount = 0.10\n# Calculate the final total here\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Assignment gives a name to a value.",
+        "example": "name = \"Ali\"\nprint(name)"
+      },
+      {
+        "text": "Names can be rebound, so choose clear names.",
+        "example": "score = 10\nscore = 20"
+      },
+      {
+        "text": "Python names are case-sensitive and cannot start with a number.",
+        "example": "age = 20\nAge = 30\n# age and Age are different"
+      },
+      {
+        "text": "Immutable values are replaced when changed.",
+        "example": "x = 10\nx = 20  # a new value replaces the old binding"
+      },
+      {
+        "text": "Mutable objects such as lists can change in place.",
+        "example": "items = [1, 2]\nitems.append(3)  # same list changes"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "name = \"Ali\"\nprint(name)"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "score = 10\nscore = 20"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "age = 20\nAge = 30\n# age and Age are different"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "x = 10\nx = 20  # a new value replaces the old binding"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does assignment do?",
+        "options": [
+          "Binds a name to a value",
+          "Creates a permanent label on the value",
+          "Deletes the value",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Are Python names case-sensitive?",
+        "options": [
+          "No",
+          "Yes",
+          "Only in functions",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Which name is valid?",
+        "options": [
+          "2name",
+          "user name",
+          "user_name",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Can a variable be rebound?",
+        "options": [
+          "No",
+          "Only once",
+          "It has no effect on the program.",
+          "Yes"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "What is better?",
+        "options": [
+          "A descriptive variable name",
+          "A one-letter name everywhere",
+          "A name with spaces",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "15"
   },
   {
     "id": "l03",
@@ -63,7 +257,104 @@
     "fullExample": "raw = \"42\"\nnumber = int(raw)\nprice = 12.5\navailable = True\nnothing = None\nprint(number, type(number).__name__)\nprint(price, available, nothing)",
     "practiceTask": "Read a number stored as text, convert it safely, calculate its square, and print whether the result is even.",
     "starterCode": "text = \"24\"\nnumber = int(text)\n# Calculate and print the square\n# Print whether it is even\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Python operations depend on the value’s type.",
+        "example": "2 + 3        # number\n\"2\" + \"3\"  # text"
+      },
+      {
+        "text": "input() returns text, even when digits are entered.",
+        "example": "age = input(\"Age: \")\nprint(type(age))  # str"
+      },
+      {
+        "text": "Use int or float when numeric input is needed.",
+        "example": "age = int(input(\"Age: \"))"
+      },
+      {
+        "text": "Use float for decimal input.",
+        "example": "price = float(\"12.50\")"
+      },
+      {
+        "text": "Empty strings, zero, empty collections, and None are falsey.",
+        "example": "bool(0)       # False\nbool([])      # False"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "2 + 3        # number\n\"2\" + \"3\"  # text"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "age = input(\"Age: \")\nprint(type(age))  # str"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "age = int(input(\"Age: \"))"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "price = float(\"12.50\")"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What type does input() return?",
+        "options": [
+          "str",
+          "int",
+          "float",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Which converts \"12\" to a number?",
+        "options": [
+          "str(12)",
+          "int(\"12\")",
+          "bool(\"12\")",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Which handles 12.5?",
+        "options": [
+          "int(\"12.5\")",
+          "list(\"12.5\")",
+          "float(\"12.5\")",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Which is falsey?",
+        "options": [
+          "\"hello\"",
+          "[1]",
+          "It has no effect on the program.",
+          "0"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Why do types matter?",
+        "options": [
+          "Operations depend on the value type",
+          "Python ignores types",
+          "Types only affect comments",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "22"
   },
   {
     "id": "l04",
@@ -85,7 +376,104 @@
     "fullExample": "text = \"  Python Developer  \"\nclean = text.strip()\nprint(clean.lower())\nprint(clean.replace(\"Developer\", \"Engineer\"))\nname = \"Sam\"\nprint(f\"{name} is learning Python.\")",
     "practiceTask": "Clean a messy sentence, count a chosen character, create a list of words with split(), and print a formatted summary.",
     "starterCode": "text = \"  Python makes text processing useful!  \"\nclean = text.strip()\n# Continue the task here\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Strings are indexed from 0.",
+        "example": "word = \"Python\"\nprint(word[0])  # P"
+      },
+      {
+        "text": "Slicing uses a start-inclusive, end-exclusive range.",
+        "example": "word = \"Python\"\nprint(word[1:4])  # yth"
+      },
+      {
+        "text": "String methods return transformed strings because strings are immutable.",
+        "example": "name = \"ali\"\nname = name.upper()"
+      },
+      {
+        "text": "Use strip(), lower(), split(), replace(), and join() for common text work.",
+        "example": "text = \" a,b \"\nprint(text.strip().split(\",\"))"
+      },
+      {
+        "text": "Use f-strings when combining text and values.",
+        "example": "name = \"Ali\"\nprint(f\"Hello, {name}!\")"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "word = \"Python\"\nprint(word[0])  # P"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "word = \"Python\"\nprint(word[1:4])  # yth"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "name = \"ali\"\nname = name.upper()"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "text = \" a,b \"\nprint(text.strip().split(\",\"))"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is the first string index?",
+        "options": [
+          "0",
+          "1",
+          "-1",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "In text[1:4], is index 4 included?",
+        "options": [
+          "Yes",
+          "No",
+          "Only for strings",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Which is good for formatting?",
+        "options": [
+          "\"Hello\" + 0",
+          "formatting = text",
+          "f\"Hello {name}\"",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Are strings mutable?",
+        "options": [
+          "Yes",
+          "Only when sliced",
+          "It has no effect on the program.",
+          "No"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "What does strip() do?",
+        "options": [
+          "Removes surrounding whitespace",
+          "Sorts text",
+          "Converts text to int",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "PYTHON\nLearning python"
   },
   {
     "id": "l05",
@@ -107,7 +495,104 @@
     "fullExample": "price = 80\nquantity = 3\nsubtotal = price * quantity\ndiscounted = subtotal >= 200 and quantity >= 3\nprint(subtotal)\nprint(\"Discount:\", discounted)",
     "practiceTask": "Build a bill calculation that uses arithmetic, comparisons, and boolean logic to decide whether a customer qualifies for a discount.",
     "starterCode": "price = 80\nquantity = 3\n# Calculate the bill and discount rule\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Arithmetic operators calculate values; comparisons produce booleans.",
+        "example": "7 + 3      # 10\n7 > 3      # True"
+      },
+      {
+        "text": "and/or can short-circuit the second condition.",
+        "example": "age = 20\nprint(age >= 18 and age < 60)"
+      },
+      {
+        "text": "Parentheses make complex expressions clearer.",
+        "example": "total = (price + tax) * 2"
+      },
+      {
+        "text": "Augmented assignment such as += uses the current value.",
+        "example": "count = 1\ncount += 1"
+      },
+      {
+        "text": "Keep expressions simple enough to read at a glance.",
+        "example": "result = (10 + 5) * 2  # easy to read"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "7 + 3      # 10\n7 > 3      # True"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "age = 20\nprint(age >= 18 and age < 60)"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "total = (price + tax) * 2"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "count = 1\ncount += 1"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does 3 < 5 produce?",
+        "options": [
+          "True",
+          "3",
+          "\"True\"",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What is 7 + 2?",
+        "options": [
+          "72",
+          "9",
+          "5",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What can and/or do?",
+        "options": [
+          "Create loops",
+          "Define classes",
+          "Short-circuit evaluation",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Why use parentheses?",
+        "options": [
+          "To make code slower",
+          "To create a list",
+          "It has no effect on the program.",
+          "To make intent clear"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "What does += do?",
+        "options": [
+          "Updates a variable using its current value",
+          "Compares two values",
+          "Creates a function",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "20 True"
   },
   {
     "id": "l06",
@@ -130,7 +615,104 @@
     "practiceTask": "Create a grade classifier with A/B/C/D/F ranges. Test normal values and boundary values such as 59, 60, 79, and 80.",
     "starterCode": "grade = 75\n# Write your if/elif/else classifier here\n",
     "minutes": 25,
-    "projectId": "p01"
+    "projectId": "p01",
+    "teachingPoints": [
+      {
+        "text": "if chooses a block from a condition; elif and else add alternatives.",
+        "example": "if age >= 18:\n    print(\"Adult\")\nelse:\n    print(\"Minor\")"
+      },
+      {
+        "text": "and, or, and not combine conditions.",
+        "example": "if age >= 18 and has_id:\n    allow_entry()"
+      },
+      {
+        "text": "Guard clauses can reject invalid input early.",
+        "example": "if not name:\n    return \"Name required\""
+      },
+      {
+        "text": "Chained comparisons can make ranges clearer.",
+        "example": "if 18 <= age < 65:\n    print(\"Working age\")"
+      },
+      {
+        "text": "Use else as a clear fallback, not a catch-all for confusion.",
+        "example": "if score >= 50:\n    print(\"Pass\")\nelse:\n    print(\"Try again\")"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "if age >= 18:\n    print(\"Adult\")\nelse:\n    print(\"Minor\")"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "if age >= 18 and has_id:\n    allow_entry()"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "if not name:\n    return \"Name required\""
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "if 18 <= age < 65:\n    print(\"Working age\")"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does if evaluate?",
+        "options": [
+          "A condition",
+          "A package",
+          "A file",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What is else?",
+        "options": [
+          "A loop",
+          "A fallback branch",
+          "A type",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Which is a valid chained comparison?",
+        "options": [
+          "0 => score => 100",
+          "0 <=> score",
+          "0 <= score <= 100",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What does not do?",
+        "options": [
+          "Repeats a loop",
+          "Imports a module",
+          "It has no effect on the program.",
+          "Negates a boolean condition"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Why use a guard clause?",
+        "options": [
+          "To reject invalid input early",
+          "To hide errors",
+          "To avoid functions",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "A"
   },
   {
     "id": "l07",
@@ -152,7 +734,104 @@
     "fullExample": "total = 0\nfor number in range(1, 11):\n    total += number\nprint(\"Total:\", total)\n\ncount = 3\nwhile count > 0:\n    print(count)\n    count -= 1",
     "practiceTask": "Write a program that calculates the sum of numbers 1–100, then write a while loop that counts down from 10.",
     "starterCode": "# Sum 1 through 100\n# Then make a countdown\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "for is useful for iterating over collections or ranges.",
+        "example": "for name in [\"Ali\", \"Sara\"]:\n    print(name)"
+      },
+      {
+        "text": "while repeats while a condition remains true.",
+        "example": "count = 0\nwhile count < 3:\n    count += 1"
+      },
+      {
+        "text": "range() excludes its stop value.",
+        "example": "for i in range(3):\n    print(i)  # 0, 1, 2"
+      },
+      {
+        "text": "Accumulators build totals across iterations.",
+        "example": "total = 0\nfor n in [2, 4, 6]:\n    total += n"
+      },
+      {
+        "text": "Choose the loop that matches the kind of repetition.",
+        "example": "for item in items:\n    print(item)  # for each item"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "for name in [\"Ali\", \"Sara\"]:\n    print(name)"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "count = 0\nwhile count < 3:\n    count += 1"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "for i in range(3):\n    print(i)  # 0, 1, 2"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "total = 0\nfor n in [2, 4, 6]:\n    total += n"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Best loop for a list?",
+        "options": [
+          "for",
+          "while only",
+          "if",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does range(3) produce?",
+        "options": [
+          "1, 2, 3",
+          "0, 1, 2",
+          "0, 1, 2, 3",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "When is while useful?",
+        "options": [
+          "Only for lists",
+          "Only for strings",
+          "When repetition depends on a changing condition",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What is an accumulator?",
+        "options": [
+          "A Python package",
+          "A loop condition",
+          "It has no effect on the program.",
+          "A value built across iterations"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "What can cause an endless while loop?",
+        "options": [
+          "Never changing the condition state",
+          "Using print()",
+          "Using a variable",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "1\n2\n3\n4\n5"
   },
   {
     "id": "l08",
@@ -174,7 +853,104 @@
     "fullExample": "secret = 7\nattempts = 0\nwhile True:\n    attempts += 1\n    guess = 7\n    if guess == secret:\n        print(\"Correct after\", attempts, \"attempt(s)\")\n        break",
     "practiceTask": "Build a small input-validation loop: keep asking for a positive integer until the user enters one, then report it.",
     "starterCode": "while True:\n    # Ask for a number and validate it\n    break\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "break exits the nearest loop; continue skips to the next iteration.",
+        "example": "for n in range(10):\n    if n == 5:\n        break"
+      },
+      {
+        "text": "Validation loops repeat until input meets a rule.",
+        "example": "while True:\n    value = input(\"Yes/no: \")\n    if value in {\"yes\", \"no\"}:\n        break"
+      },
+      {
+        "text": "Separate input conversion from validation to handle errors cleanly.",
+        "example": "raw = input(\"Age: \")\ntry:\n    age = int(raw)\nexcept ValueError:\n    print(\"Enter a number\")"
+      },
+      {
+        "text": "A sentinel such as quit can end a loop.",
+        "example": "command = input(\"> \")\nif command == \"quit\":\n    break"
+      },
+      {
+        "text": "Handle conversion errors separately from validation rules.",
+        "example": "raw = input(\"Age: \")\ntry:\n    age = int(raw)\nexcept ValueError:\n    print(\"Not a number\")\n# then validate age separately"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "for n in range(10):\n    if n == 5:\n        break"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "while True:\n    value = input(\"Yes/no: \")\n    if value in {\"yes\", \"no\"}:\n        break"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "raw = input(\"Age: \")\ntry:\n    age = int(raw)\nexcept ValueError:\n    print(\"Enter a number\")"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "command = input(\"> \")\nif command == \"quit\":\n    break"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does break do?",
+        "options": [
+          "Exits the nearest loop",
+          "Skips one iteration",
+          "Starts a loop",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does continue do?",
+        "options": [
+          "Exits the program",
+          "Skips to the next iteration",
+          "Ends all loops",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What is a sentinel?",
+        "options": [
+          "A data type",
+          "A package",
+          "A value that signals the loop to stop",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Why validate input?",
+        "options": [
+          "To make it longer",
+          "To avoid variables",
+          "It has no effect on the program.",
+          "To ensure it meets the required rule"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Good validation design?",
+        "options": [
+          "Validate, then convert safely",
+          "Convert blindly, then hope",
+          "Never check input",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "1\n3"
   },
   {
     "id": "l09",
@@ -197,7 +973,104 @@
     "practiceTask": "Create functions for validation, calculation, and formatting in a mini bill program. Make each function return data instead of printing internally.",
     "starterCode": "def calculate_total(price, quantity):\n    # Return the total\n    pass\n\ndef format_total(total):\n    # Return a formatted string\n    pass\n",
     "minutes": 25,
-    "projectId": "p02"
+    "projectId": "p02",
+    "teachingPoints": [
+      {
+        "text": "Functions package reusable behavior with clear inputs and outputs.",
+        "example": "def greet(name):\n    return f\"Hello, {name}\""
+      },
+      {
+        "text": "Parameters are names in a definition; arguments are supplied values.",
+        "example": "def add(a, b):\n    return a + b\nadd(2, 3)"
+      },
+      {
+        "text": "return sends a value back and exits the function.",
+        "example": "def square(n):\n    return n * n"
+      },
+      {
+        "text": "Keep functions small enough to explain in one sentence.",
+        "example": "def is_adult(age):\n    return age >= 18"
+      },
+      {
+        "text": "Avoid global state when data can be passed in.",
+        "example": "def total(items):\n    return sum(items)"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "def greet(name):\n    return f\"Hello, {name}\""
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "def add(a, b):\n    return a + b\nadd(2, 3)"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "def square(n):\n    return n * n"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "def is_adult(age):\n    return age >= 18"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does def create?",
+        "options": [
+          "A function",
+          "A class only",
+          "A loop",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What is an argument?",
+        "options": [
+          "A function name",
+          "A value passed to a function",
+          "A return statement",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What does return do?",
+        "options": [
+          "Prints automatically",
+          "Repeats the function",
+          "Sends a value back and exits the function",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Where do local variables belong?",
+        "options": [
+          "Everywhere globally",
+          "Only in modules",
+          "It has no effect on the program.",
+          "Inside a function call"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Why use functions?",
+        "options": [
+          "Reuse and organize behavior",
+          "Avoid all variables",
+          "Replace Python types",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "7"
   },
   {
     "id": "l10",
@@ -219,7 +1092,104 @@
     "fullExample": "items = [\"pen\", \"book\", \"mouse\"]\nitems.append(\"keyboard\")\nitems.remove(\"pen\")\nprint(items)\nprint(items[:2])",
     "practiceTask": "Build a shopping-list program that adds items, removes one item, prints the number of items, and displays the first two items.",
     "starterCode": "items = [\"book\", \"pen\"]\n# Add, remove, inspect, and print items here\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Lists are ordered and mutable; tuples are ordered and immutable.",
+        "example": "items = [1, 2]\nitems.append(3)"
+      },
+      {
+        "text": "Indexing gets one item; slicing gets a section.",
+        "example": "items = [\"a\", \"b\", \"c\"]\nprint(items[0])\nprint(items[1:])"
+      },
+      {
+        "text": "List methods such as append and pop change or inspect list contents.",
+        "example": "items = [1, 2]\nitems.append(3)\nitems.pop()"
+      },
+      {
+        "text": "Methods such as pop() remove and return an item.",
+        "example": "items = [\"a\", \"b\"]\nlast = items.pop()\nprint(last)"
+      },
+      {
+        "text": "Remember that shared list references see the same mutations.",
+        "example": "a = [1, 2]\nb = a\nb.append(3)\nprint(a)  # [1, 2, 3]"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "items = [1, 2]\nitems.append(3)"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "items = [\"a\", \"b\", \"c\"]\nprint(items[0])\nprint(items[1:])"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "items = [1, 2]\nitems.append(3)\nitems.pop()"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "items = [\"a\", \"b\"]\nlast = items.pop()\nprint(last)"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Which is mutable?",
+        "options": [
+          "list",
+          "tuple",
+          "string",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does indexing return?",
+        "options": [
+          "Every item",
+          "One item",
+          "A new file",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What does slicing return?",
+        "options": [
+          "A package",
+          "A boolean only",
+          "A sequence section",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What does append do?",
+        "options": [
+          "Deletes a list",
+          "Sorts a tuple",
+          "It has no effect on the program.",
+          "Adds an item to a list"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Why can shared lists surprise you?",
+        "options": [
+          "Two names can reference the same list",
+          "Lists cannot change",
+          "Tuples are mutable",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "10 [30, 40]"
   },
   {
     "id": "l11",
@@ -241,7 +1211,104 @@
     "fullExample": "prices = {\"apple\": 2.5, \"book\": 10.0}\nprint(prices.get(\"apple\", 0))\nseen = {\"python\", \"python\", \"sql\"}\nprint(seen)",
     "practiceTask": "Create a product catalog dictionary and a set of unique categories. Look up a missing product safely and print the unique categories.",
     "starterCode": "catalog = {\"book\": 10, \"pen\": 2, \"bag\": 25}\n# Add one item, safely look up one item, and create unique categories\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Dictionaries map keys to values.",
+        "example": "user = {\"name\": \"Ali\", \"age\": 20}\nprint(user[\"name\"])"
+      },
+      {
+        "text": "Sets store unique values.",
+        "example": "colors = {\"red\", \"blue\", \"red\"}\nprint(colors)  # unique values"
+      },
+      {
+        "text": "Use get() when a missing key should have a fallback.",
+        "example": "age = user.get(\"age\", 0)"
+      },
+      {
+        "text": "Use in for membership checks.",
+        "example": "if \"email\" in user:\n    print(user[\"email\"])"
+      },
+      {
+        "text": "Choose a dictionary for key-based records and lookup.",
+        "example": "users = {\"ali\": 20, \"sara\": 22}\nprint(users[\"ali\"])"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "user = {\"name\": \"Ali\", \"age\": 20}\nprint(user[\"name\"])"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "colors = {\"red\", \"blue\", \"red\"}\nprint(colors)  # unique values"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "age = user.get(\"age\", 0)"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "if \"email\" in user:\n    print(user[\"email\"])"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does a dictionary store?",
+        "options": [
+          "Key-value pairs",
+          "Only unique numbers",
+          "Ordered functions",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does a set store?",
+        "options": [
+          "Key-value pairs",
+          "Unique values",
+          "Duplicate-only values",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Which safely provides a fallback?",
+        "options": [
+          "d.name(\"Unknown\")",
+          "d[\"name\", \"Unknown\"]",
+          "d.get(\"name\", \"Unknown\")",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What does in test?",
+        "options": [
+          "Sorting",
+          "File size",
+          "It has no effect on the program.",
+          "Membership"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Best structure for lookup by ID?",
+        "options": [
+          "Dictionary",
+          "Set only",
+          "String",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "Sam\n{'python', 'sql'}"
   },
   {
     "id": "l12",
@@ -263,7 +1330,104 @@
     "fullExample": "words = [\"python\", \"code\", \"developer\", \"api\"]\nlengths = {word: len(word) for word in words}\nlong_words = [word for word in words if len(word) >= 4]\nprint(lengths)\nprint(long_words)",
     "practiceTask": "Given a list of scores, create a list of passing scores, a dictionary mapping each score to a label, and a set of unique score values.",
     "starterCode": "scores = [55, 80, 80, 92, 41, 67]\n# Transform the scores with comprehensions\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Comprehensions build collections from iterables in one expression.",
+        "example": "squares = [n * n for n in range(5)]"
+      },
+      {
+        "text": "A filter can keep only matching items.",
+        "example": "evens = [n for n in range(10) if n % 2 == 0]"
+      },
+      {
+        "text": "Use a normal loop when a comprehension becomes hard to read.",
+        "example": "evens = []\nfor n in range(10):\n    if n % 2 == 0:\n        evens.append(n)"
+      },
+      {
+        "text": "Filtering keeps only matching inputs.",
+        "example": "names = [\"Ali\", \"Sara\"]\nlong = [n for n in names if len(n) > 3]"
+      },
+      {
+        "text": "A normal loop is better when the logic needs several steps.",
+        "example": "results = []\nfor n in numbers:\n    value = n * 2\n    results.append(value)"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "squares = [n * n for n in range(5)]"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "evens = [n for n in range(10) if n % 2 == 0]"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "evens = []\nfor n in range(10):\n    if n % 2 == 0:\n        evens.append(n)"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "names = [\"Ali\", \"Sara\"]\nlong = [n for n in names if len(n) > 3]"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does a comprehension create?",
+        "options": [
+          "A collection",
+          "A database",
+          "A module",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Where does a comprehension filter go?",
+        "options": [
+          "Before the iterable name",
+          "After the loop part",
+          "Inside import",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What is a dictionary comprehension?",
+        "options": [
+          "A way to delete dicts",
+          "A class",
+          "A compact way to build a dict",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "When should you use a normal loop?",
+        "options": [
+          "Never",
+          "Only for numbers",
+          "It has no effect on the program.",
+          "When the comprehension is hard to read"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "A transformation asks:",
+        "options": [
+          "What does each input become?",
+          "Which package installs?",
+          "Where is Python?",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "[1, 4, 9, 16, 25] {0, 2, 4, 6, 8}"
   },
   {
     "id": "l13",
@@ -285,7 +1449,104 @@
     "fullExample": "def make_multiplier(factor):\n    def multiply(value):\n        return value * factor\n    return multiply\n\ntimes_three = make_multiplier(3)\nprint(times_three(5))",
     "practiceTask": "Create a function that accepts any number of scores and keyword metadata, then return a structured report. Add a closure that creates a reusable percentage calculator.",
     "starterCode": "def summarize_scores(*scores, **metadata):\n    # Return a dictionary containing average and metadata\n    pass\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "*args collects extra positional arguments; **kwargs collects extra keyword arguments.",
+        "example": "def add(*numbers):\n    return sum(numbers)"
+      },
+      {
+        "text": "Keyword-only parameters can make calls clearer.",
+        "example": "def greet(*, name):\n    return f\"Hi {name}\""
+      },
+      {
+        "text": "Closures let an inner function remember enclosing values.",
+        "example": "def make_counter():\n    count = 0\n    def next_count():\n        nonlocal count\n        count += 1\n        return count\n    return next_count"
+      },
+      {
+        "text": "Advanced argument features should support a clear API.",
+        "example": "def log_call(func):\n    def wrapper(*args, **kwargs):\n        print(\"calling\")\n        return func(*args, **kwargs)\n    return wrapper"
+      },
+      {
+        "text": "Closures are useful when behavior needs remembered state.",
+        "example": "def make_prefix(prefix):\n    return lambda text: prefix + text"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "def add(*numbers):\n    return sum(numbers)"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "def greet(*, name):\n    return f\"Hi {name}\""
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "def make_counter():\n    count = 0\n    def next_count():\n        nonlocal count\n        count += 1\n        return count\n    return next_count"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "def log_call(func):\n    def wrapper(*args, **kwargs):\n        print(\"calling\")\n        return func(*args, **kwargs)\n    return wrapper"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does *args collect?",
+        "options": [
+          "Extra positional arguments",
+          "Extra modules",
+          "Return values",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does **kwargs collect?",
+        "options": [
+          "Lists only",
+          "Extra keyword arguments",
+          "Exceptions",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What can a closure remember?",
+        "options": [
+          "A database connection always",
+          "A class name only",
+          "A value from its enclosing scope",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Why use keyword-only parameters?",
+        "options": [
+          "To hide arguments",
+          "To remove types",
+          "It has no effect on the program.",
+          "To make options explicit"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Best rule for advanced features?",
+        "options": [
+          "Use them when they improve clarity",
+          "Use them everywhere",
+          "Avoid functions",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "6\n{'name': 'Sam', 'level': 'beginner'}"
   },
   {
     "id": "l14",
@@ -307,7 +1568,104 @@
     "fullExample": "# utils.py concept: keep reusable functions in modules\nfrom pathlib import Path\n\nroot = Path(\".\")\nprint(root.resolve())",
     "practiceTask": "Design a small package layout on paper or in comments: app entry point, domain logic, data access, and tests. Explain which imports should flow between layers.",
     "starterCode": "# Imagine this is app/main.py\n# Import a function from a separate module.\n# Keep business logic out of the entry point.\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Modules group reusable Python code.",
+        "example": "# helpers.py\ndef add(a, b): return a + b"
+      },
+      {
+        "text": "Virtual environments isolate project dependencies.",
+        "example": "python -m venv .venv"
+      },
+      {
+        "text": "pip installs packages into the active environment.",
+        "example": "python -m pip install requests"
+      },
+      {
+        "text": "Imports make reusable names available.",
+        "example": "from helpers import add\nprint(add(2, 3))"
+      },
+      {
+        "text": "Avoid relying on globally installed packages.",
+        "example": "# requirements.txt\nrequests==2.32.0"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "# helpers.py\ndef add(a, b): return a + b"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "python -m venv .venv"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "python -m pip install requests"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "from helpers import add\nprint(add(2, 3))"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is a module?",
+        "options": [
+          "A Python file that groups reusable code",
+          "A database",
+          "A virtual machine",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Why use a virtual environment?",
+        "options": [
+          "To speed every program",
+          "To isolate dependencies",
+          "To replace Python",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What does pip do?",
+        "options": [
+          "Runs SQL",
+          "Formats strings",
+          "Installs Python packages",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Why record dependencies?",
+        "options": [
+          "To hide packages",
+          "To remove imports",
+          "It has no effect on the program.",
+          "So setup can be reproduced"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Best dependency practice?",
+        "options": [
+          "Install into the project environment",
+          "Use random global packages",
+          "Copy site-packages manually",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "9.0\n<current working directory>/"
   },
   {
     "id": "l15",
@@ -330,7 +1688,104 @@
     "practiceTask": "Create a JSON-backed notes file: load existing notes if present, add a note, and save the updated list.",
     "starterCode": "from pathlib import Path\nimport json\n\npath = Path(\"notes.json\")\n# Load existing notes or start with []\n# Add one note and save it\n",
     "minutes": 25,
-    "projectId": "p03"
+    "projectId": "p03",
+    "teachingPoints": [
+      {
+        "text": "pathlib gives object-based file paths.",
+        "example": "from pathlib import Path\npath = Path(\"data.txt\")"
+      },
+      {
+        "text": "Use UTF-8 for normal text unless another encoding is required.",
+        "example": "Path(\"data.txt\").write_text(\"Hello\", encoding=\"utf-8\")"
+      },
+      {
+        "text": "JSON fits structured data; CSV fits rows and columns.",
+        "example": "json_data = {\"name\": \"Ali\", \"age\": 20}"
+      },
+      {
+        "text": "Use encoding explicitly for predictable text handling.",
+        "example": "from pathlib import Path\ntext = Path(\"data.txt\").read_text(encoding=\"utf-8\")"
+      },
+      {
+        "text": "Convert parsed CSV fields to the types your program needs.",
+        "example": "age = int(row[\"age\"])"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "from pathlib import Path\npath = Path(\"data.txt\")"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "Path(\"data.txt\").write_text(\"Hello\", encoding=\"utf-8\")"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "json_data = {\"name\": \"Ali\", \"age\": 20}"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "from pathlib import Path\ntext = Path(\"data.txt\").read_text(encoding=\"utf-8\")"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does pathlib represent?",
+        "options": [
+          "File-system paths",
+          "Web requests",
+          "Python types",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Common text encoding?",
+        "options": [
+          "SQL8",
+          "UTF-8",
+          "PYTHON8",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What is JSON good for?",
+        "options": [
+          "Only images",
+          "Only SQL tables",
+          "Structured data",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What is CSV good for?",
+        "options": [
+          "Class inheritance",
+          "Async tasks",
+          "It has no effect on the program.",
+          "Rows and columns"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "What type are CSV values read as?",
+        "options": [
+          "Text",
+          "Always int",
+          "Always float",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "{'name': 'Sam', 'level': 2}"
   },
   {
     "id": "l16",
@@ -352,7 +1807,104 @@
     "fullExample": "def parse_age(text):\n    try:\n        age = int(text)\n    except ValueError as exc:\n        raise ValueError(\"Age must be an integer\") from exc\n    if age < 0:\n        raise ValueError(\"Age cannot be negative\")\n    return age\n\nfor value in [\"21\", \"-1\", \"x\"]:\n    try:\n        print(parse_age(value))\n    except ValueError as error:\n        print(\"Invalid:\", error)",
     "practiceTask": "Write a safe integer parser that rejects invalid text and negative values. Deliberately introduce one bug, reproduce it, and document the debugging steps you used to fix it.",
     "starterCode": "def parse_positive_int(text):\n    # Return a positive integer or raise ValueError\n    pass\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Catch specific exceptions instead of hiding unrelated bugs.",
+        "example": "try:\n    age = int(text)\nexcept ValueError:\n    print(\"Age must be a number\")"
+      },
+      {
+        "text": "Validation checks rules before the main operation.",
+        "example": "if age < 0:\n    raise ValueError(\"Age cannot be negative\")"
+      },
+      {
+        "text": "Read the final exception in a traceback first, then move upward.",
+        "example": "# Read the last traceback line first: it often names the actual error."
+      },
+      {
+        "text": "finally is useful for cleanup.",
+        "example": "file = open(\"data.txt\")\ntry:\n    data = file.read()\nfinally:\n    file.close()"
+      },
+      {
+        "text": "Fix the cause of an exception instead of hiding it.",
+        "example": "try:\n    value = int(text)\nexcept ValueError:\n    print(\"Fix the input\")"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "try:\n    age = int(text)\nexcept ValueError:\n    print(\"Age must be a number\")"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "if age < 0:\n    raise ValueError(\"Age cannot be negative\")"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "# Read the last traceback line first: it often names the actual error."
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "file = open(\"data.txt\")\ntry:\n    data = file.read()\nfinally:\n    file.close()"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What should you catch?",
+        "options": [
+          "Specific expected exceptions",
+          "Every exception blindly",
+          "No exceptions",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does validation check?",
+        "options": [
+          "Whether code looks long",
+          "Whether input follows rules",
+          "Whether Python is installed",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Where should you start reading a traceback?",
+        "options": [
+          "The first blank line",
+          "The imports only",
+          "The final exception",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What is finally useful for?",
+        "options": [
+          "Creating loops",
+          "Parsing JSON",
+          "It has no effect on the program.",
+          "Cleanup that must happen either way"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Best debugging approach?",
+        "options": [
+          "Use the error message to locate the cause",
+          "Delete the whole program",
+          "Ignore the traceback",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "Please enter a valid integer."
   },
   {
     "id": "l17",
@@ -374,7 +1926,104 @@
     "fullExample": "def is_even(number):\n    return number % 2 == 0\n\nassert is_even(4)\nassert not is_even(5)\nassert is_even(0)\nprint(\"Basic checks passed\")",
     "practiceTask": "Write at least five assertions for a function that validates usernames. Include valid, empty, too-short, whitespace, and boundary cases.",
     "starterCode": "def valid_username(name):\n    # Return True only for a valid username\n    pass\n\n# Add at least five assertions below\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "A test states expected behavior in executable form.",
+        "example": "def test_add():\n    assert add(2, 3) == 5"
+      },
+      {
+        "text": "Good tests isolate one behavior and cover edge/failure cases.",
+        "example": "def test_age():\n    assert is_adult(18) is True"
+      },
+      {
+        "text": "unittest is built in; pytest is a popular third-party framework.",
+        "example": "# unittest is built in; pytest is installed separately."
+      },
+      {
+        "text": "Boundary tests catch off-by-one and limit errors.",
+        "example": "def test_last_index():\n    assert items[2] == \"c\""
+      },
+      {
+        "text": "Failure tests check how code behaves when inputs are bad.",
+        "example": "def test_bad_input():\n    with pytest.raises(ValueError):\n        parse_age(\"x\")"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "def test_add():\n    assert add(2, 3) == 5"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "def test_age():\n    assert is_adult(18) is True"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "# unittest is built in; pytest is installed separately."
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "def test_last_index():\n    assert items[2] == \"c\""
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does a test describe?",
+        "options": [
+          "Expected behavior",
+          "Package versions only",
+          "UI colors",
+          "Only the program title."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Good tests are usually:",
+        "options": [
+          "Random",
+          "Focused",
+          "Dependent on every test",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Which is built into Python?",
+        "options": [
+          "pytest",
+          "requests",
+          "unittest",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What should you test?",
+        "options": [
+          "Only the happy path",
+          "Only syntax",
+          "It has no effect on the program.",
+          "Normal and edge cases"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Why isolate a test?",
+        "options": [
+          "Failures are easier to understand",
+          "It makes code slower",
+          "It removes assertions",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "(no output)"
   },
   {
     "id": "l18",
@@ -396,7 +2045,104 @@
     "fullExample": "from dataclasses import dataclass\n\n@dataclass\nclass BankAccount:\n    owner: str\n    balance: float = 0.0\n\n    def deposit(self, amount):\n        if amount <= 0:\n            raise ValueError(\"Amount must be positive\")\n        self.balance += amount\n\naccount = BankAccount(\"Sam\")\naccount.deposit(50)\nprint(account)",
     "practiceTask": "Design a small domain class such as Task, Product, or BankAccount. Give it validated state and at least three methods, then add assertions for its important behavior.",
     "starterCode": "from dataclasses import dataclass\n\n@dataclass\nclass Task:\n    title: str\n    done: bool = False\n\n    # Add methods for completing and reopening the task\n    pass\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Classes define data and behavior for objects.",
+        "example": "class User:\n    def greet(self):\n        return \"Hi\""
+      },
+      {
+        "text": "__init__ establishes initial instance state.",
+        "example": "class User:\n    def __init__(self, name):\n        self.name = name"
+      },
+      {
+        "text": "Dataclasses reduce boilerplate for data-focused classes.",
+        "example": "from dataclasses import dataclass\n@dataclass\nclass User:\n    name: str"
+      },
+      {
+        "text": "Objects are instances of classes.",
+        "example": "user = User(\"Ali\")"
+      },
+      {
+        "text": "Encapsulation protects important invariants through a clear interface.",
+        "example": "class Account:\n    def __init__(self):\n        self._balance = 0\n    def deposit(self, amount):\n        if amount < 0: raise ValueError\n        self._balance += amount"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "class User:\n    def greet(self):\n        return \"Hi\""
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "class User:\n    def __init__(self, name):\n        self.name = name"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "from dataclasses import dataclass\n@dataclass\nclass User:\n    name: str"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "user = User(\"Ali\")"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does a class define?",
+        "options": [
+          "Object data and behavior",
+          "Only a loop",
+          "Only a file",
+          "Only variable names."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What is __init__ used for?",
+        "options": [
+          "Deleting classes",
+          "Initial instance state",
+          "Running imports",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Why use a dataclass?",
+        "options": [
+          "Faster internet",
+          "SQL queries",
+          "Less boilerplate for data models",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What is encapsulation about?",
+        "options": [
+          "Hiding every variable forever",
+          "Using inheritance only",
+          "It has no effect on the program.",
+          "A clear interface around implementation"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "When is a class useful?",
+        "options": [
+          "When data and behavior belong together",
+          "For every single variable",
+          "Only for math",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "Product(name='Book', price=12.5)"
   },
   {
     "id": "l19",
@@ -418,7 +2164,104 @@
     "fullExample": "class EmailSender:\n    def send(self, message):\n        print(\"EMAIL:\", message)\n\nclass SmsSender:\n    def send(self, message):\n        print(\"SMS:\", message)\n\ndef notify(sender, message):\n    sender.send(message)\n\nfor sender in [EmailSender(), SmsSender()]:\n    notify(sender, \"Build complete\")",
     "practiceTask": "Create two interchangeable storage or notification implementations and one function that uses either without checking its concrete type.",
     "starterCode": "class MemoryStore:\n    def save(self, item):\n        print(\"Memory:\", item)\n\nclass FileStore:\n    def save(self, item):\n        print(\"File:\", item)\n\n# Write a function that accepts any store with save().\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Composition means using one object inside another.",
+        "example": "class Engine: pass\nclass Car:\n    def __init__(self): self.engine = Engine()"
+      },
+      {
+        "text": "Inheritance models an is-a relationship.",
+        "example": "class Dog(Animal):\n    pass"
+      },
+      {
+        "text": "Polymorphism lets code use a common interface across implementations.",
+        "example": "class Dog:\n    def speak(self): return \"woof\"\nclass Cat:\n    def speak(self): return \"meow\"\nfor animal in [Dog(), Cat()]: print(animal.speak())"
+      },
+      {
+        "text": "Inheritance should model a real is-a relationship.",
+        "example": "class SavingsAccount(Account):\n    pass"
+      },
+      {
+        "text": "Polymorphism reduces code that depends on concrete classes.",
+        "example": "def speak(animal):\n    return animal.speak()"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "class Engine: pass\nclass Car:\n    def __init__(self): self.engine = Engine()"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "class Dog(Animal):\n    pass"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "class Dog:\n    def speak(self): return \"woof\"\nclass Cat:\n    def speak(self): return \"meow\"\nfor animal in [Dog(), Cat()]: print(animal.speak())"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "class SavingsAccount(Account):\n    pass"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What is composition?",
+        "options": [
+          "An object uses another object",
+          "A class copies a file",
+          "A loop inside a loop",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Inheritance represents:",
+        "options": [
+          "A has-a relationship only",
+          "An is-a relationship",
+          "A file path",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What is polymorphism?",
+        "options": [
+          "Using only one class",
+          "Avoiding methods",
+          "Using a common interface across implementations",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "When can composition help?",
+        "options": [
+          "Only for numbers",
+          "Never",
+          "It has no effect on the program.",
+          "When flexibility matters"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "A good override should:",
+        "options": [
+          "Preserve expected behavior",
+          "Break the parent contract",
+          "Remove all methods",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "Saved"
   },
   {
     "id": "l20",
@@ -440,7 +2283,104 @@
     "fullExample": "def read_numbers(lines):\n    for line in lines:\n        value = line.strip()\n        if value:\n            yield int(value)\n\nfor number in read_numbers([\"10\", \"\", \"20\", \"30\"]):\n    print(number * 2)",
     "practiceTask": "Write a generator that yields only valid positive numbers from a sequence of text lines. Explain why it uses less memory than building a complete result list.",
     "starterCode": "def positive_numbers(lines):\n    # Yield positive integers lazily\n    pass\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Iterators provide items one at a time.",
+        "example": "it = iter([10, 20])\nprint(next(it))  # 10"
+      },
+      {
+        "text": "iter() creates an iterator and next() gets the next item.",
+        "example": "it = iter([10, 20])\nprint(next(it))\nprint(next(it))"
+      },
+      {
+        "text": "yield creates a lazy generator.",
+        "example": "def count_up():\n    yield 1\n    yield 2"
+      },
+      {
+        "text": "Lazy work delays producing values until they are requested.",
+        "example": "def read_names(names):\n    for name in names:\n        yield name.upper()"
+      },
+      {
+        "text": "Iterators raise StopIteration when exhausted.",
+        "example": "it = iter([1])\nprint(next(it))\n# next(it) again raises StopIteration"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "it = iter([10, 20])\nprint(next(it))  # 10"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "it = iter([10, 20])\nprint(next(it))\nprint(next(it))"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "def count_up():\n    yield 1\n    yield 2"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "def read_names(names):\n    for name in names:\n        yield name.upper()"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does an iterator provide?",
+        "options": [
+          "Items one at a time",
+          "Only strings",
+          "Database rows only",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does iter() do?",
+        "options": [
+          "Creates a list always",
+          "Creates an iterator",
+          "Stops a loop",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What does next() request?",
+        "options": [
+          "The whole sequence",
+          "A new function",
+          "The next item",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What does yield create?",
+        "options": [
+          "A class",
+          "A module",
+          "It has no effect on the program.",
+          "A generator"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Why use generators?",
+        "options": [
+          "They can save memory",
+          "They always run faster",
+          "They store everything",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "[1, 2, 3, 4, 5]"
   },
   {
     "id": "l21",
@@ -462,7 +2402,104 @@
     "fullExample": "from contextlib import contextmanager\n\n@contextmanager\ndef managed_message():\n    print(\"start\")\n    try:\n        yield\n    finally:\n        print(\"cleanup\")\n\nwith managed_message():\n    print(\"work\")",
     "practiceTask": "Write a timing or logging decorator that returns the original function result. Then use a context manager to guarantee cleanup of a simple resource-like object.",
     "starterCode": "from functools import wraps\n\ndef log_call(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        # Add a useful log message, call func, and return its result\n        pass\n    return wrapper\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "A decorator adds behavior around a callable.",
+        "example": "def log(func):\n    def wrapper():\n        print(\"start\")\n        return func()\n    return wrapper"
+      },
+      {
+        "text": "functools.wraps preserves useful function metadata.",
+        "example": "from functools import wraps\ndef log(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        return func(*args, **kwargs)\n    return wrapper"
+      },
+      {
+        "text": "A context manager handles setup and cleanup around with.",
+        "example": "with open(\"data.txt\", encoding=\"utf-8\") as f:\n    data = f.read()"
+      },
+      {
+        "text": "Decorators are useful for cross-cutting behavior.",
+        "example": "@log\ndef save():\n    pass"
+      },
+      {
+        "text": "with blocks make cleanup predictable.",
+        "example": "with open(\"data.txt\") as f:\n    data = f.read()\n# file closes after the with block"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "def log(func):\n    def wrapper():\n        print(\"start\")\n        return func()\n    return wrapper"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "from functools import wraps\ndef log(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        return func(*args, **kwargs)\n    return wrapper"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "with open(\"data.txt\", encoding=\"utf-8\") as f:\n    data = f.read()"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "@log\ndef save():\n    pass"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does a decorator return?",
+        "options": [
+          "A callable with added behavior",
+          "A database",
+          "A loop",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Why use functools.wraps?",
+        "options": [
+          "To speed Python",
+          "To preserve function metadata",
+          "To parse JSON",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What does with provide?",
+        "options": [
+          "A loop",
+          "A class",
+          "Managed setup and cleanup",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What is a wrapper?",
+        "options": [
+          "A package manager",
+          "A database",
+          "It has no effect on the program.",
+          "A function around another callable"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Good use of context managers?",
+        "options": [
+          "Managing resources",
+          "Naming variables",
+          "Sorting lists",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "Calling greet\nHello Sam"
   },
   {
     "id": "l22",
@@ -484,7 +2521,104 @@
     "fullExample": "from dataclasses import dataclass\n\n@dataclass\nclass User:\n    name: str\n    age: int\n\ndef is_adult(user: User) -> bool:\n    \"\"\"Return True when the user is legally an adult in this example.\"\"\"\n    return user.age >= 18\n\nprint(is_adult(User(\"Sam\", 21)))",
     "practiceTask": "Add type hints and useful docstrings to three functions from earlier lessons. Identify one incorrect call that a static checker should flag.",
     "starterCode": "def average(values: list[float]) -> float:\n    \"\"\"Return the arithmetic mean of values.\"\"\"\n    # Add validation and calculation\n    pass",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Type hints describe intended data shapes; Python still runs dynamically.",
+        "example": "def greet(name: str) -> str:\n    return f\"Hi {name}\""
+      },
+      {
+        "text": "str | None is a modern union when supported by the Python version.",
+        "example": "def find_name(name: str) -> str | None:\n    return name or None"
+      },
+      {
+        "text": "Protocols describe required behavior without requiring inheritance.",
+        "example": "from typing import Protocol\nclass HasName(Protocol):\n    name: str"
+      },
+      {
+        "text": "Type hints help readers and static tools.",
+        "example": "age: int = 20"
+      },
+      {
+        "text": "Protocols focus on behavior rather than class ancestry.",
+        "example": "def print_name(obj: HasName):\n    print(obj.name)"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "def greet(name: str) -> str:\n    return f\"Hi {name}\""
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "def find_name(name: str) -> str | None:\n    return name or None"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "from typing import Protocol\nclass HasName(Protocol):\n    name: str"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "age: int = 20"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What do type hints provide?",
+        "options": [
+          "Intended types for readers and tools",
+          "Automatic runtime checks always",
+          "Database schemas",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does str | None mean?",
+        "options": [
+          "A string and None at once",
+          "A string or None",
+          "Only a string",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What does a Protocol describe?",
+        "options": [
+          "A database table",
+          "A package version",
+          "Required behavior",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Do type hints force Python types?",
+        "options": [
+          "Yes, always",
+          "Only in loops",
+          "It has no effect on the program.",
+          "No"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Why document an API?",
+        "options": [
+          "To explain how to use it",
+          "To hide behavior",
+          "To replace tests",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "4.0"
   },
   {
     "id": "l23",
@@ -506,7 +2640,104 @@
     "fullExample": "def parse_user(payload: dict) -> str:\n    return payload.get(\"name\", \"Unknown\")\n\nfake_response = {\"name\": \"Sam\", \"role\": \"developer\"}\nprint(parse_user(fake_response))",
     "practiceTask": "Design an API client function with a timeout, status handling, JSON parsing, and a separate function that turns the response into application data. The browser runner may not allow live network access, so use a mocked response for the exercise.",
     "starterCode": "def fetch_data(client, url):\n    # Ask client for data with a timeout, validate success, and return JSON\n    pass\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "HTTP uses requests and responses with status codes.",
+        "example": "response = requests.get(url, timeout=5)\nprint(response.status_code)"
+      },
+      {
+        "text": "JSON is common in APIs, but external data still needs validation.",
+        "example": "data = response.json()\nif not isinstance(data, dict):\n    raise ValueError(\"Bad JSON shape\")"
+      },
+      {
+        "text": "Use timeouts because network calls can fail or hang.",
+        "example": "response = requests.get(url, timeout=5)"
+      },
+      {
+        "text": "Check status codes before trusting a response.",
+        "example": "response.raise_for_status()"
+      },
+      {
+        "text": "Network data should be treated as untrusted input.",
+        "example": "name = data.get(\"name\")\nif not isinstance(name, str):\n    raise ValueError(\"Invalid name\")"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "response = requests.get(url, timeout=5)\nprint(response.status_code)"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "data = response.json()\nif not isinstance(data, dict):\n    raise ValueError(\"Bad JSON shape\")"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "response = requests.get(url, timeout=5)"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "response.raise_for_status()"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does an HTTP response include?",
+        "options": [
+          "A status code",
+          "A Python class always",
+          "A CSV file always",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Why validate API JSON?",
+        "options": [
+          "JSON is always wrong",
+          "External data can be unexpected",
+          "Python cannot parse JSON",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Why set a timeout?",
+        "options": [
+          "To make JSON valid",
+          "To create a socket",
+          "To avoid waiting forever",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What can make a network call fail?",
+        "options": [
+          "Only syntax errors",
+          "Only comments",
+          "It has no effect on the program.",
+          "Timeouts or server errors"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Best API habit?",
+        "options": [
+          "Check status and response data",
+          "Assume success",
+          "Ignore malformed data",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "Python"
   },
   {
     "id": "l24",
@@ -517,19 +2748,116 @@
     "partNumber": 11,
     "title": "SQLite and SQL CRUD",
     "summary": "Persist application data with SQLite and understand tables, queries, parameters, transactions, and CRUD.",
-    "definition": "SQLite is a small relational database included with Python. SQL describes data operations; parameterized queries keep values separate from SQL text and reduce injection risk.",
-    "codeExample": "import sqlite3\n\nconnection = sqlite3.connect(\":memory:\")\nconnection.execute(\"CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT)\")\nconnection.execute(\"INSERT INTO tasks (title) VALUES (?)\", (\"Learn SQL\",))\nfor row in connection.execute(\"SELECT id, title FROM tasks\"):\n    print(row)\nconnection.close()",
+    "definition": "SQLite is a small relational database commonly used with Python. SQL describes data operations; parameterized queries keep values separate from SQL text and reduce injection risk.",
+    "codeExample": "# CRUD means Create, Read, Update, Delete.\ntasks = []\n\ntasks.append({\"id\": 1, \"title\": \"Learn CRUD\", \"done\": False})  # Create\nprint(tasks)  # Read\ntasks[0][\"done\"] = True  # Update\ndel tasks[0]  # Delete",
     "howItWorks": [
       "Tables store rows with a defined schema.",
       "SELECT reads data; INSERT creates; UPDATE changes; DELETE removes.",
       "Use placeholders such as ? and pass parameters separately.",
       "Commit intentional writes and close connections; context managers can simplify transaction handling."
     ],
-    "fullExample": "import sqlite3\n\nwith sqlite3.connect(\":memory:\") as db:\n    db.execute(\"CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT NOT NULL)\")\n    db.execute(\"INSERT INTO users (name) VALUES (?)\", (\"Sam\",))\n    rows = db.execute(\"SELECT id, name FROM users\").fetchall()\n    print(rows)",
-    "practiceTask": "Design a CRUD layer for tasks with create, list, update, and delete functions. Use parameterized SQL and return Python data structures instead of printing from the database layer.",
+    "fullExample": "# This browser lesson demonstrates CRUD safely with Python data structures.\n# SQLite is a separate database technology and is not required for this exercise.\n\ntasks = []\n\n\ndef create_task(title):\n    task = {\"id\": len(tasks) + 1, \"title\": title, \"done\": False}\n    tasks.append(task)\n    return task\n\n\ndef read_tasks():\n    return tasks\n\n\ndef update_task(task_id, done):\n    for task in tasks:\n        if task[\"id\"] == task_id:\n            task[\"done\"] = done\n            return task\n    return None\n\n\ndef delete_task(task_id):\n    for index, task in enumerate(tasks):\n        if task[\"id\"] == task_id:\n            return tasks.pop(index)\n    return None\n\n\ncreate_task(\"Learn CRUD\")\ncreate_task(\"Practice validation\")\nprint(\"Created:\", read_tasks())\nupdate_task(1, True)\nprint(\"Updated:\", read_tasks())\ndelete_task(2)\nprint(\"After delete:\", read_tasks())",
+    "practiceTask": "Understand Create, Read, Update, and Delete with the runnable in-memory example. Then design the same operations for a small command-line task list. If you later use SQLite in a normal desktop/server Python environment, use parameterized SQL and explicit connection handling.",
     "starterCode": "def create_task(db, title):\n    # Execute a parameterized INSERT\n    pass\n\ndef list_tasks(db):\n    # Return task rows\n    pass",
     "minutes": 25,
-    "projectId": "p04"
+    "projectId": "p04",
+    "teachingPoints": [
+      {
+        "text": "SQLite stores relational data in a local database file.",
+        "example": "# SQLite stores tables in a local .db file."
+      },
+      {
+        "text": "CRUD means create, read, update, delete.",
+        "example": "INSERT INTO users (name) VALUES (?)"
+      },
+      {
+        "text": "Use parameterized SQL and transactions for safe, consistent changes.",
+        "example": "conn.execute(\"INSERT INTO users (name) VALUES (?)\", (name,))"
+      },
+      {
+        "text": "CRUD covers the basic data lifecycle.",
+        "example": "# create → read → update → delete"
+      },
+      {
+        "text": "Transactions help keep related writes consistent.",
+        "example": "conn.execute(\"BEGIN\")\n# related writes\nconn.commit()"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "# SQLite stores tables in a local .db file."
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "INSERT INTO users (name) VALUES (?)"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "conn.execute(\"INSERT INTO users (name) VALUES (?)\", (name,))"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "# create → read → update → delete"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does CRUD mean?",
+        "options": [
+          "Create, Read, Update, Delete",
+          "Copy, Run, Undo, Debug",
+          "Create, Remove, Use, Deploy",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does SQLite store?",
+        "options": [
+          "Only JSON files",
+          "Relational data",
+          "Only images",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Why parameterize SQL?",
+        "options": [
+          "To make SQL longer",
+          "To disable queries",
+          "To safely pass values",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What does a transaction group?",
+        "options": [
+          "Python imports",
+          "HTTP requests",
+          "It has no effect on the program.",
+          "Related database changes"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Good database practice?",
+        "options": [
+          "Keep logical changes consistent",
+          "Ignore errors",
+          "Concatenate user input",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "[{'id': 1, 'title': 'Learn CRUD', 'done': False}]"
   },
   {
     "id": "l25",
@@ -551,7 +2879,104 @@
     "fullExample": "import asyncio\n\nasync def job(number):\n    await asyncio.sleep(0.05)\n    return number * 2\n\nasync def main():\n    results = await asyncio.gather(*(job(n) for n in range(5)))\n    print(results)\n\nasyncio.run(main())",
     "practiceTask": "Create three async jobs and run them concurrently with asyncio.gather. Explain why concurrency can reduce waiting time for I/O but does not magically speed up CPU-heavy Python code.",
     "starterCode": "import asyncio\n\nasync def job(name):\n    # Simulate asynchronous I/O and return a result\n    pass\n\nasync def main():\n    # Run multiple jobs concurrently\n    pass\n\n# asyncio.run(main())",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "async def creates a coroutine.",
+        "example": "async def fetch_data():\n    return \"done\""
+      },
+      {
+        "text": "await pauses a coroutine until an awaitable completes.",
+        "example": "async def work():\n    await asyncio.sleep(1)\n    return \"done\""
+      },
+      {
+        "text": "Async is most useful for I/O-heavy waiting, not CPU-heavy work.",
+        "example": "# Waiting for a network response is I/O; async can help here."
+      },
+      {
+        "text": "The event loop schedules async work.",
+        "example": "asyncio.run(work())"
+      },
+      {
+        "text": "Async helps when tasks spend time waiting.",
+        "example": "await asyncio.sleep(1)\nprint(\"while waiting, other async work can run\")"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "async def fetch_data():\n    return \"done\""
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "async def work():\n    await asyncio.sleep(1)\n    return \"done\""
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "# Waiting for a network response is I/O; async can help here."
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "asyncio.run(work())"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does async def create?",
+        "options": [
+          "A coroutine",
+          "A thread always",
+          "A database",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does await do?",
+        "options": [
+          "Starts Python",
+          "Waits for an awaitable",
+          "Stops all tasks",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What manages async tasks?",
+        "options": [
+          "A CSV file",
+          "A class",
+          "An event loop",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Best use for async?",
+        "options": [
+          "Pure CPU loops",
+          "Renaming variables",
+          "It has no effect on the program.",
+          "I/O-heavy work"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Why can async help?",
+        "options": [
+          "Waiting time can overlap",
+          "It removes all errors",
+          "It doubles CPU speed",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "['done: A', 'done: B']"
   },
   {
     "id": "l26",
@@ -573,7 +2998,104 @@
     "fullExample": "import logging\n\nlogging.basicConfig(level=logging.INFO, format=\"%(levelname)s:%(message)s\")\nlogger = logging.getLogger(__name__)\n\nuser = \"Sam\"\nlogger.info(\"Processing user %s\", user)\nprint(\"Done\")",
     "practiceTask": "Create a configuration object with safe defaults and a logger that records start, success, and failure events. Add comments describing which values belong in environment variables.",
     "starterCode": "import logging\n\nlogger = logging.getLogger(__name__)\n# Configure logging and create a safe application configuration here\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Logging records program activity and helps diagnose failures.",
+        "example": "import logging\nlogging.info(\"User logged in\")"
+      },
+      {
+        "text": "Use log levels such as DEBUG, INFO, WARNING, ERROR, and CRITICAL intentionally.",
+        "example": "logging.debug(\"details\")\nlogging.error(\"failed\")"
+      },
+      {
+        "text": "Keep configuration separate from code and handle secrets carefully.",
+        "example": "# Read config from environment instead of hard-coding a key."
+      },
+      {
+        "text": "Use log levels to control useful detail.",
+        "example": "logging.warning(\"Retrying\")"
+      },
+      {
+        "text": "Never place secrets directly in source code or logs.",
+        "example": "api_key = os.environ[\"API_KEY\"]  # do not print it"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "import logging\nlogging.info(\"User logged in\")"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "logging.debug(\"details\")\nlogging.error(\"failed\")"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "# Read config from environment instead of hard-coding a key."
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "logging.warning(\"Retrying\")"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Why use logging?",
+        "options": [
+          "To diagnose program behavior",
+          "To replace all tests",
+          "To create databases",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Which is a log level?",
+        "options": [
+          "PACKAGE",
+          "WARNING",
+          "STRING",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What should configuration avoid?",
+        "options": [
+          "Clear names",
+          "Documentation",
+          "Hard-coded environment-specific values",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Where can non-public config live?",
+        "options": [
+          "Source comments",
+          "Function names",
+          "It has no effect on the program.",
+          "Environment variables"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "What should never be logged casually?",
+        "options": [
+          "Secrets",
+          "Normal status",
+          "Error types",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "INFO:__main__:Application started"
   },
   {
     "id": "l27",
@@ -595,7 +3117,104 @@
     "fullExample": "import argparse\n\ndef greet(name: str) -> str:\n    return f\"Hello, {name}!\"\n\nparser = argparse.ArgumentParser()\nparser.add_argument(\"--name\", default=\"world\")\nargs = parser.parse_args()\nprint(greet(args.name))",
     "practiceTask": "Design a CLI with subcommands such as add, list, and remove. Keep the CLI thin and put business logic in importable functions that can be tested without command-line parsing.",
     "starterCode": "def add_task(title: str) -> str:\n    return title\n\n# Add an argparse CLI around your reusable function\n",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "A CLI needs clear commands, arguments, help, and validation.",
+        "example": "python app.py --help"
+      },
+      {
+        "text": "Packages separate reusable code from the entry point.",
+        "example": "# app/cli.py handles commands; app/core.py holds reusable logic."
+      },
+      {
+        "text": "Document setup, dependencies, tests, and how to run the program.",
+        "example": "# README: install → run → test"
+      },
+      {
+        "text": "A package can expose reusable modules and a clear entry point.",
+        "example": "def main():\n    ...\nif __name__ == \"__main__\":\n    main()"
+      },
+      {
+        "text": "Good dependency records make setup repeatable.",
+        "example": "# requirements.txt\nrequests==2.32.0"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "python app.py --help"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "# app/cli.py handles commands; app/core.py holds reusable logic."
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "# README: install → run → test"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "def main():\n    ...\nif __name__ == \"__main__\":\n    main()"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What should a CLI provide?",
+        "options": [
+          "Commands and useful help",
+          "Only a logo",
+          "Only a database",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Why package reusable code?",
+        "options": [
+          "To hide all code",
+          "To separate it from the entry point",
+          "To remove tests",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Why constrain dependencies?",
+        "options": [
+          "To make code longer",
+          "To avoid imports",
+          "For predictable installs",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "What should docs explain?",
+        "options": [
+          "Only the author name",
+          "Only colors",
+          "It has no effect on the program.",
+          "Install, run, test, and configure"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Good CLI behavior includes:",
+        "options": [
+          "Useful validation and exit behavior",
+          "Silent failures",
+          "Random commands",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "Hello world"
   },
   {
     "id": "l28",
@@ -617,7 +3236,104 @@
     "fullExample": "def complete_task(store, task_id):\n    task = store.get(task_id)\n    if task is None:\n        raise LookupError(\"Task not found\")\n    task[\"done\"] = True\n    store.save(task)\n    return task\n\nclass MemoryStore:\n    def __init__(self): self.data = {1: {\"done\": False}}\n    def get(self, task_id): return self.data.get(task_id)\n    def save(self, task): self.data[1] = task\n\nprint(complete_task(MemoryStore(), 1))",
     "practiceTask": "Take one earlier project design and split it into at least three responsibilities: input/CLI, domain/business logic, and persistence/output. Write down what dependency can be replaced in tests.",
     "starterCode": "class TaskService:\n    def __init__(self, store):\n        self.store = store\n\n    def complete(self, task_id):\n        # Implement a tested business operation without direct file/database calls\n        pass",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Separate UI, business rules, persistence, and external services.",
+        "example": "# ui.py → service.py → repository.py"
+      },
+      {
+        "text": "Refactor in small steps while tests protect behavior.",
+        "example": "# Change one function, run tests, then make the next change."
+      },
+      {
+        "text": "Small functions and clear boundaries are easier to maintain.",
+        "example": "def calculate_total(items):\n    return sum(items)"
+      },
+      {
+        "text": "Tests make refactoring safer.",
+        "example": "def test_calculate_total():\n    assert calculate_total([1,2]) == 3"
+      },
+      {
+        "text": "Clear boundaries make components easier to replace.",
+        "example": "# Business logic does not need to know how the UI draws a button."
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "# ui.py → service.py → repository.py"
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "# Change one function, run tests, then make the next change."
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "def calculate_total(items):\n    return sum(items)"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "def test_calculate_total():\n    assert calculate_total([1,2]) == 3"
+      }
+    ],
+    "quiz": [
+      {
+        "question": "Why separate concerns?",
+        "options": [
+          "To keep responsibilities clear",
+          "To add more files for no reason",
+          "To avoid functions",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Safe refactoring means:",
+        "options": [
+          "Rewrite everything at once",
+          "Change small parts while tests protect behavior",
+          "Remove tests",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What do boundaries help with?",
+        "options": [
+          "Making code invisible",
+          "Removing inputs",
+          "Replacing and testing components",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Why keep functions small?",
+        "options": [
+          "They always run faster",
+          "They need no tests",
+          "It has no effect on the program.",
+          "They are easier to reason about"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Best maintainability goal?",
+        "options": [
+          "Clear responsibilities",
+          "Maximum complexity",
+          "One huge module",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "(no output — method definition only)"
   },
   {
     "id": "l29",
@@ -639,7 +3355,104 @@
     "fullExample": "import time\n\nvalues = list(range(100_000))\nstart = time.perf_counter()\nresult = sum(values)\nelapsed = time.perf_counter() - start\nprint(\"sum:\", result)\nprint(\"seconds:\", round(elapsed, 6))",
     "practiceTask": "Compare two implementations of a data-processing task, measure them, and explain the trade-off. Do not claim an optimization until your measurement supports it.",
     "starterCode": "def slow_version(values):\n    # Implement a baseline\n    pass\n\ndef fast_version(values):\n    # Implement a measured alternative\n    pass",
-    "minutes": 25
+    "minutes": 25,
+    "teachingPoints": [
+      {
+        "text": "Big-O describes how work grows as input grows.",
+        "example": "# list lookup is usually O(1); scanning a list is O(n)."
+      },
+      {
+        "text": "Profilers show where time is actually spent.",
+        "example": "python -m cProfile app.py"
+      },
+      {
+        "text": "Optimize measured hot paths and remember memory/speed trade-offs.",
+        "example": "# Optimize the function that profiling shows is slow."
+      },
+      {
+        "text": "Big-O is about growth, not exact wall-clock time.",
+        "example": "# Two inputs can take 2× work instead of exactly the same time."
+      },
+      {
+        "text": "Caching can improve speed while using more memory.",
+        "example": "cache[key] = result  # faster later, uses memory"
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "# list lookup is usually O(1); scanning a list is O(n)."
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "python -m cProfile app.py"
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "# Optimize the function that profiling shows is slow."
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "# Two inputs can take 2× work instead of exactly the same time."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What does Big-O describe?",
+        "options": [
+          "Growth of work with input size",
+          "Exact runtime on every phone",
+          "Code style",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What does a profiler show?",
+        "options": [
+          "Which variable is best",
+          "Where time is spent",
+          "Package licenses",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "What is a hot path?",
+        "options": [
+          "A file path",
+          "A Python keyword",
+          "Code that matters to measured workload",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Why measure first?",
+        "options": [
+          "To slow programs",
+          "To remove tests",
+          "It has no effect on the program.",
+          "To avoid guessing"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Caching can trade:",
+        "options": [
+          "Memory for speed",
+          "Speed for syntax",
+          "Types for imports",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "499999500000 <time>s"
   },
   {
     "id": "l30",
@@ -662,36 +3475,140 @@
     "practiceTask": "Create a professional checklist for your final project: requirements, architecture, typed functions, tests, error handling, persistence, logging, security review, performance measurement, documentation, and a clean run command. Complete every item before claiming the project is finished.",
     "starterCode": "# Final review scaffold\n# 1. Requirements\n# 2. Architecture\n# 3. Typed business logic\n# 4. Tests\n# 5. Persistence/API if needed\n# 6. Logging/security\n# 7. Performance check\n# 8. Documentation\n",
     "minutes": 25,
-    "projectId": "p05"
+    "projectId": "p05",
+    "teachingPoints": [
+      {
+        "text": "Define requirements and acceptance criteria before calling a project finished.",
+        "example": "# Requirement: user can add and delete tasks."
+      },
+      {
+        "text": "Tests, logging, and useful errors protect shipped behavior.",
+        "example": "def test_add_task():\n    ..."
+      },
+      {
+        "text": "Documentation should let another developer install, run, test, and understand the project.",
+        "example": "# README: install → run → test → usage"
+      },
+      {
+        "text": "Acceptance criteria define what “done” means.",
+        "example": "# Done means every acceptance item passes."
+      },
+      {
+        "text": "A shippable project should be testable, documented, and diagnosable.",
+        "example": "# A shipped app should have tests, docs, and useful error messages."
+      }
+    ],
+    "doDont": [
+      {
+        "do": "Use the rule deliberately.",
+        "dont": "Don’t ignore the rule.",
+        "example": "# Requirement: user can add and delete tasks."
+      },
+      {
+        "do": "Keep the code clear and simple.",
+        "dont": "Don’t add complexity without a reason.",
+        "example": "def test_add_task():\n    ..."
+      },
+      {
+        "do": "Test the edge case.",
+        "dont": "Don’t assume the happy path is enough.",
+        "example": "# README: install → run → test → usage"
+      },
+      {
+        "do": "Use the feature when it improves the design.",
+        "dont": "Don’t use it just because you can.",
+        "example": "# Done means every acceptance item passes."
+      }
+    ],
+    "quiz": [
+      {
+        "question": "What should come before “finished”?",
+        "options": [
+          "Acceptance criteria",
+          "A random refactor",
+          "More files",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Why keep tests?",
+        "options": [
+          "To replace documentation",
+          "To prevent regressions",
+          "To hide bugs",
+          "It has no effect on the program."
+        ],
+        "answer": 1
+      },
+      {
+        "question": "Why log useful events?",
+        "options": [
+          "To store passwords",
+          "To replace the UI",
+          "To diagnose shipped software",
+          "It has no effect on the program."
+        ],
+        "answer": 2
+      },
+      {
+        "question": "Good documentation should explain:",
+        "options": [
+          "Only the project title",
+          "Only code colors",
+          "It has no effect on the program.",
+          "Install, run, test, and configure"
+        ],
+        "answer": 3
+      },
+      {
+        "question": "Professional shipping means:",
+        "options": [
+          "Tested, documented, and diagnosable",
+          "Untested and undocumented",
+          "Finished when it runs once",
+          "It has no effect on the program."
+        ],
+        "answer": 0
+      }
+    ],
+    "exampleOutput": "{'status': 'ok', 'service': 'pypath'}"
   },
   {
     "id": "p01",
     "kind": "project",
     "projectNumber": 1,
     "part": "Project Checkpoints",
-    "title": "Project 1: Calculator & Bill Tool",
-    "summary": "Apply input, types, operators, conditions, and functions to build a reliable command-line calculator.",
-    "definition": "Build a calculator that supports arithmetic, validates input, handles division by zero, and optionally calculates a bill with quantity and discount. The goal is to turn early fundamentals into a complete small program.",
-    "codeExample": "def add(a, b):\n    return a + b\n\nprint(add(12, 3))",
+    "title": "Project 1: Calculator",
+    "summary": "Build a complete command-line calculator with four basic operations, input validation, division-by-zero handling, and a repeat-until-quit loop.",
+    "definition": "A calculator is a small but complete program for practicing input, conversion, conditions, functions, loops, and error handling. Keep the project focused on arithmetic and calculator behavior.",
+    "codeExample": "def add(a, b):\n    return a + b\n\nprint(add(10, 5))",
     "howItWorks": [
-      "Design the required operations before coding.",
-      "Keep calculation functions separate from input/output.",
-      "Validate numeric input and reject invalid operations.",
-      "Test normal values and failure cases such as division by zero."
+      "Read the first number and convert it to float so decimal input works.",
+      "Read an operation and the second number.",
+      "Use a clear branch for +, -, *, and /.",
+      "Check for division by zero before dividing.",
+      "Repeat the process in a loop and let the user quit with q."
     ],
-    "fullExample": "def calculate(a, b, operation):\n    if operation == \"+\": return a + b\n    if operation == \"-\": return a - b\n    if operation == \"*\": return a * b\n    if operation == \"/\":\n        if b == 0: raise ValueError(\"Cannot divide by zero\")\n        return a / b\n    raise ValueError(\"Unknown operation\")\n\nprint(calculate(12, 3, \"+\"))",
-    "practiceTask": "Build the complete calculator, then extend it into a bill calculator with quantity and discount. Add at least five test cases.",
-    "starterCode": "# Project 1: build your calculator\n# Required: +, -, *, /, validation, division-by-zero handling\n\ndef calculate(a, b, operation):\n    pass\n",
-    "minutes": 60,
+    "fullExample": "def calculate(a, operator, b):\n    if operator == \"+\":\n        return a + b\n    if operator == \"-\":\n        return a - b\n    if operator == \"*\":\n        return a * b\n    if operator == \"/\":\n        if b == 0:\n            raise ZeroDivisionError(\"You cannot divide by zero.\")\n        return a / b\n    raise ValueError(\"Unknown operator. Use +, -, *, or /.\")\n\n\ndef main():\n    print(\"=== Python Calculator ===\")\n    print(\"Enter q at the first prompt to quit.\")\n\n    while True:\n        first = input(\"First number: \").strip()\n        if first.lower() == \"q\":\n            print(\"Goodbye!\")\n            break\n\n        try:\n            a = float(first)\n            operator = input(\"Operation (+, -, *, /): \").strip()\n            b = float(input(\"Second number: \"))\n            result = calculate(a, operator, b)\n        except ValueError as error:\n            print(f\"Input error: {error}\")\n            continue\n        except ZeroDivisionError as error:\n            print(f\"Math error: {error}\")\n            continue\n\n        print(f\"Result: {result:g}\")\n\n\nmain()\n",
+    "practiceTask": "Build the calculator from the complete example, then improve it with at least two useful changes: a clearer menu, an operation validation helper, or a history of recent results. Test valid input, invalid input, and division by zero.",
+    "starterCode": "def calculate(a, operator, b):\n    if operator == \"+\":\n        return a + b\n    if operator == \"-\":\n        return a - b\n    if operator == \"*\":\n        return a * b\n    if operator == \"/\":\n        if b == 0:\n            raise ZeroDivisionError(\"You cannot divide by zero.\")\n        return a / b\n    raise ValueError(\"Unknown operator. Use +, -, *, or /.\")\n\n\ndef main():\n    print(\"=== Python Calculator ===\")\n    print(\"Enter q at the first prompt to quit.\")\n\n    while True:\n        first = input(\"First number: \").strip()\n        if first.lower() == \"q\":\n            print(\"Goodbye!\")\n            break\n\n        try:\n            a = float(first)\n            operator = input(\"Operation (+, -, *, /): \").strip()\n            b = float(input(\"Second number: \"))\n            result = calculate(a, operator, b)\n        except ValueError as error:\n            print(f\"Input error: {error}\")\n            continue\n        except ZeroDivisionError as error:\n            print(f\"Math error: {error}\")\n            continue\n\n        print(f\"Result: {result:g}\")\n\n\nmain()\n",
+    "minutes": 45,
     "difficulty": "Beginner",
     "tags": [
+      "functions",
       "input",
-      "operators",
-      "conditions",
-      "functions"
+      "loops",
+      "exceptions",
+      "problem solving"
     ],
     "afterLesson": 6,
-    "partNumber": 12
+    "partNumber": 12,
+    "interactive": true,
+    "outcome": "A complete interactive calculator you can run, test, and extend.",
+    "bio": "Build a simple command-line calculator using functions, validation, loops, and safe error handling.",
+    "classFrom": 1,
+    "exampleOutput": "15"
   },
   {
     "id": "p02",
@@ -706,11 +3623,13 @@
       "Keep asking until the player wins or reaches an attempt limit.",
       "Validate that guesses are integers in the allowed range.",
       "Track attempts as explicit state.",
-      "Move repeated behavior into functions."
+      "Move repeated behavior into functions.",
+      "The Complete section contains a full runnable version, not a partial snippet.",
+      "Use the editor and console to enter real inputs and observe how the program responds."
     ],
-    "fullExample": "def check_guess(secret, guess):\n    if guess < secret: return \"Higher\"\n    if guess > secret: return \"Lower\"\n    return \"Correct\"\n\nprint(check_guess(7, 5))",
-    "practiceTask": "Add difficulty levels, an attempt limit, a replay option, and a score. Handle invalid input without crashing.",
-    "starterCode": "# Project 2: Guess the Number\n# Add game state, validation, hints, score, and replay.\n",
+    "fullExample": "import random\n\nprint(\"=== Guess the Number ===\")\nsecret = random.randint(1, 100)\nattempts = 0\n\nwhile True:\n    raw = input(\"Guess 1-100 (or q to quit): \").strip()\n    if raw.lower() == \"q\":\n        print(f\"The number was {secret}.\")\n        break\n    try:\n        guess = int(raw)\n    except ValueError:\n        print(\"Enter a whole number.\")\n        continue\n    if not 1 <= guess <= 100:\n        print(\"Stay between 1 and 100.\")\n        continue\n    attempts += 1\n    if guess < secret:\n        print(\"Too low.\")\n    elif guess > secret:\n        print(\"Too high.\")\n    else:\n        print(f\"Correct! You needed {attempts} attempts.\")\n        break\n",
+    "practiceTask": "Add difficulty levels, an attempt limit, a replay option, and a score. Handle invalid input without crashing. Run the complete example first, try several inputs, then extend it with at least one feature and test an invalid input case.",
+    "starterCode": "import random\n\nprint(\"=== Guess the Number ===\")\nsecret = random.randint(1, 100)\nattempts = 0\n\nwhile True:\n    raw = input(\"Guess 1-100 (or q to quit): \").strip()\n    if raw.lower() == \"q\":\n        print(f\"The number was {secret}.\")\n        break\n    try:\n        guess = int(raw)\n    except ValueError:\n        print(\"Enter a whole number.\")\n        continue\n    if not 1 <= guess <= 100:\n        print(\"Stay between 1 and 100.\")\n        continue\n    attempts += 1\n    if guess < secret:\n        print(\"Too low.\")\n    elif guess > secret:\n        print(\"Too high.\")\n    else:\n        print(f\"Correct! You needed {attempts} attempts.\")\n        break\n",
     "minutes": 75,
     "difficulty": "Beginner",
     "tags": [
@@ -720,7 +3639,12 @@
       "state"
     ],
     "afterLesson": 9,
-    "partNumber": 12
+    "partNumber": 12,
+    "interactive": true,
+    "bio": "Build a number-guessing game with hints, repeated attempts, validation, and clean game logic.",
+    "classFrom": 7,
+    "outcome": "A complete interactive number-guessing game with clear game logic and validation.",
+    "exampleOutput": "Higher"
   },
   {
     "id": "p03",
@@ -735,11 +3659,13 @@
       "Represent each expense as structured data.",
       "Load and save JSON through a small persistence layer.",
       "Validate amounts and categories at the input boundary.",
-      "Use functions for add/list/summary operations and test them with in-memory data where possible."
+      "Use functions for add/list/summary operations and test them with in-memory data where possible.",
+      "The Complete section contains a full runnable version, not a partial snippet.",
+      "Use the editor and console to enter real inputs and observe how the program responds."
     ],
-    "fullExample": "expenses = [\n    {\"category\": \"food\", \"amount\": 12.5},\n    {\"category\": \"travel\", \"amount\": 8.0},\n]\nfood = [e for e in expenses if e[\"category\"] == \"food\"]\nprint(sum(e[\"amount\"] for e in food))",
-    "practiceTask": "Implement add, list, total, category summary, and delete. Persist to JSON, handle a missing/corrupt file, and write tests for the core calculations.",
-    "starterCode": "from pathlib import Path\nimport json\n\nDATA_FILE = Path(\"expenses.json\")\n\n# Implement load, save, add, list, summary, and delete.\n",
+    "fullExample": "import json\nfrom pathlib import Path\n\nFILE = Path(\"expenses.json\")\n\ndef load_expenses():\n    if not FILE.exists():\n        return []\n    try:\n        return json.loads(FILE.read_text(encoding=\"utf-8\"))\n    except (json.JSONDecodeError, OSError):\n        return []\n\ndef save_expenses(expenses):\n    FILE.write_text(json.dumps(expenses, indent=2), encoding=\"utf-8\")\n\ndef show(expenses):\n    if not expenses:\n        print(\"No expenses yet.\")\n        return\n    total = sum(item[\"amount\"] for item in expenses)\n    for i, item in enumerate(expenses, 1):\n        print(f\"{i}. {item['category']}: ${item['amount']:.2f} - {item['note']}\")\n    print(f\"Total: ${total:.2f}\")\n\ndef main():\n    expenses = load_expenses()\n    while True:\n        print(\"\\n1) Add  2) List  3) Delete  4) Quit\")\n        choice = input(\"Choose: \").strip()\n        if choice == \"1\":\n            try:\n                amount = float(input(\"Amount: \"))\n                if amount < 0: raise ValueError\n            except ValueError:\n                print(\"Enter a non-negative number.\")\n                continue\n            category = input(\"Category: \").strip() or \"Other\"\n            note = input(\"Note: \").strip()\n            expenses.append({\"amount\": amount, \"category\": category, \"note\": note})\n            save_expenses(expenses)\n        elif choice == \"2\":\n            show(expenses)\n        elif choice == \"3\":\n            show(expenses)\n            try:\n                index = int(input(\"Number to delete: \")) - 1\n                removed = expenses.pop(index)\n                save_expenses(expenses)\n                print(f\"Deleted {removed['note'] or removed['category']}.\")\n            except (ValueError, IndexError):\n                print(\"Invalid expense number.\")\n        elif choice == \"4\":\n            break\n        else:\n            print(\"Choose 1, 2, 3, or 4.\")\n\nmain()\n",
+    "practiceTask": "Implement add, list, total, category summary, and delete. Persist to JSON, handle a missing/corrupt file, and write tests for the core calculations. Run the complete example first, try several inputs, then extend it with at least one feature and test an invalid input case.",
+    "starterCode": "import json\nfrom pathlib import Path\n\nFILE = Path(\"expenses.json\")\n\ndef load_expenses():\n    if not FILE.exists():\n        return []\n    try:\n        return json.loads(FILE.read_text(encoding=\"utf-8\"))\n    except (json.JSONDecodeError, OSError):\n        return []\n\ndef save_expenses(expenses):\n    FILE.write_text(json.dumps(expenses, indent=2), encoding=\"utf-8\")\n\ndef show(expenses):\n    if not expenses:\n        print(\"No expenses yet.\")\n        return\n    total = sum(item[\"amount\"] for item in expenses)\n    for i, item in enumerate(expenses, 1):\n        print(f\"{i}. {item['category']}: ${item['amount']:.2f} - {item['note']}\")\n    print(f\"Total: ${total:.2f}\")\n\ndef main():\n    expenses = load_expenses()\n    while True:\n        print(\"\\n1) Add  2) List  3) Delete  4) Quit\")\n        choice = input(\"Choose: \").strip()\n        if choice == \"1\":\n            try:\n                amount = float(input(\"Amount: \"))\n                if amount < 0: raise ValueError\n            except ValueError:\n                print(\"Enter a non-negative number.\")\n                continue\n            category = input(\"Category: \").strip() or \"Other\"\n            note = input(\"Note: \").strip()\n            expenses.append({\"amount\": amount, \"category\": category, \"note\": note})\n            save_expenses(expenses)\n        elif choice == \"2\":\n            show(expenses)\n        elif choice == \"3\":\n            show(expenses)\n            try:\n                index = int(input(\"Number to delete: \")) - 1\n                removed = expenses.pop(index)\n                save_expenses(expenses)\n                print(f\"Deleted {removed['note'] or removed['category']}.\")\n            except (ValueError, IndexError):\n                print(\"Invalid expense number.\")\n        elif choice == \"4\":\n            break\n        else:\n            print(\"Choose 1, 2, 3, or 4.\")\n\nmain()\n",
     "minutes": 120,
     "difficulty": "Intermediate",
     "tags": [
@@ -750,37 +3676,48 @@
       "testing"
     ],
     "afterLesson": 15,
-    "partNumber": 12
+    "partNumber": 12,
+    "interactive": true,
+    "bio": "Build a JSON-based expense tracker that saves, loads, filters, and summarizes real expense data.",
+    "classFrom": 10,
+    "outcome": "A persistent local expense tracker backed by a JSON file.",
+    "exampleOutput": "{'category': 'food', 'amount': 12.5}"
   },
   {
     "id": "p04",
     "kind": "project",
     "projectNumber": 4,
     "part": "Project Checkpoints",
-    "title": "Project 4: SQLite Task Manager CLI",
-    "summary": "Combine OOP, SQLite, type hints, testing, CLI design, and clean architecture.",
-    "definition": "Build a command-line task manager backed by SQLite. The program should support add, list, complete, and delete operations. Keep database access separate from business logic and command-line parsing.",
-    "codeExample": "import sqlite3\n\ndb = sqlite3.connect(\":memory:\")\ndb.execute(\"CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT NOT NULL)\")\nprint(\"Database ready\")",
+    "title": "Project 4: Command-Line To-Do List",
+    "summary": "Build a useful command-line to-do list using dataclasses, functions, lists, validation, and a simple command loop.",
+    "definition": "Build a terminal-style task manager that lets a user add, list, complete, and delete tasks. This project focuses on clean functions, structured data, validation, and command-line interaction without requiring a database.",
+    "codeExample": "from dataclasses import dataclass\n\n@dataclass\nclass Task:\n    title: str\n    done: bool = False\n\ntask = Task(\"Practice Python\")\nprint(task)",
     "howItWorks": [
-      "Create a repository/data-access layer for SQL operations.",
-      "Create a service layer for task rules.",
-      "Use typed domain objects where useful.",
-      "Expose the service through argparse commands and test it with an isolated database."
+      "A dataclass gives each task a clear structure.",
+      "A list stores the current tasks in memory.",
+      "Small functions perform one job each.",
+      "The command loop translates user commands into actions.",
+      "Validation prevents invalid task numbers and empty titles from crashing the program."
     ],
-    "fullExample": "from dataclasses import dataclass\n\n@dataclass\nclass Task:\n    id: int\n    title: str\n    done: bool = False\n\nprint(Task(1, \"Learn SQLite\"))",
-    "practiceTask": "Implement the full CLI with parameterized SQL, clear errors, tests, type hints, and a README explaining installation and usage.",
-    "starterCode": "# Project 4: SQLite Task Manager\n# Suggested layers: cli.py, service.py, repository.py, models.py, tests/\n",
-    "minutes": 180,
-    "difficulty": "Advanced",
+    "fullExample": "from dataclasses import dataclass\n\n\n@dataclass\nclass Task:\n    title: str\n    done: bool = False\n\n\ntasks = []\n\n\ndef add_task(title):\n    title = title.strip()\n    if not title:\n        print(\"Task title cannot be empty.\")\n        return\n    tasks.append(Task(title))\n    print(\"Task added.\")\n\n\ndef list_tasks():\n    if not tasks:\n        print(\"No tasks yet.\")\n        return\n\n    for number, task in enumerate(tasks, start=1):\n        mark = \"x\" if task.done else \" \"\n        print(f\"{number}. [{mark}] {task.title}\")\n\n\ndef complete_task(number):\n    if not 1 <= number <= len(tasks):\n        print(\"That task number does not exist.\")\n        return\n    tasks[number - 1].done = True\n    print(\"Task completed.\")\n\n\ndef delete_task(number):\n    if not 1 <= number <= len(tasks):\n        print(\"That task number does not exist.\")\n        return\n    removed = tasks.pop(number - 1)\n    print(f\"Deleted: {removed.title}\")\n\n\ndef main():\n    print(\"=== Command-Line To-Do List ===\")\n    print(\"add, list, complete, delete, quit\")\n\n    while True:\n        command = input(\"\\nCommand: \").strip().lower()\n\n        if command == \"add\":\n            add_task(input(\"Task title: \"))\n        elif command == \"list\":\n            list_tasks()\n        elif command == \"complete\":\n            try:\n                complete_task(int(input(\"Task number: \")))\n            except ValueError:\n                print(\"Enter a whole task number.\")\n        elif command == \"delete\":\n            try:\n                delete_task(int(input(\"Task number: \")))\n            except ValueError:\n                print(\"Enter a whole task number.\")\n        elif command == \"quit\":\n            print(\"Goodbye!\")\n            break\n        else:\n            print(\"Unknown command. Use add, list, complete, delete, or quit.\")\n\n\nmain()\n",
+    "practiceTask": "Run the complete To-Do List first. Add several tasks, list them, complete one, delete one, and test invalid commands. Then extend it with a feature such as search, clear completed tasks, priorities, or saving to JSON.",
+    "starterCode": "from dataclasses import dataclass\n\n\n@dataclass\nclass Task:\n    title: str\n    done: bool = False\n\n\ntasks = []\n\n\ndef add_task(title):\n    title = title.strip()\n    if not title:\n        print(\"Task title cannot be empty.\")\n        return\n    tasks.append(Task(title))\n    print(\"Task added.\")\n\n\ndef list_tasks():\n    if not tasks:\n        print(\"No tasks yet.\")\n        return\n\n    for number, task in enumerate(tasks, start=1):\n        mark = \"x\" if task.done else \" \"\n        print(f\"{number}. [{mark}] {task.title}\")\n\n\ndef complete_task(number):\n    if not 1 <= number <= len(tasks):\n        print(\"That task number does not exist.\")\n        return\n    tasks[number - 1].done = True\n    print(\"Task completed.\")\n\n\ndef delete_task(number):\n    if not 1 <= number <= len(tasks):\n        print(\"That task number does not exist.\")\n        return\n    removed = tasks.pop(number - 1)\n    print(f\"Deleted: {removed.title}\")\n\n\ndef main():\n    print(\"=== Command-Line To-Do List ===\")\n    print(\"add, list, complete, delete, quit\")\n\n    while True:\n        command = input(\"\\nCommand: \").strip().lower()\n\n        if command == \"add\":\n            add_task(input(\"Task title: \"))\n        elif command == \"list\":\n            list_tasks()\n        elif command == \"complete\":\n            try:\n                complete_task(int(input(\"Task number: \")))\n            except ValueError:\n                print(\"Enter a whole task number.\")\n        elif command == \"delete\":\n            try:\n                delete_task(int(input(\"Task number: \")))\n            except ValueError:\n                print(\"Enter a whole task number.\")\n        elif command == \"quit\":\n            print(\"Goodbye!\")\n            break\n        else:\n            print(\"Unknown command. Use add, list, complete, delete, or quit.\")\n\n\nmain()\n",
+    "minutes": 60,
+    "difficulty": "Intermediate",
     "tags": [
-      "SQLite",
-      "OOP",
-      "CLI",
-      "typing",
-      "testing"
+      "dataclasses",
+      "functions",
+      "lists",
+      "validation",
+      "CLI"
     ],
     "afterLesson": 24,
-    "partNumber": 12
+    "partNumber": 12,
+    "interactive": true,
+    "outcome": "A practical command-line To-Do List built with structured data and clean functions.",
+    "bio": "Build a command-line To-Do List with structured tasks, validation, and a clean command loop.",
+    "classFrom": 16,
+    "exampleOutput": "Task(title='Practice Python', done=False)"
   },
   {
     "id": "p05",
@@ -796,11 +3733,13 @@
       "Design modules around responsibilities and dependencies.",
       "Use type hints, tests, error handling, logging, and secure configuration.",
       "Choose SQLite, an API, or async I/O only if the application needs it.",
-      "Finish with a code review checklist and documented run/test commands."
+      "Finish with a code review checklist and documented run/test commands.",
+      "The Complete section contains a full runnable version, not a partial snippet.",
+      "Use the editor and console to enter real inputs and observe how the program responds."
     ],
-    "fullExample": "def health_check() -> dict[str, str]:\n    return {\"status\": \"ok\"}\n\nprint(health_check())",
-    "practiceTask": "Ship a complete application with a README, tests, typed core logic, persistence or an external API when relevant, structured logging, configuration, security review, performance measurement, and a clean CLI or user-facing entry point. Do not mark it complete until every requirement is demonstrated.",
-    "starterCode": "# Project 5: Production-Style Application\n# Start by writing requirements and acceptance criteria.\n# Then design modules, implement, test, review, and document.\n",
+    "fullExample": "from dataclasses import dataclass\nfrom pathlib import Path\nimport json\nimport logging\n\nDATA_FILE = Path(\"work_items.json\")\nlogging.basicConfig(level=logging.INFO, format=\"%(levelname)s: %(message)s\")\n\n@dataclass\nclass WorkItem:\n    title: str\n    priority: str = \"normal\"\n    done: bool = False\n\ndef load_items():\n    if not DATA_FILE.exists():\n        return []\n    try:\n        raw = json.loads(DATA_FILE.read_text(encoding=\"utf-8\"))\n        return [WorkItem(**item) for item in raw]\n    except (OSError, json.JSONDecodeError, TypeError):\n        logging.exception(\"Could not load saved data\")\n        return []\n\ndef save_items(items):\n    DATA_FILE.write_text(json.dumps([item.__dict__ for item in items], indent=2), encoding=\"utf-8\")\n\ndef list_items(items):\n    if not items:\n        print(\"No work items yet.\")\n        return\n    for i, item in enumerate(items, 1):\n        mark = \"x\" if item.done else \" \"\n        print(f\"{i}. [{mark}] {item.title} ({item.priority})\")\n\ndef main():\n    items = load_items()\n    while True:\n        print(\"\\n=== Work Tracker ===\")\n        print(\"1) Add  2) List  3) Complete  4) Save  5) Quit\")\n        choice = input(\"Choose: \").strip()\n        if choice == \"1\":\n            title = input(\"Title: \").strip()\n            priority = input(\"Priority (low/normal/high): \").strip().lower() or \"normal\"\n            if title and priority in {\"low\", \"normal\", \"high\"}:\n                items.append(WorkItem(title, priority))\n            else:\n                print(\"Use a title and a valid priority.\")\n        elif choice == \"2\":\n            list_items(items)\n        elif choice == \"3\":\n            try:\n                index = int(input(\"Item number: \")) - 1\n                items[index].done = True\n            except (ValueError, IndexError):\n                print(\"Invalid item number.\")\n        elif choice == \"4\":\n            save_items(items)\n            logging.info(\"Saved %d items\", len(items))\n        elif choice == \"5\":\n            save_items(items)\n            print(\"Saved. Goodbye!\")\n            break\n        else:\n            print(\"Choose a number from 1 to 5.\")\n\nmain()\n",
+    "practiceTask": "Ship a complete application with a README, tests, typed core logic, persistence or an external API when relevant, structured logging, configuration, security review, performance measurement, and a clean CLI or user-facing entry point. Do not mark it complete until every requirement is demonstrated. Run the complete example first, try several inputs, then extend it with at least one feature and test an invalid input case.",
+    "starterCode": "from dataclasses import dataclass\nfrom pathlib import Path\nimport json\nimport logging\n\nDATA_FILE = Path(\"work_items.json\")\nlogging.basicConfig(level=logging.INFO, format=\"%(levelname)s: %(message)s\")\n\n@dataclass\nclass WorkItem:\n    title: str\n    priority: str = \"normal\"\n    done: bool = False\n\ndef load_items():\n    if not DATA_FILE.exists():\n        return []\n    try:\n        raw = json.loads(DATA_FILE.read_text(encoding=\"utf-8\"))\n        return [WorkItem(**item) for item in raw]\n    except (OSError, json.JSONDecodeError, TypeError):\n        logging.exception(\"Could not load saved data\")\n        return []\n\ndef save_items(items):\n    DATA_FILE.write_text(json.dumps([item.__dict__ for item in items], indent=2), encoding=\"utf-8\")\n\ndef list_items(items):\n    if not items:\n        print(\"No work items yet.\")\n        return\n    for i, item in enumerate(items, 1):\n        mark = \"x\" if item.done else \" \"\n        print(f\"{i}. [{mark}] {item.title} ({item.priority})\")\n\ndef main():\n    items = load_items()\n    while True:\n        print(\"\\n=== Work Tracker ===\")\n        print(\"1) Add  2) List  3) Complete  4) Save  5) Quit\")\n        choice = input(\"Choose: \").strip()\n        if choice == \"1\":\n            title = input(\"Title: \").strip()\n            priority = input(\"Priority (low/normal/high): \").strip().lower() or \"normal\"\n            if title and priority in {\"low\", \"normal\", \"high\"}:\n                items.append(WorkItem(title, priority))\n            else:\n                print(\"Use a title and a valid priority.\")\n        elif choice == \"2\":\n            list_items(items)\n        elif choice == \"3\":\n            try:\n                index = int(input(\"Item number: \")) - 1\n                items[index].done = True\n            except (ValueError, IndexError):\n                print(\"Invalid item number.\")\n        elif choice == \"4\":\n            save_items(items)\n            logging.info(\"Saved %d items\", len(items))\n        elif choice == \"5\":\n            save_items(items)\n            print(\"Saved. Goodbye!\")\n            break\n        else:\n            print(\"Choose a number from 1 to 5.\")\n\nmain()\n",
     "minutes": 300,
     "difficulty": "Advanced",
     "tags": [
@@ -812,6 +3751,11 @@
       "performance"
     ],
     "afterLesson": 30,
-    "partNumber": 12
+    "partNumber": 12,
+    "interactive": true,
+    "bio": "Build a production-style Python application with architecture, tests, logging, configuration, and quality checks.",
+    "classFrom": 25,
+    "outcome": "A substantial application that demonstrates the professional skills from the full path.",
+    "exampleOutput": "(no output — class definition only)"
   }
 ]

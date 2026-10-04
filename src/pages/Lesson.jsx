@@ -20,7 +20,7 @@ const CodeEditor = lazy(() => import("../components/CodeEditor"));
 // Wide screens: lesson and editor sit side by side and scroll independently.
 // Narrower screens: a Lesson / Code switch shows one full-height pane at a time.
 function LessonView({ lesson, base, prev, next }) {
-  const { touchLesson, startLesson, completeLesson, progress, panels, togglePanel, lessons, activeId, toast } = useApp();
+  const { touchLesson, startLesson, completeLesson, completeProject, progress, panels, togglePanel, lessons, activeId, toast } = useApp();
   const split = useMedia("(min-width: 1180px)");
   const mobile = useMedia("(max-width: 767px)");
   const py = usePython();
@@ -29,8 +29,10 @@ function LessonView({ lesson, base, prev, next }) {
   const [colSize, setColSize] = useState(46);
   const [rowSize, setRowSize] = useState(mobile ? 70 : 60);
   const status = progress[lesson.id] || "not-started";
-  const firstIncomplete = lessons.find((l) => progress[l.id] !== "completed");
-  const canStart = !activeId && firstIncomplete?.id === lesson.id;
+  const dayLessons = lessons.filter((l) => l.kind === "lesson");
+  const firstIncomplete = dayLessons.find((l) => progress[l.id] !== "completed");
+  const isProject = lesson.kind === "project";
+  const canStart = isProject ? status !== "completed" : !activeId && firstIncomplete?.id === lesson.id;
   const showCode = panels.compiler;
   const showLesson = split || !showCode;
   const sideBySide = split && showCode;
@@ -44,9 +46,9 @@ function LessonView({ lesson, base, prev, next }) {
   const loadExample = () => { change(lesson.fullExample); togglePanel("compiler", true); };
   const download = () => { try { downloadPython(code, `${lesson.id}.py`); } catch (e) { toast(e.message, "error"); } };
   const start = () => {
-    startLesson(lesson.id);
+    if (!isProject) startLesson(lesson.id);
   };
-  const complete = () => { completeLesson(lesson.id); };
+  const complete = () => { isProject ? completeProject(lesson.id) : completeLesson(lesson.id); };
   const reset = () => {
     if (code !== lesson.starterCode && !window.confirm("Replace your code with the starter code? Your current code will be lost.")) return;
     change(lesson.starterCode);
@@ -85,7 +87,7 @@ function LessonView({ lesson, base, prev, next }) {
               {lesson.practiceTask ? <TaskCard task={lesson.practiceTask} /> : <p className="content-error" role="alert">The practice task is missing from the lesson data.</p>}
             </div>
             <footer className="lesson-footer">
-              <NavButtons prev={prev} next={next} status={status} canStart={canStart} onStart={start} onComplete={complete} />
+              <NavButtons prev={prev} next={next} status={status} canStart={canStart} onStart={start} onComplete={complete} isProject={isProject} />
             </footer>
           </section>
         {sideBySide && <Splitter orientation="col" value={colSize} onChange={setColSize} min={30} max={70} label="Resize lesson and editor" />}
@@ -110,7 +112,8 @@ export default function LessonPage({ id, base = "lessons" }) {
   const { lessons, getLesson } = useApp();
   const lesson = getLesson(id);
   if (!lesson) return <Missing what={base === "projects" ? "project" : "lesson"} />;
-  // Previous / Next walk through the whole 30-day course in order.
-  const i = lessons.findIndex((l) => l.id === id);
-  return <LessonView key={id} lesson={lesson} base={base} prev={lessons[i - 1]} next={lessons[i + 1]} />;
+  // Lessons and projects have separate navigation tracks. Projects are checkpoints, not extra days.
+  const sequence = base === "projects" ? lessons.filter((l) => l.kind === "project") : lessons.filter((l) => l.kind === "lesson");
+  const i = sequence.findIndex((l) => l.id === id);
+  return <LessonView key={id} lesson={lesson} base={base} prev={sequence[i - 1]} next={sequence[i + 1]} />;
 }

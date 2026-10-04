@@ -44,12 +44,12 @@ export default function Sidebar({ page, activeId }) {
           <nav aria-label="Lessons">
             {parts.map((g, i) => (
               <div key={g.name} className="part">
-                <h2 className="part-title label">{g.name} &middot; Days {g.items[0].day}&ndash;{g.items[g.items.length - 1].day}</h2>
+                <h2 className="part-title label">{g.name}{g.items[0].kind === "lesson" && <> &middot; Days {g.items[0].day}&ndash;{g.items[g.items.length - 1].day}</>}</h2>
                 <ul>
                   {g.items.map((l) => (
                     <li key={l.id}>
-                      <a href={`#${pathFor(l)}`} className="nav-link lesson-link" aria-current={activeId === l.id ? "page" : undefined} onClick={onNav} title={`Day ${l.day}. ${l.title}`}>
-                        <span className="num">{l.number}</span>
+                      <a href={`#${pathFor(l)}`} className={`nav-link lesson-link ${l.kind === "project" ? "project-link" : ""}`} aria-current={activeId === l.id ? "page" : undefined} onClick={onNav} title={`Day ${l.day}. ${l.title}`}>
+                        {l.kind === "lesson" ? <span className="num">{l.number}</span> : null}
                         <span className="label lesson-name">{l.title}</span>
                         <StatusIcon status={progress[l.id] || "not-started"} size={15} />
                       </a>

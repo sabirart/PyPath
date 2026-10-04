@@ -15,7 +15,8 @@ export function streakOf(days, now = new Date()) {
 }
 
 // `completed` is a set-like object { [id]: "completed" }.
-export const firstIncomplete = (lessons, completed) => lessons.find((l) => completed[l.id] !== "completed") || null;
+export const dayLessons = (items) => items.filter((l) => l.kind === "lesson");
+export const firstIncomplete = (items, completed) => dayLessons(items).find((l) => completed[l.id] !== "completed") || null;
 
 // Only the first uncompleted lesson can be started, and only when nothing else is in progress.
 export function canStart(lessons, completed, activeId, id) {
@@ -26,21 +27,23 @@ export function canStart(lessons, completed, activeId, id) {
 // After finishing `id`, the next uncompleted lesson becomes the active one (null when the course is done).
 export function nextActiveAfter(lessons, completed, id) {
   const done = { ...completed, [id]: "completed" };
-  return lessons.find((l) => done[l.id] !== "completed")?.id ?? null;
+  return dayLessons(lessons).find((l) => done[l.id] !== "completed")?.id ?? null;
 }
 
 export function summarize(lessons, progress, activeId, studyDays, now = new Date()) {
-  const total = lessons.length;
-  const classes = lessons.filter((l) => l.kind === "lesson");
+  const classes = dayLessons(lessons);
   const projects = lessons.filter((l) => l.kind === "project");
   const isDone = (l) => progress[l.id] === "completed";
-  const completed = lessons.filter(isDone).length;
+  const completed = classes.filter(isDone).length;
   const active = activeId ? 1 : 0;
+  const projectCompleted = projects.filter(isDone).length;
+  const total = classes.length;
   return {
     total, completed, active, notStarted: total - completed - active,
     classCount: classes.length, projectCount: projects.length,
-    lessonsDone: classes.filter(isDone).length, projectsDone: projects.filter(isDone).length,
+    lessonsDone: completed, projectsDone: projectCompleted,
     percent: total ? Math.round((completed / total) * 100) : 0,
+    overallItems: total + projects.length, overallCompleted: completed + projectCompleted,
     streak: streakOf(studyDays, now), studiedToday: studyDays.includes(dayKey(now)),
   };
 }

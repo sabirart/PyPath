@@ -33,7 +33,7 @@ export default function Welcome({ onStart }) {
         <div className="welcome-copy">
           <span className="welcome-tag">30-Day Python Challenge</span>
           <h1><span>Start Programming Today.</span><br /><strong>30 Days with Projects.</strong></h1>
-          <p className="lead">25 daily classes and 5 projects, from your first line of code to a finished app. Read on the left, write and run real Python on the right.</p>
+          <p className="lead">30 daily lessons and 5 projects, from your first line of code to a finished app. Read on the left, write and run real Python on the right.</p>
           <div className="welcome-cta">
             <button className="btn btn-primary btn-lg" onClick={() => setOpen(true)}>Start Learning <ArrowRight size={18} /></button>
             <span className="muted small">Free, and ready in seconds.</span>

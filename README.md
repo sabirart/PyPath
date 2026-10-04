@@ -1,17 +1,17 @@
 # PyPath - Learn Python. Step by Step.
 
-A lightweight single-page **30-day Python challenge**: 25 classes (Days 1-25, from Python fundamentals through advanced topics), 5 practical projects (Days 26-30) and a free compiler. Python runs **inside your browser** using Pyodide (WebAssembly). There is no backend, account, database, analytics or tracking.
+A lightweight single-page **30-day Python developer challenge**: 30 daily lessons from Python fundamentals through professional engineering, plus 5 separate project checkpoints. Projects are completed alongside the relevant lessons and do not consume extra days. Python runs **inside your browser** using Pyodide (WebAssembly). There is no backend, account, database, analytics or tracking.
 
 ## Prerequisites
 - Node.js 18 or newer (npm included)
-- An internet connection the first time Python is used (Pyodide is downloaded from the jsDelivr CDN and cached by the browser)
+- PyPath is an online website. The learning interface can load without the compiler, but Python execution requires an internet connection because Pyodide is loaded from the official CDN.
 
 ## Install and run
 ```bash
 npm install
 npm run dev        # development server, usually http://localhost:5173
 npm test           # course data contract, progress rules, worker/hook behaviour checks (needs python3 on PATH)
-npm run build      # production build into dist/
+npm run build       # builds the online static website
 npm run preview    # serve dist/ locally to check the production build
 ```
 
@@ -21,7 +21,7 @@ Upload the `dist/` folder, or connect the repository to a free host. No special 
 - **GitHub Pages:** publish the contents of `dist/`. The site uses `base: "./"` and hash routes (`#/lessons/l01`; `#/lessons` shows the course overview), so it works from a sub-folder with no server rewrite rules.
 
 ## Project layout
-`src/data/lessons.json` holds all course content. Navigation, the sidebar, progress and the project list are generated from it. Item ids (`l01` - `l30`) equal the day number and are used as storage keys. Days 1-25 are classes (`kind: "lesson"`); Days 26-30 are projects (`kind: "project"`, Day 30 is the Final Project).
+`src/data/lessons.json` holds all course content. Navigation, the sidebar, progress and the project list are generated from it. Lesson ids (`l01` - `l30`) equal the day number. Project checkpoints use `p01` - `p05` and have no day number. Each project records the lesson after which it is recommended, so projects reinforce the concepts instead of becoming a separate final-stage course.
 
 ## Lesson status
 Each day is **Completed**, **In Progress** or **Not started**. Opening a day never changes its status. Pressing **Start Day** makes it the single In Progress day. **Mark Complete** is only available for the active day. Future days can be previewed, and earlier days do not need to be finished first.
@@ -53,13 +53,13 @@ Everything stays in your browser. Keys used in `localStorage`:
 
 If storage is blocked, PyPath keeps working from memory for that visit. "Reset progress" removes only progress, saved code and the last-lesson pointer.
 
-Your code is executed locally by Pyodide and is never uploaded. The only network request PyPath makes is downloading the Pyodide files from a CDN. The lessons themselves do not call web APIs (the API lesson uses sample JSON), but Pyodide can make network requests if a learner writes code that does.
+Your code is executed in the browser by Pyodide from the official jsDelivr CDN and is not uploaded to a PyPath backend. PyPath does not provide a backend, analytics, or tracking service. The Python compiler requires an internet connection to load Pyodide and its standard library.
 
 ## Known limits
-- Python runs inside a dedicated Web Worker, so user code cannot block React rendering. Programs are stopped after 30 seconds of running (time spent downloading Python is not counted; that has its own 3-minute limit) and can be cancelled with Stop.
+- Python runs inside a dedicated Web Worker, so user code cannot block React rendering. Programs are stopped after 30 seconds of running (loading the online runtime is separate from program execution) and can be cancelled with Stop.
 - Output is capped at 200,000 characters per run.
 - `input()` works by **replaying**: each time the program asks for an answer it does not have yet, the run stops, the console shows an inline field, and the program is run again from the top with all answers so far. A fixed random seed per session keeps replays identical. Side effects (printing, file writes) therefore repeat on each replay, and time-dependent code such as `datetime.now()` can differ between replays.
-- Pyodide (several MB) is downloaded the first time you click into an editor or press Run, then cached by the browser. Opening a page does not download it. A network connection is required for the first download. To self-host Pyodide for offline use, copy the files from the `pyodide` npm package to `public/pyodide/` and add a local source at the top of `PYODIDE_SOURCES` in `src/workers/python.worker.js`.
+- Pyodide is loaded from the official jsDelivr CDN only when the compiler is used. Opening lessons does not initialize Python. The compiler requires an internet connection; no local Pyodide runtime or runtime download step is included in the project.
 - Files created by lesson code live in temporary browser memory and vanish on refresh.
 - Inter and JetBrains Mono are bundled with the app through npm (`@fontsource-variable/*`), so no font is requested from a third party.
 
@@ -76,7 +76,7 @@ Semantic landmarks, visible keyboard focus indicators, keyboard access to every 
 Choosing anything in the course outline opens it and hides the panel. Use the panel button in the header to bring it back.
 
 ## Lazy loading
-The first screen loads only the core app. Dashboard, Lesson, Projects, Compiler and the code editor are separate chunks and are fetched when first needed with a skeleton placeholder. Python itself (Pyodide) downloads only when the user runs code. A small branded loader in `index.html` shows before the app starts.
+The first screen loads only the core app. Dashboard, Lesson, Projects, Compiler and the code editor are separate chunks and are fetched when first needed with a skeleton placeholder. Python itself (Pyodide) is loaded from the official online CDN only when the user runs code. The compiler requires an internet connection. A small branded loader in `index.html` shows before the app starts.
 
 ## Deployment
 
@@ -87,6 +87,7 @@ PyPath is a static Vite application and is ready for GitHub or Render.
 ```bash
 npm ci
 npm run test
+npm run build
 npm run build
 npm run preview
 ```

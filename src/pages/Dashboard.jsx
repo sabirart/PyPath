@@ -1,5 +1,6 @@
 // Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { ArrowRight, BookOpen, CheckCircle2, Flame, Folder, Layers, Target, Terminal, Trophy } from "lucide-react";
+import { useState } from "react";
 import { useApp } from "../context/AppContext";
 import { Ring } from "../components/ProgressPopup";
 import StatusIcon, { STATUS_LABEL } from "../components/StatusIcon";
@@ -21,12 +22,17 @@ const greeting = () => {
 export default function Dashboard() {
   const { user, stats, lessons, progress, nextItem, activeId } = useApp();
   const stages = [];
-  lessons.forEach((l) => {
+  lessons.filter((l) => l.kind === "lesson").forEach((l) => {
     let g = stages[stages.length - 1];
     if (!g || g.name !== l.part) { g = { name: l.part, total: 0, done: 0, from: l.day, to: l.day }; stages.push(g); }
     g.total++; g.to = l.day;
     if (progress[l.id] === "completed") g.done++;
   });
+  const activeStageIndex = nextItem ? Math.max(0, stages.findIndex((g) => nextItem.part === g.name)) : Math.max(0, stages.length - 1);
+  const [showAllPath, setShowAllPath] = useState(false);
+  const windowSize = 5;
+  const windowStart = Math.max(0, Math.min(activeStageIndex - 2, stages.length - windowSize));
+  const visibleStages = showAllPath ? stages : stages.slice(windowStart, windowStart + windowSize);
   const finished = !nextItem;
   const started = stats.completed > 0 || !!activeId;
   const upcoming = nextItem ? lessons.filter((l) => l.day > nextItem.day && progress[l.id] !== "completed").slice(0, 3) : [];
@@ -42,7 +48,7 @@ export default function Dashboard() {
   ];
   const links = [
     { to: pathFor(firstLesson), icon: BookOpen, title: "Lessons", text: `${stats.classCount} classes covering Python fundamentals through advanced topics.` },
-    { to: "/projects", icon: Trophy, title: "Projects", text: `Days ${stats.classCount + 1} to ${stats.total}: ${stats.projectCount} programs you build yourself.` },
+    { to: "/projects", icon: Trophy, title: "Projects", text: `5 independent project checkpoints you build yourself.` },
     { to: "/compiler", icon: Terminal, title: "Free Compiler", text: "Try any Python idea with no lesson attached." },
   ];
 
@@ -52,7 +58,7 @@ export default function Dashboard() {
         <div>
           <p className="eyebrow">30-Day Python Challenge</p>
           <h2 className="dash-title">{greeting()}, {user}</h2>
-          <p className="muted dash-sub">{stats.studiedToday ? "Today's day is done. Rest up. You can continue whenever you are ready." : started ? "One focused day at a time. Pick up where you left off." : "Build Python skills from the fundamentals through advanced topics, then practise with projects."}</p>
+          <p className="muted dash-sub">{stats.studiedToday ? "Today's day is done. Rest up. You can continue whenever you are ready." : started ? "One focused day at a time. Pick up where you left off." : "Build Python skills from fundamentals through professional engineering, then prove them with five projects."}</p>
         </div>
         <div className={`streak-pill ${stats.streak ? "is-lit" : ""}`} title="Consecutive days you completed a lesson">
           <Flame size={18} aria-hidden="true" />
@@ -103,11 +109,11 @@ export default function Dashboard() {
 
       <div className="dash-cols">
         <section className="panel" aria-labelledby="path-h">
-          <div className="panel-head"><Layers size={18} aria-hidden="true" /><h3 id="path-h">Learning path</h3></div>
+          <div className="panel-head"><Layers size={18} aria-hidden="true" /><h3 id="path-h">Learning path</h3><button className="link-btn path-toggle" type="button" onClick={() => setShowAllPath((v) => !v)}>{showAllPath ? "Show less" : "Show all"}</button></div>
           <ul className="path">
-            {stages.map((g, i) => (
+            {visibleStages.map((g, i) => (
               <li key={g.name} className="path-item">
-                <span className={`path-num ${g.done === g.total ? "is-done" : ""}`}>{g.done === g.total ? <CheckCircle2 size={16} aria-hidden="true" /> : i + 1}</span>
+                <span className={`path-num ${g.done === g.total ? "is-done" : ""}`}>{g.done === g.total ? <CheckCircle2 size={16} aria-hidden="true" /> : stages.indexOf(g) + 1}</span>
                 <div className="path-body">
                   <div className="row between"><strong>{g.name}</strong><span className="muted small">{g.done}/{g.total}</span></div>
                   <p className="muted small">Days {g.from}&ndash;{g.to} &middot; {LEVEL_NOTE[g.name]}</p>
@@ -128,11 +134,11 @@ export default function Dashboard() {
               </span>
             </div>
             <ol className="day-map" aria-label="All 30 days">
-              {lessons.map((l) => {
+              {lessons.filter((l) => l.kind === "lesson").map((l) => {
                 const st = progress[l.id] || "not-started";
                 return (
                   <li key={l.id}>
-                    <a href={`#${pathFor(l)}`} className={`map-day map-${st} ${l.kind === "project" ? "is-project" : ""}`}
+                    <a href={`#${pathFor(l)}`} className={`map-day map-${st}`}
                       aria-label={`Day ${l.day}, ${l.title}: ${STATUS_LABEL[st]}`} title={`Day ${l.day}. ${l.title} (${STATUS_LABEL[st]})`}>{l.day}</a>
                   </li>
                 );

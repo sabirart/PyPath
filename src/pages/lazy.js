@@ -9,6 +9,7 @@ const loaders = {
   projects: () => import("./Projects"),
   about: () => import("./About"),
   course: () => import("./Course"),
+  offline: () => import("./Offline"),
 };
 export const Dashboard = lazy(loaders.dashboard);
 export const LessonPage = lazy(loaders.lesson);
@@ -16,4 +17,5 @@ export const Compiler = lazy(loaders.compiler);
 export const Projects = lazy(loaders.projects);
 export const About = lazy(loaders.about);
 export const Course = lazy(loaders.course);
+export const Offline = lazy(loaders.offline);
 

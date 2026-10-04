@@ -1,11 +1,11 @@
-# PyPath Update Verification
+# PyPath Online Compiler Update Verification
 
-Source updated according to `PyPath_Complete_Update.pdf`.
+The current source was updated to use an online Pyodide compiler and a dedicated offline information page.
 
 ## Automated verification
 
 - `npm test`: PASS
-- Test cases: 10
+- Test cases: 28
 - Failed: 0
 - Cancelled: 0
 - Python lesson/project snippets syntax-checked: 90
@@ -38,6 +38,9 @@ Source updated according to `PyPath_Complete_Update.pdf`.
 - API lesson example made location-neutral.
 - README claims updated to match implementation.
 - Obsolete main-thread Pyodide service removed.
+- Local/offline Pyodide preparation scripts and bundled runtime directory removed.
+- Online compiler now loads Pyodide 0.27.4 from the official jsDelivr CDN.
+- Dedicated offline page is shown when the browser loses network connectivity.
 
 ## Production build
 

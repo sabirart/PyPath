@@ -1,5 +1,5 @@
 // Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { AppProvider, useApp } from "./context/AppContext";
 import { navigate, useRoute } from "./router";
 import Header from "./components/Header";
@@ -9,10 +9,18 @@ import Toast from "./components/Toast";
 import Welcome from "./pages/Welcome";
 import Missing from "./components/Missing";
 import PageSkeleton from "./components/Skeletons";
-import { Dashboard, LessonPage, Compiler, Projects, About, Course } from "./pages/lazy";
+import { Dashboard, LessonPage, Compiler, Projects, About, Course, Offline } from "./pages/lazy";
 
 function Shell() {
   const { user, setUser, getLesson } = useApp();
+  const [online, setOnline] = useState(() => navigator.onLine);
+  useEffect(() => {
+    const on = () => setOnline(true);
+    const off = () => setOnline(false);
+    window.addEventListener("online", on);
+    window.addEventListener("offline", off);
+    return () => { window.removeEventListener("online", on); window.removeEventListener("offline", off); };
+  }, []);
   const route = useRoute();
   const main = useRef(null);
   const firstRoute = useRef(true);
@@ -33,7 +41,7 @@ function Shell() {
     content = <LessonPage id={route.id} base={l?.kind === "project" ? "projects" : "lessons"} />;
   } else if (page === "projects") {
     const l = route.id ? getLesson(route.id) : null;
-    title = route.id ? (l ? `Day ${l.day}. ${l.title}` : "Project not found") : "Projects";
+    title = route.id ? (l ? `${l.kind === "project" ? "Project" : `Day ${l.day}`}. ${l.title}` : "Project not found") : "Projects";
     activeId = l ? l.id : null;
     lessonView = !!l;
     content = route.id ? <LessonPage id={route.id} base="projects" /> : <Projects />;
@@ -51,6 +59,10 @@ function Shell() {
     main.current?.focus({ preventScroll: true });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [route.path, user]);
+
+  if (!online) {
+    return <Offline />;
+  }
 
   if (!user) {
     return <Welcome onStart={(name) => { setUser(name); navigate("/dashboard"); }} />;

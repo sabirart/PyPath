@@ -1,10 +1,10 @@
 // Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
-import { ArrowRight, Calculator, Clock, Dices, Flag, HelpCircle, ListTodo, Receipt, Trophy } from "lucide-react";
+import { ArrowRight, Calculator, Clock, Dices, HelpCircle, Receipt, Trophy } from "lucide-react";
 import { useApp } from "../context/AppContext";
 import { pathFor } from "../router";
 import StatusIcon, { STATUS_LABEL } from "../components/StatusIcon";
 
-const ICONS = { l26: Calculator, l27: Dices, l28: HelpCircle, l29: Receipt, l30: ListTodo };
+const ICONS = { p01: Calculator, p02: Dices, p03: Receipt, p04: HelpCircle, p05: Trophy };
 
 function ProjectCard({ item, index, featured = false }) {
   const { progress } = useApp();
@@ -13,10 +13,10 @@ function ProjectCard({ item, index, featured = false }) {
   const cta = st === "completed" ? "Review project" : st === "active" ? "Continue project" : "Open project";
   return (
     <a href={`#${pathFor(item)}`} className={`proj-card proj-${st} ${featured ? "is-featured" : ""}`} style={{ "--i": index }}
-      aria-label={`Day ${item.day}, ${item.title}: ${STATUS_LABEL[st]}`}>
+      aria-label={`${item.title}: ${STATUS_LABEL[st]}`}>
       <div className="proj-top">
         <span className="proj-icon"><Icon size={featured ? 26 : 22} aria-hidden="true" /></span>
-        <span className="proj-day">{featured ? <>Final project &middot; Day {item.day}</> : `Day ${item.day}`}</span>
+        <span className="proj-day">{featured ? "Final project" : `Project ${item.projectNumber}`}</span>
         <span className={`badge badge-${st}`}><StatusIcon status={st} size={13} /> {STATUS_LABEL[st]}</span>
       </div>
       <h3 className="proj-title">{item.title.replace(/^(Project \d+|Final Project): /, "")}</h3>
@@ -44,16 +44,16 @@ export default function Projects() {
     <div className="projects">
       <header className="projects-head">
         <div>
-          <p className="eyebrow">Days {stats.classCount + 1} &ndash; {stats.total}</p>
+          <p className="eyebrow">5 Project Checkpoints</p>
           <h2 className="projects-title">Practical projects</h2>
-          <p className="muted projects-sub">Turn what you learned into real programs. Each project opens with instructions and a working editor.</p>
+          <p className="muted projects-sub">Projects are not extra days. Complete each checkpoint when its related skills are ready, then return to the next lesson.</p>
         </div>
         <div className="projects-progress" role="group" aria-label="Project progress">
           <div className="row between"><strong>{done} of {items.length} built</strong><span className="muted small">{Math.round((done / Math.max(items.length, 1)) * 100)}%</span></div>
           <div className="bar" role="progressbar" aria-valuemin={0} aria-valuemax={items.length} aria-valuenow={done} aria-label="Projects completed">
             <div className="bar-fill" style={{ width: `${(done / Math.max(items.length, 1)) * 100}%` }} />
           </div>
-          <p className="muted small">{stats.lessonsDone >= stats.classCount ? "All classes done. You are ready." : `${stats.lessonsDone} of ${stats.classCount} classes finished. You can start a project any time.`}</p>
+          <p className="muted small">`${stats.lessonsDone} of ${stats.classCount} lessons finished. Projects are independent checkpoints.`</p>
         </div>
       </header>
       <div className="proj-grid">

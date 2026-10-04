@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BookOpen, CheckCircle2, ChevronDown, Code2, ExternalLink, FileText, Mail, ShieldCheck, UserRound } from "lucide-react";
 
 const basics = [
-  { icon: BookOpen, title: "Learning path", text: "Follow the 30-day path from Python basics through practical projects." },
+  { icon: BookOpen, title: "Learning path", text: "Follow the 30-day path from Python basics through professional engineering, with five project checkpoints." },
   { icon: Code2, title: "Practice in the browser", text: "Use the built-in Free Compiler and lesson editor to write and run Python without a separate setup." },
   { icon: CheckCircle2, title: "Progress", text: "Completed lessons, your active lesson, study days, theme and text-size preferences are saved locally in your browser." },
   { icon: ShieldCheck, title: "Privacy basics", text: "PyPath is designed as a browser-first learning site. It does not require an account, password or email to start." },

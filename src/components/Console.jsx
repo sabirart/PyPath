@@ -52,7 +52,7 @@ export default function Console({ py, samples = [] }) {
         {showStatus && (
           <div className={`console-status status-${waiting && !running ? "waiting" : status}`} role="status" aria-live="polite">
             {status === "loading" && (<><Loader2 size={12} className="spin" /> Loading Python</>)}
-            {status === "ready" && (running ? "Running" : waiting ? "Waiting for input" : "Ready")}
+            {status === "ready" && (running ? "Running" : waiting ? "Waiting for input" : "Python loaded")}
             {status === "error" && "Python unavailable"}
             {status === "idle" && "Starting"}
           </div>

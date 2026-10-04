@@ -8,13 +8,15 @@ const BLURB = {
   "Beginner Python": "Make decisions, repeat work and organise logic with functions and lists.",
   "Intermediate Python": "Work with richer data, files, errors and modules like a working developer.",
   "Advanced Python": "Object-oriented design and the powerful features that make Python elegant.",
-  "Practical Projects": "Put everything to work. Four projects and a final project finish the challenge.",
+  "Professional Python": "Engineering skills: APIs, databases, async work, logging, security, packaging, architecture and performance.",
 };
 
 export default function Course() {
   const { lessons, stats } = useApp();
+  const dayLessons = lessons.filter((l) => l.kind === "lesson");
+  const projects = lessons.filter((l) => l.kind === "project");
   const parts = [];
-  lessons.forEach((l) => {
+  dayLessons.forEach((l) => {
     let g = parts[parts.length - 1];
     if (!g || g.name !== l.part) { g = { name: l.part, items: [] }; parts.push(g); }
     g.items.push(l);
@@ -24,7 +26,7 @@ export default function Course() {
       <header className="course-head">
         <p className="eyebrow">30-Day Python Challenge</p>
         <h2 className="page-title">Course overview</h2>
-        <p className="muted course-lead">25 classes cover Python fundamentals through advanced topics. Days 26 to 30 are practical projects. Continue at your own pace.</p>
+        <p className="muted course-lead">30 focused lessons build from Python fundamentals to professional engineering. Five projects appear separately as checkpoints during the path — projects are not extra days.</p>
         <div className="course-stats">
           <div className="bar course-bar" role="progressbar" aria-valuemin={0} aria-valuemax={stats.total} aria-valuenow={stats.completed} aria-label="Course progress">
             <div className="bar-fill" style={{ width: `${stats.percent}%` }} />
@@ -57,6 +59,18 @@ export default function Course() {
           </section>
         );
       })}
+      <section className="part-section" aria-labelledby="project-checkpoints">
+        <div className="part-head">
+          <span className="part-index">✓</span>
+          <div>
+            <h3 id="project-checkpoints">Project Checkpoints <span className="muted part-days">5 projects</span></h3>
+            <p className="muted small">Build these alongside the lessons that prepare you for them. They do not consume a day.</p>
+          </div>
+        </div>
+        <div className="day-grid">
+          {projects.map((p) => <DayCard key={p.id} item={p} showTags={true} />)}
+        </div>
+      </section>
     </div>
   );
 }

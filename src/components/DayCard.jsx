@@ -4,14 +4,14 @@ import { useApp } from "../context/AppContext";
 import { pathFor } from "../router";
 import StatusIcon, { STATUS_LABEL } from "./StatusIcon";
 
-// One course item (class or project) as a card: day number, name, short description, status.
+// One course item as a card. Lessons show days; project checkpoints never consume a day.
 export default function DayCard({ item, showTags = false }) {
   const { progress } = useApp();
   const st = progress[item.id] || "not-started";
   return (
-    <a href={`#${pathFor(item)}`} className={`day-card day-${st}`} aria-label={`Day ${item.day}, ${item.title}: ${STATUS_LABEL[st]}`}>
+    <a href={`#${pathFor(item)}`} className={`day-card day-${st}`} aria-label={`${item.kind === "project" ? `Project ${item.projectNumber}` : `Day ${item.day}`}, ${item.title}: ${STATUS_LABEL[st]}`}>
       <div className="day-top">
-        <span className="day-num">Day {item.day}</span>
+        <span className="day-num">{item.kind === "project" ? `Project ${item.projectNumber}` : `Day ${item.day}`}</span>
         <span className={`badge badge-${st}`}><StatusIcon status={st} size={13} /> {STATUS_LABEL[st]}</span>
       </div>
       <h4 className="day-title">{item.title}</h4>

@@ -16,7 +16,7 @@ test("hash router handles dashboard, lessons, projects and invalid ids", async (
   global.window.location.hash = "#/unknown/nope";
   assert.deepEqual(parseHash(), { path: "/unknown/nope", page: "unknown", id: "nope" });
   assert.equal(pathFor(lessons[0]), "/lessons/l01");
-  assert.equal(pathFor(lessons[25]), "/projects/l26");
+  assert.equal(pathFor(lessons.find((x) => x.id === "p01")), "/projects/p01");
 });
 
 test("storage survives unavailable localStorage through memory fallback and handles corrupted progress", async () => {
@@ -59,14 +59,14 @@ for item in items:
   }
 });
 
-test("critical audit content fixes are present", () => {
-  const p1 = lessons.find((x) => x.id === "l26");
-  assert.equal(p1.sampleInput, "12\n3\n+");
-  const final = lessons.find((x) => x.id === "l30");
-  assert.match(final.fullExample, /command == "export"/);
-  assert.doesNotMatch(final.definition, /persistent-style/i);
-  const api = lessons.find((x) => x.id === "l24");
-  assert.doesNotMatch(api.fullExample, /Karachi/i);
+test("curriculum contains five integrated project checkpoints and professional coverage", () => {
+  const projects = lessons.filter((x) => x.kind === "project");
+  assert.equal(projects.length, 5);
+  assert.deepEqual(projects.map((x) => x.id), ["p01", "p02", "p03", "p04", "p05"]);
+  assert.deepEqual(projects.map((x) => x.afterLesson), [6, 9, 15, 24, 30]);
+  for (const title of ["Testing", "SQLite", "Asyncio", "Logging", "Packaging", "Architecture", "Performance"]) {
+    assert.ok(lessons.some((x) => x.title.includes(title)), `Missing topic: ${title}`);
+  }
 });
 
 test("compiler source has valid line breaks and quiet editor/input focus styling", () => {
@@ -142,12 +142,29 @@ test("Python runtime is warmed once and reused between runs", () => {
   assert.match(hook, /setStatus\("ready"\);/);
 });
 
-test("Python runtime uses the pinned Pyodide CDN build as an ES module", () => {
+test("Python runtime uses the official online Pyodide CDN", () => {
   const worker = readFileSync(new URL("../src/workers/python.worker.js", import.meta.url), "utf8");
-  assert.match(worker, /pyodide\/v314\.0\.7\/full\/pyodide\.mjs/);
+  assert.match(worker, /PYODIDE_CDN/);
+  assert.match(worker, /cdn\.jsdelivr\.net/);
+  assert.match(worker, /0\.27\.4/);
+  assert.doesNotMatch(worker, /LOCAL_PYODIDE/);
+  assert.doesNotMatch(worker, /prepare-offline-runtime/);
+  assert.doesNotMatch(worker, /unpkg\.com/);
   assert.doesNotMatch(worker, /importScripts\s*\(/);
   const hook = readFileSync(new URL("../src/hooks/usePython.js", import.meta.url), "utf8");
   assert.match(hook, /type: "module"/);
+});
+
+test("online-only product has a dedicated offline page and no offline runtime setup", () => {
+  const app = readFileSync(new URL("../src/App.jsx", import.meta.url), "utf8");
+  const offline = readFileSync(new URL("../src/pages/Offline.jsx", import.meta.url), "utf8");
+  const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
+  assert.match(app, /navigator\.onLine/);
+  assert.match(app, /return <Offline \/>/);
+  assert.match(offline, /You’re offline/);
+  assert.doesNotMatch(JSON.stringify(pkg.scripts), /offline|pyodide/);
+  assert.equal(existsSync(new URL("../scripts/prepare-offline-runtime.mjs", import.meta.url)), false);
+  assert.equal(existsSync(new URL("../public/pyodide/", import.meta.url)), false);
 });
 
 test("the execution timer starts only after Python has loaded, and output is capped", () => {
@@ -159,7 +176,7 @@ test("the execution timer starts only after Python has loaded, and output is cap
   assert.match(worker, /MAX_OUTPUT = 200000/);
 });
 
-test("Python is not downloaded on page load, only on editor intent or Run", () => {
+test("Python is initialized only on editor intent or Run", () => {
   const hook = readFileSync(new URL("../src/hooks/usePython.js", import.meta.url), "utf8");
   assert.doesNotMatch(hook, /setTimeout\(\(\) => \{\s*if \(workerRef\.current\) return;/);
   assert.match(hook, /const warmup = useCallback/);
@@ -181,4 +198,13 @@ test("toasts are mounted, and obsolete files are gone", () => {
   assert.match(app, /<Toast \/>/);
   assert.equal(existsSync(new URL("../src/services/pyodide.js", import.meta.url)), false);
   assert.equal(existsSync(new URL("../test.py", import.meta.url)), false);
+});
+
+test('progress popup shows only the 30 learning days and layout prevents page-width overflow', () => {
+  const popup = readFileSync(new URL("../src/components/ProgressPopup.jsx", import.meta.url), "utf8");
+  const css = readFileSync(new URL("../src/styles/index.css", import.meta.url), "utf8");
+  assert.match(popup, /const dayOnlyLessons = lessons\.filter\(\(l\) => l\.kind === "lesson"\)/);
+  assert.match(popup, /dayOnlyLessons\.map\(\(l\) =>/);
+  assert.match(css, /\.main \{[^}]*overflow-x: hidden/);
+  assert.match(css, /\.sidebar-inner \{[^}]*overflow-x: hidden/);
 });

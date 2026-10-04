@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const TIMEOUT_MS = 30000; // maximum time a program may run
-const LOAD_TIMEOUT_MS = 180000; // maximum time to download and start Python the first time
+const LOAD_TIMEOUT_MS = 60000; // maximum time to start the online Python engine the first time
 
 function createWorker() {
   return new Worker(new URL("../workers/python.worker.js", import.meta.url), { type: "module" });
@@ -33,8 +33,8 @@ export default function usePython() {
     session.current.waiting = false;
   }, [cleanup]);
 
-  // Python (several MB) is downloaded only when the person shows intent: the first time they
-  // click into the editor, or press Run. Merely opening a page never starts the download.
+  // The bundled Python engine is initialized only when the person shows intent: the first
+  // time they click into the editor, or press Run. Merely opening a page never starts it.
   const warmup = useCallback(() => {
     if (workerRef.current) return;
     const worker = createWorker();
@@ -74,7 +74,7 @@ export default function usePython() {
       setRunning(false);
       setWaiting(false);
       setStatus("error");
-      setLoadError("Python took too long to download. Check your internet connection and try again.");
+      setLoadError("The online Python engine took too long to start. Check your internet connection and try again.");
     };
     worker.onmessage = (event) => {
       const data = event.data || {};

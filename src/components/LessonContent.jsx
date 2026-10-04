@@ -30,8 +30,8 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
     <article className="lesson">
       <header className="lesson-hero">
         <div className="lesson-meta">
-          <span className="chip chip-accent">Day {lesson.day} of {lessons.length}</span>
-          <span className="muted small">{project ? "Project" : "Class"} &middot; {lesson.part}</span>
+          <span className="chip chip-accent">{project ? `Project ${lesson.projectNumber} of 5` : `Day ${lesson.day} of 30`}</span>
+          <span className="muted small">{project ? "Project checkpoint" : "Lesson"} &middot; {lesson.part}</span>
           <span className={`status-text small status-text-${st}`}><StatusIcon status={st} size={14} /> {STATUS_LABEL[st]}</span>
         </div>
         <h2 className="lesson-title">{lesson.title}</h2>
@@ -43,7 +43,7 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
         </ul>
         {project && lesson.outcome && <p className="project-brief"><strong>You will build:</strong> {lesson.outcome}</p>}
       </header>
-      {st === "not-started" && canStart && (
+      {lesson.id === "l01" && st === "not-started" && canStart && (
         <div className="preview-note" role="note">
           <p>You are previewing this {noun}. It is not marked as started until you choose to study it.</p>
           <button className="btn btn-primary btn-sm" onClick={onStart}><Play size={14} /> Start Day {lesson.day}</button>
@@ -58,6 +58,14 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
         <CodeBlock code={lesson.fullExample} label="Python - runnable example" />
         <button className="btn btn-ghost btn-sm" onClick={onLoadExample}><FileInput size={15} /> Load in editor</button>
       </Section>
+      {!project && lesson.projectId && (
+        <div className="project-brief" role="note">
+          <strong>Project checkpoint unlocked:</strong> After this lesson, apply these skills in the related project.
+          <div style={{ marginTop: 8 }}>
+            <a className="btn btn-ghost btn-sm" href={`#/projects/${lesson.projectId}`}>Open project</a>
+          </div>
+        </div>
+      )}
     </article>
   );
 }

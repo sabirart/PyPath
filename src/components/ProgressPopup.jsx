@@ -27,6 +27,7 @@ export default function ProgressPopup() {
   const pill = useRef(null);
   const open = panels.progress;
   const target = nextItem;
+  const dayOnlyLessons = lessons.filter((l) => l.kind === "lesson");
   const close = () => { togglePanel("progress", false); setConfirming(false); setRenaming(false); };
 
   useEffect(() => {
@@ -62,7 +63,7 @@ export default function ProgressPopup() {
             <li><strong>{stats.notStarted}</strong> not started</li>
           </ul>
           <ol className="dots" aria-label="All 30 days">
-            {lessons.map((l) => {
+            {dayOnlyLessons.map((l) => {
               const st = progress[l.id] || "not-started";
               return (
                 <li key={l.id}>

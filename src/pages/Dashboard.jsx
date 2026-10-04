@@ -107,7 +107,7 @@ export default function Dashboard() {
         ))}
       </ul>
 
-      <div className="dash-cols">
+      <div className={`dash-cols ${showAllPath ? "is-expanded" : ""}`}>
         <section className="panel" aria-labelledby="path-h">
           <div className="panel-head"><Layers size={18} aria-hidden="true" /><h3 id="path-h">Learning path</h3><button className="link-btn path-toggle" type="button" onClick={() => setShowAllPath((v) => !v)}>{showAllPath ? "Show less" : "Show all"}</button></div>
           <ul className="path">

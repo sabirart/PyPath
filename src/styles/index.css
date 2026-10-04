@@ -517,8 +517,8 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 .quiz-footer { display:flex; align-items:center; gap:.7rem; padding:.85rem 1.2rem; border-top:1px solid var(--border); }
 .quiz-footer .quiz-score { margin-left:auto; color:var(--muted); font-size:.82rem; }
 @media (max-width: 767px) {
-  .quiz-backdrop { padding:.75rem; align-items:center; }
-  .quiz-modal { width:100%; max-height:calc(100dvh - 1.5rem); border-radius:14px 14px 0 0; }
+  .quiz-backdrop { padding:calc(var(--header-h) + .5rem) .75rem .75rem; align-items:start; }
+  .quiz-modal { width:100%; max-height:calc(100dvh - var(--header-h) - 1.25rem); border-radius:14px; }
   .quiz-modal-success,.quiz-success-screen { min-height:420px; }
   .quiz-head,.quiz-body,.quiz-footer { padding-left:.85rem; padding-right:.85rem; }
   .quiz-options { margin-left:0; }
@@ -530,3 +530,28 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 .lesson-example-output-title { padding: .35rem .75rem; border-bottom: 1px solid var(--border); font-size: .72rem; font-weight: 600; color: var(--muted); }
 .lesson-example-output pre { margin: 0; padding: .7rem .85rem; overflow-x: auto; font: 400 .82rem/1.6 var(--mono); white-space: pre-wrap; word-break: break-word; }
 @media (max-width: 700px) { .run-shortcut { display: none; } }
+
+/* Touch devices do not need desktop hover feedback. Keep persistent selected/active states intact. */
+@media (hover: none) and (pointer: coarse) {
+  .btn-primary:hover:not(:disabled) { background: var(--primary); }
+  .btn-success:hover:not(:disabled) { background: var(--success); }
+  .btn-danger:hover:not(:disabled) { background: var(--error); }
+  .btn-ghost:hover:not(:disabled) { background: transparent; }
+  .icon-btn:hover:not(:disabled) { background: transparent; }
+  .link-btn:hover { color: var(--muted); text-decoration: none; }
+  .link-card:hover { border-color: var(--border); }
+  .nav-link:hover { background: transparent; }
+  .dot:hover { border-color: var(--border-strong); color: var(--muted); }
+  .tab:hover { background: transparent; }
+  .splitter:hover::after { background: transparent; }
+  .copy-btn:hover { background: transparent; color: var(--muted); }
+  .day-card:hover { border-color: var(--border); transform: none; }
+  .map-day:hover { border-color: var(--border-strong); color: var(--muted); }
+  .soon a:hover { background: var(--surface-2); }
+  .quick-card:hover { border-color: var(--border); }
+  .proj-card:hover { border-color: var(--border); transform: none; box-shadow: var(--shadow-sm); }
+  .proj-card:hover .proj-cta svg { transform: none; }
+  .quiz-option:hover { border-color: var(--border); background: var(--surface); }
+  .quiz-option.is-selected:hover { border-color: var(--primary); background: var(--primary-soft); }
+  .quiz-option.is-wrong:hover { border-color: var(--error); background: color-mix(in srgb, var(--error) 10%, var(--surface)); }
+}

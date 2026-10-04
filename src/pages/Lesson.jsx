@@ -78,6 +78,16 @@ function LessonView({ lesson, base, prev, next }) {
     if (!mobile || split || e.touches.length !== 1) return;
     const target = e.target;
     if (target.closest("button, a, input, textarea, select, .cm-editor")) return;
+    // Do not treat horizontal scrolling inside lesson content as navigation.
+    // This covers Do/Don't tables, examples, code/output blocks, and any
+    // future lesson element that has its own horizontal overflow.
+    let node = target instanceof Element ? target : null;
+    while (node && node !== e.currentTarget) {
+      const style = window.getComputedStyle(node);
+      const canScrollX = node.scrollWidth > node.clientWidth + 1 && /auto|scroll/.test(style.overflowX);
+      if (canScrollX) return;
+      node = node.parentElement;
+    }
     gestureStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
   };
   const onTouchEnd = (e) => {

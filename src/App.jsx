@@ -28,22 +28,37 @@ function Shell() {
 
   const page = route.page || "dashboard";
 
-  // Mobile navigation swipe: available across non-lesson pages. Lesson pages
-  // keep their existing lesson/code/sidebar gesture handling.
+  // Mobile navigation swipe: available across the whole app. Ignore controls and
+  // elements that have their own horizontal scrolling so those swipes stay local.
+  const isHorizontalScrollArea = (target) => {
+    let node = target instanceof Element ? target : null;
+    while (node && node !== document.body) {
+      if (node.matches("button, a, input, textarea, select, .cm-editor")) return true;
+      if (node.scrollWidth > node.clientWidth + 1) {
+        const style = window.getComputedStyle(node);
+        if (style.overflowX === "auto" || style.overflowX === "scroll") return true;
+      }
+      node = node.parentElement;
+    }
+    return false;
+  };
   const onGlobalTouchStart = (e) => {
-    if (bp !== "mobile" || e.touches.length !== 1) return;
-    if (e.target.closest("button, a, input, textarea, select, .cm-editor, .workspace")) return;
+    if (bp !== "mobile" || e.touches.length !== 1 || isHorizontalScrollArea(e.target)) return;
     swipeStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
   };
   const onGlobalTouchEnd = (e) => {
     const start = swipeStart.current;
     swipeStart.current = null;
-    if (bp !== "mobile" || lessonView || !start || e.changedTouches.length !== 1) return;
+    if (bp !== "mobile" || !start || e.changedTouches.length !== 1) return;
     const dx = e.changedTouches[0].clientX - start.x;
     const dy = e.changedTouches[0].clientY - start.y;
     if (Math.abs(dx) < 60 || Math.abs(dx) <= Math.abs(dy) * 1.25) return;
+    if (dx < 0 && panels.sidebar) {
+      togglePanel("sidebar", false);
+      return;
+    }
+    if (lessonView) return;
     if (dx > 0 && !panels.sidebar) togglePanel("sidebar", true);
-    else if (dx < 0 && panels.sidebar) togglePanel("sidebar", false);
   };
   let title = "Dashboard";
   let activeId = null;

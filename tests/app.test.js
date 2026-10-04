@@ -214,11 +214,29 @@ test("mobile sidebar swipes work across navigation pages", async () => {
   const app = await fs.readFile(new URL("../src/App.jsx", import.meta.url), "utf8");
   const css = await fs.readFile(new URL("../src/styles/index.css", import.meta.url), "utf8");
   assert.match(app, /const onGlobalTouchStart = \(e\) =>/);
-  assert.match(app, /if \(bp !== "mobile" \|\| lessonView/);
+  assert.match(app, /if \(bp !== "mobile" \|\| !start/);
+  assert.match(app, /if \(dx < 0 && panels\.sidebar\)/);
+  assert.match(app, /if \(lessonView\) return;/);
   assert.match(app, /if \(dx > 0 && !panels\.sidebar\) togglePanel\("sidebar", true\);/);
-  assert.match(app, /else if \(dx < 0 && panels\.sidebar\) togglePanel\("sidebar", false\);/);
+  assert.match(app, /node\.scrollWidth > node\.clientWidth \+ 1/);
+  assert.match(app, /style\.overflowX === "auto" \|\| style\.overflowX === "scroll"/);
   assert.match(app, /<div className="body" onTouchStart=\{onGlobalTouchStart\} onTouchEnd=\{onGlobalTouchEnd\}>/);
+  const lesson = await fs.readFile(new URL("../src/pages/Lesson.jsx", import.meta.url), "utf8");
+  assert.match(lesson, /Do not treat horizontal scrolling inside lesson content as navigation/);
+  assert.match(lesson, /node\.scrollWidth > node\.clientWidth \+ 1/);
+  assert.match(lesson, /style\.overflowX/);
   assert.match(css, /\.workspace, \.sidebar\[data-bp="mobile"\], \.main \{ touch-action: pan-y; \}/);
+});
+
+
+
+test("mobile quiz clears the header and desktop hover feedback is suppressed on touch", async () => {
+  const fs = await import("node:fs/promises");
+  const css = await fs.readFile(new URL("../src/styles/index.css", import.meta.url), "utf8");
+  assert.match(css, /\.quiz-backdrop \{ padding:calc\(var\(--header-h\) \+ \.5rem\) \.75rem \.75rem; align-items:start;/);
+  assert.match(css, /\.quiz-modal \{ width:100%; max-height:calc\(100dvh - var\(--header-h\) - 1\.25rem\); border-radius:14px;/);
+  assert.match(css, /@media \(hover: none\) and \(pointer: coarse\)/);
+  assert.match(css, /\.day-card:hover \{ border-color: var\(--border\); transform: none; \}/);
 });
 
 test("mobile dashboard keeps the progress ring compact and lesson swipes control panels", async () => {

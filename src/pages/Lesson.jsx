@@ -42,6 +42,14 @@ function LessonView({ lesson, base, prev, next }) {
   const samples = lesson.sampleInput ? lesson.sampleInput.split("\n") : [];
 
   useEffect(() => { touchLesson(lesson.id); }, [lesson.id, touchLesson]);
+
+  // Day 1 is the only lesson that requires an explicit Start action. Once the
+  // learner opens the next unlocked class, it immediately becomes In Progress.
+  // This keeps the Start gate for the first class without forcing it on every class.
+  useEffect(() => {
+    if (!isProject && lesson.id !== "l01" && status === "pending") startLesson(lesson.id);
+  }, [isProject, lesson.id, startLesson, status]);
+
   useEffect(() => { if (mobile) setRowSize(70); }, [mobile]);
 
   const change = (v) => setCode(v);

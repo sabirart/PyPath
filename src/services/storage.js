@@ -9,13 +9,14 @@ export const KEYS = {
   last: "pypath_last_lesson",
   font: "pypath_fontsize",
   active: "pypath_active",
+  pending: "pypath_pending",
   days: "pypath_days",
   schema: "pypath_schema",
   progress: (id) => `pypath_progress_${id}`,
   code: (id) => `pypath_code_${id}`,
 };
 
-const RESET_PREFIXES = ["pypath_progress_", "pypath_code_", "pypath_last_lesson", "pypath_active", "pypath_days"];
+const RESET_PREFIXES = ["pypath_progress_", "pypath_code_", "pypath_last_lesson", "pypath_active", "pypath_pending", "pypath_days"];
 
 export function getItem(key) {
   try {

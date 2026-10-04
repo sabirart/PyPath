@@ -251,3 +251,30 @@ test("mobile dashboard keeps the progress ring compact and lesson swipes control
   assert.match(lesson, /if \(dx > 0 && !showCode\) togglePanel\("sidebar", true\);/);
   assert.match(lesson, /if \(dx < 0 && !showCode && panels\.sidebar\) togglePanel\("sidebar", false\);/);
 });
+
+test("passed quiz saves completion immediately; the success popup has a Next Class button, no timer, and a shine on the trophy", async () => {
+  const quiz = readFileSync(new URL("../src/components/CompletionQuiz.jsx", import.meta.url), "utf8");
+  const page = readFileSync(new URL("../src/pages/Lesson.jsx", import.meta.url), "utf8");
+  const ctx = readFileSync(new URL("../src/context/AppContext.jsx", import.meta.url), "utf8");
+  const css = readFileSync(new URL("../src/styles/index.css", import.meta.url), "utf8");
+  assert.match(quiz, /if \(attempted && isCorrect\(next\)\) markComplete\(\);/);
+  assert.match(quiz, /if \(isCorrect\(answers\)\) markComplete\(\);/);
+  assert.match(quiz, /const finish = \(\) => \{\s*markComplete\(\);\s*onNextRef\.current\?\.\(\);/);
+  assert.match(quiz, /onClick=\{finish\}>\s*Next Class/);
+  assert.doesNotMatch(quiz, /setTimeout|setInterval|quiz-ring/);
+  assert.match(css, /\.quiz-trophy::after[^}]*animation:quiz-shine/);
+  assert.match(css, /@keyframes quiz-shine/);
+  assert.match(page, /completeLesson\(lesson\.id, \{ force: true \}\)/);
+  assert.match(page, /onNext=\{afterQuiz\}/);
+  assert.match(ctx, /if \(!force && !alreadyCompleted && !isCurrent\) return;/);
+});
+
+test("after a passed quiz the finished class is Completed and the next class is Pending with a Start button", async () => {
+  const ctx = readFileSync(new URL("../src/context/AppContext.jsx", import.meta.url), "utf8");
+  const status = readFileSync(new URL("../src/components/StatusIcon.jsx", import.meta.url), "utf8");
+  // completeLesson clears the in-progress lesson instead of auto-starting the next one.
+  assert.match(ctx, /removeItem\(KEYS\.active\);\s*setActiveId\(null\);/);
+  // The first unfinished lesson is "pending" when nothing is in progress, so NavButtons shows Start.
+  assert.match(ctx, /map\[pending\] = "pending"/);
+  assert.match(status, /pending: "Pending"/);
+});

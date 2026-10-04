@@ -18,7 +18,7 @@ export default function DayCard({ item, showTags = false }) {
       <p className="day-text">{item.kind === "project" ? (item.bio || item.summary) : item.summary}</p>
       {item.kind === "project" && <div className="day-project-meta"><span className={`level level-${item.difficulty.toLowerCase()}`}>{item.difficulty}</span><span className="class-range">Classes {item.classFrom}–{item.afterLesson}</span></div>}
       {showTags && item.tags && <ul className="tags">{item.tags.map((t) => <li key={t} className="chip">{t}</li>)}</ul>}
-      <span className="day-open">{st === "completed" ? "Review" : st === "active" ? "Continue" : "Open"} <ArrowRight size={14} aria-hidden="true" /></span>
+      <span className="day-open">{st === "completed" ? "Review" : st === "active" ? "Continue" : st === "pending" ? "Start" : "Open"} <ArrowRight size={14} aria-hidden="true" /></span>
     </a>
   );
 }

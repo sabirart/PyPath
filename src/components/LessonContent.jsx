@@ -46,7 +46,7 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
         </ul>
         {project && lesson.outcome && <p className="project-brief"><strong>You will build:</strong> {lesson.outcome}</p>}
       </header>
-      {lesson.id === "l01" && st === "not-started" && canStart && (
+      {lesson.id === "l01" && (st === "not-started" || st === "pending") && canStart && (
         <div className="preview-note" role="note">
           <p>You are previewing this {noun}. It is not marked as started until you choose to study it.</p>
           <button className="btn btn-primary btn-sm" onClick={onStart}><Play size={14} /> Start Day {lesson.day}</button>

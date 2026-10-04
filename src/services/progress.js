@@ -30,6 +30,25 @@ export function nextActiveAfter(lessons, completed, id) {
   return dayLessons(lessons).find((l) => done[l.id] !== "completed")?.id ?? null;
 }
 
+// The class right after `id` in course order that is not completed. If everything after it is done,
+// it falls back to the first unfinished class overall (null when the course is finished).
+export function nextPendingAfter(lessons, completed, id) {
+  const list = dayLessons(lessons);
+  const done = { ...completed, [id]: "completed" };
+  const idx = list.findIndex((l) => l.id === id);
+  return list.slice(idx + 1).find((l) => done[l.id] !== "completed")?.id
+    ?? list.find((l) => done[l.id] !== "completed")?.id
+    ?? null;
+}
+
+// The single "Pending" class: unlocked and waiting for Start. None while a class is In Progress.
+export function pendingOf(lessons, completed, activeId, preferredId) {
+  if (activeId) return null;
+  const list = dayLessons(lessons);
+  if (preferredId && list.some((l) => l.id === preferredId) && completed[preferredId] !== "completed") return preferredId;
+  return list.find((l) => completed[l.id] !== "completed")?.id ?? null;
+}
+
 export function summarize(lessons, progress, activeId, studyDays, now = new Date()) {
   const classes = dayLessons(lessons);
   const projects = lessons.filter((l) => l.kind === "project");

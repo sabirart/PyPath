@@ -130,7 +130,7 @@ export default function Dashboard() {
           <section className="panel" aria-labelledby="map-h">
             <div className="panel-head"><h3 id="map-h">30-day map</h3>
               <span className="map-legend small muted">
-                {["completed", "active", "not-started"].map((s) => <span key={s}><StatusIcon status={s} size={12} /> {STATUS_LABEL[s]}</span>)}
+                {["completed", "active", "pending", "not-started"].map((s) => <span key={s}><StatusIcon status={s} size={12} /> {STATUS_LABEL[s]}</span>)}
               </span>
             </div>
             <ol className="day-map" aria-label="All 30 days">

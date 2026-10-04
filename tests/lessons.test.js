@@ -50,6 +50,22 @@ test("curriculum covers professional Python before projects", () => {
 });
 
 
+test("every quiz answer is sourced from that same lesson, never another class", () => {
+  const toText = (value) => {
+    if (typeof value === "string") return value;
+    if (Array.isArray(value)) return value.map(toText).join(" ");
+    if (value && typeof value === "object") return Object.values(value).map(toText).join(" ");
+    return "";
+  };
+  classes.forEach((l) => {
+    const lessonText = toText(l).toLowerCase();
+    l.quiz.forEach((q, i) => {
+      const answer = q.options[q.answer].toLowerCase();
+      assert.ok(lessonText.includes(answer), `${l.id} quiz question ${i + 1} answer is not present in that lesson's content`);
+    });
+  });
+});
+
 test("every lesson has substantial teaching support, Do/Don't guidance, and a five-question gate", () => {
   classes.forEach((l) => {
     assert.ok(Array.isArray(l.teachingPoints) && l.teachingPoints.length >= 5, `${l.id} needs detailed teaching points`);

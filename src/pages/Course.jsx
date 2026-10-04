@@ -34,9 +34,9 @@ export default function Course() {
           <p className="small muted">{stats.completed} of {stats.total} days complete</p>
         </div>
         <ul className="legend" aria-label="Status key">
-          {["completed", "active", "not-started"].map((s) => (
+          {["completed", "active", "pending", "not-started"].map((s) => (
             <li key={s}><StatusIcon status={s} size={14} /> <strong>{STATUS_LABEL[s]}</strong>
-              <span className="muted">{s === "completed" ? "finished" : s === "active" ? "the day you are studying now" : "not studied yet"}</span></li>
+              <span className="muted">{s === "completed" ? "finished" : s === "active" ? "the day you are studying now" : s === "pending" ? "unlocked, press Start to begin" : "not studied yet"}</span></li>
           ))}
         </ul>
       </header>

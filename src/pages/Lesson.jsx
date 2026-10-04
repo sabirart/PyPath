@@ -34,10 +34,8 @@ function LessonView({ lesson, base, prev, next }) {
   const [quizOpen, setQuizOpen] = useState(false);
   const [suggestedProject, setSuggestedProject] = useState(null);
   const status = progress[lesson.id] || "not-started";
-  const dayLessons = lessons.filter((l) => l.kind === "lesson");
-  const firstIncomplete = dayLessons.find((l) => progress[l.id] !== "completed");
   const isProject = lesson.kind === "project";
-  const canStart = isProject ? status !== "completed" : !activeId && firstIncomplete?.id === lesson.id;
+  const canStart = isProject ? status !== "completed" : status === "pending";
   const showCode = panels.compiler;
   const showLesson = split || !showCode;
   const sideBySide = split && showCode;
@@ -58,16 +56,18 @@ function LessonView({ lesson, base, prev, next }) {
     else setQuizOpen(true);
   };
   const passQuiz = () => {
-    completeLesson(lesson.id);
-    if (next) {
-      window.setTimeout(() => navigate(pathFor(next)), 1700);
-      return;
-    }
+    // Persist completion immediately. Navigation is handled by the quiz so a
+    // network/server problem during the 5-second wait cannot undo the result.
+    completeLesson(lesson.id, { force: true });
+  };
+  // Runs when Next Class (or Finish) is pressed: confirm completion, then open the next class
+  // (or, after the last class, close the popup and suggest the project checkpoint).
+  const afterQuiz = () => {
+    completeLesson(lesson.id, { force: true });
+    if (next) { navigate(pathFor(next)); return; }
     setQuizOpen(false);
-    if (!isProject) {
-      const checkpoint = lessons.find((item) => item.kind === "project" && item.afterLesson === lesson.day);
-      if (checkpoint) setSuggestedProject(checkpoint);
-    }
+    const checkpoint = lessons.find((item) => item.kind === "project" && item.afterLesson === lesson.day);
+    if (checkpoint) setSuggestedProject(checkpoint);
   };
   const reset = () => {
     if (code !== lesson.starterCode && !window.confirm("Replace your code with the starter code? Your current code will be lost.")) return;
@@ -138,7 +138,7 @@ function LessonView({ lesson, base, prev, next }) {
         </section>
       </div>
       </div>
-      {quizOpen && <CompletionQuiz lesson={lesson} nextLesson={next} onPass={passQuiz} onNext={() => next && navigate(pathFor(next))} onClose={() => setQuizOpen(false)} />}
+      {quizOpen && <CompletionQuiz lesson={lesson} nextLesson={next} onPass={passQuiz} onNext={afterQuiz} onClose={() => setQuizOpen(false)} />}
       {suggestedProject && <ProjectSuggestion project={suggestedProject} onClose={() => setSuggestedProject(null)} />}
     </>
   );

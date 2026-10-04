@@ -2,7 +2,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { dayKey, streakOf, canStart, nextActiveAfter, firstIncomplete, summarize } from "../src/services/progress.js";
+import { dayKey, streakOf, canStart, nextActiveAfter, nextPendingAfter, pendingOf, firstIncomplete, summarize } from "../src/services/progress.js";
 
 const lessons = JSON.parse(readFileSync(new URL("../src/data/lessons.json", import.meta.url), "utf8"));
 const done = (...ids) => Object.fromEntries(ids.map((id) => [id, "completed"]));
@@ -45,4 +45,21 @@ test("summary counts come from the data, not hard-coded numbers", () => {
   assert.equal(s.active, 1);
   assert.equal(s.notStarted, 26);
   assert.equal(s.percent, 10);
+});
+
+test("the class right after the one just completed becomes Pending, even when an earlier class has a gap", () => {
+  assert.equal(nextPendingAfter(lessons, {}, "l01"), "l02");
+  // gap at l04: finishing l06 makes l07 pending, not l04
+  assert.equal(nextPendingAfter(lessons, done("l01", "l02", "l03", "l05"), "l06"), "l07");
+  // finishing the last class falls back to the first unfinished class, or null when everything is done
+  assert.equal(nextPendingAfter(lessons, done("l01", "l02"), "l30"), "l03");
+  const allButLast = done(...lessons.filter((l) => l.kind === "lesson" && l.id !== "l30").map((l) => l.id));
+  assert.equal(nextPendingAfter(lessons, allButLast, "l30"), null);
+});
+
+test("pendingOf: nothing is pending while a class is in progress; a valid stored pending class wins", () => {
+  assert.equal(pendingOf(lessons, {}, "l01", null), null);
+  assert.equal(pendingOf(lessons, done("l01"), null, null), "l02");
+  assert.equal(pendingOf(lessons, done("l01", "l02", "l03", "l05", "l06"), null, "l07"), "l07");
+  assert.equal(pendingOf(lessons, done("l01", "l02"), null, "l01"), "l03"); // stored id already completed -> ignore
 });

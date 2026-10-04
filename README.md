@@ -24,7 +24,7 @@ Upload the `dist/` folder, or connect the repository to a free host. No special 
 `src/data/lessons.json` holds all course content. Navigation, the sidebar, progress and the project list are generated from it. Lesson ids (`l01` - `l30`) equal the day number. Project checkpoints use `p01` - `p05` and have no day number. Each project records the lesson after which it is recommended, so projects reinforce the concepts instead of becoming a separate final-stage course.
 
 ## Lesson status
-Each day is **Completed**, **In Progress** or **Not started**. Opening a day never changes its status. Pressing **Start Day** makes it the single In Progress day. **Mark Complete** is only available for the active day. Future days can be previewed, and earlier days do not need to be finished first.
+Each day is **Completed**, **In Progress**, **Pending** (the next class, unlocked and waiting for Start) or **Not started**. Opening a day never changes its status. Pressing **Start Day** makes it the single In Progress day. **Mark Complete** is only available for the active day. Future days can be previewed, and earlier days do not need to be finished first.
 
 ## License and protection
 PyPath is **proprietary software**. Copyright (c) 2026 Sabir Hussain. All rights reserved. See `LICENSE`: visitors may use the website to learn, but nobody may copy, modify, host or redistribute the code or lesson content without written permission. Third-party components keep their own licences (`THIRD_PARTY_NOTICES.md`).
@@ -44,6 +44,7 @@ Everything stays in your browser. Keys used in `localStorage`:
 | `pypath_user` | first name |
 | `pypath_progress_<id>` | `completed` |
 | `pypath_active` | the one In Progress day |
+| `pypath_pending` | the Pending day (next class after the last one completed) |
 | `pypath_days` | dates a day was completed (for the streak) |
 | `pypath_schema` | storage version (migrates saved code from the old numbering) |
 | `pypath_code_<lessonId>` | your code for that lesson (`pypath_code_free` for the Free Compiler) |

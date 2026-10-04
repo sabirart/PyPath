@@ -3,7 +3,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import lessonsData from "../data/lessons.json";
 import useBreakpoint from "../hooks/useBreakpoint";
 import { KEYS, getItem, setItem, removeItem, resetProgressData } from "../services/storage";
-import { dayKey, canStart, nextActiveAfter, summarize } from "../services/progress";
+import { dayKey, nextPendingAfter, pendingOf, summarize } from "../services/progress";
 
 const AppContext = createContext(null);
 export const useApp = () => useContext(AppContext);
@@ -25,6 +25,10 @@ const readActive = () => {
   const id = getItem(KEYS.active);
   return DAY_LESSONS.some((l) => l.id === id) && getItem(KEYS.progress(id)) !== "completed" ? id : null;
 };
+const readPending = () => {
+  const id = getItem(KEYS.pending);
+  return DAY_LESSONS.some((l) => l.id === id) ? id : null;
+};
 const readDays = () => {
   try { const v = JSON.parse(getItem(KEYS.days) || "[]"); return Array.isArray(v) ? v.filter((d) => typeof d === "string") : []; } catch { return []; }
 };
@@ -45,6 +49,7 @@ export function AppProvider({ children }) {
   });
   const [completed, setCompleted] = useState(readCompleted);
   const [activeId, setActiveId] = useState(readActive);
+  const [pendingId, setPendingId] = useState(readPending);
   const [studyDays, setStudyDays] = useState(readDays);
   const [lastLesson, setLast] = useState(() => getItem(KEYS.last));
   const [panels, setPanels] = useState(() => defaultsFor(bp));
@@ -110,37 +115,49 @@ export function AppProvider({ children }) {
     setLast(id);
   }, []);
 
-  // Only the first uncompleted lesson can be started. After completion, the next
-  // lesson becomes the single in-progress ("active") lesson automatically.
+  // Only the first uncompleted ("Pending") lesson can be started, and only when nothing else is in progress.
   const startLesson = useCallback((id) => {
     if (!DAY_LESSONS.some((l) => l.id === id)) return;
-    if (!canStart(lessons, completed, activeId, id)) return;
+    if (pendingOf(lessons, completed, activeId, pendingId) !== id) return;
     setItem(KEYS.active, id);
     setActiveId(id);
-  }, [activeId, completed]);
+  }, [activeId, completed, pendingId]);
 
-  // Completion is sequential: only the current in-progress lesson can be completed.
-  const completeLesson = useCallback((id) => {
-    if (!DAY_LESSONS.some((l) => l.id === id) || activeId !== id) return;
+  // Completion is sequential: only the current in-progress lesson (or the first unfinished one) can be completed.
+  // It reads the saved state fresh instead of trusting a render-time closure, so a quiz that
+  // passes in the same moment the page re-renders can never miss and leave the class "In Progress".
+  // `force` is used by the quiz: a passed quiz is proof enough, so it never depends on which lesson
+  // happened to be marked active.
+  const completeLesson = useCallback((id, { force = false } = {}) => {
+    if (!DAY_LESSONS.some((l) => l.id === id)) return;
+
+    const saved = readCompleted();
+    const alreadyCompleted = saved[id] === "completed";
+    const firstUnfinished = DAY_LESSONS.find((l) => saved[l.id] !== "completed");
+    const isCurrent = getItem(KEYS.active) === id || firstUnfinished?.id === id;
+    if (!force && !alreadyCompleted && !isCurrent) return;
+
     setItem(KEYS.progress(id), "completed");
-    setCompleted({ ...completed, [id]: "completed" });
+    const nextCompleted = { ...saved, [id]: "completed" };
+    setCompleted((current) => ({ ...current, ...nextCompleted }));
 
-    const nextId = nextActiveAfter(lessons, completed, id);
-    if (nextId) {
-      setItem(KEYS.active, nextId);
-      setActiveId(nextId);
-    } else {
-      removeItem(KEYS.active);
-      setActiveId(null);
-    }
+    // The finished class is Completed and nothing is in progress any more. The next unfinished class
+    // becomes "Pending" (see `progress` below): it is unlocked and shows a Start button, and only
+    // becomes "In Progress" when the learner presses Start.
+    removeItem(KEYS.active);
+    setActiveId(null);
+    const nextId = nextPendingAfter(lessons, nextCompleted, id);
+    if (nextId) setItem(KEYS.pending, nextId); else removeItem(KEYS.pending);
+    setPendingId(nextId);
 
     const today = dayKey();
-    if (!studyDays.includes(today)) {
-      const nextDays = [...studyDays, today].slice(-400);
+    const days = readDays();
+    if (!days.includes(today)) {
+      const nextDays = [...days, today].slice(-400);
       setItem(KEYS.days, JSON.stringify(nextDays));
       setStudyDays(nextDays);
     }
-  }, [activeId, completed, studyDays]);
+  }, []);
 
   // Projects are independent checkpoints. They never consume a course day or block the next lesson.
   const completeProject = useCallback((id) => {
@@ -156,16 +173,23 @@ export function AppProvider({ children }) {
     toast("Project checkpoint completed.", "success");
   }, [studyDays, toast]);
 
+  // completed -> "completed"; the started lesson -> "active" (In Progress);
+  // when nothing is in progress, the first unfinished lesson -> "pending" (ready to Start).
   const progress = useMemo(() => {
     const map = { ...completed };
     if (activeId && !map[activeId]) map[activeId] = "active";
+    else if (!activeId) {
+      const pending = pendingOf(lessons, map, null, pendingId);
+      if (pending) map[pending] = "pending";
+    }
     return map;
-  }, [completed, activeId]);
+  }, [completed, activeId, pendingId]);
 
   const resetProgress = useCallback(() => {
     resetProgressData();
     setCompleted({});
     setActiveId(null);
+    setPendingId(null);
     setStudyDays([]);
     setLast(null);
     toast("Progress and saved code were reset.", "success");
@@ -176,6 +200,7 @@ export function AppProvider({ children }) {
   const resetAndRestart = useCallback((name) => {
     resetProgressData();
     setCompleted({});
+    setPendingId(null);
     setStudyDays([]);
     setLast("l01");
     setUser(name);
@@ -187,7 +212,7 @@ export function AppProvider({ children }) {
   const stats = useMemo(() => summarize(lessons, progress, activeId, studyDays), [progress, activeId, studyDays]);
 
   // Where "Continue" leads: the active lesson, otherwise the first day not yet completed.
-  const nextItem = DAY_LESSONS.find((l) => l.id === activeId) || DAY_LESSONS.find((l) => progress[l.id] !== "completed") || null;
+  const nextItem = DAY_LESSONS.find((l) => l.id === activeId) || DAY_LESSONS.find((l) => progress[l.id] === "pending") || DAY_LESSONS.find((l) => progress[l.id] !== "completed") || null;
 
   const value = useMemo(() => ({
     lessons, projectIds: PROJECT_IDS, getLesson,

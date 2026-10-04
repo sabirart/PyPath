@@ -8,13 +8,16 @@ import NameModal from "./NameModal";
 
 export function Ring({ percent, size = 40, stroke = 4 }) {
   const r = (size - stroke) / 2;
-  const c = 2 * Math.PI * r;
+  const circumference = 2 * Math.PI * r;
   const mid = size / 2;
+  const value = Math.max(0, Math.min(100, Number(percent) || 0));
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-hidden="true" className="ring">
       <circle cx={mid} cy={mid} r={r} fill="none" stroke="var(--ring-track)" strokeWidth={stroke} />
       <circle cx={mid} cy={mid} r={r} fill="none" stroke="var(--ring)" strokeWidth={stroke} strokeLinecap="round"
-        strokeDasharray={c} strokeDashoffset={c * (1 - percent / 100)} transform={`rotate(-90 ${mid} ${mid})`} />
+        pathLength="100" strokeDasharray="100 100" strokeDashoffset={100 - value}
+        transform={`rotate(-90 ${mid} ${mid})`} className="progress-ring-fill"
+        style={{ transition: "none", animation: "none", strokeDashoffset: 100 - value }} />
     </svg>
   );
 }

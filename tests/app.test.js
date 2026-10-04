@@ -276,5 +276,5 @@ test("after a passed quiz the finished class is Completed and the next class is 
   assert.match(ctx, /removeItem\(KEYS\.active\);\s*setActiveId\(null\);/);
   // The first unfinished lesson is "pending" when nothing is in progress, so NavButtons shows Start.
   assert.match(ctx, /map\[pending\] = "pending"/);
-  assert.match(status, /pending: "Pending"/);
+  assert.match(status, /pending: "Not started"/);
 });

@@ -2,7 +2,6 @@
 import { ArrowRight, BookOpen, CheckCircle2, Flame, Folder, Layers, Target, Terminal, Trophy } from "lucide-react";
 import { useState } from "react";
 import { useApp } from "../context/AppContext";
-import { Ring } from "../components/ProgressPopup";
 import StatusIcon, { STATUS_LABEL } from "../components/StatusIcon";
 import { navigate, pathFor } from "../router";
 
@@ -86,12 +85,28 @@ export default function Dashboard() {
             <a className="btn btn-ghost btn-lg" href="#/compiler">Open compiler</a>
           </div>
         </div>
-        <div className="focus-ring" aria-label={`${stats.percent}% of the challenge complete`}>
-          <div className="ring-wrap big">
-            <Ring percent={stats.percent} size={148} stroke={11} />
-            <span className="ring-center"><strong>{stats.percent}%</strong><small>complete</small></span>
+        <div className="focus-progress" aria-label={`${stats.percent}% of the challenge complete`}>
+          <div className="progress-visual">
+            <div className="ring-wrap progress-ring progress-ring-static" aria-hidden="true">
+              <svg width="156" height="156" viewBox="0 0 156 156" className="ring dashboard-progress-ring">
+                <circle cx="78" cy="78" r="66" fill="none" stroke="var(--ring-track)" strokeWidth="12" />
+                <circle
+                  cx="78" cy="78"
+                  r="66"
+                  fill="none"
+                  stroke="var(--ring)"
+                  strokeWidth="12"
+                  strokeLinecap="round"
+                  pathLength="100"
+                  strokeDasharray={`${stats.percent} ${100 - stats.percent}`}
+                  strokeDashoffset="0"
+                  transform="rotate(-90 78 78)"
+                />
+              </svg>
+              <span className="ring-center"><strong>{stats.percent}%</strong><small>complete</small></span>
+            </div>
+            <p className="progress-total"><span>{stats.completed} / {stats.total} Days</span></p>
           </div>
-          <p className="muted small">{stats.completed} of {stats.total} days</p>
         </div>
       </section>
 
@@ -130,7 +145,7 @@ export default function Dashboard() {
           <section className="panel" aria-labelledby="map-h">
             <div className="panel-head"><h3 id="map-h">30-day map</h3>
               <span className="map-legend small muted">
-                {["completed", "active", "pending", "not-started"].map((s) => <span key={s}><StatusIcon status={s} size={12} /> {STATUS_LABEL[s]}</span>)}
+                {["completed", "active", "not-started"].map((s) => <span key={s}><StatusIcon status={s} size={12} /> {STATUS_LABEL[s]}</span>)}
               </span>
             </div>
             <ol className="day-map" aria-label="All 30 days">

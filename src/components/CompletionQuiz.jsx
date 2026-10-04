@@ -1,8 +1,6 @@
 // Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2, RotateCcw, Trophy, X } from "lucide-react";
-import pkg from "../../package.json";
-
 
 export default function CompletionQuiz({ lesson, nextLesson, onPass, onNext, onClose }) {
   const questions = Array.isArray(lesson.quiz) ? lesson.quiz.slice(0, 5) : [];
@@ -79,7 +77,6 @@ export default function CompletionQuiz({ lesson, nextLesson, onPass, onNext, onC
                 <CheckCircle2 size={16} /> Finish
               </button>
             )}
-            <p className="quiz-build small muted">PyPath v{pkg.version}</p>
           </div>
         ) : (
           <>

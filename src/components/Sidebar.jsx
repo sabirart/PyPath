@@ -5,7 +5,6 @@ import { pathFor } from "../router";
 import { useApp } from "../context/AppContext";
 import useFocusTrap from "../hooks/useFocusTrap";
 import StatusIcon from "./StatusIcon";
-import pkg from "../../package.json";
 
 export default function Sidebar({ page, activeId }) {
   const { lessons, progress, bp, panels, togglePanel } = useApp();
@@ -74,7 +73,6 @@ export default function Sidebar({ page, activeId }) {
               </div>
             ))}
           </nav>
-          <p className="build-tag label">PyPath v{pkg.version}</p>
         </div>
       </aside>
     </>

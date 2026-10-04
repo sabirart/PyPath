@@ -66,52 +66,52 @@
     ],
     "quiz": [
       {
-        "question": "What happens first?",
+        "question": "How does Python normally run code?",
         "options": [
-          "Python normally runs code from top to bottom.",
-          "A Python file runs bottom to top.",
-          "Python skips all lines until input is given.",
-          "Python waits for input before running code."
+          "Top to bottom",
+          "Bottom to top",
+          "Random order",
+          "Only after input"
         ],
         "answer": 0
       },
       {
         "question": "What does an expression produce?",
         "options": [
-          "A file",
           "A value",
+          "A file",
           "A loop",
-          "It has no effect on the program."
+          "A package"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "What is print() mainly useful for while learning?",
+        "question": "What is print() useful for while learning?",
         "options": [
-          "Saving packages",
-          "Creating classes",
           "Quick output checks",
-          "It has no effect on the program."
+          "Installing Python",
+          "Creating classes",
+          "Saving files"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "What should a good comment explain?",
+        "question": "What should a useful comment explain?",
         "options": [
+          "Intent or a non-obvious choice",
           "Every obvious line",
-          "The entire program",
-          "It has no effect on the program.",
-          "Intent or a non-obvious choice"
+          "The whole program",
+          "Only the filename"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Best debugging habit?",
+        "question": "What is a good debugging cycle?",
         "options": [
-          "Read, run, then fix the error",
+          "Read the error, fix it, and run again",
           "Guess and rewrite everything",
           "Ignore the traceback",
-          "It has no effect on the program."
+          "Delete the program"
         ],
         "answer": 0
       }
@@ -187,50 +187,50 @@
       {
         "question": "What does assignment do?",
         "options": [
-          "Binds a name to a value",
-          "Creates a permanent label on the value",
-          "Deletes the value",
-          "It has no effect on the program."
+          "Gives a name to a value",
+          "Runs a loop",
+          "Creates a file",
+          "Deletes a variable"
         ],
         "answer": 0
       },
       {
-        "question": "Are Python names case-sensitive?",
+        "question": "Can a Python name be changed to refer to a new value?",
         "options": [
-          "No",
           "Yes",
-          "Only in functions",
-          "It has no effect on the program."
-        ],
-        "answer": 1
-      },
-      {
-        "question": "Which name is valid?",
-        "options": [
-          "2name",
-          "user name",
-          "user_name",
-          "It has no effect on the program."
-        ],
-        "answer": 2
-      },
-      {
-        "question": "Can a variable be rebound?",
-        "options": [
           "No",
-          "Only once",
-          "It has no effect on the program.",
-          "Yes"
+          "Only for strings",
+          "Only once"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "What is better?",
+        "question": "Which statement about Python names is correct?",
         "options": [
-          "A descriptive variable name",
-          "A one-letter name everywhere",
-          "A name with spaces",
-          "It has no effect on the program."
+          "Names are case-sensitive",
+          "Names are never case-sensitive",
+          "Names must start with a number",
+          "Names cannot use underscores"
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What happens when an immutable value is changed?",
+        "options": [
+          "The name is bound to a new value",
+          "The old value changes in place",
+          "The program always stops",
+          "The value becomes a list"
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Which object can change in place?",
+        "options": [
+          "A list",
+          "An integer",
+          "A string",
+          "None"
         ],
         "answer": 0
       }
@@ -306,50 +306,50 @@
       {
         "question": "What type does input() return?",
         "options": [
-          "str",
+          "Text (str)",
           "int",
           "float",
-          "It has no effect on the program."
+          "bool"
         ],
         "answer": 0
       },
       {
-        "question": "Which converts \"12\" to a number?",
+        "question": "What converts numeric text such as \"12\" to an integer?",
         "options": [
-          "str(12)",
-          "int(\"12\")",
-          "bool(\"12\")",
-          "It has no effect on the program."
+          "int()",
+          "str()",
+          "print()",
+          "list()"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "Which handles 12.5?",
+        "question": "Which type is useful for decimal numbers?",
         "options": [
-          "int(\"12.5\")",
-          "list(\"12.5\")",
-          "float(\"12.5\")",
-          "It has no effect on the program."
+          "float",
+          "int",
+          "str",
+          "None"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "Which is falsey?",
+        "question": "Which value is falsey?",
         "options": [
+          "0",
           "\"hello\"",
           "[1]",
-          "It has no effect on the program.",
-          "0"
+          "True"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Why do types matter?",
+        "question": "Why do Python types matter?",
         "options": [
           "Operations depend on the value type",
-          "Python ignores types",
-          "Types only affect comments",
-          "It has no effect on the program."
+          "Types never affect operations",
+          "Every value is always text",
+          "Types only matter in comments"
         ],
         "answer": 0
       }
@@ -423,52 +423,52 @@
     ],
     "quiz": [
       {
-        "question": "What is the first string index?",
+        "question": "What is the first index of a string?",
         "options": [
           "0",
           "1",
           "-1",
-          "It has no effect on the program."
+          "The string length"
         ],
         "answer": 0
       },
       {
-        "question": "In text[1:4], is index 4 included?",
+        "question": "Is the stop index included in text[1:4]?",
         "options": [
-          "Yes",
           "No",
+          "Yes, always",
           "Only for strings",
-          "It has no effect on the program."
+          "Only when text is empty"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "Which is good for formatting?",
+        "question": "Why do string methods return a new string?",
         "options": [
-          "\"Hello\" + 0",
-          "formatting = text",
-          "f\"Hello {name}\"",
-          "It has no effect on the program."
+          "Strings are immutable",
+          "Strings are lists",
+          "Methods delete strings",
+          "Python cannot store text"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "Are strings mutable?",
+        "question": "Which method removes surrounding whitespace?",
         "options": [
-          "Yes",
-          "Only when sliced",
-          "It has no effect on the program.",
-          "No"
+          "strip()",
+          "append()",
+          "pop()",
+          "range()"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "What does strip() do?",
+        "question": "What is a good way to combine text with values?",
         "options": [
-          "Removes surrounding whitespace",
-          "Sorts text",
-          "Converts text to int",
-          "It has no effect on the program."
+          "An f-string",
+          "A tuple",
+          "A set",
+          "A while loop"
         ],
         "answer": 0
       }
@@ -542,52 +542,52 @@
     ],
     "quiz": [
       {
-        "question": "What does 3 < 5 produce?",
+        "question": "What do comparisons such as 3 < 5 produce?",
         "options": [
-          "True",
-          "3",
-          "\"True\"",
-          "It has no effect on the program."
+          "A boolean",
+          "A string",
+          "A list",
+          "A file"
         ],
         "answer": 0
       },
       {
         "question": "What is 7 + 2?",
         "options": [
-          "72",
           "9",
+          "72",
           "5",
-          "It has no effect on the program."
+          "14"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "What can and/or do?",
         "options": [
-          "Create loops",
+          "Combine conditions",
+          "Create files",
           "Define classes",
-          "Short-circuit evaluation",
-          "It has no effect on the program."
+          "Install packages"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "Why use parentheses?",
+        "question": "Why use parentheses in a complex expression?",
         "options": [
-          "To make code slower",
-          "To create a list",
-          "It has no effect on the program.",
-          "To make intent clear"
+          "To make the intended grouping clear",
+          "To make Python run backward",
+          "To turn numbers into strings",
+          "To create a loop"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "What does += do?",
+        "question": "What does += use?",
         "options": [
-          "Updates a variable using its current value",
-          "Compares two values",
-          "Creates a function",
-          "It has no effect on the program."
+          "The current value",
+          "A new file",
+          "The next function",
+          "Only text"
         ],
         "answer": 0
       }
@@ -662,52 +662,52 @@
     ],
     "quiz": [
       {
-        "question": "What does if evaluate?",
+        "question": "What does if use to choose a block?",
         "options": [
           "A condition",
-          "A package",
           "A file",
-          "It has no effect on the program."
+          "A package",
+          "A comment"
         ],
         "answer": 0
       },
       {
-        "question": "What is else?",
+        "question": "What is else used for?",
         "options": [
-          "A loop",
           "A fallback branch",
-          "A type",
-          "It has no effect on the program."
+          "Creating a loop",
+          "Defining a class",
+          "Reading a file"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "Which is a valid chained comparison?",
+        "question": "What does not do in a condition?",
         "options": [
-          "0 => score => 100",
-          "0 <=> score",
-          "0 <= score <= 100",
-          "It has no effect on the program."
+          "Reverses a boolean condition",
+          "Creates a list",
+          "Prints text",
+          "Stops Python"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "What does not do?",
+        "question": "What can chained comparisons make clearer?",
         "options": [
-          "Repeats a loop",
-          "Imports a module",
-          "It has no effect on the program.",
-          "Negates a boolean condition"
+          "A range condition",
+          "A file path",
+          "A class name",
+          "A package"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
         "question": "Why use a guard clause?",
         "options": [
           "To reject invalid input early",
+          "To repeat forever",
           "To hide errors",
-          "To avoid functions",
-          "It has no effect on the program."
+          "To install dependencies"
         ],
         "answer": 0
       }
@@ -781,52 +781,52 @@
     ],
     "quiz": [
       {
-        "question": "Best loop for a list?",
+        "question": "Which loop is useful for items in a list?",
         "options": [
           "for",
-          "while only",
+          "while",
           "if",
-          "It has no effect on the program."
+          "try"
         ],
         "answer": 0
       },
       {
-        "question": "What does range(3) produce?",
+        "question": "What does range(3) contain?",
         "options": [
-          "1, 2, 3",
           "0, 1, 2",
+          "1, 2, 3",
           "0, 1, 2, 3",
-          "It has no effect on the program."
+          "Only 3"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "When is while useful?",
         "options": [
+          "When repeating while a condition stays true",
           "Only for lists",
-          "Only for strings",
-          "When repetition depends on a changing condition",
-          "It has no effect on the program."
+          "Only for files",
+          "Only for classes"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "What is an accumulator?",
+        "question": "What is an accumulator used for?",
         "options": [
-          "A Python package",
-          "A loop condition",
-          "It has no effect on the program.",
-          "A value built across iterations"
+          "Building a total across iterations",
+          "Opening a browser",
+          "Defining a module",
+          "Handling imports"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
         "question": "What can cause an endless while loop?",
         "options": [
-          "Never changing the condition state",
+          "The condition never becomes false",
+          "Using a for loop",
           "Using print()",
-          "Using a variable",
-          "It has no effect on the program."
+          "Using a variable"
         ],
         "answer": 0
       }
@@ -903,49 +903,49 @@
         "question": "What does break do?",
         "options": [
           "Exits the nearest loop",
-          "Skips one iteration",
-          "Starts a loop",
-          "It has no effect on the program."
+          "Skips one variable",
+          "Starts a new loop",
+          "Repeats the program"
         ],
         "answer": 0
       },
       {
         "question": "What does continue do?",
         "options": [
-          "Exits the program",
           "Skips to the next iteration",
-          "Ends all loops",
-          "It has no effect on the program."
+          "Exits Python",
+          "Creates a function",
+          "Ends the whole program"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "What is a sentinel?",
         "options": [
-          "A data type",
-          "A package",
-          "A value that signals the loop to stop",
-          "It has no effect on the program."
+          "A special value that can end a loop",
+          "A Python package",
+          "A list method",
+          "A file type"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "question": "Why validate input?",
         "options": [
-          "To make it longer",
-          "To avoid variables",
-          "It has no effect on the program.",
-          "To ensure it meets the required rule"
+          "To check that it follows required rules",
+          "To make loops longer",
+          "To hide errors",
+          "To install Python"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Good validation design?",
+        "question": "What is a good validation design?",
         "options": [
-          "Validate, then convert safely",
-          "Convert blindly, then hope",
-          "Never check input",
-          "It has no effect on the program."
+          "Separate conversion errors from validation rules",
+          "Ignore bad input",
+          "Catch every error blindly",
+          "Repeat forever"
         ],
         "answer": 0
       }
@@ -1023,49 +1023,49 @@
         "question": "What does def create?",
         "options": [
           "A function",
-          "A class only",
-          "A loop",
-          "It has no effect on the program."
+          "A list",
+          "A file",
+          "A package"
         ],
         "answer": 0
       },
       {
         "question": "What is an argument?",
         "options": [
-          "A function name",
-          "A value passed to a function",
-          "A return statement",
-          "It has no effect on the program."
+          "A value supplied to a function",
+          "A variable inside Python itself",
+          "A file path",
+          "A loop condition"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "What does return do?",
         "options": [
-          "Prints automatically",
-          "Repeats the function",
           "Sends a value back and exits the function",
-          "It has no effect on the program."
+          "Prints every variable",
+          "Starts a loop",
+          "Creates a class"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "question": "Where do local variables belong?",
         "options": [
-          "Everywhere globally",
-          "Only in modules",
-          "It has no effect on the program.",
-          "Inside a function call"
+          "Inside the function that creates them",
+          "Everywhere in the program",
+          "Only in imported modules",
+          "Inside comments"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
         "question": "Why use functions?",
         "options": [
-          "Reuse and organize behavior",
-          "Avoid all variables",
-          "Replace Python types",
-          "It has no effect on the program."
+          "To reuse clear behavior",
+          "To avoid all variables",
+          "To make code run backward",
+          "To replace Python"
         ],
         "answer": 0
       }
@@ -1141,50 +1141,50 @@
       {
         "question": "Which is mutable?",
         "options": [
-          "list",
-          "tuple",
-          "string",
-          "It has no effect on the program."
+          "A list",
+          "A tuple",
+          "A string",
+          "An integer"
         ],
         "answer": 0
       },
       {
-        "question": "What does indexing return?",
+        "question": "What does indexing get?",
         "options": [
-          "Every item",
           "One item",
-          "A new file",
-          "It has no effect on the program."
-        ],
-        "answer": 1
-      },
-      {
-        "question": "What does slicing return?",
-        "options": [
+          "A whole file",
           "A package",
-          "A boolean only",
-          "A sequence section",
-          "It has no effect on the program."
+          "A function"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "What does append do?",
+        "question": "What does slicing get?",
         "options": [
-          "Deletes a list",
-          "Sorts a tuple",
-          "It has no effect on the program.",
-          "Adds an item to a list"
+          "A section of a sequence",
+          "Only the last item",
+          "A dictionary key",
+          "A loop"
         ],
-        "answer": 3
+        "answer": 0
+      },
+      {
+        "question": "What does append() do to a list?",
+        "options": [
+          "Adds an item",
+          "Removes the first item",
+          "Sorts Python",
+          "Creates a tuple"
+        ],
+        "answer": 0
       },
       {
         "question": "Why can shared lists surprise you?",
         "options": [
-          "Two names can reference the same list",
+          "Two names can refer to the same list",
           "Lists cannot change",
-          "Tuples are mutable",
-          "It has no effect on the program."
+          "Lists are always copied",
+          "Lists only store numbers"
         ],
         "answer": 0
       }
@@ -1258,52 +1258,52 @@
     ],
     "quiz": [
       {
-        "question": "What does a dictionary store?",
+        "question": "What does a dictionary map?",
         "options": [
-          "Key-value pairs",
-          "Only unique numbers",
-          "Ordered functions",
-          "It has no effect on the program."
+          "Keys to values",
+          "Files to folders",
+          "Loops to functions",
+          "Strings to comments"
         ],
         "answer": 0
       },
       {
         "question": "What does a set store?",
         "options": [
-          "Key-value pairs",
           "Unique values",
-          "Duplicate-only values",
-          "It has no effect on the program."
+          "Ordered key-value pairs",
+          "Only strings",
+          "Only numbers"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "Which safely provides a fallback?",
+        "question": "Which method gives a fallback for a missing dictionary key?",
         "options": [
-          "d.name(\"Unknown\")",
-          "d[\"name\", \"Unknown\"]",
-          "d.get(\"name\", \"Unknown\")",
-          "It has no effect on the program."
+          "get()",
+          "append()",
+          "popitem()",
+          "range()"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "question": "What does in test?",
         "options": [
-          "Sorting",
+          "Membership",
           "File size",
-          "It has no effect on the program.",
-          "Membership"
+          "Loop speed",
+          "Function scope"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Best structure for lookup by ID?",
+        "question": "What is a good structure for lookup by ID?",
         "options": [
-          "Dictionary",
-          "Set only",
-          "String",
-          "It has no effect on the program."
+          "A dictionary",
+          "A string",
+          "A boolean",
+          "A tuple only"
         ],
         "answer": 0
       }
@@ -1377,52 +1377,52 @@
     ],
     "quiz": [
       {
-        "question": "What does a comprehension create?",
+        "question": "What does a comprehension build?",
         "options": [
-          "A collection",
+          "A collection from an iterable",
           "A database",
-          "A module",
-          "It has no effect on the program."
+          "A class",
+          "A file"
         ],
         "answer": 0
       },
       {
-        "question": "Where does a comprehension filter go?",
+        "question": "What does a comprehension filter keep?",
         "options": [
-          "Before the iterable name",
-          "After the loop part",
-          "Inside import",
-          "It has no effect on the program."
+          "Only matching items",
+          "Every item twice",
+          "Only strings",
+          "Only empty items"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "What is a dictionary comprehension?",
+        "question": "When is a normal loop better?",
         "options": [
-          "A way to delete dicts",
-          "A class",
-          "A compact way to build a dict",
-          "It has no effect on the program."
-        ],
-        "answer": 2
-      },
-      {
-        "question": "When should you use a normal loop?",
-        "options": [
+          "When the logic needs several steps",
           "Never",
           "Only for numbers",
-          "It has no effect on the program.",
-          "When the comprehension is hard to read"
+          "Only for comments"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "A transformation asks:",
+        "question": "What does filtering do?",
         "options": [
-          "What does each input become?",
-          "Which package installs?",
-          "Where is Python?",
-          "It has no effect on the program."
+          "Keeps items that match a rule",
+          "Deletes the program",
+          "Changes Python versions",
+          "Creates a database"
+        ],
+        "answer": 0
+      },
+      {
+        "question": "What is the main goal of a comprehension?",
+        "options": [
+          "Clear, concise collection building",
+          "Making code harder to read",
+          "Replacing all loops",
+          "Hiding errors"
         ],
         "answer": 0
       }
@@ -1499,49 +1499,49 @@
         "question": "What does *args collect?",
         "options": [
           "Extra positional arguments",
-          "Extra modules",
-          "Return values",
-          "It has no effect on the program."
+          "Extra files",
+          "Only keyword arguments",
+          "A return value"
         ],
         "answer": 0
       },
       {
         "question": "What does **kwargs collect?",
         "options": [
-          "Lists only",
           "Extra keyword arguments",
-          "Exceptions",
-          "It has no effect on the program."
+          "Extra lists",
+          "Only positional arguments",
+          "A loop condition"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "What can a closure remember?",
         "options": [
-          "A database connection always",
-          "A class name only",
-          "A value from its enclosing scope",
-          "It has no effect on the program."
+          "Values from its enclosing scope",
+          "Only global files",
+          "The Python version",
+          "A database connection always"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "question": "Why use keyword-only parameters?",
         "options": [
-          "To hide arguments",
-          "To remove types",
-          "It has no effect on the program.",
-          "To make options explicit"
+          "To make calls clearer",
+          "To make functions run backward",
+          "To remove all arguments",
+          "To create loops"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Best rule for advanced features?",
+        "question": "What is a good rule for advanced features?",
         "options": [
-          "Use them when they improve clarity",
-          "Use them everywhere",
-          "Avoid functions",
-          "It has no effect on the program."
+          "Use them when they make the API clearer",
+          "Use every feature in every function",
+          "Avoid all functions",
+          "Use them only in comments"
         ],
         "answer": 0
       }
@@ -1615,52 +1615,52 @@
     ],
     "quiz": [
       {
-        "question": "What is a module?",
+        "question": "What does a module group?",
         "options": [
-          "A Python file that groups reusable code",
-          "A database",
-          "A virtual machine",
-          "It has no effect on the program."
+          "Reusable Python code",
+          "Only images",
+          "Only database rows",
+          "Only user passwords"
         ],
         "answer": 0
       },
       {
         "question": "Why use a virtual environment?",
         "options": [
-          "To speed every program",
-          "To isolate dependencies",
+          "To isolate project dependencies",
+          "To speed up every loop",
           "To replace Python",
-          "It has no effect on the program."
+          "To create a database"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "What does pip do?",
         "options": [
-          "Runs SQL",
-          "Formats strings",
-          "Installs Python packages",
-          "It has no effect on the program."
+          "Installs packages",
+          "Runs loops",
+          "Creates variables",
+          "Formats strings"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "Why record dependencies?",
+        "question": "What do imports make available?",
         "options": [
-          "To hide packages",
-          "To remove imports",
-          "It has no effect on the program.",
-          "So setup can be reproduced"
+          "Reusable names from modules",
+          "Only comments",
+          "Only files",
+          "Only errors"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Best dependency practice?",
+        "question": "What is a good dependency practice?",
         "options": [
-          "Install into the project environment",
-          "Use random global packages",
-          "Copy site-packages manually",
-          "It has no effect on the program."
+          "Avoid relying on globally installed packages",
+          "Install everything globally",
+          "Never record packages",
+          "Copy packages into every function"
         ],
         "answer": 0
       }
@@ -1735,52 +1735,52 @@
     ],
     "quiz": [
       {
-        "question": "What does pathlib represent?",
+        "question": "What does pathlib provide?",
         "options": [
-          "File-system paths",
-          "Web requests",
-          "Python types",
-          "It has no effect on the program."
+          "Object-based file paths",
+          "HTTP requests",
+          "Database tables",
+          "Python classes only"
         ],
         "answer": 0
       },
       {
-        "question": "Common text encoding?",
+        "question": "What encoding is commonly used for normal text?",
         "options": [
-          "SQL8",
           "UTF-8",
-          "PYTHON8",
-          "It has no effect on the program."
+          "ASCII only",
+          "Binary",
+          "CSV"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "What is JSON good for?",
         "options": [
-          "Only images",
-          "Only SQL tables",
           "Structured data",
-          "It has no effect on the program."
+          "Only images",
+          "Only loops",
+          "Only source code comments"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "question": "What is CSV good for?",
         "options": [
-          "Class inheritance",
-          "Async tasks",
-          "It has no effect on the program.",
-          "Rows and columns"
+          "Rows and columns",
+          "Nested Python classes",
+          "Only passwords",
+          "Only error messages"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "What type are CSV values read as?",
+        "question": "What should you do with parsed CSV fields when numbers are needed?",
         "options": [
-          "Text",
-          "Always int",
-          "Always float",
-          "It has no effect on the program."
+          "Convert them to the needed types",
+          "Assume every value is already a number",
+          "Delete the fields",
+          "Turn every field into a list"
         ],
         "answer": 0
       }
@@ -1854,52 +1854,52 @@
     ],
     "quiz": [
       {
-        "question": "What should you catch?",
+        "question": "What should you usually catch?",
         "options": [
           "Specific expected exceptions",
           "Every exception blindly",
-          "No exceptions",
-          "It has no effect on the program."
+          "No exceptions ever",
+          "Only syntax errors"
         ],
         "answer": 0
       },
       {
         "question": "What does validation check?",
         "options": [
-          "Whether code looks long",
           "Whether input follows rules",
-          "Whether Python is installed",
-          "It has no effect on the program."
+          "Whether code is long",
+          "Whether a file is pretty",
+          "Whether Python is installed"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "Where should you start reading a traceback?",
         "options": [
-          "The first blank line",
-          "The imports only",
           "The final exception",
-          "It has no effect on the program."
+          "The first blank line",
+          "The filename only",
+          "The imports only"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "question": "What is finally useful for?",
         "options": [
+          "Cleanup that must happen either way",
           "Creating loops",
-          "Parsing JSON",
-          "It has no effect on the program.",
-          "Cleanup that must happen either way"
+          "Printing every value",
+          "Installing packages"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Best debugging approach?",
+        "question": "What is the best debugging approach?",
         "options": [
-          "Use the error message to locate the cause",
-          "Delete the whole program",
-          "Ignore the traceback",
-          "It has no effect on the program."
+          "Fix the cause of the exception",
+          "Hide every error",
+          "Delete the program",
+          "Ignore the traceback"
         ],
         "answer": 0
       }
@@ -1976,49 +1976,49 @@
         "question": "What does a test describe?",
         "options": [
           "Expected behavior",
-          "Package versions only",
-          "UI colors",
-          "Only the program title."
+          "A package name",
+          "A file size",
+          "A screen color"
         ],
         "answer": 0
       },
       {
-        "question": "Good tests are usually:",
+        "question": "What are good tests usually like?",
         "options": [
+          "Small and focused",
+          "Huge and unrelated",
           "Random",
-          "Focused",
-          "Dependent on every test",
-          "It has no effect on the program."
+          "Dependent on user timing"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "Which is built into Python?",
+        "question": "Which testing framework is built into Python?",
         "options": [
-          "pytest",
-          "requests",
           "unittest",
-          "It has no effect on the program."
+          "pytest",
+          "Django",
+          "React"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "What should you test?",
+        "question": "What should tests include?",
         "options": [
-          "Only the happy path",
-          "Only syntax",
-          "It has no effect on the program.",
-          "Normal and edge cases"
+          "Important edge and failure cases",
+          "Only perfect inputs",
+          "Only comments",
+          "Only imports"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
         "question": "Why isolate a test?",
         "options": [
-          "Failures are easier to understand",
-          "It makes code slower",
-          "It removes assertions",
-          "It has no effect on the program."
+          "To check one behavior clearly",
+          "To make it slower",
+          "To hide failures",
+          "To avoid assertions"
         ],
         "answer": 0
       }
@@ -2094,50 +2094,50 @@
       {
         "question": "What does a class define?",
         "options": [
-          "Object data and behavior",
-          "Only a loop",
-          "Only a file",
-          "Only variable names."
+          "Data and behavior for objects",
+          "Only files",
+          "Only loops",
+          "Only strings"
         ],
         "answer": 0
       },
       {
         "question": "What is __init__ used for?",
         "options": [
-          "Deleting classes",
-          "Initial instance state",
-          "Running imports",
-          "It has no effect on the program."
+          "Setting initial instance state",
+          "Deleting a class",
+          "Running every loop",
+          "Importing packages"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "Why use a dataclass?",
         "options": [
-          "Faster internet",
-          "SQL queries",
-          "Less boilerplate for data models",
-          "It has no effect on the program."
+          "To reduce boilerplate for data-focused classes",
+          "To create databases",
+          "To replace functions",
+          "To hide all state"
         ],
-        "answer": 2
+        "answer": 0
+      },
+      {
+        "question": "What is an object?",
+        "options": [
+          "An instance of a class",
+          "A Python comment",
+          "A package manager",
+          "A loop condition"
+        ],
+        "answer": 0
       },
       {
         "question": "What is encapsulation about?",
         "options": [
-          "Hiding every variable forever",
-          "Using inheritance only",
-          "It has no effect on the program.",
-          "A clear interface around implementation"
-        ],
-        "answer": 3
-      },
-      {
-        "question": "When is a class useful?",
-        "options": [
-          "When data and behavior belong together",
-          "For every single variable",
-          "Only for math",
-          "It has no effect on the program."
+          "Protecting important state through a clear interface",
+          "Making every variable global",
+          "Avoiding methods",
+          "Deleting classes"
         ],
         "answer": 0
       }
@@ -2213,50 +2213,50 @@
       {
         "question": "What is composition?",
         "options": [
-          "An object uses another object",
-          "A class copies a file",
-          "A loop inside a loop",
-          "It has no effect on the program."
+          "Using one object inside another",
+          "Copying a file",
+          "Creating a loop",
+          "Deleting a class"
         ],
         "answer": 0
       },
       {
-        "question": "Inheritance represents:",
+        "question": "Inheritance usually models what relationship?",
         "options": [
-          "A has-a relationship only",
-          "An is-a relationship",
-          "A file path",
-          "It has no effect on the program."
+          "Is-a",
+          "Has-a only",
+          "Uses-a file",
+          "Contains-a string"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "What is polymorphism?",
         "options": [
-          "Using only one class",
-          "Avoiding methods",
           "Using a common interface across implementations",
-          "It has no effect on the program."
+          "Making all classes identical",
+          "Removing methods",
+          "Avoiding objects"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "question": "When can composition help?",
         "options": [
-          "Only for numbers",
-          "Never",
-          "It has no effect on the program.",
-          "When flexibility matters"
+          "When objects should be built from other objects",
+          "Only when writing comments",
+          "Only with strings",
+          "Never"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "A good override should:",
+        "question": "What is a good reason to use inheritance?",
         "options": [
-          "Preserve expected behavior",
-          "Break the parent contract",
-          "Remove all methods",
-          "It has no effect on the program."
+          "The relationship is genuinely is-a",
+          "It is always shorter",
+          "It avoids all testing",
+          "Every class must inherit"
         ],
         "answer": 0
       }
@@ -2333,49 +2333,49 @@
         "question": "What does an iterator provide?",
         "options": [
           "Items one at a time",
+          "All data twice",
           "Only strings",
-          "Database rows only",
-          "It has no effect on the program."
+          "Only files"
         ],
         "answer": 0
       },
       {
         "question": "What does iter() do?",
         "options": [
-          "Creates a list always",
           "Creates an iterator",
-          "Stops a loop",
-          "It has no effect on the program."
+          "Creates a class",
+          "Writes a file",
+          "Stops a loop"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "What does next() request?",
         "options": [
-          "The whole sequence",
-          "A new function",
           "The next item",
-          "It has no effect on the program."
+          "The last item",
+          "A new package",
+          "A new function"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "question": "What does yield create?",
         "options": [
+          "A lazy generator",
+          "A database",
           "A class",
-          "A module",
-          "It has no effect on the program.",
-          "A generator"
+          "A string method"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
         "question": "Why use generators?",
         "options": [
-          "They can save memory",
-          "They always run faster",
-          "They store everything",
-          "It has no effect on the program."
+          "To avoid storing all results at once",
+          "To make all code synchronous",
+          "To replace lists everywhere",
+          "To hide errors"
         ],
         "answer": 0
       }
@@ -2449,52 +2449,52 @@
     ],
     "quiz": [
       {
-        "question": "What does a decorator return?",
+        "question": "What does a decorator do?",
         "options": [
-          "A callable with added behavior",
-          "A database",
-          "A loop",
-          "It has no effect on the program."
+          "Adds behavior around a callable",
+          "Creates a database",
+          "Deletes a function",
+          "Reads a CSV"
         ],
         "answer": 0
       },
       {
         "question": "Why use functools.wraps?",
         "options": [
-          "To speed Python",
-          "To preserve function metadata",
-          "To parse JSON",
-          "It has no effect on the program."
+          "To preserve useful function metadata",
+          "To start a loop",
+          "To create a class",
+          "To install packages"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "What does with provide?",
+        "question": "What does a context manager help with?",
         "options": [
-          "A loop",
-          "A class",
-          "Managed setup and cleanup",
-          "It has no effect on the program."
+          "Setup and cleanup around with",
+          "Creating variables",
+          "Parsing JSON",
+          "Sorting lists"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "question": "What is a wrapper?",
         "options": [
-          "A package manager",
-          "A database",
-          "It has no effect on the program.",
-          "A function around another callable"
+          "A function that surrounds another callable",
+          "A database row",
+          "A loop counter",
+          "A file path"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Good use of context managers?",
+        "question": "Why use with for resources?",
         "options": [
-          "Managing resources",
-          "Naming variables",
-          "Sorting lists",
-          "It has no effect on the program."
+          "It makes cleanup predictable",
+          "It disables errors",
+          "It removes functions",
+          "It makes code run backward"
         ],
         "answer": 0
       }
@@ -2568,52 +2568,52 @@
     ],
     "quiz": [
       {
-        "question": "What do type hints provide?",
+        "question": "What do type hints describe?",
         "options": [
-          "Intended types for readers and tools",
-          "Automatic runtime checks always",
-          "Database schemas",
-          "It has no effect on the program."
+          "Intended data types or shapes",
+          "The exact runtime behavior of Python",
+          "Only comments",
+          "Only file names"
         ],
         "answer": 0
       },
       {
         "question": "What does str | None mean?",
         "options": [
-          "A string and None at once",
-          "A string or None",
-          "Only a string",
-          "It has no effect on the program."
+          "A value can be a str or None",
+          "A string must always exist",
+          "A file is optional",
+          "A list of strings"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "What does a Protocol describe?",
         "options": [
+          "Required behavior",
           "A database table",
           "A package version",
-          "Required behavior",
-          "It has no effect on the program."
+          "A loop count"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "Do type hints force Python types?",
+        "question": "Do type hints force Python to use that type at runtime?",
         "options": [
+          "No",
           "Yes, always",
-          "Only in loops",
-          "It has no effect on the program.",
-          "No"
+          "Only for strings",
+          "Only in comments"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
         "question": "Why document an API?",
         "options": [
-          "To explain how to use it",
-          "To hide behavior",
+          "So other developers can understand and use it",
+          "To make code execute faster",
           "To replace tests",
-          "It has no effect on the program."
+          "To hide errors"
         ],
         "answer": 0
       }
@@ -2689,50 +2689,50 @@
       {
         "question": "What does an HTTP response include?",
         "options": [
-          "A status code",
-          "A Python class always",
-          "A CSV file always",
-          "It has no effect on the program."
+          "A status code and response data",
+          "Only a file name",
+          "Only a loop",
+          "Only a password"
         ],
         "answer": 0
       },
       {
         "question": "Why validate API JSON?",
         "options": [
+          "External data cannot be blindly trusted",
           "JSON is always wrong",
-          "External data can be unexpected",
-          "Python cannot parse JSON",
-          "It has no effect on the program."
+          "Validation makes requests faster",
+          "APIs never fail"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "Why set a timeout?",
+        "question": "Why set a network timeout?",
         "options": [
-          "To make JSON valid",
-          "To create a socket",
-          "To avoid waiting forever",
-          "It has no effect on the program."
+          "A call can hang or take too long",
+          "It makes JSON smaller",
+          "It creates a database",
+          "It removes status codes"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "question": "What can make a network call fail?",
         "options": [
-          "Only syntax errors",
+          "Timeouts or connection errors",
           "Only comments",
-          "It has no effect on the program.",
-          "Timeouts or server errors"
+          "Only loops",
+          "Nothing"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Best API habit?",
+        "question": "What is a good API habit?",
         "options": [
-          "Check status and response data",
-          "Assume success",
-          "Ignore malformed data",
-          "It has no effect on the program."
+          "Check status codes and validate data",
+          "Trust every response",
+          "Ignore errors",
+          "Store secrets in requests"
         ],
         "answer": 0
       }
@@ -2810,49 +2810,49 @@
         "question": "What does CRUD mean?",
         "options": [
           "Create, Read, Update, Delete",
-          "Copy, Run, Undo, Debug",
-          "Create, Remove, Use, Deploy",
-          "It has no effect on the program."
+          "Copy, Run, Use, Debug",
+          "Create, Run, Upload, Download",
+          "Check, Read, Undo, Delete"
         ],
         "answer": 0
       },
       {
-        "question": "What does SQLite store?",
+        "question": "Where does SQLite store relational data?",
         "options": [
-          "Only JSON files",
-          "Relational data",
-          "Only images",
-          "It has no effect on the program."
+          "A local database file",
+          "Only in memory",
+          "Only in a browser",
+          "Only in JSON"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "Why parameterize SQL?",
         "options": [
-          "To make SQL longer",
-          "To disable queries",
-          "To safely pass values",
-          "It has no effect on the program."
+          "To make database input safer",
+          "To make tables invisible",
+          "To remove transactions",
+          "To replace Python"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "What does a transaction group?",
+        "question": "What does a transaction help keep consistent?",
         "options": [
-          "Python imports",
-          "HTTP requests",
-          "It has no effect on the program.",
-          "Related database changes"
+          "Related database changes",
+          "Only comments",
+          "Only UI colors",
+          "Only file names"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Good database practice?",
+        "question": "What is a good database practice?",
         "options": [
-          "Keep logical changes consistent",
+          "Use parameters and transactions when appropriate",
+          "Build SQL by string concatenation",
           "Ignore errors",
-          "Concatenate user input",
-          "It has no effect on the program."
+          "Store passwords in queries"
         ],
         "answer": 0
       }
@@ -2929,49 +2929,49 @@
         "question": "What does async def create?",
         "options": [
           "A coroutine",
-          "A thread always",
+          "A list",
           "A database",
-          "It has no effect on the program."
+          "A class"
         ],
         "answer": 0
       },
       {
         "question": "What does await do?",
         "options": [
-          "Starts Python",
-          "Waits for an awaitable",
-          "Stops all tasks",
-          "It has no effect on the program."
+          "Waits for an awaitable to complete",
+          "Stops Python forever",
+          "Creates a package",
+          "Deletes a task"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "What manages async tasks?",
+        "question": "What schedules async work?",
         "options": [
+          "The event loop",
           "A CSV file",
-          "A class",
-          "An event loop",
-          "It has no effect on the program."
+          "A dictionary",
+          "A comment"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "Best use for async?",
+        "question": "When is async most useful?",
         "options": [
-          "Pure CPU loops",
-          "Renaming variables",
-          "It has no effect on the program.",
-          "I/O-heavy work"
+          "I/O-heavy waiting",
+          "CPU-heavy calculations only",
+          "Writing comments",
+          "Changing strings"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
         "question": "Why can async help?",
         "options": [
-          "Waiting time can overlap",
+          "Tasks can make progress while others wait",
+          "It makes every CPU task faster",
           "It removes all errors",
-          "It doubles CPU speed",
-          "It has no effect on the program."
+          "It replaces databases"
         ],
         "answer": 0
       }
@@ -3047,50 +3047,50 @@
       {
         "question": "Why use logging?",
         "options": [
-          "To diagnose program behavior",
+          "To record activity and diagnose problems",
           "To replace all tests",
-          "To create databases",
-          "It has no effect on the program."
+          "To create classes",
+          "To store passwords"
         ],
         "answer": 0
       },
       {
         "question": "Which is a log level?",
         "options": [
-          "PACKAGE",
-          "WARNING",
-          "STRING",
-          "It has no effect on the program."
+          "INFO",
+          "LOOP",
+          "PYTHON",
+          "STRING"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "What should configuration avoid?",
+        "question": "What should configuration avoid containing directly?",
         "options": [
-          "Clear names",
-          "Documentation",
-          "Hard-coded environment-specific values",
-          "It has no effect on the program."
+          "Secrets",
+          "Normal settings",
+          "File paths",
+          "Feature flags"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "Where can non-public config live?",
+        "question": "Where can non-public configuration live?",
         "options": [
-          "Source comments",
-          "Function names",
-          "It has no effect on the program.",
-          "Environment variables"
+          "Environment variables or secure configuration",
+          "Public source code",
+          "Comments",
+          "The README only"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
         "question": "What should never be logged casually?",
         "options": [
-          "Secrets",
-          "Normal status",
-          "Error types",
-          "It has no effect on the program."
+          "Secrets such as passwords or tokens",
+          "A normal status message",
+          "A harmless event",
+          "A test name"
         ],
         "answer": 0
       }
@@ -3166,50 +3166,50 @@
       {
         "question": "What should a CLI provide?",
         "options": [
-          "Commands and useful help",
+          "Commands, arguments, help, and validation",
           "Only a logo",
           "Only a database",
-          "It has no effect on the program."
+          "Only comments"
         ],
         "answer": 0
       },
       {
         "question": "Why package reusable code?",
         "options": [
-          "To hide all code",
-          "To separate it from the entry point",
-          "To remove tests",
-          "It has no effect on the program."
-        ],
-        "answer": 1
-      },
-      {
-        "question": "Why constrain dependencies?",
-        "options": [
+          "To separate reusable modules from the entry point",
           "To make code longer",
-          "To avoid imports",
-          "For predictable installs",
-          "It has no effect on the program."
+          "To avoid functions",
+          "To remove tests"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "What should docs explain?",
+        "question": "What should project docs explain?",
         "options": [
+          "Setup, dependencies, tests, and how to run it",
           "Only the author name",
           "Only colors",
-          "It has no effect on the program.",
-          "Install, run, test, and configure"
+          "Only Python history"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Good CLI behavior includes:",
+        "question": "What can a package expose?",
         "options": [
-          "Useful validation and exit behavior",
-          "Silent failures",
-          "Random commands",
-          "It has no effect on the program."
+          "Reusable modules and a clear entry point",
+          "Only screenshots",
+          "Only database rows",
+          "Only comments"
+        ],
+        "answer": 0
+      },
+      {
+        "question": "Why record dependencies?",
+        "options": [
+          "To make setup repeatable",
+          "To hide packages",
+          "To slow installation",
+          "To remove imports"
         ],
         "answer": 0
       }
@@ -3285,50 +3285,50 @@
       {
         "question": "Why separate concerns?",
         "options": [
-          "To keep responsibilities clear",
-          "To add more files for no reason",
-          "To avoid functions",
-          "It has no effect on the program."
+          "So each part has a clear responsibility",
+          "To make files random",
+          "To avoid testing",
+          "To remove all functions"
         ],
         "answer": 0
       },
       {
-        "question": "Safe refactoring means:",
+        "question": "What is safe refactoring?",
         "options": [
-          "Rewrite everything at once",
-          "Change small parts while tests protect behavior",
-          "Remove tests",
-          "It has no effect on the program."
+          "Small changes while tests protect behavior",
+          "Changing everything at once",
+          "Deleting tests first",
+          "Ignoring failures"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
-        "question": "What do boundaries help with?",
+        "question": "What do clear boundaries make easier?",
         "options": [
-          "Making code invisible",
-          "Removing inputs",
-          "Replacing and testing components",
-          "It has no effect on the program."
+          "Replacing or changing components",
+          "Hiding bugs",
+          "Removing documentation",
+          "Avoiding all modules"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "question": "Why keep functions small?",
         "options": [
+          "They are easier to understand and maintain",
           "They always run faster",
-          "They need no tests",
-          "It has no effect on the program.",
-          "They are easier to reason about"
+          "They remove all bugs",
+          "They need no tests"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Best maintainability goal?",
+        "question": "What is a good maintainability goal?",
         "options": [
-          "Clear responsibilities",
-          "Maximum complexity",
-          "One huge module",
-          "It has no effect on the program."
+          "Clear responsibilities and boundaries",
+          "Maximum code duplication",
+          "One huge function",
+          "No documentation"
         ],
         "answer": 0
       }
@@ -3404,50 +3404,50 @@
       {
         "question": "What does Big-O describe?",
         "options": [
-          "Growth of work with input size",
-          "Exact runtime on every phone",
-          "Code style",
-          "It has no effect on the program."
+          "How work grows as input grows",
+          "Exact runtime on every computer",
+          "Only memory size",
+          "Only code length"
         ],
         "answer": 0
       },
       {
         "question": "What does a profiler show?",
         "options": [
-          "Which variable is best",
-          "Where time is spent",
-          "Package licenses",
-          "It has no effect on the program."
+          "Where time is actually spent",
+          "Which variable is global",
+          "The Python version",
+          "The README text"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "What is a hot path?",
         "options": [
-          "A file path",
+          "Code that matters a lot to performance",
           "A Python keyword",
-          "Code that matters to measured workload",
-          "It has no effect on the program."
+          "A file path",
+          "A comment"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "Why measure first?",
+        "question": "Why measure before optimizing?",
         "options": [
-          "To slow programs",
-          "To remove tests",
-          "It has no effect on the program.",
-          "To avoid guessing"
+          "To find the real bottleneck",
+          "To make code longer",
+          "To avoid tests",
+          "Because profiling is required by Python"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Caching can trade:",
+        "question": "What can caching trade?",
         "options": [
-          "Memory for speed",
-          "Speed for syntax",
-          "Types for imports",
-          "It has no effect on the program."
+          "More memory for speed",
+          "Speed for no memory",
+          "Files for classes",
+          "Strings for loops"
         ],
         "answer": 0
       }
@@ -3522,52 +3522,52 @@
     ],
     "quiz": [
       {
-        "question": "What should come before “finished”?",
+        "question": "What should come before calling a project finished?",
         "options": [
-          "Acceptance criteria",
-          "A random refactor",
-          "More files",
-          "It has no effect on the program."
+          "Requirements and acceptance criteria",
+          "A random code change",
+          "Deleting tests",
+          "Removing documentation"
         ],
         "answer": 0
       },
       {
         "question": "Why keep tests?",
         "options": [
-          "To replace documentation",
-          "To prevent regressions",
-          "To hide bugs",
-          "It has no effect on the program."
+          "They protect shipped behavior",
+          "They make code decorative",
+          "They replace requirements",
+          "They remove logging"
         ],
-        "answer": 1
+        "answer": 0
       },
       {
         "question": "Why log useful events?",
         "options": [
-          "To store passwords",
+          "To help diagnose problems",
+          "To store secrets",
           "To replace the UI",
-          "To diagnose shipped software",
-          "It has no effect on the program."
+          "To make code shorter"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
-        "question": "Good documentation should explain:",
+        "question": "What should useful documentation explain?",
         "options": [
+          "How to install, run, test, and understand the project",
           "Only the project title",
-          "Only code colors",
-          "It has no effect on the program.",
-          "Install, run, test, and configure"
+          "Only Python syntax",
+          "Only the author"
         ],
-        "answer": 3
+        "answer": 0
       },
       {
-        "question": "Professional shipping means:",
+        "question": "What does professional shipping include?",
         "options": [
-          "Tested, documented, and diagnosable",
-          "Untested and undocumented",
-          "Finished when it runs once",
-          "It has no effect on the program."
+          "Testable, documented, and diagnosable software",
+          "Only source code",
+          "Only a screenshot",
+          "Only a ZIP file"
         ],
         "answer": 0
       }

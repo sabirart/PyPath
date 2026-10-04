@@ -301,8 +301,8 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 .focus-text { max-width: 64ch; font-size: 0.95rem; line-height: 1.55; color: var(--muted); }
 .focus-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.55rem; }
 .focus-actions a.btn { text-decoration: none; }
-.focus-ring { width: 190px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; }
-.ring-center { position: absolute; display: flex; flex-direction: column; align-items: center; line-height: 1.1; }
+.focus-ring { width: 190px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; text-align: center; }
+.ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1; pointer-events: none; }
 .ring-center strong { font-size: 1.8rem; letter-spacing: -0.03em; }
 .ring-center small { font-size: 0.7rem; color: var(--muted); }
 .stat-row { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
@@ -436,7 +436,7 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 .is-featured > * { flex: initial; }
 .is-featured .proj-cta { flex: initial; margin-left: 0; margin-top: auto; align-self: flex-end; }
 
-@media (max-width: 640px) { .projects { padding: 1.25rem 1rem 5rem; } .proj-card.is-featured { padding: 1.3rem; } }
+@media (max-width: 640px) { .projects { padding: 1.25rem 1rem 5rem; } .projects-progress { width: 100%; min-width: 0; flex: 0 0 100%; box-sizing: border-box; } .proj-card.is-featured { padding: 1.3rem; } }
 
 
 .project-suggest-backdrop { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: 72px 1rem 1rem; background: color-mix(in srgb, #000 55%, transparent); }
@@ -505,7 +505,8 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 @media (max-width: 560px) { .about-grid, .basics-grid, .more-list { grid-template-columns: minmax(0, 1fr); } .about-page { padding-top: 1.25rem; } }
 
 /* The main progress ring uses a subtle gray track in light mode and white in dark mode. */
-.focus-ring .ring-wrap.big { width: 132px; height: 132px; }
+.focus-ring .ring-wrap.big { width: 132px; height: 132px; margin-inline: auto; }
+.focus-ring > .muted { width: 100%; margin: 0; text-align: center; }
 .focus-card { --ring-track: var(--focus-ring-track); }
 
 
@@ -536,7 +537,6 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 .quiz-modal { width:min(760px,96vw); max-height:min(90vh,900px); display:flex; flex-direction:column; overflow:hidden; border:1px solid var(--border); border-radius:16px; background:var(--surface); box-shadow:0 20px 60px rgba(0,0,0,.28); }
 .quiz-modal-success { min-height:440px; }
 .quiz-success-screen { min-height:440px; box-sizing:border-box; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:2rem; }
-.quiz-build { margin-top:1rem; opacity:.7; }
 .quiz-trophy { position:relative; overflow:hidden; width:76px; height:76px; display:grid; place-items:center; border-radius:50%; margin-bottom:1rem; background:color-mix(in srgb, var(--success) 16%, transparent); color:var(--success-text); box-shadow:0 0 0 8px color-mix(in srgb, var(--success) 6%, transparent); }
 .quiz-trophy::after { content:""; position:absolute; top:-20%; bottom:-20%; left:-60%; width:38%; transform:rotate(25deg); pointer-events:none; background:linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation:quiz-shine 2.4s ease-in-out infinite; }
 @keyframes quiz-shine { 0% { left:-60%; } 55%,100% { left:130%; } }
@@ -598,6 +598,7 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
   .nav-link:hover { background: transparent; }
   .dot:hover { border-color: var(--border-strong); color: var(--muted); }
   .tab:hover { background: transparent; }
+  .tab[aria-selected="true"], .tab[aria-selected="true"]:hover { background: var(--primary-soft); color: var(--link); }
   .splitter:hover::after { background: transparent; }
   .copy-btn:hover { background: transparent; color: var(--muted); }
   .day-card:hover { border-color: var(--border); transform: none; }
@@ -611,4 +612,31 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
   .quiz-option.is-wrong:hover { border-color: var(--error); background: color-mix(in srgb, var(--error) 10%, var(--surface)); }
 }
 
-.build-tag { margin:1rem .9rem .5rem; font-size:.72rem; color:var(--muted); opacity:.75; }
+/* Dashboard progress overview: static progress with a clear gap before the day count. */
+.focus-progress { width: 100%; max-width: 360px; display: grid; grid-template-columns: 1fr; justify-items: center; gap: 0.65rem; justify-self: end; }
+.progress-visual { width: 156px; min-height: 184px; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 12px; flex: none; }
+.progress-ring { width: 156px; height: 156px; }
+.progress-ring-static { position: relative; }
+.progress-ring-static .dashboard-progress-ring { display: block; width: 156px; height: 156px; }
+.progress-ring-static .ring-center { z-index: 1; }
+.progress-total { display: block; line-height: 1.2; text-align: center; margin: 0; }
+.progress-total span { color: var(--muted); font-size: 0.9rem; font-weight: 400; letter-spacing: 0; white-space: nowrap; }
+
+@media (max-width: 1000px) {
+  .focus-progress { max-width: 330px; }
+  .progress-visual { width: 142px; min-height: 172px; gap: 12px; }
+  .progress-ring { width: 142px; height: 142px; }
+  .progress-ring-static .dashboard-progress-ring { width: 142px; height: 142px; }
+}
+@media (max-width: 760px) {
+  .focus-progress { max-width: 100%; justify-self: stretch; gap: 0.6rem; }
+  .progress-visual { width: 148px; min-height: 178px; gap: 12px; }
+  .progress-ring { width: 148px; height: 148px; }
+  .progress-ring-static .dashboard-progress-ring { width: 148px; height: 148px; }
+}
+@media (max-width: 420px) {
+  .focus-progress { gap: 0.55rem; }
+  .progress-visual { width: 138px; min-height: 168px; gap: 12px; }
+  .progress-ring { width: 138px; height: 138px; }
+  .progress-ring-static .dashboard-progress-ring { width: 138px; height: 138px; }
+}

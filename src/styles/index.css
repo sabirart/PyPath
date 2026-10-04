@@ -294,7 +294,7 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 .streak-pill strong { color: var(--text); font-size: 0.92rem; }
 .streak-pill.is-lit { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 55%, transparent); background: var(--primary-soft); }
 .focus-card { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) 190px; align-items: center; gap: 2rem; min-height: 224px; padding: 1.75rem 2rem; border-radius: 16px; border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-sm); }
-.focus-main { min-width: 0; display: flex; flex-direction: column; gap: 0.65rem; align-items: flex-start; }
+.focus-main { min-width: 0; padding-right: 0; display: flex; flex-direction: column; gap: 0.65rem; align-items: flex-start; }
 .focus-tag { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.2rem 0.65rem; border-radius: 999px; background: var(--primary-soft); color: var(--link); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
 .focus-day { font-size: 0.84rem; color: var(--muted); }
 .focus-title { font-size: clamp(1.45rem, 2.4vw, 2rem); font-weight: 720; letter-spacing: -0.03em; line-height: 1.15; }
@@ -505,6 +505,7 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 @media (max-width: 560px) { .about-grid, .basics-grid, .more-list { grid-template-columns: minmax(0, 1fr); } .about-page { padding-top: 1.25rem; } }
 
 /* The main progress ring uses a subtle gray track in light mode and white in dark mode. */
+.focus-ring .ring-wrap.big { width: 132px; height: 132px; }
 .focus-card { --ring-track: var(--focus-ring-track); }
 
 

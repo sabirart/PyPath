@@ -138,7 +138,7 @@ function LessonView({ lesson, base, prev, next }) {
         </section>
       </div>
       </div>
-      {quizOpen && <CompletionQuiz lesson={lesson} nextLesson={next} onPass={passQuiz} onClose={() => setQuizOpen(false)} />}
+      {quizOpen && <CompletionQuiz lesson={lesson} nextLesson={next} onPass={passQuiz} onNext={() => next && navigate(pathFor(next))} onClose={() => setQuizOpen(false)} />}
       {suggestedProject && <ProjectSuggestion project={suggestedProject} onClose={() => setSuggestedProject(null)} />}
     </>
   );

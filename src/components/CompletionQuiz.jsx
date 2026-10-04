@@ -1,8 +1,8 @@
 // Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useEffect, useMemo, useState } from "react";
-import { CheckCircle2, RotateCcw, Trophy, X } from "lucide-react";
+import { ArrowRight, CheckCircle2, RotateCcw, Trophy, X } from "lucide-react";
 
-export default function CompletionQuiz({ lesson, nextLesson, onPass, onClose }) {
+export default function CompletionQuiz({ lesson, nextLesson, onPass, onNext, onClose }) {
   const questions = Array.isArray(lesson.quiz) ? lesson.quiz.slice(0, 5) : [];
   const [answers, setAnswers] = useState(() => Array(questions.length).fill(null));
   const [attempted, setAttempted] = useState(false);
@@ -27,13 +27,18 @@ export default function CompletionQuiz({ lesson, nextLesson, onPass, onClose }) 
             <p className="quiz-success-score"><strong>5/5 correct</strong></p>
             <p className="muted">You understood this lesson. Moving to the next class…</p>
             {nextLesson && (
-              <div className="quiz-next-step">
-                <CheckCircle2 size={18} />
-                <div>
-                  <span>Next lesson</span>
-                  <strong>{nextLesson.title || nextLesson.name || `Class ${nextLesson.day + 1}`}</strong>
+              <>
+                <div className="quiz-next-step">
+                  <CheckCircle2 size={18} />
+                  <div>
+                    <span>Next class</span>
+                    <strong>{nextLesson.title || nextLesson.name || `Class ${nextLesson.day + 1}`}</strong>
+                  </div>
                 </div>
-              </div>
+                <button className="btn btn-primary quiz-next-button" onClick={onNext}>
+                  Next Class <ArrowRight size={16} />
+                </button>
+              </>
             )}
 
           </div>

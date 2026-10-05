@@ -16,7 +16,17 @@ export default function Header({ title, showCompilerToggle }) {
   return (
     <header className="header">
       <Toggle icon={PanelLeft} label="Course outline" on={panels.sidebar} onClick={() => togglePanel("sidebar")} />
-      <a href="#/dashboard" className="logo" aria-label="PyPath home"><BrandLogo /></a>
+
+      <a href="#/dashboard" className="logo desktop-logo" aria-label="PyPath home"><BrandLogo /></a>
+
+      <div className="mobile-brand" aria-label={`PyPath, ${title}`}>
+        <a href="#/dashboard" className="mobile-brand-mark" aria-label="PyPath home"><BrandLogo compact /></a>
+        <div className="mobile-brand-copy">
+          <span className="mobile-site-name">PyPath</span>
+          <span className="mobile-page-name">{title}</span>
+        </div>
+      </div>
+
       <span className="header-sep" aria-hidden="true" />
       <h1 className="header-title">{title}</h1>
       <div className="header-actions">

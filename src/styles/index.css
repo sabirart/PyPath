@@ -397,6 +397,7 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 .lesson-facts .fact-tag { background: var(--surface-2); border-color: transparent; }
 .project-brief { margin: 0.9rem 0 0; padding: 0.8rem 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary); background: var(--primary-soft); font-size: 0.95rem; line-height: 1.55; }
 .lesson-section { border: none; border-radius: 8px; background: var(--bg); overflow: hidden; }
+.definition-section + .code-example-section { margin-top: 0; }
 .sec-head { display: flex; align-items: center; gap: 0.65rem; padding: 0.7rem 1rem; border-bottom: 1px solid var(--border);}
 .lesson-section .sec-head h3 { margin: 0; padding: 0; border: 0; flex: 1; font-size: 0.92rem; font-weight: 680; color: var(--text); letter-spacing: -0.005em; }
 .sec-icon { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--primary-soft); color: var(--link); }
@@ -660,5 +661,26 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 /* Clear teaching presentation */
 .lesson-intro { margin: 0 0 1rem; padding: .9rem 1rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); }
 .lesson-intro .detail-head { display:flex; align-items:center; gap:.45rem; margin-bottom:.4rem; }
-.lesson-intro h3 { margin:0; font-size:.95rem; }
+.lesson-intro h3, .lesson-start-here h4 { margin:0; font-size:.95rem; }
 .lesson-intro p { margin:0; color:var(--muted); line-height:1.6; }
+.lesson-why-inline { margin-top:.8rem; padding-top:.8rem; border-top:1px solid var(--border); }
+.lesson-why-inline .detail-head { margin-bottom:.35rem; }
+.lesson-why-inline h4, .skills-now-inline h4 { font-weight:650; }
+.practice-skills { display:block; }
+.skills-now-inline { margin-top:1rem; padding-top:1rem; border-top:1px solid var(--border); }
+.skills-now-inline .detail-head { margin-bottom:.55rem; }
+
+/* Curriculum learning layers */
+.lesson-why p, .runtime-note p { margin:0; color:var(--muted); line-height:1.6; }
+.runtime-note { border-color: color-mix(in srgb, var(--primary) 30%, var(--border)); }
+.skills-list { margin:0; padding-left:1.2rem; display:grid; gap:.42rem; color:var(--text); }
+.skills-list li::marker { color:var(--primary); }
+.practice-level-grid { display:grid; gap:.55rem; }
+.practice-level { display:flex; gap:.7rem; align-items:flex-start; padding:.72rem .8rem; border:1px solid var(--border); border-radius:10px; background:var(--surface-2); }
+.practice-level-number { flex:none; display:grid; place-items:center; width:24px; height:24px; border-radius:50%; background:var(--primary-soft); color:var(--primary); font-size:.74rem; font-weight:700; }
+.practice-level strong { display:block; margin-bottom:.18rem; }
+.practice-level p { margin:0; color:var(--muted); line-height:1.5; }
+.quiz-question-copy { flex:1; min-width:0; }
+.quiz-code { margin:.65rem 0 0; padding:.7rem .8rem; overflow:auto; border:1px solid var(--border); border-radius:9px; background:var(--surface-2); font:500 .78rem/1.5 var(--font-mono, monospace); }
+.quiz-code code { white-space:pre; }
+.quiz-answer-explanation { margin:.55rem 0 0 2.35rem; padding:.65rem .75rem; border-radius:9px; background:var(--surface-2); color:var(--muted); font-size:.82rem; line-height:1.5; }

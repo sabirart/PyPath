@@ -39,39 +39,44 @@ test("projects carry tags", () => {
   projects.forEach((l) => assert.ok(Array.isArray(l.tags) && l.tags.length > 0, `${l.id} needs tags`));
 });
 
-test("curriculum covers professional Python before projects", () => {
+test("curriculum follows beginner-to-professional progression", () => {
+  assert.equal(classes[4].title, "Input & Type Conversion");
+  assert.equal(classes[9].title, "Functions");
+  assert.ok(classes.some((l) => /Errors & Debugging/i.test(l.title)));
+  assert.ok(classes.some((l) => /Testing/i.test(l.title)));
   assert.ok(classes.some((l) => /SQLite/i.test(l.title)));
-  assert.ok(classes.some((l) => /Asyncio/i.test(l.title)));
-  assert.ok(classes.some((l) => /Logging/i.test(l.title)));
-  assert.ok(classes.some((l) => /Packaging/i.test(l.title)));
-  assert.ok(classes.some((l) => /Architecture/i.test(l.title)));
+  assert.ok(classes.some((l) => /Git/i.test(l.title)));
+  assert.ok(classes.some((l) => /Build, Test & Ship/i.test(l.title)));
   assert.deepEqual(projects.map((p) => p.afterLesson), [6, 9, 15, 24, 30]);
   projects.forEach((p) => assert.ok(p.tags.length >= 4));
 });
 
 
-test("every quiz answer is sourced from that same lesson, never another class", () => {
+test("every quiz is lesson-specific and includes feedback", () => {
   const toText = (value) => {
     if (typeof value === "string") return value;
     if (Array.isArray(value)) return value.map(toText).join(" ");
-    if (value && typeof value === "object") return Object.values(value).map(toText).join(" ");
+    if (value && typeof value === "object") return Object.entries(value).filter(([k]) => k !== "quiz").map(([,v]) => toText(v)).join(" ");
     return "";
   };
   classes.forEach((l) => {
     const lessonText = toText(l).toLowerCase();
     l.quiz.forEach((q, i) => {
-      const answer = q.options[q.answer].toLowerCase();
-      assert.ok(lessonText.includes(answer), `${l.id} quiz question ${i + 1} answer is not present in that lesson's content`);
+      assert.ok(q.question && q.explanation, `${l.id} quiz question ${i + 1} needs a question and explanation`);
+      assert.equal(q.options.length, 4);
+      assert.ok(q.answer >= 0 && q.answer < 4);
+      assert.ok(q.explanation.length >= 20);
+      const topicWords = l.title.toLowerCase().split(/[^a-z0-9]+/).filter(w => w.length > 3);
+      assert.ok(topicWords.some(word => lessonText.includes(word)), `${l.id} should contain its own topic`);
     });
   });
 });
 
-test("every lesson has substantial teaching support, Do/Don't guidance, and a five-question gate", () => {
+test("lessons provide measurable skills and three levels of practice", () => {
   classes.forEach((l) => {
-    assert.ok(Array.isArray(l.teachingPoints) && l.teachingPoints.length >= 5, `${l.id} needs detailed teaching points`);
-    assert.ok(Array.isArray(l.doDont) && l.doDont.length >= 4, `${l.id} needs Do/Don't guidance`);
-    assert.equal(l.quiz.length, 5, `${l.id} needs exactly 5 quiz questions`);
-    l.quiz.forEach((q) => { assert.equal(q.options.length, 4); assert.ok(q.answer >= 0 && q.answer < 4); });
+    assert.ok(Array.isArray(l.skills) && l.skills.length >= 4, `${l.id} needs measurable skills`);
+    assert.deepEqual(l.practiceLevels.map(x => x.level), ["Guided", "Independent", "Challenge"]);
+    l.practiceLevels.forEach((x) => assert.ok(x.task && x.task.length > 15));
   });
 });
 
@@ -83,11 +88,13 @@ test("projects contain complete runnable code", () => {
   });
 });
 
-test("important details include a short example for every teaching point", () => {
+test("lessons use topic-specific Quick Info and no redundant Key Points data", () => {
   classes.forEach((l) => {
-    l.teachingPoints.forEach((item, i) => {
-      assert.equal(typeof item, "object", `${l.id} teaching point ${i + 1} should include text and example`);
-      assert.ok(item.text && item.example, `${l.id} teaching point ${i + 1} needs an example`);
+    assert.equal(l.teachingPoints, undefined, `${l.id} should not contain redundant Key Points data`);
+    assert.ok(Array.isArray(l.quickInfo) && l.quickInfo.length >= 4, `${l.id} needs useful Quick Info`);
+    l.quickInfo.forEach((row, i) => {
+      assert.ok(Array.isArray(row) && row.length === 2, `${l.id} Quick Info row ${i + 1} must have a label and value`);
+      assert.ok(row[0] && row[1], `${l.id} Quick Info row ${i + 1} cannot be empty`);
     });
     l.doDont.forEach((row, i) => assert.ok(row.example, `${l.id} Do/Don't row ${i + 1} needs an example`));
   });

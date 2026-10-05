@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BookOpen, CheckCircle2, ChevronDown, Code2, ExternalLink, FileText, Mail, ShieldCheck, UserRound } from "lucide-react";
 
 const basics = [
-  { icon: BookOpen, title: "Learning path", text: "Follow the 30-day path from Python basics through professional engineering, with five project checkpoints." },
+  { icon: BookOpen, title: "Learning path", text: "Follow the 30-lesson path from Python basics through professional engineering, with five project checkpoints." },
   { icon: Code2, title: "Practice in the browser", text: "Use the built-in Free Compiler and lesson editor to write and run Python without a separate setup." },
   { icon: CheckCircle2, title: "Progress", text: "Completed lessons, your active lesson, study days, theme and text-size preferences are saved locally in your browser." },
   { icon: ShieldCheck, title: "Privacy basics", text: "PyPath is designed as a browser-first learning site. It does not require an account, password or email to start." },
@@ -17,7 +17,7 @@ export default function About() {
         <div>
           <p className="eyebrow">About PyPath</p>
           <h2 className="page-title">A simple place to learn Python, step by step.</h2>
-          <p className="about-lede">PyPath is a focused 30-day Python learning website with daily lessons, practical projects and a browser-based compiler. It is built to keep learning simple, local and hands-on.</p>
+          <p className="about-lede">PyPath is a focused 30-lesson Python learning website with daily lessons, practical projects and a browser-based compiler. It is built to keep learning simple, local and hands-on.</p>
         </div>
         <div className="about-badge"><Code2 size={24} /><span>Learn · Practice · Build</span></div>
       </header>
@@ -27,7 +27,7 @@ export default function About() {
         <div className="about-grid">
           <article className="about-card"><span className="about-icon"><BookOpen size={19} /></span><h4>1. Start a lesson</h4><p>Choose a day from the Dashboard or course outline. Read the lesson and follow its examples.</p></article>
           <article className="about-card"><span className="about-icon"><Code2 size={19} /></span><h4>2. Write Python</h4><p>Use the lesson editor or open Free Compiler when you want a separate space to experiment.</p></article>
-          <article className="about-card"><span className="about-icon"><CheckCircle2 size={19} /></span><h4>3. Complete and build</h4><p>Mark lessons complete as you progress, then use the project days to apply what you learned.</p></article>
+          <article className="about-card"><span className="about-icon"><CheckCircle2 size={19} /></span><h4>3. Complete and build</h4><p>Mark lessons complete as you progress, then use the project checkpoints to apply what you learned.</p></article>
         </div>
       </section>
 

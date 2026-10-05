@@ -1,6 +1,6 @@
 # PyPath - Learn Python. Step by Step.
 
-A lightweight single-page **30-day Python developer challenge**: 30 daily lessons from Python fundamentals through professional engineering, plus 5 separate project checkpoints. Projects are completed alongside the relevant lessons and do not consume extra days. Python runs **inside your browser** using Pyodide (WebAssembly). There is no backend, account, database, analytics or tracking.
+A lightweight single-page **30-lesson Python developer course**: 30 lessons from Python fundamentals through professional engineering, plus 5 separate project checkpoints. Projects are completed alongside the relevant lessons and do not consume extra days. Python runs **inside your browser** using Pyodide (WebAssembly). There is no backend, account, database, analytics or tracking.
 
 ## Prerequisites
 - Node.js 18 or newer (npm included)
@@ -24,7 +24,7 @@ Upload the `dist/` folder, or connect the repository to a free host. No special 
 `src/data/lessons.json` holds all course content. Navigation, the sidebar, progress and the project list are generated from it. Lesson ids (`l01` - `l30`) equal the day number. Project checkpoints use `p01` - `p05` and have no day number. Each project records the lesson after which it is recommended, so projects reinforce the concepts instead of becoming a separate final-stage course.
 
 ## Lesson status
-Each day is **Completed**, **In Progress**, **Pending** (the next class, unlocked and waiting for Start) or **Not started**. Opening a day never changes its status. Pressing **Start Day** makes it the single In Progress day. **Mark Complete** is only available for the active day. Future days can be previewed, and earlier days do not need to be finished first.
+Each lesson is **Completed**, **In Progress**, **Pending** (the next class, unlocked and waiting for Start) or **Not started**. Opening a lesson never changes its status. Pressing **Start Lesson** makes it the single In Progress lesson. **Mark Complete** is only available for the active lesson. Future lessons can be previewed, and earlier lessons do not need to be finished first.
 
 ## License and protection
 PyPath is **proprietary software**. Copyright (c) 2026 Sabir Hussain. All rights reserved. See `LICENSE`: visitors may use the website to learn, but nobody may copy, modify, host or redistribute the code or lesson content without written permission. Third-party components keep their own licences (`THIRD_PARTY_NOTICES.md`).
@@ -43,7 +43,7 @@ Everything stays in your browser. Keys used in `localStorage`:
 | --- | --- |
 | `pypath_user` | first name |
 | `pypath_progress_<id>` | `completed` |
-| `pypath_active` | the one In Progress day |
+| `pypath_active` | the one In Progress lesson |
 | `pypath_pending` | the Pending day (next class after the last one completed) |
 | `pypath_days` | dates a day was completed (for the streak) |
 | `pypath_schema` | storage version (migrates saved code from the old numbering) |
@@ -67,7 +67,7 @@ Your code is executed in the browser by Pyodide from the official jsDelivr CDN a
 ## Layout
 - **Lesson screens (1180px and wider):** the lesson scrolls on the left while the editor and output stay fixed on the right. Drag the dividers (or focus one and use the arrow keys) to resize the panes. The editor button in the header hides or shows the editor.
 - **Narrower screens:** a Lesson / Code switch shows one full-height pane at a time, so there is no scrolling down to find the editor.
-- **Progress:** a small pill at the bottom right shows completed/total. Select it to open a card with the percentage, counts, a clickable map of all 30 days, Continue and Reset.
+- **Progress:** a small pill at the bottom right shows completed/total. Select it to open a card with the percentage, counts, a clickable map of all 30 lessons, Continue and Reset.
 - Scrollbars are thin and themed. The course outline starts open on screens 1360px and wider.
 
 ## Accessibility

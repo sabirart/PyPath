@@ -69,13 +69,13 @@ function Shell() {
   else if (page === "lessons" && !route.id) { title = "Course overview"; content = <Course />; }
   else if (page === "lessons") {
     const l = getLesson(route.id);
-    title = l ? `Day ${l.day}. ${l.title}` : "Lesson not found";
+    title = l ? `Lesson ${l.day}. ${l.title}` : "Lesson not found";
     activeId = l ? l.id : null;
     lessonView = !!l;
     content = <LessonPage id={route.id} base={l?.kind === "project" ? "projects" : "lessons"} />;
   } else if (page === "projects") {
     const l = route.id ? getLesson(route.id) : null;
-    title = route.id ? (l ? `${l.kind === "project" ? "Project" : `Day ${l.day}`}. ${l.title}` : "Project not found") : "Projects";
+    title = route.id ? (l ? `${l.kind === "project" ? "Project" : `Lesson ${l.day}`}. ${l.title}` : "Project not found") : "Projects";
     activeId = l ? l.id : null;
     lessonView = !!l;
     content = route.id ? <LessonPage id={route.id} base="projects" /> : <Projects />;

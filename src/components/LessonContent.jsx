@@ -1,12 +1,12 @@
 // Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
-import { BookOpen, Clock, Code2, FileInput, ListOrdered, Play, Sparkles, ShieldCheck } from "lucide-react";
+import { BookOpen, Clock, Code2, FileInput, ListOrdered, Play, Sparkles, ShieldCheck, Target, Lightbulb, AlertTriangle } from "lucide-react";
 import CodeBlock from "./CodeBlock";
 import StatusIcon, { STATUS_LABEL } from "./StatusIcon";
 import { useApp } from "../context/AppContext";
 
-function Section({ title, icon: Icon, step, children, ok = true, id }) {
+function Section({ title, icon: Icon, step, children, ok = true, id, className = "" }) {
   return (
-    <section className="lesson-section" aria-labelledby={id}>
+    <section className={`lesson-section ${className}`.trim()} aria-labelledby={id}>
       <div className="sec-head">
         <span className="sec-icon"><Icon size={16} aria-hidden="true" /></span>
         <h3 id={id}>{title}</h3>
@@ -24,16 +24,17 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
   const { progress, lessons } = useApp();
   const st = progress[lesson.id] || "not-started";
   const how = Array.isArray(lesson.howItWorks) ? lesson.howItWorks : [];
-  const teaching = Array.isArray(lesson.teachingPoints) ? lesson.teachingPoints : [];
   const doDont = Array.isArray(lesson.doDont) ? lesson.doDont : [];
   const quickInfo = Array.isArray(lesson.quickInfo) ? lesson.quickInfo : [];
+  const practiceLevels = Array.isArray(lesson.practiceLevels) ? lesson.practiceLevels : [];
+  const skills = Array.isArray(lesson.skills) ? lesson.skills : [];
   const project = lesson.kind === "project";
   const noun = project ? "project" : "lesson";
   return (
     <article className="lesson">
       <header className="lesson-hero">
         <div className="lesson-meta">
-          <span className="chip chip-accent">{project ? `Project ${lesson.projectNumber} of 5` : `Day ${lesson.day} of 30`}</span>
+          <span className="chip chip-accent">{project ? `Project ${lesson.projectNumber} of 5` : `Lesson ${lesson.day} of 30`}</span>
           <span className="muted small">{project ? "Project checkpoint" : "Lesson"} &middot; {lesson.part}</span>
           <span className={`status-text small status-text-${st}`}><StatusIcon status={st} size={14} /> {STATUS_LABEL[st]}</span>
         </div>
@@ -50,17 +51,29 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
       {lesson.id === "l01" && (st === "not-started" || st === "pending") && canStart && (
         <div className="preview-note" role="note">
           <p>You are previewing this {noun}. It is not marked as started until you choose to study it.</p>
-          <button className="btn btn-primary btn-sm" onClick={onStart}><Play size={14} /> Start Day {lesson.day}</button>
+          <button className="btn btn-primary btn-sm" onClick={onStart}><Play size={14} /> Start Lesson {lesson.day}</button>
         </div>
       )}
-      {lesson.intro && (
-        <section className="lesson-intro" aria-labelledby="s-intro">
+      {(lesson.intro || lesson.whyItMatters) && (
+        <section className="lesson-detail-block lesson-intro lesson-start-here" aria-labelledby="s-intro">
           <div className="detail-head"><BookOpen size={16} aria-hidden="true" /><h3 id="s-intro">Start Here</h3></div>
-          <p>{lesson.intro}</p>
+          {lesson.intro && <p>{lesson.intro}</p>}
+          {lesson.whyItMatters && (
+            <div className="lesson-why-inline" aria-labelledby="s-why">
+              <div className="detail-head"><Lightbulb size={15} aria-hidden="true" /><h4 id="s-why">Why this matters</h4></div>
+              <p>{lesson.whyItMatters}</p>
+            </div>
+          )}
         </section>
       )}
-      <Section title="Definition" icon={BookOpen} step={1} id="s-def" ok={!!lesson.definition}><p className="lede">{lesson.definition}</p></Section>
-      <Section title="Code Example" icon={Code2} step={2} id="s-ex" ok={!!lesson.codeExample}><CodeBlock code={lesson.codeExample} />{lesson.exampleOutput && <div className="lesson-example-output"><div className="lesson-example-output-title">Output</div><pre>{lesson.exampleOutput}</pre></div>}</Section>
+      {lesson.runtimeNote && (
+        <section className="lesson-detail-block runtime-note" aria-labelledby="s-runtime">
+          <div className="detail-head"><AlertTriangle size={16} aria-hidden="true" /><h3 id="s-runtime">Runtime note</h3></div>
+          <p>{lesson.runtimeNote}</p>
+        </section>
+      )}
+      <Section title="Definition" icon={BookOpen} step={1} id="s-def" ok={!!lesson.definition} className="definition-section"><p className="lede">{lesson.definition}</p></Section>
+      <Section title="Code Example" icon={Code2} step={2} id="s-ex" ok={!!lesson.codeExample} className="code-example-section"><CodeBlock code={lesson.codeExample} />{lesson.exampleOutput && <div className="lesson-example-output"><div className="lesson-example-output-title">Output</div><pre>{lesson.exampleOutput}</pre></div>}</Section>
       <Section title="How It Works" icon={ListOrdered} step={3} id="s-how" ok={how.length > 0}>
         <ol className="steps">{how.map((h, i) => {
           const [label, ...rest] = String(h).split(': ');
@@ -72,12 +85,6 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
           );
         })}</ol>
       </Section>
-      {teaching.length > 0 && (
-        <section className="lesson-detail-block" aria-labelledby="s-details">
-          <div className="detail-head"><h3 id="s-details">Key Points</h3></div>
-          <div className="detail-list">{teaching.map((item, i) => <div className="detail-item" key={i}><p>{typeof item === "string" ? item : item.text}</p>{typeof item === "object" && item.example && <pre className="detail-example"><code>{item.example}</code></pre>}</div>)}</div>
-        </section>
-      )}
       {doDont.length > 0 && (
         <section className="lesson-detail-block" aria-labelledby="s-dodont">
           <div className="detail-head"><ShieldCheck size={16} aria-hidden="true" /><h3 id="s-dodont">Do &amp; Don't</h3></div>
@@ -88,6 +95,24 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
         <section className="lesson-detail-block quick-info" aria-labelledby="s-quick-info">
           <div className="detail-head"><h3 id="s-quick-info">Quick Info</h3></div>
           <div className="quick-info-wrap"><table className="quick-info-table"><tbody>{quickInfo.map((row, i) => <tr key={i}><th scope="row">{row[0]}</th><td>{row[1]}</td></tr>)}</tbody></table></div>
+        </section>
+      )}
+      {(practiceLevels.length > 0 || skills.length > 0) && (
+        <section className="lesson-detail-block practice-skills" aria-labelledby="s-practice-levels">
+          {practiceLevels.length > 0 && (
+            <>
+              <div className="detail-head"><Target size={16} aria-hidden="true" /><h3 id="s-practice-levels">Practice path</h3></div>
+              <div className="practice-level-grid">{practiceLevels.map((item, i) => <div className="practice-level" key={item.level}>
+                <span className="practice-level-number">{i + 1}</span><div><strong>{item.level}</strong><p>{item.task}</p></div>
+              </div>)}</div>
+            </>
+          )}
+          {skills.length > 0 && (
+            <div className="skills-now-inline" aria-labelledby="s-skills">
+              <div className="detail-head"><Target size={15} aria-hidden="true" /><h4 id="s-skills">By the end, you should be able to</h4></div>
+              <ul className="skills-list">{skills.map((item, i) => <li key={i}>{item}</li>)}</ul>
+            </div>
+          )}
         </section>
       )}
       <Section title="Complete Example" icon={Play} step={4} id="s-full" ok={!!lesson.fullExample}>

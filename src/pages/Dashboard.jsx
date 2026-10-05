@@ -35,15 +35,15 @@ export default function Dashboard() {
   const finished = !nextItem;
   const started = stats.completed > 0 || !!activeId;
   const upcoming = nextItem ? lessons.filter((l) => l.day > nextItem.day && progress[l.id] !== "completed").slice(0, 3) : [];
-  const cta = finished ? "Review Day 1" : activeId ? "Continue Day " + nextItem.day : started ? `Start Day ${nextItem.day}` : "Start Day 1";
+  const cta = finished ? "Review Lesson 1" : activeId ? "Continue Lesson " + nextItem.day : started ? `Start Lesson ${nextItem.day}` : "Start Lesson 1";
   const go = () => navigate(finished ? "/lessons/l01" : pathFor(nextItem));
   const firstLesson = lessons.find((l) => l.kind === "lesson" && progress[l.id] !== "completed") || lessons[0];
 
   const tiles = [
-    { icon: CheckCircle2, label: "Days completed", value: stats.completed, of: stats.total },
+    { icon: CheckCircle2, label: "Lessons completed", value: stats.completed, of: stats.total },
     { icon: BookOpen, label: "Classes", value: stats.lessonsDone, of: stats.classCount },
     { icon: Folder, label: "Projects", value: stats.projectsDone, of: stats.projectCount },
-    { icon: Flame, label: "Day streak", value: stats.streak, of: null },
+    { icon: Flame, label: "Study streak", value: stats.streak, of: null },
   ];
   const links = [
     { to: pathFor(firstLesson), icon: BookOpen, title: "Lessons", text: `${stats.classCount} classes covering Python fundamentals through advanced topics.` },
@@ -55,7 +55,7 @@ export default function Dashboard() {
     <div className="dash">
       <header className="dash-head">
         <div>
-          <p className="eyebrow">30-Day Python Challenge</p>
+          <p className="eyebrow">30-Lesson Python Course</p>
           <h2 className="dash-title">{greeting()}, {user}</h2>
           <p className="muted dash-sub">{stats.studiedToday ? "Today's day is done. Rest up. You can continue whenever you are ready." : started ? "One focused day at a time. Pick up where you left off." : "Build Python skills from fundamentals through professional engineering, then prove them with five projects."}</p>
         </div>
@@ -70,12 +70,12 @@ export default function Dashboard() {
           <span className="focus-tag"><Target size={14} aria-hidden="true" /> {finished ? "Challenge complete" : activeId ? "In progress" : started ? "Up next" : "Start here"}</span>
           {finished ? (
             <>
-              <h3 className="focus-title">You finished all 30 days</h3>
+              <h3 className="focus-title">You finished all 30 lessons</h3>
               <p className="focus-text">Every class and project is complete. Revisit any day to sharpen your skills.</p>
             </>
           ) : (
             <>
-              <p className="focus-day">Day {nextItem.day} &middot; {nextItem.kind === "project" ? "Project" : "Class"} &middot; {nextItem.part}</p>
+              <p className="focus-day">Lesson {nextItem.day} &middot; {nextItem.kind === "project" ? "Project" : "Lesson"} &middot; {nextItem.part}</p>
               <h3 className="focus-title">{nextItem.title}</h3>
               <p className="focus-text">{nextItem.summary}</p>
             </>
@@ -105,7 +105,7 @@ export default function Dashboard() {
               </svg>
               <span className="ring-center"><strong>{stats.percent}%</strong><small>complete</small></span>
             </div>
-            <p className="progress-total"><span>{stats.completed} / {stats.total} Days</span></p>
+            <p className="progress-total"><span>{stats.completed} / {stats.total} Lessons</span></p>
           </div>
         </div>
       </section>
@@ -131,7 +131,7 @@ export default function Dashboard() {
                 <span className={`path-num ${g.done === g.total ? "is-done" : ""}`}>{g.done === g.total ? <CheckCircle2 size={16} aria-hidden="true" /> : stages.indexOf(g) + 1}</span>
                 <div className="path-body">
                   <div className="row between"><strong>{g.name}</strong><span className="muted small">{g.done}/{g.total}</span></div>
-                  <p className="muted small">Days {g.from}&ndash;{g.to} &middot; {LEVEL_NOTE[g.name]}</p>
+                  <p className="muted small">Lessons {g.from}&ndash;{g.to} &middot; {LEVEL_NOTE[g.name]}</p>
                   <div className="bar" role="progressbar" aria-valuemin={0} aria-valuemax={g.total} aria-valuenow={g.done} aria-label={g.name}>
                     <div className="bar-fill" style={{ width: `${(g.done / g.total) * 100}%` }} />
                   </div>
@@ -143,18 +143,18 @@ export default function Dashboard() {
 
         <div className="dash-side">
           <section className="panel" aria-labelledby="map-h">
-            <div className="panel-head"><h3 id="map-h">30-day map</h3>
+            <div className="panel-head"><h3 id="map-h">30-lesson map</h3>
               <span className="map-legend small muted">
                 {["completed", "active", "not-started"].map((s) => <span key={s}><StatusIcon status={s} size={12} /> {STATUS_LABEL[s]}</span>)}
               </span>
             </div>
-            <ol className="day-map" aria-label="All 30 days">
+            <ol className="day-map" aria-label="All 30 lessons">
               {lessons.filter((l) => l.kind === "lesson").map((l) => {
                 const st = progress[l.id] || "not-started";
                 return (
                   <li key={l.id}>
                     <a href={`#${pathFor(l)}`} className={`map-day map-${st}`}
-                      aria-label={`Day ${l.day}, ${l.title}: ${STATUS_LABEL[st]}`} title={`Day ${l.day}. ${l.title} (${STATUS_LABEL[st]})`}>{l.day}</a>
+                      aria-label={`Lesson ${l.day}, ${l.title}: ${STATUS_LABEL[st]}`} title={`Lesson ${l.day}. ${l.title} (${STATUS_LABEL[st]})`}>{l.day}</a>
                   </li>
                 );
               })}
@@ -166,7 +166,7 @@ export default function Dashboard() {
               <div className="panel-head"><h3 id="soon-h">Coming up</h3></div>
               <ul className="soon">
                 {upcoming.map((l) => (
-                  <li key={l.id}><a href={`#${pathFor(l)}`}><span className="soon-day">Day {l.day}</span><span className="soon-title">{l.title}</span><ArrowRight size={14} aria-hidden="true" /></a></li>
+                  <li key={l.id}><a href={`#${pathFor(l)}`}><span className="soon-day">Lesson {l.day}</span><span className="soon-title">{l.title}</span><ArrowRight size={14} aria-hidden="true" /></a></li>
                 ))}
               </ul>
             </section>

@@ -195,7 +195,7 @@ export function AppProvider({ children }) {
     toast("Progress and saved code were reset.", "success");
   }, [toast]);
 
-  // Reset everything related to course progress, then immediately start Day 1
+  // Reset everything related to course progress, then immediately start Lesson 1
   // with the newly confirmed name.
   const resetAndRestart = useCallback((name) => {
     resetProgressData();
@@ -206,7 +206,7 @@ export function AppProvider({ children }) {
     setUser(name);
     setItem(KEYS.active, "l01");
     setActiveId("l01");
-    toast("Course reset. Day 1 is ready to start.", "success");
+    toast("Course reset. Lesson 1 is ready to start.", "success");
   }, [setUser, toast]);
 
   const stats = useMemo(() => summarize(lessons, progress, activeId, studyDays), [progress, activeId, studyDays]);

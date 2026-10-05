@@ -43,7 +43,7 @@ function LessonView({ lesson, base, prev, next }) {
 
   useEffect(() => { touchLesson(lesson.id); }, [lesson.id, touchLesson]);
 
-  // Day 1 is the only lesson that requires an explicit Start action. Once the
+  // Lesson 1 is the only lesson that requires an explicit Start action. Once the
   // learner opens the next unlocked class, it immediately becomes In Progress.
   // This keeps the Start gate for the first class without forcing it on every class.
   useEffect(() => {

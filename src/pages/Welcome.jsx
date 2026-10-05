@@ -17,7 +17,7 @@ export default function Welcome({ onStart }) {
     { icon: HardDrive, title: "Saved locally", text: "No tracking, ads or cookie banner." },
   ];
   const stats = [
-    { icon: CalendarDays, value: "30", label: "days" },
+    { icon: CalendarDays, value: "30", label: "lessons" },
     { icon: BookOpen, value: "25", label: "daily classes" },
     { icon: Trophy, value: "5", label: "projects" },
   ];
@@ -31,8 +31,8 @@ export default function Welcome({ onStart }) {
       </header>
       <div className="welcome-grid">
         <div className="welcome-copy">
-          <span className="welcome-tag">30-Day Python Challenge</span>
-          <h1><span>Start Programming Today.</span><br /><strong>30 Days with Projects.</strong></h1>
+          <span className="welcome-tag">30-Lesson Python Course</span>
+          <h1><span>Start Programming Today.</span><br /><strong>30 Lessons with Projects.</strong></h1>
           <p className="lead">30 daily lessons and 5 projects, from your first line of code to a finished app. Read on the left, write and run real Python on the right.</p>
           <div className="welcome-cta">
             <button className="btn btn-primary btn-lg" onClick={() => setOpen(true)}>Start Learning <ArrowRight size={18} /></button>

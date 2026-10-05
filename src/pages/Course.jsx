@@ -24,14 +24,14 @@ export default function Course() {
   return (
     <div className="page page-wide">
       <header className="course-head">
-        <p className="eyebrow">30-Day Python Challenge</p>
+        <p className="eyebrow">30-Lesson Python Course</p>
         <h2 className="page-title">Course overview</h2>
         <p className="muted course-lead">30 focused lessons build from Python fundamentals to professional engineering. Five projects appear separately as checkpoints during the path — projects are not extra days.</p>
         <div className="course-stats">
           <div className="bar course-bar" role="progressbar" aria-valuemin={0} aria-valuemax={stats.total} aria-valuenow={stats.completed} aria-label="Course progress">
             <div className="bar-fill" style={{ width: `${stats.percent}%` }} />
           </div>
-          <p className="small muted">{stats.completed} of {stats.total} days complete</p>
+          <p className="small muted">{stats.completed} of {stats.total} lessons complete</p>
         </div>
         <ul className="legend" aria-label="Status key">
           {["completed", "active", "not-started"].map((s) => (
@@ -49,7 +49,7 @@ export default function Course() {
             <div className="part-head">
               <span className="part-index">{i + 1}</span>
               <div>
-                <h3 id={id}>{g.name} <span className="muted part-days">Days {first}&ndash;{last}</span></h3>
+                <h3 id={id}>{g.name} <span className="muted part-days">Lessons {first}&ndash;{last}</span></h3>
                 <p className="muted small">{BLURB[g.name]}</p>
               </div>
             </div>

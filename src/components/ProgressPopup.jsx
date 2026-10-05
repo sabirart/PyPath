@@ -46,7 +46,7 @@ export default function ProgressPopup() {
   return (
     <div className="pp" data-open={open}>
       <button ref={pill} className="pp-pill" onClick={() => togglePanel("progress")} aria-expanded={open} aria-controls="pp-card"
-        aria-label={`Progress: ${stats.completed} of ${stats.total} days complete`}>
+        aria-label={`Progress: ${stats.completed} of ${stats.total} lessons complete`}>
         <span className="ring-wrap"><Ring percent={stats.percent} size={30} stroke={4} /></span>
         <span className="pp-count">{stats.completed}<span className="muted">/{stats.total}</span></span>
       </button>
@@ -56,22 +56,22 @@ export default function ProgressPopup() {
             <div className="ring-wrap big"><Ring percent={stats.percent} size={56} stroke={5} /><span className="ring-text">{stats.percent}%</span></div>
             <div>
               <h2>Your progress</h2>
-              <p className="muted small">{stats.completed} of {stats.total} days complete</p>
+              <p className="muted small">{stats.completed} of {stats.total} lessons complete</p>
             </div>
             <button className="icon-btn pp-close" onClick={close} aria-label="Close progress"><X size={18} /></button>
           </div>
-          <ul className="pp-stats" aria-label="Day counts">
+          <ul className="pp-stats" aria-label="Lesson counts">
             <li><strong>{stats.completed}</strong> completed</li>
             <li><strong>{stats.active}</strong> in progress</li>
             <li><strong>{stats.notStarted}</strong> not started</li>
           </ul>
-          <ol className="dots" aria-label="All 30 days">
+          <ol className="dots" aria-label="All 30 lessons">
             {dayOnlyLessons.map((l) => {
               const st = progress[l.id] || "not-started";
               return (
                 <li key={l.id}>
                   <a href={`#${pathFor(l)}`} className={`dot dot-${st}`} onClick={close}
-                    aria-label={`Day ${l.day}, ${l.title}: ${STATUS_LABEL[st]}`} title={`Day ${l.day}. ${l.title}`}>
+                    aria-label={`Lesson ${l.day}, ${l.title}: ${STATUS_LABEL[st]}`} title={`Lesson ${l.day}. ${l.title}`}>
                     {st === "completed" ? <Check size={14} strokeWidth={3} aria-hidden="true" /> : l.number}
                   </a>
                 </li>
@@ -79,7 +79,7 @@ export default function ProgressPopup() {
             })}
           </ol>
           <button className="btn btn-primary btn-block" onClick={() => go(target ? pathFor(target) : "/lessons/l01")}>
-            {!target ? "Review Day 1" : activeId ? `Continue: Day ${target.day}` : stats.completed ? `Start Day ${target.day}` : "Start Day 1"} <ArrowRight size={16} />
+            {!target ? "Review Lesson 1" : activeId ? `Continue: Lesson ${target.day}` : stats.completed ? `Start Lesson ${target.day}` : "Start Lesson 1"} <ArrowRight size={16} />
           </button>
           {!confirming ? (
             <button className="link-btn" onClick={() => setConfirming(true)}><RotateCcw size={14} /> Reset progress</button>

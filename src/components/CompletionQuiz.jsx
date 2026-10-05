@@ -91,7 +91,7 @@ export default function CompletionQuiz({ lesson, nextLesson, onPass, onNext, onC
             <div className="quiz-body">
               {questions.map((q, qi) => (
                 <fieldset className="quiz-question" key={qi}>
-                  <legend><span>{qi + 1}</span>{q.question}</legend>
+                  <legend><span>{qi + 1}</span><div className="quiz-question-copy"><div>{q.question}</div>{q.code && <pre className="quiz-code"><code>{q.code}</code></pre>}</div></legend>
                   <div className="quiz-options">
                     {q.options.map((option, oi) => (
                       <label className={`quiz-option ${answers[qi] === oi ? "is-selected" : ""} ${attempted && answers[qi] === oi && oi !== q.answer ? "is-wrong" : ""} ${attempted && answers[qi] === oi && oi === q.answer ? "is-right" : ""}`} key={oi}>
@@ -100,11 +100,14 @@ export default function CompletionQuiz({ lesson, nextLesson, onPass, onNext, onC
                       </label>
                     ))}
                   </div>
+                  {attempted && answers[qi] !== q.answer && q.explanation && (
+                    <div className="quiz-answer-explanation"><strong>Review:</strong> {q.explanation}</div>
+                  )}
                 </fieldset>
               ))}
               {attempted && !passed && (
                 <div className="quiz-feedback quiz-fail" role="alert">
-                  <strong>{score}/{total} correct.</strong> You need all 5 correct before this lesson can be completed. Review the lesson and try again.
+                  <strong>{score}/{total} correct.</strong> You need all 5 correct before this lesson can be completed. Review the explanations above, then try again.
                 </div>
               )}
             </div>

@@ -26,6 +26,7 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
   const how = Array.isArray(lesson.howItWorks) ? lesson.howItWorks : [];
   const teaching = Array.isArray(lesson.teachingPoints) ? lesson.teachingPoints : [];
   const doDont = Array.isArray(lesson.doDont) ? lesson.doDont : [];
+  const quickInfo = Array.isArray(lesson.quickInfo) ? lesson.quickInfo : [];
   const project = lesson.kind === "project";
   const noun = project ? "project" : "lesson";
   return (
@@ -52,14 +53,28 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
           <button className="btn btn-primary btn-sm" onClick={onStart}><Play size={14} /> Start Day {lesson.day}</button>
         </div>
       )}
+      {lesson.intro && (
+        <section className="lesson-intro" aria-labelledby="s-intro">
+          <div className="detail-head"><BookOpen size={16} aria-hidden="true" /><h3 id="s-intro">Start Here</h3></div>
+          <p>{lesson.intro}</p>
+        </section>
+      )}
       <Section title="Definition" icon={BookOpen} step={1} id="s-def" ok={!!lesson.definition}><p className="lede">{lesson.definition}</p></Section>
       <Section title="Code Example" icon={Code2} step={2} id="s-ex" ok={!!lesson.codeExample}><CodeBlock code={lesson.codeExample} />{lesson.exampleOutput && <div className="lesson-example-output"><div className="lesson-example-output-title">Output</div><pre>{lesson.exampleOutput}</pre></div>}</Section>
       <Section title="How It Works" icon={ListOrdered} step={3} id="s-how" ok={how.length > 0}>
-        <ol className="steps">{how.map((h, i) => <li key={i}>{h}</li>)}</ol>
+        <ol className="steps">{how.map((h, i) => {
+          const [label, ...rest] = String(h).split(': ');
+          return (
+            <li key={i}>
+              <div className="step-label"><span className="step-number">{i + 1}</span><strong>{label}</strong></div>
+              <span className="step-description">{rest.join(': ')}</span>
+            </li>
+          );
+        })}</ol>
       </Section>
       {teaching.length > 0 && (
         <section className="lesson-detail-block" aria-labelledby="s-details">
-          <div className="detail-head"><h3 id="s-details">Important details</h3></div>
+          <div className="detail-head"><h3 id="s-details">Key Points</h3></div>
           <div className="detail-list">{teaching.map((item, i) => <div className="detail-item" key={i}><p>{typeof item === "string" ? item : item.text}</p>{typeof item === "object" && item.example && <pre className="detail-example"><code>{item.example}</code></pre>}</div>)}</div>
         </section>
       )}
@@ -67,6 +82,12 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
         <section className="lesson-detail-block" aria-labelledby="s-dodont">
           <div className="detail-head"><ShieldCheck size={16} aria-hidden="true" /><h3 id="s-dodont">Do &amp; Don't</h3></div>
           <div className="dodont-wrap"><table className="dodont-table"><thead><tr><th>Don't</th><th>Do instead</th><th>Example</th></tr></thead><tbody>{doDont.map((row, i) => <tr key={i}><td>{row.dont}</td><td>{row.do}</td><td>{row.example || "See the lesson example above."}</td></tr>)}</tbody></table></div>
+        </section>
+      )}
+      {quickInfo.length > 0 && (
+        <section className="lesson-detail-block quick-info" aria-labelledby="s-quick-info">
+          <div className="detail-head"><h3 id="s-quick-info">Quick Info</h3></div>
+          <div className="quick-info-wrap"><table className="quick-info-table"><tbody>{quickInfo.map((row, i) => <tr key={i}><th scope="row">{row[0]}</th><td>{row[1]}</td></tr>)}</tbody></table></div>
         </section>
       )}
       <Section title="Complete Example" icon={Play} step={4} id="s-full" ok={!!lesson.fullExample}>

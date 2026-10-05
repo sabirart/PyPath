@@ -171,7 +171,15 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 .lesson-title { font-size: clamp(1.75rem, 3.2vw, 2.25rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin: 0 0 0.5rem; }
 .lesson-section { margin-top: 1.25rem; }
 .lede { font-size: 1.1rem; line-height: 1.65; margin: 0; }
-.steps { padding-left: 1.2rem; display: grid; gap: 0.55rem; font-size: 1rem; line-height: 1.65; } .steps li::marker { color: var(--link); font-weight: 700; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; font-size: 0.96rem; line-height: 1.6; }
+.steps li { position: relative; display: grid; grid-template-columns: minmax(150px, 0.42fr) minmax(0, 1fr); column-gap: 1.25rem; align-items: start; min-height: 58px; padding: 0 0 1rem; }
+.steps li:last-child { padding-bottom: 0; }
+.step-label { position: relative; display: flex; align-items: center; gap: 0.65rem; min-height: 30px; color: var(--text); }
+.step-number { position: relative; z-index: 1; flex: none; display: grid; place-items: center; width: 28px; height: 28px; border: 1px solid var(--border-strong); border-radius: 50%; background: var(--surface); color: var(--link); font-size: 0.76rem; font-weight: 750; font-variant-numeric: tabular-nums; }
+.steps li:not(:last-child) .step-label::after { content: ""; position: absolute; left: 13px; top: 30px; width: 1px; height: calc(100% + 1rem); background: var(--border); }
+.step-label strong { font-size: 0.92rem; font-weight: 700; }
+.step-description { display: block; padding-top: 0.15rem; color: var(--muted); font-size: 0.92rem; }
+@media (max-width: 620px) { .steps li { grid-template-columns: minmax(120px, 0.38fr) minmax(0, 1fr); column-gap: 0.8rem; } .step-label { gap: 0.45rem; } .step-label strong, .step-description { font-size: 0.88rem; } }
 .codeblock { margin: 0 0 0.8rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--code-bg); overflow: hidden; }
 .codeblock figcaption { display: flex; align-items: center; justify-content: space-between; padding: 0.3rem 0.5rem 0.3rem 0.85rem; border-bottom: 1px solid var(--border); font-size: 0.74rem; font-weight: 500; color: var(--muted); }
 .codeblock pre { margin: 0; padding: 0.85rem 1rem; overflow-x: auto; font: 400 0.84rem/1.7 var(--mono); tab-size: 4; }
@@ -528,6 +536,13 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 .detail-example { margin:0; padding:.55rem .7rem; border:1px solid var(--border); border-radius:8px; background:var(--surface-2); overflow:auto; font-size:.82rem; line-height:1.45; }
 .detail-example code { white-space:pre; }
 .dodont-wrap { overflow-x:auto; }
+
+.quick-info-wrap { width: 100%; overflow-x: auto; }
+.quick-info-table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+.quick-info-table th, .quick-info-table td { padding: .62rem .7rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+.quick-info-table th { width: 28%; color: var(--text); font-weight: 650; white-space: nowrap; }
+.quick-info-table td { color: var(--muted); }
+.quick-info-table tr:last-child th, .quick-info-table tr:last-child td { border-bottom: 0; }
 .dodont-table { width:100%; border-collapse:collapse; font-size:.86rem; }
 .dodont-table th,.dodont-table td { padding:.65rem .7rem; border-bottom:1px solid var(--border); text-align:left; vertical-align:top; }
 .dodont-table th { color:var(--muted); font-size:.76rem; text-transform:uppercase; letter-spacing:.04em; }
@@ -640,3 +655,10 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
   .progress-ring { width: 138px; height: 138px; }
   .progress-ring-static .dashboard-progress-ring { width: 138px; height: 138px; }
 }
+
+
+/* Clear teaching presentation */
+.lesson-intro { margin: 0 0 1rem; padding: .9rem 1rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); }
+.lesson-intro .detail-head { display:flex; align-items:center; gap:.45rem; margin-bottom:.4rem; }
+.lesson-intro h3 { margin:0; font-size:.95rem; }
+.lesson-intro p { margin:0; color:var(--muted); line-height:1.6; }

@@ -1,9 +1,9 @@
 // Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, Code2 } from "lucide-react";
 import { tokenize } from "../services/highlight";
 
-export default function CodeBlock({ code, label = "Python", copy = true }) {
+export default function CodeBlock({ code, label = "Python", copy = true, onLoad }) {
   const parts = useMemo(() => tokenize(code), [code]);
   const [copyState, setCopyState] = useState("idle");
   const copyTimer = useRef(null);
@@ -35,7 +35,10 @@ export default function CodeBlock({ code, label = "Python", copy = true }) {
     <figure className="codeblock">
       <figcaption>
         <span>{label}</span>
-        {copy && <button className={`copy-btn ${copyState !== "idle" ? `is-${copyState}` : ""}`} onClick={doCopy} aria-label={`Copy ${label} code`}>{copyState === "copied" ? <><Check size={14} /> Copied</> : copyState === "error" ? <><Copy size={14} /> Copy failed</> : <><Copy size={14} /> Copy</>}</button>}
+        <span className="codeblock-actions">
+          {onLoad && <button className="copy-btn load-code-btn" onClick={() => onLoad(code)} aria-label={`Load ${label} code in editor`}><Code2 size={14} /> Load</button>}
+          {copy && <button className={`copy-btn ${copyState !== "idle" ? `is-${copyState}` : ""}`} onClick={doCopy} aria-label={`Copy ${label} code`}>{copyState === "copied" ? <><Check size={14} /> Copied</> : copyState === "error" ? <><Copy size={14} /> Copy failed</> : <><Copy size={14} /> Copy</>}</button>}
+        </span>
       </figcaption>
       <pre tabIndex={0} aria-label={`${label} code`}><code>{parts.map((p, i) => (p.t ? <span key={i} className={`tok-${p.t}`}>{p.s}</span> : p.s))}</code></pre>
     </figure>

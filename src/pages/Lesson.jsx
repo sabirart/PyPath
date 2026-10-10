@@ -29,8 +29,24 @@ function LessonView({ lesson, base, prev, next }) {
   const py = usePython();
   const gestureStart = useRef(null);
   const [code, setCode] = useState(() => getItem(KEYS.code(lesson.id)) ?? lesson.starterCode ?? "");
-  const [colSize, setColSize] = useState(46);
-  const [rowSize, setRowSize] = useState(mobile ? 70 : 60);
+  // Keep workspace dimensions across lesson navigation and browser sessions.
+  // colSize is the lesson pane percentage; default is 55% lesson / 45% code.
+  const [colSize, setColSizeState] = useState(() => {
+    const saved = Number(getItem("pypath_workspace_lesson_width"));
+    return Number.isFinite(saved) && saved >= 30 && saved <= 70 ? saved : 55;
+  });
+  const [rowSize, setRowSizeState] = useState(() => {
+    const saved = Number(getItem("pypath_workspace_editor_height"));
+    return Number.isFinite(saved) && saved >= 25 && saved <= 75 ? saved : (mobile ? 70 : 60);
+  });
+  const setColSize = (value) => {
+    setColSizeState(value);
+    try { window.localStorage.setItem("pypath_workspace_lesson_width", String(value)); } catch { /* keep current session state */ }
+  };
+  const setRowSize = (value) => {
+    setRowSizeState(value);
+    try { window.localStorage.setItem("pypath_workspace_editor_height", String(value)); } catch { /* keep current session state */ }
+  };
   const [quizOpen, setQuizOpen] = useState(false);
   const [suggestedProject, setSuggestedProject] = useState(null);
   const status = progress[lesson.id] || "not-started";
@@ -43,6 +59,10 @@ function LessonView({ lesson, base, prev, next }) {
 
   useEffect(() => { touchLesson(lesson.id); }, [lesson.id, touchLesson]);
 
+  // Keep the code workspace open whenever a lesson or project is opened,
+  // including after refresh and when navigating from the course sidebar.
+  useEffect(() => { togglePanel("compiler", true); }, [lesson.id, togglePanel]);
+
   // Lesson 1 is the only lesson that requires an explicit Start action. Once the
   // learner opens the next unlocked class, it immediately becomes In Progress.
   // This keeps the Start gate for the first class without forcing it on every class.
@@ -50,11 +70,10 @@ function LessonView({ lesson, base, prev, next }) {
     if (!isProject && lesson.id !== "l01" && status === "pending") startLesson(lesson.id);
   }, [isProject, lesson.id, startLesson, status]);
 
-  useEffect(() => { if (mobile) setRowSize(70); }, [mobile]);
 
   const change = (v) => setCode(v);
   useAutosave(KEYS.code(lesson.id), code);
-  const loadExample = () => { change(lesson.fullExample); togglePanel("compiler", true); };
+  const loadExample = (snippet) => { change(snippet); togglePanel("compiler", true); };
   const download = () => { try { downloadPython(code, `${lesson.id}.py`); } catch (e) { toast(e.message, "error"); } };
   const start = () => {
     if (!isProject) startLesson(lesson.id);
@@ -141,7 +160,7 @@ function LessonView({ lesson, base, prev, next }) {
           </div>
           <Splitter orientation="row" value={rowSize} onChange={setRowSize} min={25} max={75} label="Resize editor and output" />
           <div className="stack-item" style={{ flex: `${100 - rowSize} 1 0` }}>
-            <Console py={py} samples={samples} />
+            <Console py={py} samples={samples} code={code} />
           </div>
         </section>
       </div>

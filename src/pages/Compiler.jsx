@@ -31,7 +31,7 @@ export default function Compiler() {
       </div>
       <Splitter orientation={wide ? "col" : "row"} value={size} onChange={setSize} min={30} max={75} label="Resize editor and output" />
       <div className="stack-item" style={{ flex: `${100 - size} 1 0` }}>
-        <Console py={py} />
+        <Console py={py} code={code} />
       </div>
     </div>
   );

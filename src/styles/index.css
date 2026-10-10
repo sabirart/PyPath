@@ -7,7 +7,7 @@
   --bg: #FAF9F5; --surface: #FFFFFF; --surface-2: #F0EEE6; --pane-bg: #F0EEE6;
   --text: #141413; --muted: #5E5D59; --border: #E8E6DC; --border-strong: #D6D3C6;
   --link: #396E6D; --success-text: #2F7A49; --error-text: #A63B35;
-  --editor-bg: #FFFFFF; --active-line: #F7F5EE; --selection: #D6E5E4; --code-bg: #F5F4EE;
+  --editor-bg: #FFFFFF; --active-line: #F7F5EE; --selection: #B8D7FF; --code-bg: #F5F4EE;
   --ring: #3F7473; --ring-track: #D9D9D3; --focus-ring-track: #D9D9D3;
   --scroll-thumb: #CFCBBD; --scroll-hover: #A9A597;
   --tok-kw: #396E6D; --tok-str: #3F7D3A; --tok-com: #7A776B; --tok-num: #9A620F; --tok-fn: #356B8F; --tok-bi: #7656A3;
@@ -22,7 +22,7 @@
   --bg: #0B0D0D; --surface: #111414; --surface-2: #181C1B; --pane-bg: #0E1110;
   --text: #F5F7F6; --muted: #A7AEAC; --border: #252B29; --border-strong: #343B38;
   --link: #7BC0BC; --success-text: #83D095; --error-text: #F28D85;
-  --editor-bg: #0E1110; --active-line: #151A18; --selection: #263C3A; --code-bg: #0E1110;
+  --editor-bg: #0E1110; --active-line: #151A18; --selection: #365D8D; --code-bg: #0E1110;
   --ring: #5FA8A5; --ring-track: #FFFFFF; --focus-ring-track: #FFFFFF;
   --scroll-thumb: #343B38; --scroll-hover: #4A5350;
   --tok-kw: #7BC0BC; --tok-str: #A9CF86; --tok-com: #7F8985; --tok-num: #E8C477; --tok-fn: #8DBBDD; --tok-bi: #B9A5DC;
@@ -183,6 +183,7 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 @media (max-width: 620px) { .steps li { grid-template-columns: minmax(120px, 0.38fr) minmax(0, 1fr); column-gap: 0.8rem; } .step-label { gap: 0.45rem; } .step-label strong, .step-description { font-size: 0.88rem; } }
 .codeblock { margin: 0 0 0.8rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--code-bg); overflow: hidden; }
 .codeblock figcaption { display: flex; align-items: center; justify-content: space-between; padding: 0.3rem 0.5rem 0.3rem 0.85rem; border-bottom: 1px solid var(--border); font-size: 0.74rem; font-weight: 500; color: var(--muted); }
+.codeblock-actions { display: inline-flex; align-items: center; gap: 0.25rem; }
 .codeblock pre { margin: 0; padding: 0.85rem 1rem; overflow-x: auto; font: 400 0.84rem/1.7 var(--mono); tab-size: 4; }
 .copy-btn { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.2rem 0.5rem; border: 0; border-radius: 6px; background: transparent; color: var(--muted); font: 500 0.74rem var(--sans); cursor: pointer; } .copy-btn:hover { background: var(--surface-2); color: var(--text); }
 .tok-kw { color: var(--tok-kw); font-weight: 500; } .tok-str { color: var(--tok-str); } .tok-com { color: var(--tok-com); font-style: italic; } .tok-num { color: var(--tok-num); } .tok-fn { color: var(--tok-fn); } .tok-bi { color: var(--tok-bi); }
@@ -299,6 +300,27 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
 .cm-panels-bottom { border-top: 1px solid var(--border) !important; }
 .cm-searchMatch { background: var(--active-soft) !important; }
 .cm-matchingBracket, .cm-editor.cm-focused .cm-matchingBracket { background: var(--active-soft) !important; outline: none; }
+/* Make CodeMirror selections unmistakable, including the active/caret line. */
+.cm-editor .cm-selectionLayer .cm-selectionBackground,
+.cm-editor .cm-selectionBackground,
+.cm-editor.cm-focused .cm-selectionBackground {
+  background: var(--selection) !important;
+  opacity: 1 !important;
+}
+.cm-editor ::selection,
+.cm-editor .cm-content ::selection {
+  background: var(--selection) !important;
+  color: inherit;
+}
+/* The active-line wash can cover the selection on the caret's line (notably the last line). */
+.cm-editor.cm-focused .cm-activeLine {
+  background-color: transparent !important;
+}
+.cm-editor .cm-cursor,
+.cm-editor .cm-dropCursor {
+  border-left: 2px solid var(--text) !important;
+}
+
 
 /* Dashboard (premium layout) */
 .eyebrow { margin: 0 0 0.35rem; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--link); }
@@ -759,3 +781,25 @@ textarea.input { resize: vertical; font-size: 0.85rem; }
   .ai-panel, .ai-backdrop, .ai-close-float { animation: none; }
   .ai-fab { transition: none; }
 }
+
+/* Contextual Python error explainer in the Output toolbar. */
+.error-explainer-trigger { white-space: nowrap; color: var(--error-text); border-color: color-mix(in srgb, var(--error) 42%, var(--border)); }
+.error-explainer-trigger:hover:not(:disabled), .error-explainer-trigger.is-active { background: color-mix(in srgb, var(--error) 9%, var(--surface)); }
+.error-explainer-panel { flex: none; margin: 0 0 .85rem; padding: .8rem .9rem; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-2); color: var(--text); font-size: .86rem; line-height: 1.55; scroll-margin: .5rem; }
+.error-explainer-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
+.error-explainer-heading > div { display: flex; align-items: center; gap: .5rem; min-width: 0; }
+.error-explainer-heading > div > svg { color: var(--error-text); flex: none; }
+.error-explainer-heading strong { font-size: .9rem; }
+.error-explainer-panel p { margin: .55rem 0 0; }
+.error-explainer-panel code { font-family: var(--mono); overflow-wrap: anywhere; }
+.error-explainer-line { padding: .45rem .55rem; border-radius: 6px; background: var(--surface); }
+.error-explainer-example { margin-top: .65rem; border: 1px solid var(--border); border-radius: 7px; overflow: hidden; background: var(--surface); }
+.error-explainer-example > span { display: block; padding: .35rem .6rem; border-bottom: 1px solid var(--border); color: var(--muted); font-size: .73rem; font-weight: 650; }
+.error-explainer-example pre { margin: 0; padding: .6rem; overflow-x: auto; font: 400 .78rem/1.6 var(--mono); white-space: pre-wrap; }
+.error-explainer-note { color: var(--muted); font-size: .77rem; }
+
+.error-explainer-solutions { display: grid; gap: .75rem; margin-top: .65rem; }
+.error-explainer-solution { min-width: 0; padding-top: .55rem; border-top: 1px solid var(--border); }
+.error-explainer-solution > p { margin-top: .3rem; }
+.error-explainer-solution > p:first-child { margin-top: 0; }
+.error-explainer-solution .error-explainer-example { margin-top: .45rem; }

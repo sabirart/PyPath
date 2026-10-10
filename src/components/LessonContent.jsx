@@ -1,5 +1,5 @@
 // Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
-import { BookOpen, Clock, Code2, FileInput, ListOrdered, Play, Sparkles, ShieldCheck, Target, Lightbulb, AlertTriangle } from "lucide-react";
+import { BookOpen, Clock, Code2, ListOrdered, Play, Sparkles, ShieldCheck, Target, Lightbulb, AlertTriangle } from "lucide-react";
 import CodeBlock from "./CodeBlock";
 import StatusIcon, { STATUS_LABEL } from "./StatusIcon";
 import { useApp } from "../context/AppContext";
@@ -73,7 +73,7 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
         </section>
       )}
       <Section title="Definition" icon={BookOpen} step={1} id="s-def" ok={!!lesson.definition} className="definition-section"><p className="lede">{lesson.definition}</p></Section>
-      <Section title="Code Example" icon={Code2} step={2} id="s-ex" ok={!!lesson.codeExample} className="code-example-section"><CodeBlock code={lesson.codeExample} />{lesson.exampleOutput && <div className="lesson-example-output"><div className="lesson-example-output-title">Output</div><pre>{lesson.exampleOutput}</pre></div>}</Section>
+      <Section title="Code Example" icon={Code2} step={2} id="s-ex" ok={!!lesson.codeExample} className="code-example-section"><CodeBlock code={lesson.codeExample} onLoad={onLoadExample} />{lesson.exampleOutput && <div className="lesson-example-output"><div className="lesson-example-output-title">Output</div><pre>{lesson.exampleOutput}</pre></div>}</Section>
       <Section title="How It Works" icon={ListOrdered} step={3} id="s-how" ok={how.length > 0}>
         <ol className="steps">{how.map((h, i) => {
           const [label, ...rest] = String(h).split(': ');
@@ -116,8 +116,7 @@ export default function LessonContent({ lesson, onLoadExample, onStart, canStart
         </section>
       )}
       <Section title="Complete Example" icon={Play} step={4} id="s-full" ok={!!lesson.fullExample}>
-        <CodeBlock code={lesson.fullExample} label={project ? "Python - complete project" : "Python - runnable example"} />
-        <button className="btn btn-ghost btn-sm" onClick={onLoadExample}><FileInput size={15} /> Load in editor</button>
+        <CodeBlock code={lesson.fullExample} label={project ? "Python - complete project" : "Python - runnable example"} onLoad={onLoadExample} />
       </Section>
       {!project && lesson.projectId && (
         <div className="project-brief" role="note">

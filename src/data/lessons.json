@@ -6,146 +6,119 @@
     "number": 1,
     "part": "Python Foundations",
     "partNumber": 1,
-    "title": "Programs & Output",
-    "summary": "Programming starts with instructions. Python executes statements in order, so learning to read that flow is the first step toward controlling a program.",
-    "definition": "A program is a set of instructions that a computer follows. Python reads executable statements in sequence unless another construct changes the flow.",
-    "codeExample": "print(\"Hello, Python!\")",
+    "title": "Programming & Python",
+    "summary": "Learn what programming means, meet Python, and write your first working instructions.",
+    "definition": "A program is a set of instructions. print() displays the information you place inside its parentheses. Text is written inside matching quotation marks.",
+    "codeExample": "print(\"Hello PyPath\")",
     "howItWorks": [
-      [
-        "1. Read: Each statement gives Python an instruction.",
-        "print(\"Hello\")"
-      ],
-      [
-        "2. Execute: Python normally starts at the first executable line.",
-        "print(\"A\")\nprint(\"B\")"
-      ],
-      [
-        "3. Observe: Output is evidence of what the program did.",
-        "print(2 + 3)  # 5"
-      ],
-      [
-        "4. Experiment: Change one small thing and rerun.",
-        "print(\"Python\")\n# change the word and run again"
-      ]
+      "Programming: Give the computer clear instructions.",
+      "Python: Write instructions using Python syntax.",
+      "print(): Display text or a calculated value.",
+      "Quotation marks: \"Hello\" is text; 7 + 5 is a calculation."
     ],
-    "fullExample": "print(\"PyPath Python Challenge\")\nname = \"Alex\"\nprint(\"Welcome,\", name)\nprint(\"Today I am learning Python.\")",
+    "fullExample": "print(\"Hello PyPath\")\nprint(\"I am learning Python\")\nprint(7 + 5)\nprint(\"My first calculation is complete\")",
     "practiceTask": "Print your name, your favorite number, and the result of 7 + 5 on separate lines.",
-    "starterCode": "print(\"My name is ...\")\nprint(\"My goal is ...\")\nprint(\"I am learning Python because ...\")",
+    "starterCode": "print(\"My name is ...\")\nprint(7 + 5)\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not start with a large program.",
-        "dont": "Start with a tiny runnable example.",
-        "example": "print(\"First program\")"
-      },
-      {
-        "do": "Do not guess what code did without running it.",
-        "dont": "Make a prediction, then verify it.",
-        "example": "print(10 - 3)  # predict 7"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
-        "question": "What does Python normally do first?",
+        "question": "What is programming?",
         "options": [
-          "Execute the first executable statement",
-          "Skip to the last line",
-          "Run only comments",
-          "Choose a random line"
+          "Giving a computer instructions",
+          "Designing a computer case",
+          "Typing without a goal",
+          "Only doing calculations"
         ],
         "answer": 0,
-        "explanation": "Python normally executes statements in order."
+        "explanation": "Programming means writing instructions that a computer can execute."
       },
       {
-        "question": "What is printed by this code?",
+        "question": "What does print() do?",
         "options": [
-          "Displays a value or message",
-          "Creates a loop",
-          "Defines a function",
-          "Deletes a variable"
+          "Displays information",
+          "Creates a variable automatically",
+          "Repeats code",
+          "Converts every value to text permanently"
         ],
         "answer": 0,
-        "explanation": "print() sends a representation of its arguments to the program output.",
-        "code": "print(\"A\")\nprint(\"B\")"
+        "explanation": "print() displays the values passed inside its parentheses.",
+        "code": "print(\"Hello PyPath\")"
       },
       {
-        "question": "What is the output?",
+        "question": "What is printed by print(7 + 5)?",
         "options": [
-          "A then B",
-          "B then A",
-          "AB on one line only",
+          "75",
+          "12",
+          "7 + 5 as text",
           "Nothing"
         ],
-        "answer": 0,
-        "explanation": "The two print statements execute in order.",
-        "code": "print(\"Hello, Python!\")"
+        "answer": 1,
+        "explanation": "Both values are numbers, so Python calculates their sum.",
+        "code": "print(7 + 5)"
       },
       {
-        "question": "What is the best first debugging step for a tiny program?",
+        "question": "Which value is text?",
         "options": [
-          "Run it and inspect the actual result",
-          "Rewrite the whole program",
-          "Ignore the output",
-          "Add advanced syntax"
+          "\"10\"",
+          "10",
+          "10 + 2",
+          "True"
         ],
         "answer": 0,
-        "explanation": "Running the smallest reproducible example gives you evidence."
+        "explanation": "Quotation marks make \"10\" a string rather than a numeric value."
       },
       {
-        "question": "Which habit helps you learn programming fastest?",
+        "question": "Which is the correct way to display a message?",
         "options": [
-          "Predict, run, observe, and change one thing",
-          "Copy large solutions",
-          "Avoid experiments",
-          "Memorize every function"
+          "print(\"Hello\")",
+          "Print(\"Hello\")",
+          "print(\"Hello)",
+          "display(\"Hello\")"
         ],
         "answer": 0,
-        "explanation": "Small experiments turn syntax into understanding."
+        "explanation": "Python uses lowercase print() and the text must have matching quotation marks."
       }
     ],
-    "exampleOutput": "Hello, Python!",
+    "exampleOutput": "Hello PyPath",
     "quickInfo": [
       [
-        "Created by",
-        "Guido van Rossum"
+        "Programming",
+        "Instructions a computer can execute"
       ],
       [
-        "Started / first published",
-        "Early 1990s; Python 0.9.0 appeared in 1991"
+        "Python",
+        "A beginner-friendly general-purpose language"
       ],
       [
-        "Origin",
-        "CWI (Stichting Mathematisch Centrum), Netherlands"
+        "print()",
+        "Displays values in the output"
       ],
       [
-        "Why the name?",
-        "Inspired by Monty Python’s Flying Circus"
-      ],
-      [
-        "Used for",
-        "Web development, data/science, AI, education, software development, automation, and more"
+        "Text vs numbers",
+        "\"10\" is text; 10 is a number"
       ]
     ],
-    "intro": "Understand how a Python program executes instructions from top to bottom.",
-    "whyItMatters": "Start with the smallest possible program: print a message, inspect the output, then change one line and run it again.",
+    "intro": "Programming means giving a computer instructions to perform a task. Python is a readable language for writing those instructions.",
+    "whyItMatters": "Learn what programming means, meet Python, and write your first working instructions.",
     "skills": [
-      "Read a Python statement as an instruction.",
+      "Explain programming in one sentence.",
       "Use print() to display information.",
-      "Run code and compare the result with what you expected.",
-      "Recognize that order matters."
+      "Distinguish quoted text from a numeric expression.",
+      "Run a small program and check its output."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Change the existing print statements to show three pieces of information about you."
+        "task": "Display your name using print(\"Your Name\")."
       },
       {
         "level": "Independent",
-        "task": "Write a four-line introduction program using only print()."
+        "task": "Print your name and favorite number on separate lines."
       },
       {
         "level": "Challenge",
-        "task": "Make the output look like a small profile card using multiple print() calls."
+        "task": "Print your name, favorite number, and the result of 7 + 5."
       }
     ],
     "advancedNote": false
@@ -158,43 +131,20 @@
     "part": "Python Foundations",
     "partNumber": 1,
     "title": "Variables & Assignment",
-    "summary": "Programs need a way to remember information. Variables give names to values so those values can be used and changed later.",
-    "definition": "Assignment associates a name with a value. A name can later be rebound to another value.",
-    "codeExample": "# Predict the result before running this example.\nscore = 10\nscore += 5\nprint(score)",
+    "summary": "Give values meaningful names so your program can remember and reuse information.",
+    "definition": "Assignment binds a name to a value. You can read that value later or assign a new value to the same name.",
+    "codeExample": "name = \"Alex\"\nscore = 10\nscore = score + 5\nprint(name)\nprint(score)",
     "howItWorks": [
-      [
-        "1. Assign: Put a value behind a name.",
-        "score = 10"
-      ],
-      [
-        "2. Rebind: The same name can refer to a new value.",
-        "score = 10\nscore = 20"
-      ],
-      [
-        "3. Read: Use the name to retrieve the current value.",
-        "print(score)"
-      ],
-      [
-        "4. Name clearly: Good names communicate purpose.",
-        "total_price = 25.50"
-      ]
+      "Assign: Use = to give a name a value.",
+      "Read: Use the variable name wherever that value is needed.",
+      "Update: Calculate a new value and assign it back.",
+      "Name clearly: total_price is more meaningful than x."
     ],
-    "fullExample": "name = \"Alex\"\nage = 20\nbalance = 100.0\nbalance += 25\nprint(name, age, balance)",
-    "practiceTask": "Create variables for a product name, price, and quantity, then calculate and print the total.",
-    "starterCode": "product = \"Notebook\"\nprice = 5.0\nquantity = 3\ndiscount = 0.10\n# Calculate the final total here\n",
+    "fullExample": "product = \"Notebook\"\nprice = 4.5\nquantity = 3\ntotal = price * quantity\nprint(\"Product:\", product)\nprint(\"Quantity:\", quantity)\nprint(\"Total:\", total)\n\n# Reassign a value when it changes.\nquantity = 4\nprint(\"Updated total:\", price * quantity)",
+    "practiceTask": "Create product, price, and quantity variables, then calculate the total price.",
+    "starterCode": "product = \"Notebook\"\nprice = 4.5\nquantity = 3\n# Calculate and print the total\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not use vague names for important values.",
-        "dont": "Prefer names that explain the value.",
-        "example": "total_price = 25"
-      },
-      {
-        "do": "Do not assume assignment means equality in mathematics.",
-        "dont": "Think “name now refers to this value.”",
-        "example": "x = x + 1"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does assignment do?",
@@ -254,49 +204,45 @@
         "explanation": "The right side is evaluated before the result is assigned to x."
       }
     ],
-    "exampleOutput": "15",
+    "exampleOutput": "Alex\n15",
     "quickInfo": [
       [
-        "Core idea",
-        "A variable name refers to a value"
-      ],
-      [
         "Assignment",
-        "Use = to bind a name to a value"
+        "= stores a value under a name"
       ],
       [
         "Reassignment",
         "A name can later refer to a different value"
       ],
       [
-        "Example",
-        "score = 10 → score = 20"
+        "Naming",
+        "Use descriptive snake_case names"
       ],
       [
-        "Important",
-        "Assignment is not the same as comparison (==)"
+        "Common confusion",
+        "= assigns; == compares"
       ]
     ],
-    "intro": "Learn names, values, assignment, rebinding, and clear variable naming.",
-    "whyItMatters": "Use variables to make your programs readable and to keep important values available for later steps.",
+    "intro": "A variable name lets you refer to a value later. The = symbol assigns a value; it does not ask whether two sides are equal.",
+    "whyItMatters": "Give values meaningful names so your program can remember and reuse information.",
     "skills": [
-      "Explain assignment as naming a value.",
-      "Create and reassign variables.",
-      "Choose descriptive names.",
-      "Understand that variables do not permanently own a type."
+      "Create and read variables.",
+      "Reassign a variable.",
+      "Choose readable names.",
+      "Use variables in an expression."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Create name, price, and quantity variables and print each one."
+        "task": "Create name and age variables and print them."
       },
       {
         "level": "Independent",
-        "task": "Calculate a shopping total from price and quantity variables."
+        "task": "Calculate price × quantity using variables."
       },
       {
         "level": "Challenge",
-        "task": "Add a second product and calculate the combined total."
+        "task": "Add a discount variable and print the final total."
       }
     ],
     "advancedNote": false
@@ -309,43 +255,20 @@
     "part": "Python Foundations",
     "partNumber": 1,
     "title": "Data Types & Conversion",
-    "summary": "Python values have different types, and input often arrives as text. Understanding types and conversion prevents many beginner errors.",
-    "definition": "A type describes what kind of value you have and which operations make sense for it.",
-    "codeExample": "# Predict the result before running this example.\nage_text = \"21\"\nage = int(age_text)\nprint(age + 1)",
+    "summary": "Understand numbers, text, booleans, and the special None value—and convert values when needed.",
+    "definition": "Common built-in types include int (whole numbers), float (decimal numbers), str (text), bool (True or False), and NoneType (no value).",
+    "codeExample": "age_text = \"21\"\nage = int(age_text)\nprice = float(\"4.50\")\nprint(age + 1)\nprint(price)\nprint(type(age).__name__)",
     "howItWorks": [
-      [
-        "1. Inspect: Ask Python what type a value has.",
-        "type(42)  # int"
-      ],
-      [
-        "2. Convert: Turn compatible text into a number.",
-        "age = int(\"20\")"
-      ],
-      [
-        "3. Check: A string that looks numeric is still text until converted.",
-        "\"20\" + \"5\"  # \"205\""
-      ],
-      [
-        "4. Recognize None: It represents no current value.",
-        "result = None"
-      ]
+      "int: Stores whole numbers, such as 12.",
+      "float: Stores decimal numbers, such as 2.5.",
+      "str and bool: Store text and True/False values.",
+      "Convert: int(\"12\") creates the number 12; incompatible text raises ValueError."
     ],
-    "fullExample": "raw = \"42\"\nnumber = int(raw)\nprice = 12.5\navailable = True\nnothing = None\nprint(number, type(number).__name__)\nprint(price, available, nothing)",
-    "practiceTask": "Ask for a person’s age and height, convert the inputs to useful numeric types, and print both values.",
-    "starterCode": "text = \"24\"\nnumber = int(text)\n# Calculate and print the square\n# Print whether it is even\n",
+    "fullExample": "whole_number = 12\ndecimal_number = 2.5\nmessage = \"Hello\"\nis_ready = True\nresult = None\n\nprint(type(whole_number).__name__)\nprint(type(decimal_number).__name__)\nprint(type(message).__name__)\nprint(type(is_ready).__name__)\nprint(result)\nprint(int(\"40\") + 2)\nprint(float(\"3.5\") * 2)",
+    "practiceTask": "Convert the text \"12\" to an integer, add 8, and print the result.",
+    "starterCode": "value_text = \"12\"\n# Convert value_text to an integer\n# Add 8 and print the result\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not add numbers to strings by accident.",
-        "dont": "Convert input before arithmetic.",
-        "example": "age = int(input(\"Age: \"))"
-      },
-      {
-        "do": "Do not compare None as if it were a normal number.",
-        "dont": "Use is None when checking for no value.",
-        "example": "if result is None:"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What type is 42?",
@@ -405,49 +328,45 @@
         "explanation": "String + joins strings together."
       }
     ],
-    "exampleOutput": "22",
+    "exampleOutput": "22\n4.5\nint",
     "quickInfo": [
       [
-        "Common types",
-        "int, float, str, bool, None"
+        "int",
+        "Whole numbers: 3, -2, 0"
       ],
       [
-        "Check a type",
-        "Use type(value)"
+        "float",
+        "Decimal numbers: 2.5, 0.75"
       ],
       [
-        "Convert",
-        "int(), float(), str(), bool() can convert values when appropriate"
+        "str / bool",
+        "Text / True or False"
       ],
       [
-        "Important",
-        "Input from input() is text"
-      ],
-      [
-        "Tip",
-        "Convert at the boundary when you know the expected type"
+        "None",
+        "Represents the absence of a value"
       ]
     ],
-    "intro": "Understand int, float, str, bool, None, and safe basic conversion.",
-    "whyItMatters": "Learn to inspect a value with type(), recognize strings versus numbers, and convert input when the program genuinely needs another type.",
+    "intro": "A value has a type. Types affect which operations make sense and what their results mean.",
+    "whyItMatters": "Understand numbers, text, booleans, and the special None value—and convert values when needed.",
     "skills": [
       "Recognize common built-in types.",
       "Use type() to inspect a value.",
-      "Convert strings to numbers when appropriate.",
-      "Understand None as the absence of a value."
+      "Convert compatible text with int() and float().",
+      "Explain why \"2\" + \"3\" joins text."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Inspect the types of 10, 2.5, \"10\", True, and None."
+        "task": "Print the type of 10, 2.5, \"10\", and True."
       },
       {
         "level": "Independent",
-        "task": "Ask for two numbers, convert them, and print their sum."
+        "task": "Convert \"12\" to an integer and add 8."
       },
       {
         "level": "Challenge",
-        "task": "Handle a non-numeric age with try/except and explain the error to the user."
+        "task": "Convert \"3.5\" to a float and calculate twice its value."
       }
     ],
     "advancedNote": false
@@ -460,43 +379,20 @@
     "part": "Python Foundations",
     "partNumber": 1,
     "title": "Strings",
-    "summary": "Text is everywhere in real programs: names, messages, files, commands, and API data. Strings become much easier once you understand indexing, methods, formatting, and immutability.",
-    "definition": "A string is an immutable sequence of characters. Python provides methods and formatting tools for transforming and presenting text.",
-    "codeExample": "# Predict the result before running this example.\nname = \"python\"\nprint(name.upper())\nprint(f\"Learning {name}\")",
+    "summary": "Work with text using indexing, slicing, useful methods, and readable f-strings.",
+    "definition": "A string is an immutable sequence of characters. Indexing reads one character, slicing selects a section, and methods return transformed strings.",
+    "codeExample": "word = \"Python\"\nprint(word[0])\nprint(word[1:4])\nprint(word.lower())\nname = \"Sam\"\nprint(f\"Hello, {name}!\")",
     "howItWorks": [
-      [
-        "1. Index: Access one character by position.",
-        "word = \"Python\"\nprint(word[0])"
-      ],
-      [
-        "2. Slice: Select part of a string.",
-        "word[0:3]  # \"Pyt\""
-      ],
-      [
-        "3. Clean: Normalize user input.",
-        "name = input().strip().lower()"
-      ],
-      [
-        "4. Format: Put values into readable text.",
-        "f\"Hello, {name}\""
-      ]
+      "Index: text[0] reads the first character; indexing starts at zero.",
+      "Slice: text[1:4] selects positions 1, 2, and 3.",
+      "Methods: strip(), lower(), upper(), replace(), and split() help process text.",
+      "f-string: f\"Hello, {name}\" inserts a value into a message."
     ],
-    "fullExample": "text = \"  Python Developer  \"\nclean = text.strip()\nprint(clean.lower())\nprint(clean.replace(\"Developer\", \"Engineer\"))\nname = \"Sam\"\nprint(f\"{name} is learning Python.\")",
-    "practiceTask": "Ask for a name, clean the input, and print a friendly greeting using an f-string.",
-    "starterCode": "text = \"  Python makes text processing useful!  \"\nclean = text.strip()\n# Continue the task here\n",
+    "fullExample": "raw_name = \"  SAM Rivera  \"\nname = raw_name.strip()\nprint(name)\nprint(name.lower())\nprint(name.upper())\nprint(name.replace(\"SAM\", \"Sam\"))\nfirst_name = name.split()[0]\nprint(f\"Welcome, {first_name}!\")\nprint(\"Python\"[0:3])",
+    "practiceTask": "Clean the text \"  PYTHON learner  \", make it lowercase, and print a greeting using an f-string.",
+    "starterCode": "text = \"  PYTHON learner  \"\nclean_text = text.strip()\n# Make it lowercase and print a greeting\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not manually concatenate long messages.",
-        "dont": "Use f-strings for values inside text.",
-        "example": "f\"Total: {total}\""
-      },
-      {
-        "do": "Do not expect strip() to change the original string.",
-        "dont": "Assign the returned string when needed.",
-        "example": "name = name.strip()"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does word[0] return for \"Python\"?",
@@ -556,49 +452,45 @@
         "explanation": "The stop index is excluded."
       }
     ],
-    "exampleOutput": "PYTHON\nLearning python",
+    "exampleOutput": "P\nyth\npython\nHello, Sam!",
     "quickInfo": [
       [
-        "Strings",
-        "Text values written with quotes"
-      ],
-      [
         "Indexing",
-        "Characters use zero-based positions"
+        "The first character is at index 0"
       ],
       [
         "Slicing",
-        "text[start:stop] selects part of a string"
+        "text[start:stop] excludes stop"
       ],
       [
         "Useful methods",
-        "strip(), lower(), upper(), replace(), split()"
+        "strip, lower, upper, replace, split"
       ],
       [
-        "Tip",
-        "Strings are immutable; string methods return new strings"
+        "Immutable",
+        "Methods return a new string; they do not edit the original"
       ]
     ],
-    "intro": "Work confidently with strings, indexing, slicing, common methods, and f-strings.",
-    "whyItMatters": "Practice reading and transforming text rather than memorizing a long list of string methods.",
+    "intro": "Strings store text such as names, messages, and file contents. A string is an ordered sequence of characters.",
+    "whyItMatters": "Work with text using indexing, slicing, useful methods, and readable f-strings.",
     "skills": [
-      "Index and slice strings.",
-      "Use common methods such as strip(), lower(), and split().",
-      "Build readable messages with f-strings.",
-      "Know that string operations create new strings rather than changing the original."
+      "Index and slice a string.",
+      "Use common string methods.",
+      "Format text with f-strings.",
+      "Explain string immutability."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Use strip() and lower() on a sample name."
+        "task": "Print the first character of \"Python\"."
       },
       {
         "level": "Independent",
-        "task": "Ask for a full name and print it in a consistent format."
+        "task": "Remove extra spaces and lowercase a sample word."
       },
       {
         "level": "Challenge",
-        "task": "Extract the first name from a two-word input and build a personalized message."
+        "task": "Split a full name and greet the first name with an f-string."
       }
     ],
     "advancedNote": false
@@ -611,43 +503,20 @@
     "part": "Python Foundations",
     "partNumber": 1,
     "title": "Input & Type Conversion",
-    "summary": "Interactive programs get information from users. The most important beginner detail is that input arrives as text and must be converted when arithmetic or another type-specific operation is needed.",
-    "definition": "input() reads a line of user text and returns it as a string. Conversion functions create values of other types when the input is valid.",
-    "codeExample": "# Predict the result before running this example.\ntotal = 10 + 5 * 2\nis_valid = total > 15 and total < 30\nprint(total, is_valid)",
+    "summary": "Build interactive programs that read user input, convert it, validate it, and use it safely.",
+    "definition": "Use input(prompt) to read text. Convert numeric text with int() or float() before arithmetic, and handle invalid conversions with ValueError when appropriate.",
+    "codeExample": "name = input(\"What is your name? \")\nprint(\"Hello\", name)",
     "howItWorks": [
-      [
-        "1. Read: input() returns text.",
-        "raw = input(\"Age: \")"
-      ],
-      [
-        "2. Clean: Remove accidental spaces.",
-        "name = raw.strip()"
-      ],
-      [
-        "3. Convert: Turn compatible text into a number.",
-        "age = int(raw)"
-      ],
-      [
-        "4. Validate: Check whether a value makes sense.",
-        "if age < 0:"
-      ]
+      "Read: input(\"Name: \") displays a prompt and waits for text.",
+      "Store: name = input(...) saves the returned string in a variable.",
+      "Convert: int(text) or float(text) enables numeric calculations.",
+      "Handle: invalid numeric text raises ValueError; try/except can respond helpfully."
     ],
-    "fullExample": "price = 80\nquantity = 3\nsubtotal = price * quantity\ndiscounted = subtotal >= 200 and quantity >= 3\nprint(subtotal)\nprint(\"Discount:\", discounted)",
-    "practiceTask": "Build an age checker that accepts a whole-number age and rejects invalid or negative input.",
-    "starterCode": "price = 80\nquantity = 3\n# Calculate the bill and discount rule\n",
+    "fullExample": "name = input(\"What is your name? \").strip()\nage_text = input(\"Enter your age: \")\n\ntry:\n    age = int(age_text)\n    if age < 0:\n        print(\"Age cannot be negative.\")\n    else:\n        print(f\"Hello {name}. Next year you will be {age + 1}.\")\nexcept ValueError:\n    print(\"Please enter your age as a whole number.\")",
+    "practiceTask": "Ask for a name and favorite number, convert the number to an integer, then print both.",
+    "starterCode": "name = input(\"What is your name? \")\nnumber_text = input(\"Favorite number: \")\n# Convert the number and print a personalized message\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not trust input to already have the right type.",
-        "dont": "Convert and validate it.",
-        "example": "age = int(input(\"Age: \"))"
-      },
-      {
-        "do": "Do not let one invalid value crash the whole interaction.",
-        "dont": "Use try/except around conversions when needed.",
-        "example": "try:\n    age = int(raw)\nexcept ValueError:"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does input() return?",
@@ -707,49 +576,45 @@
         "explanation": "Loops are useful for retrying invalid input."
       }
     ],
-    "exampleOutput": "20 True",
+    "exampleOutput": "Example interaction:\nWhat is your name? Alex\nHello Alex",
     "quickInfo": [
       [
         "input()",
-        "Reads text typed by the user"
+        "Reads a line of user text"
       ],
       [
         "Return type",
-        "input() always returns a str"
+        "Always str"
       ],
       [
-        "Conversion",
-        "Use int() or float() when numeric input is needed"
+        "Numeric conversion",
+        "int() for whole numbers; float() for decimals"
       ],
       [
-        "Cleaning",
-        "strip() removes surrounding whitespace"
-      ],
-      [
-        "Common use",
-        "Interactive programs, menus, calculators, and forms"
+        "Validation",
+        "Check whether a value is sensible before using it"
       ]
     ],
-    "intro": "Build small interactive programs with input(), validation, and conversion.",
-    "whyItMatters": "Treat user input as untrusted data: read it, normalize it, validate it, then use it.",
+    "intro": "input() pauses for the user to type a response. It always returns that response as a string, even when the user types digits.",
+    "whyItMatters": "Build interactive programs that read user input, convert it, validate it, and use it safely.",
     "skills": [
-      "Read input with input().",
-      "Convert numeric text with int() or float().",
-      "Use strip() to clean simple text input.",
-      "Recognize invalid input as a normal case to handle."
+      "Read user input.",
+      "Explain why input() returns a string.",
+      "Convert text using int() and float().",
+      "Handle a failed conversion with ValueError."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Read a name and age, convert the age, and print both."
+        "task": "Ask for a name and greet the user."
       },
       {
         "level": "Independent",
-        "task": "Build a simple positive-number checker."
+        "task": "Ask for two numbers, convert them to integers, and print their sum."
       },
       {
         "level": "Challenge",
-        "task": "Create a menu that keeps asking until the user enters a valid choice."
+        "task": "Ask for an age and handle non-numeric or negative input clearly."
       }
     ],
     "advancedNote": false
@@ -762,44 +627,21 @@
     "part": "Control Flow",
     "partNumber": 2,
     "title": "Operators & Boolean Logic",
-    "summary": "Operators let programs calculate, compare, and combine conditions. Boolean logic is the foundation of every decision your programs make.",
-    "definition": "Operators combine or transform values. Comparisons produce True or False, which can be combined with and, or, and not.",
-    "codeExample": "# Predict the result before running this example.\nscore = 82\nif score >= 80:\n    print(\"A\")\nelif score >= 60:\n    print(\"B\")\nelse:\n    print(\"Keep practicing\")",
+    "summary": "Calculate values, compare data, combine conditions, and recognize Python’s main operator families.",
+    "definition": "Python includes arithmetic, comparison, assignment, logical, identity, membership, and bitwise operators. Choose the category that matches the task.",
+    "codeExample": "# Arithmetic\nprint(7 + 3, 7 - 3, 7 * 3)\nprint(7 / 2, 7 // 2, 7 % 2, 2 ** 3)\n\n# Comparison\nprint(5 == 5, 5 != 3, 3 < 5, 5 > 3, 5 <= 5, 5 >= 3)\n\n# Logical, membership, identity, and assignment\nprint(True and False, True or False, not True)\nprint(\"py\" in \"python\", \"z\" not in \"python\")\nvalue = None\nprint(value is None, value is not None)\nscore = 10\nscore += 2\nprint(score)\n\n# Bitwise AND compares integer bits.\nprint(5 & 3)",
     "howItWorks": [
-      [
-        "1. Calculate: Arithmetic operators produce numeric results.",
-        "total = price * quantity"
-      ],
-      [
-        "2. Compare: Comparisons produce booleans.",
-        "age >= 18"
-      ],
-      [
-        "3. Combine: and requires both conditions.",
-        "is_member and paid"
-      ],
-      [
-        "4. Membership: Check whether a value is present.",
-        "\"admin\" in roles"
-      ]
+      "Arithmetic: +, -, *, /, //, %, ** calculate values.",
+      "Comparison: ==, !=, <, >, <=, >= return True or False.",
+      "Logic: and needs both conditions true; or needs at least one; not reverses truth.",
+      "Other families: = and += assign; in checks membership; is checks identity; bitwise operators work on integer bits."
     ],
-    "fullExample": "age = 19\nif age < 13:\n    group = \"child\"\nelif age < 18:\n    group = \"teen\"\nelse:\n    group = \"adult\"\nprint(group)",
-    "practiceTask": "Write a small eligibility checker using arithmetic, comparisons, and at least one and/or condition.",
-    "starterCode": "grade = 75\n# Write your if/elif/else classifier here\n",
+    "fullExample": "price = 7\nquantity = 3\nsubtotal = price * quantity\nprint(\"Subtotal:\", subtotal)\nprint(\"Within budget:\", subtotal <= 25 and quantity > 0)\nprint(\"Even total:\", subtotal % 2 == 0)\n\n# Assignment operators update a variable.\nsubtotal += 2\nprint(\"Updated:\", subtotal)\n\n# Membership checks whether a value is present.\ncodes = [\"SAVE\", \"WELCOME\"]\nprint(\"Has SAVE:\", \"SAVE\" in codes)\n\n# Identity is especially useful for checking None.\nresult = None\nprint(\"No result yet:\", result is None)\n\n# Bitwise operators work on the binary bits of integers.\nprint(\"5 & 3:\", 5 & 3)\nprint(\"5 | 3:\", 5 | 3)\nprint(\"5 ^ 3:\", 5 ^ 3)\nprint(\"5 << 1:\", 5 << 1)\nprint(\"5 >> 1:\", 5 >> 1)\nprint(\"~5:\", ~5)",
+    "practiceTask": "Calculate a bill, test whether it is within a budget, and check whether the total is even or odd.",
+    "starterCode": "price = 8\nquantity = 4\ntotal = price * quantity\n# Compare total with a budget and check total % 2\n",
     "minutes": 25,
     "projectId": "p01",
-    "doDont": [
-      {
-        "do": "Do not use = when you mean comparison.",
-        "dont": "Use == for equality checks.",
-        "example": "if score == 100:"
-      },
-      {
-        "do": "Do not write deeply nested boolean expressions without need.",
-        "dont": "Use clear intermediate variables or parentheses.",
-        "example": "can_enter = paid and not banned"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "Which operator checks equality?",
@@ -859,49 +701,89 @@
         "explanation": "The substring is present, so membership is true."
       }
     ],
-    "exampleOutput": "A",
+    "exampleOutput": "10 4 21\n3.5 3 1 8\nTrue True True True True True\nFalse True False\nTrue True\nTrue False\n12\n1",
     "quickInfo": [
       [
-        "Arithmetic",
-        "+, -, *, /, //, %, **"
+        "+",
+        "Addition: 7 + 3 → 10"
       ],
       [
-        "Comparison",
-        "==, !=, <, >, <=, >="
+        "-",
+        "Subtraction: 7 - 3 → 4"
       ],
       [
-        "Boolean",
-        "and, or, not combine or invert conditions"
+        "*",
+        "Multiplication: 7 * 3 → 21"
       ],
       [
-        "Result",
-        "Comparisons produce True or False"
+        "/",
+        "True division: 7 / 2 → 3.5"
       ],
       [
-        "Tip",
-        "Use parentheses when a condition needs clearer grouping"
+        "//",
+        "Floor division: 7 // 2 → 3"
+      ],
+      [
+        "%",
+        "Remainder: 7 % 2 → 1; useful for even/odd checks"
+      ],
+      [
+        "**",
+        "Exponentiation: 2 ** 3 → 8"
+      ],
+      [
+        "== / !=",
+        "Equal / not equal: 5 == 5 → True; 5 != 3 → True"
+      ],
+      [
+        "< / >",
+        "Less / greater than: 3 < 5 → True"
+      ],
+      [
+        "<= / >=",
+        "Less-or-equal / greater-or-equal: 5 <= 5 → True"
+      ],
+      [
+        "Assignment",
+        "=, +=, -=, *=, /=, //=, %=, **=, &=, |=, ^=, <<=, >>= assign or update values"
+      ],
+      [
+        "and / or / not",
+        "Combine conditions or reverse truth"
+      ],
+      [
+        "in / not in",
+        "Test membership in a sequence or collection"
+      ],
+      [
+        "is / is not",
+        "Test object identity; commonly use value is None"
+      ],
+      [
+        "Bitwise",
+        "&, |, ^, ~, <<, >> operate on integer bits"
       ]
     ],
-    "intro": "Use arithmetic, comparison, membership, and boolean operators accurately.",
-    "whyItMatters": "Learn to read an expression before trying to memorize operator precedence. Use parentheses when they make intent clearer.",
+    "intro": "Operators perform actions on values. Arithmetic operators calculate, comparison operators produce True or False, and logical operators combine conditions.",
+    "whyItMatters": "Calculate values, compare data, combine conditions, and recognize Python’s main operator families.",
     "skills": [
-      "Use arithmetic operators.",
-      "Compare values with ==, !=, <, >, <=, >=.",
-      "Combine conditions with and/or/not.",
-      "Use in and not in for membership."
+      "Use each arithmetic operator and explain / versus //.",
+      "Use comparison operators and combine conditions with and, or, and not.",
+      "Use assignment, membership, and identity operators appropriately.",
+      "Recognize bitwise operators and understand that they work on integer bits."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Predict the results of five comparison expressions."
+        "task": "Predict results for 7 / 2, 7 // 2, 7 % 2, and 2 ** 3."
       },
       {
         "level": "Independent",
-        "task": "Build an eligibility check using age and membership status."
+        "task": "Write a budget check using <= and and."
       },
       {
         "level": "Challenge",
-        "task": "Combine three conditions into a readable access rule and explain it in plain English."
+        "task": "Use in, is None, and one bitwise operator in a short example."
       }
     ],
     "advancedNote": false
@@ -914,43 +796,20 @@
     "part": "Control Flow",
     "partNumber": 2,
     "title": "Conditions",
-    "summary": "Programs become useful when they can make decisions. Conditions let your code choose different actions based on data.",
-    "definition": "A conditional executes different branches depending on whether an expression is true or false.",
-    "codeExample": "# Predict the result before running this example.\nfor number in range(1, 6):\n    print(number)",
+    "summary": "Make programs choose what to do with if, elif, and else.",
+    "definition": "An if statement runs its indented block when its condition is true. elif checks another condition when earlier branches did not match; else handles the remaining case.",
+    "codeExample": "score = 82\nif score >= 90:\n    print(\"A\")\nelif score >= 70:\n    print(\"B\")\nelse:\n    print(\"Keep practicing\")",
     "howItWorks": [
-      [
-        "1. Check: Evaluate the condition.",
-        "if age >= 18:"
-      ],
-      [
-        "2. Branch: Run the matching indented block.",
-        "if score >= 50:\n    print(\"Pass\")"
-      ],
-      [
-        "3. Add alternatives: Use elif for additional cases.",
-        "if score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\""
-      ],
-      [
-        "4. Fallback: else handles remaining cases.",
-        "else:\n    grade = \"Needs work\""
-      ]
+      "if: Test the first condition.",
+      "elif: Test another condition only if previous branches did not match.",
+      "else: Run the fallback branch when no earlier condition matched.",
+      "Order matters: check higher overlapping grade thresholds before lower ones."
     ],
-    "fullExample": "total = 0\nfor number in range(1, 11):\n    total += number\nprint(\"Total:\", total)\n\ncount = 3\nwhile count > 0:\n    print(count)\n    count -= 1",
-    "practiceTask": "Build a grade checker that converts a numeric score into A, B, C, D, or F.",
-    "starterCode": "# Sum 1 through 100\n# Then make a countdown\n",
+    "fullExample": "score = 82\nif not 0 <= score <= 100:\n    print(\"Score must be from 0 to 100.\")\nelif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelif score >= 60:\n    grade = \"D\"\nelse:\n    grade = \"F\"\n\nif 0 <= score <= 100:\n    print(f\"Score: {score}; grade: {grade}\")",
+    "practiceTask": "Write an if/else that prints whether a number is positive, negative, or zero.",
+    "starterCode": "number = 0\n# Use if, elif, and else to classify number\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not put unrelated work inside every branch.",
-        "dont": "Calculate shared values before the decision when possible.",
-        "example": "total = price * quantity\nif total > 100: ..."
-      },
-      {
-        "do": "Do not assume elif checks all branches.",
-        "dont": "Python stops at the first matching branch.",
-        "example": "if score >= 90: ...\nelif score >= 80: ..."
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "When does an if block run?",
@@ -1010,49 +869,45 @@
         "explanation": "Validation prevents invalid data from entering the grading logic."
       }
     ],
-    "exampleOutput": "1\n2\n3\n4\n5",
+    "exampleOutput": "B",
     "quickInfo": [
       [
         "if",
-        "Runs code when a condition is true"
+        "Runs when a condition is true"
       ],
       [
         "elif",
-        "Checks another condition if earlier ones were false"
+        "Checks another branch"
       ],
       [
         "else",
-        "Provides the fallback branch"
+        "Fallback branch"
       ],
       [
         "Indentation",
-        "The indented block belongs to the condition"
-      ],
-      [
-        "Common use",
-        "Validation, decisions, permissions, and program flow"
+        "Defines which statements belong to each branch"
       ]
     ],
-    "intro": "Write clear if/elif/else decisions and combine them with validated input.",
-    "whyItMatters": "Start with one decision, then add branches only when the problem actually needs them.",
+    "intro": "Conditions let a program choose a path based on whether an expression is true or false.",
+    "whyItMatters": "Make programs choose what to do with if, elif, and else.",
     "skills": [
-      "Write if/elif/else blocks.",
-      "Indent branches correctly.",
-      "Order overlapping conditions carefully.",
-      "Keep complex decisions readable."
+      "Write if, elif, and else branches.",
+      "Use comparisons in conditions.",
+      "Order overlapping conditions correctly.",
+      "Validate values before making a decision."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Write an if/else that checks whether a number is positive."
+        "task": "Classify a number as positive or not positive."
       },
       {
         "level": "Independent",
-        "task": "Build the grade checker using ordered elif branches."
+        "task": "Extend it to positive, negative, or zero."
       },
       {
         "level": "Challenge",
-        "task": "Add validation so scores outside 0–100 are rejected before grading."
+        "task": "Build a grade checker and reject scores outside 0–100."
       }
     ],
     "advancedNote": false
@@ -1065,43 +920,20 @@
     "part": "Control Flow",
     "partNumber": 2,
     "title": "Loops",
-    "summary": "Programs often need to repeat work. Loops let you process collections, retry input, and repeat actions without duplicating code.",
-    "definition": "A loop repeats a block of code. for is ideal for iterating over items; while repeats while a condition remains true.",
-    "codeExample": "# Predict the result before running this example.\nfor n in range(10):\n    if n == 5:\n        break\n    if n % 2 == 0:\n        continue\n    print(n)",
+    "summary": "Repeat instructions efficiently with for, while, and range().",
+    "definition": "A for loop iterates over items. range(start, stop, step) produces integer values, with stop excluded. A while loop continues while its condition is true.",
+    "codeExample": "for number in range(1, 6):\n    print(number)",
     "howItWorks": [
-      [
-        "1. Iterate: for visits each item.",
-        "for name in names:\n    print(name)"
-      ],
-      [
-        "2. Count: range() produces a sequence of integers.",
-        "for number in range(5):"
-      ],
-      [
-        "3. Repeat: while continues while its condition is true.",
-        "while attempts < 3:"
-      ],
-      [
-        "4. Progress: Change the state that controls while.",
-        "attempts += 1"
-      ]
+      "for: Visits each value or item one at a time.",
+      "range(5): Produces 0, 1, 2, 3, 4; the stop value is excluded.",
+      "Step: range(2, 11, 2) counts 2, 4, 6, 8, 10.",
+      "while: Repeats while its condition is true; update the condition’s state so it can stop."
     ],
-    "fullExample": "secret = 7\nattempts = 0\nwhile True:\n    attempts += 1\n    guess = 7\n    if guess == secret:\n        print(\"Correct after\", attempts, \"attempt(s)\")\n        break",
-    "practiceTask": "Print the numbers 1–10, then build a loop that keeps asking for a password until it is correct.",
-    "starterCode": "while True:\n    # Ask for a number and validate it\n    break\n",
+    "fullExample": "print(\"Count up:\")\nfor number in range(1, 6):\n    print(number)\n\nprint(\"Even numbers:\")\nfor number in range(2, 11, 2):\n    print(number)\n\nprint(\"Countdown:\")\ncount = 3\nwhile count > 0:\n    print(count)\n    count -= 1\nprint(\"Go!\")\n\nprint(\"Characters:\")\nfor character in \"PyPath\":\n    print(character)",
+    "practiceTask": "Print the multiplication table of 5 from 5 × 1 through 5 × 10.",
+    "starterCode": "for number in range(1, 11):\n    # Print 5 multiplied by number\n    pass\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not use while without a clear exit path.",
-        "dont": "Identify what changes the condition.",
-        "example": "while attempts < 3: attempts += 1"
-      },
-      {
-        "do": "Do not manually repeat the same statement many times.",
-        "dont": "Use a loop for repeated work.",
-        "example": "for _ in range(5):\n    print(\"Hello\")"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "Which loop is natural for each item in a list?",
@@ -1161,49 +993,45 @@
         "explanation": "Loops express repetition without copy-pasting."
       }
     ],
-    "exampleOutput": "1\n3",
+    "exampleOutput": "1\n2\n3\n4\n5",
     "quickInfo": [
       [
         "for",
-        "Iterates through items in a sequence or iterable"
+        "Iterates over a sequence or range"
       ],
       [
         "while",
-        "Repeats while a condition remains true"
+        "Repeats while a condition is true"
       ],
       [
-        "range()",
-        "Commonly used for counted loops"
+        "range(start, stop, step)",
+        "Stop is excluded; step defaults to 1"
       ],
       [
-        "Loop variable",
-        "Receives the current item/value each iteration"
-      ],
-      [
-        "Tip",
-        "Make sure loops have a clear stopping condition"
+        "Indentation",
+        "The indented block repeats each iteration"
       ]
     ],
-    "intro": "Use for and while loops safely, with clear loop conditions and useful state.",
-    "whyItMatters": "Choose the loop based on the problem: iterate over known items with for, or repeat until a condition changes with while.",
+    "intro": "A loop repeats a block of code. Use for to visit items or a known range, and while to repeat while a condition remains true.",
+    "whyItMatters": "Repeat instructions efficiently with for, while, and range().",
     "skills": [
-      "Loop over strings and collections.",
-      "Use range() for counted repetition.",
-      "Use while for condition-driven repetition.",
-      "Update loop state so while loops can terminate."
+      "Choose between for and while.",
+      "Use range() with start, stop, and step.",
+      "Loop through a string.",
+      "Avoid accidental infinite loops."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Use for and range() to print 1–5."
+        "task": "Print numbers 1 through 5 using range()."
       },
       {
         "level": "Independent",
-        "task": "Calculate the sum of numbers from 1 to 100 with a loop."
+        "task": "Print even numbers from 2 through 20."
       },
       {
         "level": "Challenge",
-        "task": "Build a retry loop with a maximum of three attempts and a clear failure message."
+        "task": "Use a while loop to count down from 5 to 1."
       }
     ],
     "advancedNote": false
@@ -1213,47 +1041,24 @@
     "kind": "lesson",
     "day": 9,
     "number": 9,
-    "part": "Functions",
-    "partNumber": 3,
+    "part": "Control Flow",
+    "partNumber": 2,
     "title": "Loop Control & Problem Solving",
-    "summary": "Real programs need to stop, skip, and accumulate work inside loops. This lesson also starts deliberate problem-solving: break a task into steps before coding.",
-    "definition": "Loop control changes the current iteration. A counter or accumulator keeps useful state while the loop runs.",
-    "codeExample": "# Predict the result before running this example.\ndef add(a, b):\n    return a + b\n\nprint(add(3, 4))",
+    "summary": "Control loops with break and continue, build nested loops, and iterate with enumerate() and zip().",
+    "definition": "break exits the nearest loop. continue skips the rest of the current iteration. Nested loops place one loop inside another; enumerate() adds an index and zip() pairs items.",
+    "codeExample": "for number in range(1, 6):\n    if number == 3:\n        continue\n    if number == 5:\n        break\n    print(number)",
     "howItWorks": [
-      [
-        "1. Plan: State what repeats and what ends it.",
-        "“Read values until q, count valid entries.”"
-      ],
-      [
-        "2. Accumulate: Update a running result.",
-        "total += amount"
-      ],
-      [
-        "3. Skip: continue moves to the next iteration.",
-        "if value < 0:\n    continue"
-      ],
-      [
-        "4. Stop: break exits the loop.",
-        "if command == \"q\":\n    break"
-      ]
+      "break: Exit the nearest loop immediately.",
+      "continue: Skip to the next iteration without running the remaining body.",
+      "Nested loops: The inner loop runs for each outer-loop iteration.",
+      "enumerate() / zip(): Get index-value pairs or process matching items from sequences."
     ],
-    "fullExample": "def calculate_total(price, quantity, discount=0):\n    subtotal = price * quantity\n    return subtotal * (1 - discount)\n\nprint(calculate_total(20, 3, 0.10))",
-    "practiceTask": "Build a command loop that accepts numbers, counts valid entries, totals them, and stops when the user enters q.",
-    "starterCode": "def calculate_total(price, quantity):\n    # Return the total\n    pass\n\ndef format_total(total):\n    # Return a formatted string\n    pass\n",
+    "fullExample": "names = [\"Ava\", \"Ben\", \"Mia\"]\nscores = [88, 92, 79]\n\nprint(\"Numbered names:\")\nfor index, name in enumerate(names, start=1):\n    print(index, name)\n\nprint(\"Name and score:\")\nfor name, score in zip(names, scores):\n    print(f\"{name}: {score}\")\n\nprint(\"Grid coordinates:\")\nfor row in range(2):\n    for column in range(3):\n        print(f\"({row}, {column})\")\n\nprint(\"Stop when found:\")\nfor name in names:\n    if name == \"Ben\":\n        print(\"Found Ben\")\n        break",
+    "practiceTask": "Use a loop to find the first number divisible by 7 between 1 and 50, then stop.",
+    "starterCode": "for number in range(1, 51):\n    if number % 7 == 0:\n        print(number)\n        break\n",
     "minutes": 25,
     "projectId": "p02",
-    "doDont": [
-      {
-        "do": "Do not use break to hide a poorly designed condition.",
-        "dont": "Give the loop a clear purpose and exit rule.",
-        "example": "while True:\n    command = input()\n    if command == \"q\": break"
-      },
-      {
-        "do": "Do not update counters in unrelated places.",
-        "dont": "Keep state changes close to the event they count.",
-        "example": "attempts += 1"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does break do?",
@@ -1313,49 +1118,45 @@
         "explanation": "Menu programs naturally repeat until the user quits."
       }
     ],
-    "exampleOutput": "7",
+    "exampleOutput": "1\n2\n4",
     "quickInfo": [
       [
         "break",
-        "Stops the current loop"
+        "Exit the current loop"
       ],
       [
         "continue",
-        "Skips to the next iteration"
+        "Skip the rest of this iteration"
       ],
       [
-        "Accumulator",
-        "A variable can keep a running total/count"
+        "enumerate(items)",
+        "Produce index and item pairs"
       ],
       [
-        "Problem solving",
-        "Define what repeats, what changes, and when it ends"
-      ],
-      [
-        "Tip",
-        "Prefer a clear loop condition over hidden control flow"
+        "zip(a, b)",
+        "Pair items; stops at the shortest input"
       ]
     ],
-    "intro": "Use break, continue, counters, accumulators, and a simple plan before writing the loop.",
-    "whyItMatters": "Before writing a loop, identify the input, the repeated action, the state you need, and the stopping condition.",
+    "intro": "Once a basic loop makes sense, learn how to skip an item, stop early, and process several sequences together.",
+    "whyItMatters": "Control loops with break and continue, build nested loops, and iterate with enumerate() and zip().",
     "skills": [
-      "Use break to stop a loop when a goal is reached.",
-      "Use continue to skip the current iteration.",
-      "Build counters and accumulators.",
-      "Plan a loop in plain language first."
+      "Use break and continue correctly.",
+      "Trace a nested loop.",
+      "Use enumerate() for index-value pairs.",
+      "Use zip() to process related sequences."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Count how many even numbers appear in a small list."
+        "task": "Skip multiples of 3 using continue."
       },
       {
         "level": "Independent",
-        "task": "Build a loop that sums positive values until q is entered."
+        "task": "Use nested loops to print a 2-by-3 grid."
       },
       {
         "level": "Challenge",
-        "task": "Create a small menu loop with add, view, and quit commands."
+        "task": "Pair names and scores with zip(), and print numbered names with enumerate()."
       }
     ],
     "advancedNote": false
@@ -1365,46 +1166,23 @@
     "kind": "lesson",
     "day": 10,
     "number": 10,
-    "part": "Data Structures",
-    "partNumber": 4,
+    "part": "Functions",
+    "partNumber": 3,
     "title": "Functions",
-    "summary": "Functions turn a program into reusable, testable pieces. They are one of the biggest steps from writing scripts to designing programs.",
-    "definition": "A function packages a behavior under a name. Parameters receive inputs and return sends a result back to the caller.",
-    "codeExample": "# Predict the result before running this example.\nnumbers = [10, 20, 30]\nnumbers.append(40)\nfirst, second, *rest = numbers\nprint(first, rest)",
+    "summary": "Package reusable instructions into functions with parameters and return values.",
+    "definition": "def creates a function. Parameters receive inputs, arguments are the values passed when calling it, and return sends a result back to the caller.",
+    "codeExample": "def add(a, b):\n    return a + b\n\nresult = add(3, 4)\nprint(result)",
     "howItWorks": [
-      [
-        "1. Define: Describe the function once.",
-        "def add(a, b):\n    return a + b"
-      ],
-      [
-        "2. Call: Run the function with arguments.",
-        "result = add(2, 3)"
-      ],
-      [
-        "3. Return: Send a value back to the caller.",
-        "return total"
-      ],
-      [
-        "4. Reuse: Call the same function from different places.",
-        "print(add(1, 2))\nprint(add(5, 6))"
-      ]
+      "Define: def add(a, b): creates a function with two parameters.",
+      "Call: add(3, 4) passes arguments into the function.",
+      "Return: return sends a result back; print() only displays it.",
+      "Reuse: Call the same function with different arguments."
     ],
-    "fullExample": "items = [\"pen\", \"book\", \"mouse\"]\nitems.append(\"keyboard\")\nitems.remove(\"pen\")\nprint(items)\nprint(items[:2])",
-    "practiceTask": "Write a function calculate_total(price, quantity) that returns the total instead of printing it.",
-    "starterCode": "items = [\"book\", \"pen\"]\n# Add, remove, inspect, and print items here\n",
+    "fullExample": "def calculate_total(price, quantity):\n    \"\"\"Return the total cost before tax.\"\"\"\n    return price * quantity\n\ndef apply_discount(total, rate=0.10):\n    return total * (1 - rate)\n\nsubtotal = calculate_total(12.5, 4)\nfinal_total = apply_discount(subtotal)\nprint(f\"Subtotal: {subtotal:.2f}\")\nprint(f\"After discount: {final_total:.2f}\")",
+    "practiceTask": "Write a function called square(number) that returns the number multiplied by itself.",
+    "starterCode": "def square(number):\n    # Return the square of number\n    pass\n\nprint(square(5))\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not make every function print instead of returning data.",
-        "dont": "Return values when callers may need them.",
-        "example": "def add(a, b): return a + b"
-      },
-      {
-        "do": "Do not write giant functions that do unrelated jobs.",
-        "dont": "Split distinct responsibilities into functions.",
-        "example": "load_data(); validate(data); save_data(data)"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does return do?",
@@ -1464,49 +1242,45 @@
         "explanation": "Execution leaves the current function at return."
       }
     ],
-    "exampleOutput": "10 [20, 30, 40]",
+    "exampleOutput": "7",
     "quickInfo": [
       [
-        "Function",
-        "A reusable block of code with a defined purpose"
+        "def",
+        "Defines a function"
       ],
       [
-        "Parameters",
-        "Names that receive values when the function is called"
+        "Parameter",
+        "A named input in the definition"
+      ],
+      [
+        "Argument",
+        "A value passed during a call"
       ],
       [
         "return",
         "Sends a result back to the caller"
-      ],
-      [
-        "Arguments",
-        "Actual values passed into a function"
-      ],
-      [
-        "Good practice",
-        "Keep functions focused on one clear job"
       ]
     ],
-    "intro": "Define functions, pass arguments, return values, and keep responsibilities small.",
-    "whyItMatters": "Prefer functions that do one clear job and return useful results instead of hiding everything inside print statements.",
+    "intro": "Functions give a program named, reusable pieces. Define a function once, then call it whenever you need that behavior.",
+    "whyItMatters": "Package reusable instructions into functions with parameters and return values.",
     "skills": [
       "Define and call functions.",
       "Distinguish parameters from arguments.",
-      "Return values and store them.",
-      "Keep functions focused and reusable."
+      "Return a value and use it later.",
+      "Use a default parameter and a docstring."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Write a function that returns the square of a number."
+        "task": "Create a greet(name) function that returns a greeting."
       },
       {
         "level": "Independent",
-        "task": "Create functions for add, subtract, multiply, and divide."
+        "task": "Write a function that converts minutes to seconds."
       },
       {
         "level": "Challenge",
-        "task": "Build a small calculator by composing reusable functions and handling division by zero."
+        "task": "Write a total-price function with an optional discount rate."
       }
     ],
     "advancedNote": false
@@ -1519,43 +1293,20 @@
     "part": "Data Structures",
     "partNumber": 4,
     "title": "Lists, Tuples & Unpacking",
-    "summary": "Collections let programs work with groups of values. Lists are mutable, tuples are immutable, and unpacking gives names to items cleanly.",
-    "definition": "A list is a mutable ordered collection. A tuple is an immutable ordered collection. Both support indexing and iteration.",
-    "codeExample": "# Predict the result before running this example.\nuser = {\"name\": \"Sam\", \"age\": 21}\nprint(user[\"name\"])\nskills = {\"python\", \"sql\", \"python\"}\nprint(skills)",
+    "summary": "Store ordered collections and choose between changeable lists and fixed tuples.",
+    "definition": "Lists use square brackets and can be changed. Tuples commonly use parentheses and cannot be changed after creation. Unpacking assigns collection items to multiple names.",
+    "codeExample": "scores = [80, 95, 72]\nscores.append(88)\nprint(scores)\nfirst, second = (\"Ava\", \"Ben\")\nprint(first, second)",
     "howItWorks": [
-      [
-        "1. Store: Put related values together.",
-        "names = [\"Ava\", \"Ben\", \"Cara\"]"
-      ],
-      [
-        "2. Index: Access an item by position.",
-        "names[0]"
-      ],
-      [
-        "3. Modify: Lists can change.",
-        "names.append(\"Dan\")"
-      ],
-      [
-        "4. Unpack: Assign tuple items to names.",
-        "point = (3, 4)\nx, y = point"
-      ]
+      "List: An ordered, changeable collection written with [].",
+      "Index and slice: Use values such as items[0], items[-1], and items[:2].",
+      "Methods: append() adds an item; remove() removes a matching item.",
+      "Tuple and unpacking: A tuple is fixed; x, y = (4, 7) assigns each item to a name."
     ],
-    "fullExample": "prices = {\"apple\": 2.5, \"book\": 10.0}\nprint(prices.get(\"apple\", 0))\nseen = {\"python\", \"python\", \"sql\"}\nprint(seen)",
-    "practiceTask": "Create a shopping list, add three items, remove one, and print the final list with positions.",
-    "starterCode": "catalog = {\"book\": 10, \"pen\": 2, \"bag\": 25}\n# Add one item, safely look up one item, and create unique categories\n",
+    "fullExample": "tasks = [\"study\", \"practice\", \"review\"]\ntasks.append(\"rest\")\ntasks[1] = \"code practice\"\nprint(\"First:\", tasks[0])\nprint(\"Last:\", tasks[-1])\nprint(\"All tasks:\", tasks)\nprint(\"First two:\", tasks[:2])\n\npoint = (4, 7)\nx, y = point\nprint(\"Point:\", x, y)\n\nfirst, *middle, last = [10, 20, 30, 40]\nprint(first, middle, last)",
+    "practiceTask": "Create a list of three favorite foods, add one, and print the first and last items.",
+    "starterCode": "foods = [\"rice\", \"pasta\", \"mango\"]\n# Add another food and print the first and last items\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not copy a list just to read it.",
-        "dont": "Iterate over its items directly.",
-        "example": "for name in names: print(name)"
-      },
-      {
-        "do": "Do not use a tuple when you need to mutate the sequence repeatedly.",
-        "dont": "Use a list for changing collections.",
-        "example": "tasks = []"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "Which collection is mutable?",
@@ -1615,49 +1366,45 @@
         "explanation": "Tuples are immutable sequences."
       }
     ],
-    "exampleOutput": "Sam\n{'python', 'sql'}",
+    "exampleOutput": "[80, 95, 72, 88]\nAva Ben",
     "quickInfo": [
       [
         "List",
-        "Ordered, mutable collection"
+        "Ordered and mutable"
       ],
       [
         "Tuple",
-        "Ordered, immutable collection"
+        "Ordered and immutable"
       ],
       [
         "Indexing",
-        "Both use zero-based indexing"
+        "Starts at 0; negative indexes count from the end"
       ],
       [
         "Unpacking",
-        "Assign multiple values from an iterable"
-      ],
-      [
-        "Use case",
-        "Lists for changing collections; tuples for fixed grouped values"
+        "Assign items from a collection to multiple names"
       ]
     ],
-    "intro": "Create, index, modify, iterate, and unpack sequence data.",
-    "whyItMatters": "Choose the collection based on whether the data should change and whether the structure itself should stay fixed.",
+    "intro": "Collections let one variable hold several values. Lists are mutable; tuples are immutable sequences often used for fixed groups of values.",
+    "whyItMatters": "Store ordered collections and choose between changeable lists and fixed tuples.",
     "skills": [
-      "Create and modify lists.",
-      "Index and slice sequences.",
-      "Use append, remove, and sort appropriately.",
-      "Unpack tuples into meaningful names."
+      "Create and index lists and tuples.",
+      "Modify a list with common methods.",
+      "Use slices.",
+      "Unpack values into variables."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Create a list of three foods and print each item."
+        "task": "Make a list of three foods and print each by index."
       },
       {
         "level": "Independent",
-        "task": "Build a small shopping-list program with add/remove behavior."
+        "task": "Append an item, replace one item, and print a slice."
       },
       {
         "level": "Challenge",
-        "task": "Unpack a three-value tuple and use the names in a formatted report."
+        "task": "Unpack a coordinate tuple into x and y."
       }
     ],
     "advancedNote": false
@@ -1670,43 +1417,20 @@
     "part": "Data Structures",
     "partNumber": 4,
     "title": "Dictionaries & Sets",
-    "summary": "Most real programs need named data and fast membership checks. Dictionaries and sets solve different problems than lists.",
-    "definition": "A dictionary maps keys to values. A set stores unique values and is useful for membership and removing duplicates.",
-    "codeExample": "# Predict the result before running this example.\nsquares = [n * n for n in range(1, 6)]\nevens = {n for n in range(10) if n % 2 == 0}\nprint(squares, evens)",
+    "summary": "Represent labeled information with dictionaries and unique values with sets.",
+    "definition": "A dictionary maps keys to values. A set stores unique hashable values and does not promise a meaningful display order.",
+    "codeExample": "person = {\"name\": \"Ava\", \"age\": 22}\nperson[\"city\"] = \"Lahore\"\nprint(person[\"name\"])\nprint(\"age\" in person)\nprint(set([1, 1, 2, 3]))",
     "howItWorks": [
-      [
-        "1. Map: Associate a key with a value.",
-        "user = {\"name\": \"Ava\", \"age\": 20}"
-      ],
-      [
-        "2. Read: Access a known key.",
-        "user[\"name\"]"
-      ],
-      [
-        "3. Safe read: Provide a fallback.",
-        "user.get(\"email\", \"not provided\")"
-      ],
-      [
-        "4. Unique: A set removes duplicates.",
-        "unique = set([1, 1, 2, 3])"
-      ]
+      "Dictionary: Store key-value pairs, such as \"name\": \"Ava\".",
+      "Access safely: dict[key] expects the key to exist; get(key, default) provides a fallback.",
+      "Set: Removes duplicate values and supports membership checks.",
+      "Set operations: | combines sets; & finds shared values."
     ],
-    "fullExample": "words = [\"python\", \"code\", \"developer\", \"api\"]\nlengths = {word: len(word) for word in words}\nlong_words = [word for word in words if len(word) >= 4]\nprint(lengths)\nprint(long_words)",
-    "practiceTask": "Build a contact lookup dictionary and a set of unique cities, then demonstrate a safe lookup and membership check.",
-    "starterCode": "scores = [55, 80, 80, 92, 41, 67]\n# Transform the scores with comprehensions\n",
+    "fullExample": "student = {\"name\": \"Ava\", \"score\": 91}\nstudent[\"passed\"] = student[\"score\"] >= 50\nprint(student[\"name\"], student[\"score\"])\nprint(student.get(\"grade\", \"Not assigned\"))\n\nfruits = {\"apple\", \"mango\", \"apple\", \"pear\"}\nprint(\"Unique fruits:\", len(fruits))\nprint(\"Has mango:\", \"mango\" in fruits)\nprint(\"Union:\", {1, 2} | {2, 3})\nprint(\"Common:\", {1, 2} & {2, 3})",
+    "practiceTask": "Create a dictionary for a book with title and author, then add its publication year.",
+    "starterCode": "book = {\"title\": \"Python Basics\", \"author\": \"Alex\"}\n# Add year and print the title and year\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not assume every dictionary key exists.",
-        "dont": "Use get() when absence is expected.",
-        "example": "email = user.get(\"email\")"
-      },
-      {
-        "do": "Do not use a list when your main question is membership.",
-        "dont": "Consider a set for unique membership.",
-        "example": "seen = {\"alice\", \"bob\"}"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does a dictionary store?",
@@ -1766,49 +1490,45 @@
         "explanation": "A dictionary maps usernames to user data."
       }
     ],
-    "exampleOutput": "[1, 4, 9, 16, 25] {0, 2, 4, 6, 8}",
+    "exampleOutput": "Ava\nTrue\n{1, 2, 3}",
     "quickInfo": [
       [
         "Dictionary",
-        "Stores key-value pairs"
+        "Key-value mapping"
+      ],
+      [
+        "Keys",
+        "Must be hashable and unique"
       ],
       [
         "Set",
-        "Stores unique values without duplicate entries"
+        "Unique values; use in to test membership"
       ],
       [
-        "Lookup",
-        "dict[key] retrieves a value by key"
-      ],
-      [
-        "Membership",
-        "Use in to check keys or set membership"
-      ],
-      [
-        "Use case",
-        "Dictionaries model named data; sets help with uniqueness"
+        "Operations",
+        "Union |, intersection &, difference -"
       ]
     ],
-    "intro": "Use dictionaries for key-value data and sets for unique membership.",
-    "whyItMatters": "Think about the question your data structure should answer: “what value belongs to this key?” suggests a dictionary; “have I seen this?” often suggests a set.",
+    "intro": "Use a dictionary when each value needs a key, and use a set when you need unique values or fast membership checks.",
+    "whyItMatters": "Represent labeled information with dictionaries and unique values with sets.",
     "skills": [
-      "Create, read, update, and iterate dictionaries.",
-      "Use get() when a key may be missing.",
+      "Create, read, and update dictionaries.",
+      "Use get() for optional keys.",
       "Create sets and remove duplicates.",
-      "Use membership checks clearly."
+      "Use membership and set operations."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Create a dictionary with name and age and read both values."
+        "task": "Create a dictionary with a book title and author."
       },
       {
         "level": "Independent",
-        "task": "Build a small contact lookup by username."
+        "task": "Use get() to read a key that might be missing."
       },
       {
         "level": "Challenge",
-        "task": "Track unique tags with a set and report whether a requested tag exists."
+        "task": "Find common values in two sets using intersection."
       }
     ],
     "advancedNote": false
@@ -1818,46 +1538,23 @@
     "kind": "lesson",
     "day": 13,
     "number": 13,
-    "part": "Functions",
-    "partNumber": 3,
+    "part": "Data Structures",
+    "partNumber": 4,
     "title": "Comprehensions",
-    "summary": "Comprehensions are a concise way to build collections from existing iterables. They are useful after you understand the normal loop they replace.",
-    "definition": "A comprehension expresses “build a new collection from these items, optionally filtering them” in one expression.",
-    "codeExample": "# Predict the result before running this example.\ndef total(*numbers):\n    return sum(numbers)\n\ndef describe(**info):\n    return info\n\nprint(total(1, 2, 3))\nprint(describe(name=\"Sam\", level=\"beginner\"))",
+    "summary": "Build lists, sets, and dictionaries from existing iterables with concise, readable expressions.",
+    "definition": "A comprehension builds a collection using an expression, a for clause, and optionally an if filter.",
+    "codeExample": "squares = [number ** 2 for number in range(1, 6)]\nprint(squares)\nevens = {number for number in range(1, 8) if number % 2 == 0}\nprint(evens)",
     "howItWorks": [
-      [
-        "1. Start with the loop: Build the result normally.",
-        "squares = []\nfor n in numbers:\n    squares.append(n * n)"
-      ],
-      [
-        "2. Compress: Express the same transformation.",
-        "squares = [n * n for n in numbers]"
-      ],
-      [
-        "3. Filter: Add an if condition.",
-        "evens = [n for n in numbers if n % 2 == 0]"
-      ],
-      [
-        "4. Choose clarity: Keep a normal loop when the logic is complex.",
-        "for item in items:\n    ..."
-      ]
+      "Expression: The value to place in each new collection.",
+      "Loop: for n in numbers supplies one item at a time.",
+      "Filter: Add if condition to keep only matching items.",
+      "Readability: Use a normal loop when the logic becomes difficult to scan."
     ],
-    "fullExample": "def make_multiplier(factor):\n    def multiply(value):\n        return value * factor\n    return multiply\n\ntimes_three = make_multiplier(3)\nprint(times_three(5))",
-    "practiceTask": "Convert a loop that builds squared even numbers into a list comprehension, then compare both versions.",
-    "starterCode": "def summarize_scores(*scores, **metadata):\n    # Return a dictionary containing average and metadata\n    pass\n",
+    "fullExample": "numbers = [1, 2, 3, 4, 5, 6]\nsquares = [n * n for n in numbers]\nevens = [n for n in numbers if n % 2 == 0]\nsquare_map = {n: n * n for n in numbers if n <= 3}\nunique_lengths = {len(word) for word in [\"cat\", \"owl\", \"tiger\", \"cat\"]}\nprint(\"Squares:\", squares)\nprint(\"Evens:\", evens)\nprint(\"Map:\", square_map)\nprint(\"Lengths:\", unique_lengths)\n\n# A normal loop is clearer for more complex logic.\nlabels = []\nfor n in numbers:\n    if n % 2 == 0:\n        labels.append(f\"{n} is even\")\nprint(labels)",
+    "practiceTask": "Use a list comprehension to create the squares of numbers 1 through 10.",
+    "starterCode": "squares = [n * n for n in range(1, 11)]\nprint(squares)\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not use comprehensions just to look clever.",
-        "dont": "Prefer the clearer form.",
-        "example": "result = [n * 2 for n in numbers]"
-      },
-      {
-        "do": "Do not cram several nested decisions into one line.",
-        "dont": "Use a normal loop for complex logic.",
-        "example": "for item in items:\n    if valid(item): ..."
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What should you understand before writing a comprehension?",
@@ -1917,49 +1614,45 @@
         "explanation": "Dictionary comprehensions use key:value expressions."
       }
     ],
-    "exampleOutput": "6\n{'name': 'Sam', 'level': 'beginner'}",
+    "exampleOutput": "[1, 4, 9, 16, 25]\n{2, 4, 6}",
     "quickInfo": [
       [
-        "Comprehension",
-        "Compact syntax for building collections"
-      ],
-      [
-        "Pattern",
+        "List comprehension",
         "[expression for item in iterable]"
       ],
       [
-        "Filtering",
-        "A condition can be added with if"
+        "Filter",
+        "Add if condition after the for clause"
       ],
       [
-        "Best practice",
-        "Understand the normal loop before shortening it"
+        "Set / dict",
+        "Use {expression for ...} or {key: value for ...}"
       ],
       [
-        "Avoid",
-        "Do not force complex logic into one comprehension"
+        "Rule",
+        "Concise should still be readable"
       ]
     ],
-    "intro": "Convert simple collection-building loops into readable list, set, and dictionary comprehensions.",
-    "whyItMatters": "Always understand the loop first. Use a comprehension when it remains clearer than the multi-line version.",
+    "intro": "Comprehensions are compact ways to create a collection from another iterable. Learn the ordinary loop first; use a comprehension when it remains easy to read.",
+    "whyItMatters": "Build lists, sets, and dictionaries from existing iterables with concise, readable expressions.",
     "skills": [
-      "Translate a simple loop into a list comprehension.",
-      "Add a condition to filter values.",
-      "Recognize set and dictionary comprehensions.",
-      "Avoid dense nested comprehensions."
+      "Write list comprehensions.",
+      "Filter values with if.",
+      "Build set and dictionary comprehensions.",
+      "Choose a regular loop for complex logic."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Turn a simple “append doubled value” loop into a comprehension."
+        "task": "Create a list of squares from 1 to 5."
       },
       {
         "level": "Independent",
-        "task": "Create a comprehension containing only positive numbers."
+        "task": "Filter a list to keep only even numbers."
       },
       {
         "level": "Challenge",
-        "task": "Build a dictionary comprehension mapping words to their lengths."
+        "task": "Create a dictionary mapping each number to its square."
       }
     ],
     "advancedNote": false
@@ -1972,43 +1665,20 @@
     "part": "Modules and Project Structure",
     "partNumber": 5,
     "title": "Modules & Imports",
-    "summary": "Real programs are split into files so code can be reused and understood. Modules also introduce the standard library, which prevents reinventing common tools.",
-    "definition": "A module is a Python file that can be imported. Imports make functions, classes, and values from other modules available to your program.",
-    "codeExample": "from pathlib import Path\n\nprint(9 ** 0.5)\nprint(Path(\"notes.txt\").name)",
+    "summary": "Reuse code from Python’s standard library and organize your own code into modules.",
+    "definition": "import loads a module namespace. You can import a module, selected names, or give a module a short alias.",
+    "codeExample": "import math\n\nprint(math.sqrt(81))\nprint(math.ceil(2.2))",
     "howItWorks": [
-      [
-        "1. Import: Load a module.",
-        "import math\nprint(math.sqrt(25))"
-      ],
-      [
-        "2. Select: Import a specific name when clear.",
-        "from pathlib import Path"
-      ],
-      [
-        "3. Reuse: Put related functions in a module.",
-        "from helpers import format_name"
-      ],
-      [
-        "4. Main guard: Run demo code only when the file is executed directly.",
-        "if __name__ == \"__main__\":\n    main()"
-      ]
+      "Module: A Python file or library that groups reusable code.",
+      "Import: import math makes the module available as math.",
+      "Use names: math.sqrt(81) calls a function inside math.",
+      "Organize: Put related helpers in your own module and import them by filename."
     ],
-    "fullExample": "# utils.py concept: keep reusable functions in modules\nfrom pathlib import Path\n\nroot = Path(\".\")\nprint(root.resolve())",
-    "practiceTask": "Create a small helper module with a greeting function and import it into a main program.",
-    "starterCode": "# Imagine this is app/main.py\n# Import a function from a separate module.\n# Keep business logic out of the entry point.\n",
+    "fullExample": "import math\nfrom pathlib import Path\n\nradius = 3\narea = math.pi * radius ** 2\nprint(f\"Area: {area:.2f}\")\n\nfolder = Path(\".\")\nprint(\"Current folder exists:\", folder.exists())\n\n# Your own helpers can live in another .py file and be imported too.\n",
+    "practiceTask": "Import the math module and calculate the square root of 144.",
+    "starterCode": "import math\n# Print the square root of 144\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not duplicate utility functions across files.",
-        "dont": "Move reusable behavior into a module.",
-        "example": "from helpers import format_name"
-      },
-      {
-        "do": "Do not use wildcard imports in beginner projects.",
-        "dont": "Import the module or named functions explicitly.",
-        "example": "import math"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What is a module?",
@@ -2068,49 +1738,45 @@
         "explanation": "The explicit import names exactly what is being used."
       }
     ],
-    "exampleOutput": "9.0\nnotes.txt",
+    "exampleOutput": "9.0\n3",
     "quickInfo": [
       [
-        "Module",
-        "A Python file that can be imported"
-      ],
-      [
-        "import",
-        "Loads names from another module"
-      ],
-      [
         "Standard library",
-        "Python includes many ready-to-use modules"
+        "Modules included with Python"
       ],
       [
-        "Common examples",
-        "math, random, pathlib, json, datetime"
+        "import math",
+        "Use names through the math namespace"
       ],
       [
-        "Good practice",
-        "Keep imports clear and avoid unnecessary wildcard imports"
+        "from module import name",
+        "Import a selected name"
+      ],
+      [
+        "__name__",
+        "Often used to separate reusable code from script startup"
       ]
     ],
-    "intro": "Import your own modules and standard-library modules, and keep module responsibilities clear.",
-    "whyItMatters": "Learn how to find and reuse standard-library functionality before writing your own version.",
+    "intro": "A module is a Python file that can provide functions, classes, and values to another file. Imports let you reuse tested code instead of reinventing it.",
+    "whyItMatters": "Reuse code from Python’s standard library and organize your own code into modules.",
     "skills": [
-      "Import a module.",
-      "Import selected names deliberately.",
-      "Create a small reusable module.",
-      "Understand the purpose of if __name__ == \"__main__\"."
+      "Import a standard-library module.",
+      "Call imported functions with qualified names.",
+      "Recognize module namespaces.",
+      "Organize reusable code into modules."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Import math and use one function from it."
+        "task": "Use math.sqrt() and math.pi."
       },
       {
         "level": "Independent",
-        "task": "Create helpers.py with one reusable function and import it."
+        "task": "Use pathlib.Path to check whether a path exists."
       },
       {
         "level": "Challenge",
-        "task": "Split a small calculator into a main module and a math helper module."
+        "task": "Move a helper function into a second Python file and import it."
       }
     ],
     "advancedNote": false
@@ -2123,44 +1789,21 @@
     "part": "Files and Data",
     "partNumber": 6,
     "title": "Files & JSON",
-    "summary": "Programs become useful when they can remember information after they close. Files and JSON provide a simple path from in-memory data to persistent data.",
-    "definition": "A file stores data outside the running program. JSON represents common Python data structures in a portable text format.",
-    "codeExample": "# Predict the result before running this example.\nfrom pathlib import Path\nimport json\n\npath = Path(\"profile.json\")\ndata = {\"name\": \"Sam\", \"level\": 2}\npath.write_text(json.dumps(data, indent=2), encoding=\"utf-8\")\nprint(json.loads(path.read_text(encoding=\"utf-8\")))",
+    "summary": "Read and write files safely, and store structured data using JSON.",
+    "definition": "open() creates a file object. Use with to ensure it closes; json.load()/dump() work with files, while loads()/dumps() work with JSON text.",
+    "codeExample": "import json\n\nprofile = {\"name\": \"Ava\", \"score\": 95}\ntext = json.dumps(profile)\nprint(text)\nprint(json.loads(text)[\"name\"])",
     "howItWorks": [
-      [
-        "1. Path: Represent a file path clearly.",
-        "from pathlib import Path\nFILE = Path(\"data.json\")"
-      ],
-      [
-        "2. Read: Load text from a file.",
-        "text = FILE.read_text(encoding=\"utf-8\")"
-      ],
-      [
-        "3. Parse: Convert JSON text to Python data.",
-        "data = json.loads(text)"
-      ],
-      [
-        "4. Save: Convert Python data back to JSON.",
-        "FILE.write_text(json.dumps(data, indent=2), encoding=\"utf-8\")"
-      ]
+      "Open: with open(path, mode, encoding=\"utf-8\") as file:",
+      "Read / write: use read(), write(), or loop over file lines.",
+      "JSON: dump/load use files; dumps/loads use strings.",
+      "Safety: handle missing files and malformed JSON when the program needs to recover."
     ],
-    "fullExample": "from pathlib import Path\nimport json\n\npath = Path(\"data.json\")\ndata = {\"tasks\": [\"learn\", \"build\"], \"done\": 1}\npath.write_text(json.dumps(data, indent=2), encoding=\"utf-8\")\nloaded = json.loads(path.read_text(encoding=\"utf-8\"))\nprint(loaded)",
-    "practiceTask": "Build a tiny JSON-backed notes store that loads notes, adds one note, and saves them again.",
-    "starterCode": "from pathlib import Path\nimport json\n\npath = Path(\"notes.json\")\n# Load existing notes or start with []\n# Add one note and save it\n",
+    "fullExample": "import json\nfrom pathlib import Path\n\npath = Path(\"profile.json\")\nprofile = {\"name\": \"Ava\", \"skills\": [\"Python\", \"debugging\"], \"active\": True}\n\nwith path.open(\"w\", encoding=\"utf-8\") as file:\n    json.dump(profile, file, indent=2)\n\nwith path.open(\"r\", encoding=\"utf-8\") as file:\n    loaded = json.load(file)\n\nprint(loaded[\"name\"])\nprint(loaded[\"skills\"][0])\npath.unlink()  # Remove this demo file after reading it.",
+    "practiceTask": "Write a small dictionary to a JSON file, read it back, and print one value.",
+    "starterCode": "import json\n\nprofile = {\"name\": \"Your Name\", \"level\": 1}\n# Save profile to a JSON file, then load and print it\n",
     "minutes": 25,
     "projectId": "p03",
-    "doDont": [
-      {
-        "do": "Do not assume the file already exists.",
-        "dont": "Check or handle FileNotFoundError.",
-        "example": "if not FILE.exists(): return []"
-      },
-      {
-        "do": "Do not crash on malformed JSON in a user data file.",
-        "dont": "Catch JSONDecodeError and choose a safe fallback.",
-        "example": "except json.JSONDecodeError: return []"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does json.loads() do?",
@@ -2220,49 +1863,45 @@
         "explanation": "Files let information survive the current process."
       }
     ],
-    "exampleOutput": "{'name': 'Sam', 'level': 2}",
+    "exampleOutput": "{\"name\": \"Ava\", \"score\": 95}\nAva",
     "quickInfo": [
       [
-        "File handling",
-        "Lets programs save and read information"
+        "Modes",
+        "r read, w overwrite/write, a append"
       ],
       [
-        "with open()",
-        "Safely manages opening and closing files"
+        "with",
+        "Closes the file automatically"
       ],
       [
-        "JSON",
-        "A common text format for structured data"
+        "JSON types",
+        "Objects, arrays, strings, numbers, booleans, null"
       ],
       [
-        "json module",
-        "json.load()/loads() read; json.dump()/dumps() write"
-      ],
-      [
-        "Tip",
-        "Validate data before trusting file contents"
+        "Encoding",
+        "Use UTF-8 for text files"
       ]
     ],
-    "intro": "Read and write text files and JSON safely, including missing or invalid data.",
-    "whyItMatters": "Keep file paths deliberate, handle missing files, and treat malformed data as a case your program should recover from.",
+    "intro": "Programs often need to save information after they stop running. Python’s with statement manages file closing for you.",
+    "whyItMatters": "Read and write files safely, and store structured data using JSON.",
     "skills": [
-      "Read and write text files.",
-      "Use pathlib for paths.",
-      "Serialize data with json.",
-      "Handle missing or malformed data."
+      "Open files safely with with.",
+      "Read and write text.",
+      "Serialize and parse JSON.",
+      "Recognize common file and JSON errors."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Write a text file and read it back."
+        "task": "Write and read a short text file with with open()."
       },
       {
         "level": "Independent",
-        "task": "Save a list of names as JSON and load it again."
+        "task": "Save a dictionary using json.dump() and read it using json.load()."
       },
       {
         "level": "Challenge",
-        "task": "Build a JSON notes file that recovers gracefully when the file is missing or malformed."
+        "task": "Handle a missing file with a clear fallback message."
       }
     ],
     "advancedNote": false
@@ -2275,43 +1914,20 @@
     "part": "Reliability",
     "partNumber": 7,
     "title": "Errors & Debugging",
-    "summary": "Errors are normal in programming. The goal is not to avoid every error but to read evidence, isolate the problem, make one useful change, and verify the fix.",
-    "definition": "A traceback identifies where an exception occurred and what went wrong. Exception handling lets a program recover from expected failures.",
-    "codeExample": "# Predict the result before running this example.\ntry:\n    number = int(\"not a number\")\nexcept ValueError:\n    print(\"Please enter a valid integer.\")",
+    "summary": "Read tracebacks, recognize common exceptions, and investigate bugs with small repeatable checks.",
+    "definition": "Syntax errors prevent code from being parsed. Exceptions happen during execution. Debugging is the process of finding and fixing the cause rather than hiding the symptom.",
+    "codeExample": "text = \"twelve\"\ntry:\n    number = int(text)\nexcept ValueError:\n    print(\"Please provide a whole number.\")",
     "howItWorks": [
-      [
-        "1. Locate: Find the file and line named by the traceback.",
-        "ValueError: invalid literal for int()"
-      ],
-      [
-        "2. Identify: Read the exception type and message.",
-        "TypeError: unsupported operand type(s)"
-      ],
-      [
-        "3. Fix: Change the smallest relevant piece.",
-        "age = int(raw)  # after validation"
-      ],
-      [
-        "4. Verify: Rerun the same failing case.",
-        "Use the same input to confirm the fix."
-      ]
+      "Read the error type and message at the end of the traceback.",
+      "Locate the file and line number mentioned in the traceback.",
+      "Catch only exceptions you can handle meaningfully, such as ValueError.",
+      "Reproduce the bug, inspect relevant values, fix the cause, and rerun."
     ],
-    "fullExample": "def parse_age(text):\n    try:\n        age = int(text)\n    except ValueError as exc:\n        raise ValueError(\"Age must be an integer\") from exc\n    if age < 0:\n        raise ValueError(\"Age cannot be negative\")\n    return age\n\nfor value in [\"21\", \"-1\", \"x\"]:\n    try:\n        print(parse_age(value))\n    except ValueError as error:\n        print(\"Invalid:\", error)",
-    "practiceTask": "Debug a short program with three intentional bugs: a bad conversion, a missing dictionary key, and an invalid list index.",
-    "starterCode": "def parse_positive_int(text):\n    # Return a positive integer or raise ValueError\n    pass\n",
+    "fullExample": "def divide(a, b):\n    if b == 0:\n        raise ValueError(\"The divisor must not be zero.\")\n    return a / b\n\nfor a, b in [(10, 2), (10, 0)]:\n    try:\n        print(divide(a, b))\n    except ValueError as error:\n        print(\"Could not calculate:\", error)\n\n# Debug systematically: reproduce, inspect values, change one thing, rerun.",
+    "practiceTask": "Convert a text value to an integer and print a friendly message if it is invalid.",
+    "starterCode": "text = \"hello\"\ntry:\n    number = int(text)\n    print(number)\nexcept ValueError:\n    # Print a helpful message\n    pass\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not catch every exception blindly.",
-        "dont": "Catch expected exceptions and preserve useful errors.",
-        "example": "except ValueError:"
-      },
-      {
-        "do": "Do not rewrite the whole program after one bug.",
-        "dont": "Isolate the failing line and make one change.",
-        "example": "print(type(value), value)"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "Where is the most useful summary of an exception usually shown?",
@@ -2371,49 +1987,45 @@
         "explanation": "Reproducing the failure after the fix confirms the result."
       }
     ],
-    "exampleOutput": "Please enter a valid integer.",
+    "exampleOutput": "Please provide a whole number.",
     "quickInfo": [
       [
         "SyntaxError",
         "Python cannot parse the code"
       ],
       [
-        "TypeError",
-        "An operation received an inappropriate type"
-      ],
-      [
         "ValueError",
-        "A value has the right type but an invalid value"
+        "A value has the wrong form for an operation"
       ],
       [
-        "Debugging",
-        "Read the traceback, identify the line, then isolate the cause"
+        "TypeError",
+        "An operation received an unsuitable type"
       ],
       [
-        "Best habit",
-        "Change one thing and run the smallest useful test"
+        "Debugging loop",
+        "Reproduce → inspect → change → retest"
       ]
     ],
-    "intro": "Read tracebacks, distinguish common error types, use try/except appropriately, and debug systematically.",
-    "whyItMatters": "Debug from evidence rather than guessing. Reproduce the smallest failure you can and change one thing at a time.",
+    "intro": "Errors are information about what went wrong. Read the final line of a traceback first, then locate the line in your code that caused it.",
+    "whyItMatters": "Read tracebacks, recognize common exceptions, and investigate bugs with small repeatable checks.",
     "skills": [
-      "Read the bottom of a traceback first.",
-      "Recognize SyntaxError, TypeError, ValueError, KeyError, and IndexError.",
-      "Use try/except around expected failures.",
-      "Debug with small reproducible examples."
+      "Read a traceback.",
+      "Distinguish syntax errors from runtime exceptions.",
+      "Use try/except for expected failures.",
+      "Debug by reproducing and testing a focused change."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Read a traceback and identify its file, line, and exception type."
+        "task": "Identify what causes int(\"hello\") to fail."
       },
       {
         "level": "Independent",
-        "task": "Fix three intentional exceptions without rewriting the program."
+        "task": "Handle a ValueError and show a friendly message."
       },
       {
         "level": "Challenge",
-        "task": "Build an input loop that recovers from invalid numbers and explains the problem."
+        "task": "Raise a ValueError for division by zero and catch it at the call site."
       }
     ],
     "advancedNote": false
@@ -2426,43 +2038,20 @@
     "part": "Testing and Quality",
     "partNumber": 8,
     "title": "Testing",
-    "summary": "Testing turns “it seems to work” into evidence. Good tests cover normal behavior, boundaries, and invalid cases, especially for functions that return values.",
-    "definition": "A test checks that actual behavior matches an expected result. Good tests make failures specific and repeatable.",
-    "codeExample": "# Predict the result before running this example.\ndef add(a, b):\n    return a + b\n\nassert add(2, 3) == 5\nassert add(-1, 1) == 0",
+    "summary": "Check program behavior with assertions and automated unit tests.",
+    "definition": "A test compares actual behavior with expected behavior. Assertions check conditions; unit tests organize repeatable checks around small pieces of code.",
+    "codeExample": "def add(a, b):\n    return a + b\n\nassert add(2, 3) == 5\nassert add(-1, 1) == 0\nprint(\"Tests passed\")",
     "howItWorks": [
-      [
-        "1. Arrange: Prepare a known input.",
-        "numbers = [2, 4]"
-      ],
-      [
-        "2. Act: Call the function.",
-        "result = total(numbers)"
-      ],
-      [
-        "3. Assert: State the expected behavior.",
-        "assert result == 6"
-      ],
-      [
-        "4. Expand: Add edge cases.",
-        "assert total([]) == 0"
-      ]
+      "Expected behavior: Decide what a function should return for a given input.",
+      "assert: Stops with AssertionError if a condition is false.",
+      "Edge cases: Test empty, zero, boundary, and invalid values where relevant.",
+      "Unit tests: unittest groups checks into methods that can be run repeatedly."
     ],
-    "fullExample": "def is_even(number):\n    return number % 2 == 0\n\nassert is_even(4)\nassert not is_even(5)\nassert is_even(0)\nprint(\"Basic checks passed\")",
-    "practiceTask": "Write three assertions for a function that converts a temperature from Celsius to Fahrenheit, including one edge case.",
-    "starterCode": "def valid_username(name):\n    # Return True only for a valid username\n    pass\n\n# Add at least five assertions below\n",
+    "fullExample": "import unittest\n\ndef is_even(number):\n    return number % 2 == 0\n\nclass TestIsEven(unittest.TestCase):\n    def test_even_number(self):\n        self.assertTrue(is_even(4))\n\n    def test_odd_number(self):\n        self.assertFalse(is_even(5))\n\n    def test_zero_is_even(self):\n        self.assertTrue(is_even(0))\n\nif __name__ == \"__main__\":\n    unittest.main()",
+    "practiceTask": "Write two assertions that check a function returns the correct sum for positive and negative values.",
+    "starterCode": "def add(a, b):\n    return a + b\n\n# Add two assert statements below\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not test only the happy path.",
-        "dont": "Include empty, boundary, and invalid cases.",
-        "example": "assert parse_age(\"20\") == 20"
-      },
-      {
-        "do": "Do not make one test prove ten unrelated behaviors.",
-        "dont": "Keep each test focused.",
-        "example": "assert add(2, 3) == 5"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does an assertion do?",
@@ -2522,49 +2111,45 @@
         "explanation": "A good test localizes a behavior mismatch."
       }
     ],
-    "exampleOutput": "",
+    "exampleOutput": "Tests passed",
     "quickInfo": [
       [
-        "Purpose",
-        "Tests verify that code behaves as expected"
-      ],
-      [
-        "Assertion",
-        "assert checks an expected condition"
+        "assert",
+        "Checks a condition during development"
       ],
       [
         "Unit test",
-        "Tests a small piece of behavior"
+        "Tests one focused behavior"
       ],
       [
-        "Good coverage",
-        "Test normal, boundary, and invalid cases"
+        "Edge cases",
+        "Boundary, empty, and invalid values"
       ],
       [
-        "Benefit",
-        "Tests make refactoring safer"
+        "Repeatability",
+        "Run tests after every meaningful change"
       ]
     ],
-    "intro": "Write small assertions and use pytest-style thinking even when running simple checks in PyPath.",
-    "whyItMatters": "Start with pure functions because they are easy to test, then add tests around file and user-input boundaries.",
+    "intro": "A program running once does not prove it is correct. Tests let you check expected behavior again after code changes.",
+    "whyItMatters": "Check program behavior with assertions and automated unit tests.",
     "skills": [
-      "Write focused assertions.",
-      "Test normal and edge cases.",
-      "Use descriptive test names.",
-      "Separate behavior from user-interface code when possible."
+      "Write useful assertions.",
+      "Design tests for normal and edge cases.",
+      "Use unittest.TestCase.",
+      "Run tests after refactoring."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Write assertions for add(2, 3) and add(-1, 1)."
+        "task": "Add assertions for add(2, 3) and add(-1, 1)."
       },
       {
         "level": "Independent",
-        "task": "Create a function and at least three tests for it."
+        "task": "Test even and odd values with unittest."
       },
       {
         "level": "Challenge",
-        "task": "Test a function that validates user input, including invalid and boundary values."
+        "task": "Add a boundary test and an invalid-input test to a small function."
       }
     ],
     "advancedNote": false
@@ -2577,43 +2162,20 @@
     "part": "Object-Oriented Python",
     "partNumber": 9,
     "title": "Classes & Dataclasses",
-    "summary": "Classes model data and behavior together when that makes a program clearer. Dataclasses remove boilerplate for simple data-oriented objects.",
-    "definition": "A class defines a custom type. An instance is an object created from that class. A dataclass can generate common initialization and representation code for data-focused objects.",
-    "codeExample": "# Predict the result before running this example.\nfrom dataclasses import dataclass\n\n@dataclass\nclass Product:\n    name: str\n    price: float\n\nitem = Product(\"Book\", 12.5)\nprint(item)",
+    "summary": "Model related data and behavior with classes, objects, attributes, and methods.",
+    "definition": "__init__ initializes an instance. self refers to that instance. A dataclass can generate common methods for classes mainly used to store data.",
+    "codeExample": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def speak(self):\n        return f\"{self.name} says woof\"\n\ndog = Dog(\"Milo\")\nprint(dog.speak())",
     "howItWorks": [
-      [
-        "1. Define: Describe the object type.",
-        "class Task:\n    def __init__(self, title):\n        self.title = title"
-      ],
-      [
-        "2. Instantiate: Create an object.",
-        "task = Task(\"Study\")"
-      ],
-      [
-        "3. Behave: Put related behavior on the class when useful.",
-        "def rename(self, title):\n    self.title = title"
-      ],
-      [
-        "4. Simplify data: Use dataclass for record-like objects.",
-        "@dataclass\nclass User:\n    name: str"
-      ]
+      "Class: Defines the structure and behavior of a kind of object.",
+      "Object: An instance created by calling the class.",
+      "self: Refers to the current instance; attributes are stored on it.",
+      "Dataclass: @dataclass reduces boilerplate for data-focused classes."
     ],
-    "fullExample": "from dataclasses import dataclass\n\n@dataclass\nclass BankAccount:\n    owner: str\n    balance: float = 0.0\n\n    def deposit(self, amount):\n        if amount <= 0:\n            raise ValueError(\"Amount must be positive\")\n        self.balance += amount\n\naccount = BankAccount(\"Sam\")\naccount.deposit(50)\nprint(account)",
-    "practiceTask": "Create a Task dataclass with title and done fields, then write a function that marks a task complete.",
-    "starterCode": "from dataclasses import dataclass\n\n@dataclass\nclass Task:\n    title: str\n    done: bool = False\n\n    # Add methods for completing and reopening the task\n    pass\n",
+    "fullExample": "from dataclasses import dataclass\n\n@dataclass\nclass Task:\n    title: str\n    done: bool = False\n\n    def complete(self):\n        self.done = True\n\nfirst = Task(\"Learn classes\")\nsecond = Task(\"Practice\", True)\nfirst.complete()\nprint(first)\nprint(\"First done:\", first.done)\nprint(\"Second done:\", second.done)",
+    "practiceTask": "Create a Book class with a title attribute and a method that returns a short description.",
+    "starterCode": "class Book:\n    def __init__(self, title):\n        self.title = title\n\n    def describe(self):\n        # Return a description using self.title\n        pass\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not create classes for every tiny value.",
-        "dont": "Use a class when state and behavior belong together.",
-        "example": "class Task: ..."
-      },
-      {
-        "do": "Do not expose unnecessary internal state.",
-        "dont": "Give objects small, clear interfaces.",
-        "example": "task.rename(\"Review\")"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What is an instance?",
@@ -2673,49 +2235,45 @@
         "explanation": "Instance attributes store object-specific state."
       }
     ],
-    "exampleOutput": "Product(name='Book', price=12.5)",
+    "exampleOutput": "Milo says woof",
     "quickInfo": [
       [
         "Class",
-        "Defines the structure and behavior of objects"
+        "A blueprint for instances"
       ],
       [
         "Object",
-        "An instance created from a class"
+        "One instance of a class"
       ],
       [
-        "self",
-        "Refers to the current instance"
+        "Attribute / method",
+        "Data / function attached to an object"
       ],
       [
-        "dataclass",
-        "A concise way to define data-focused classes"
-      ],
-      [
-        "Tip",
-        "Use classes when grouping related state and behavior adds clarity"
+        "Dataclass",
+        "Generates useful methods for data containers"
       ]
     ],
-    "intro": "Create simple classes, use attributes and methods, and choose dataclasses for structured records.",
-    "whyItMatters": "Use classes when an object has meaningful state and behavior; do not create a class merely because Python allows it.",
+    "intro": "A class describes a kind of object. An object is one instance with its own data.",
+    "whyItMatters": "Model related data and behavior with classes, objects, attributes, and methods.",
     "skills": [
-      "Define classes and __init__.",
-      "Use instance attributes and methods.",
-      "Create objects from classes.",
-      "Use @dataclass for simple records."
+      "Define a class and instantiate it.",
+      "Use __init__ and self.",
+      "Create attributes and methods.",
+      "Use a dataclass for simple records."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Create a dataclass with two fields and print an instance."
+        "task": "Create a Book class and print its title."
       },
       {
         "level": "Independent",
-        "task": "Build Task objects and a function that marks one complete."
+        "task": "Add a method that returns a description."
       },
       {
         "level": "Challenge",
-        "task": "Add validation and a method that produces a readable task summary."
+        "task": "Create a Task dataclass with a complete() method."
       }
     ],
     "advancedNote": false
@@ -2728,43 +2286,20 @@
     "part": "Object-Oriented Python",
     "partNumber": 9,
     "title": "Composition & Inheritance",
-    "summary": "Once you use classes, you need to decide how objects relate. Composition is often the simpler default; inheritance is useful when one type genuinely specializes another.",
-    "definition": "Composition builds objects from other objects. Inheritance creates a subtype that reuses or extends a base class.",
-    "codeExample": "# Predict the result before running this example.\nclass Notifier:\n    def send(self, message):\n        raise NotImplementedError\n\nclass ConsoleNotifier(Notifier):\n    def send(self, message):\n        print(message)\n\nConsoleNotifier().send(\"Saved\")",
+    "summary": "Reuse behavior by combining objects, and use inheritance only when one type truly specializes another.",
+    "definition": "Composition models a has-a relationship. Inheritance models an is-a relationship and lets a subclass reuse or override base-class behavior.",
+    "codeExample": "class Engine:\n    def start(self):\n        return \"Engine started\"\n\nclass Car:\n    def __init__(self, engine):\n        self.engine = engine\n\ncar = Car(Engine())\nprint(car.engine.start())",
     "howItWorks": [
-      [
-        "1. Compose: Give one object another object.",
-        "class Report:\n    def __init__(self, formatter):\n        self.formatter = formatter"
-      ],
-      [
-        "2. Inherit: Specialize a base type.",
-        "class Admin(User):\n    ..."
-      ],
-      [
-        "3. Override: Change behavior deliberately.",
-        "def describe(self):\n    return \"Admin\""
-      ],
-      [
-        "4. Choose: Ask whether the relationship is truly “is-a”.",
-        "Car is a Vehicle; Car has an Engine"
-      ]
+      "Composition: A class stores or uses another object to do part of its work.",
+      "Inheritance: class Child(Parent) defines a specialized class.",
+      "Override: A child class can provide its own version of a method.",
+      "Choose simply: Prefer composition unless an is-a relationship is clear."
     ],
-    "fullExample": "class EmailSender:\n    def send(self, message):\n        print(\"EMAIL:\", message)\n\nclass SmsSender:\n    def send(self, message):\n        print(\"SMS:\", message)\n\ndef notify(sender, message):\n    sender.send(message)\n\nfor sender in [EmailSender(), SmsSender()]:\n    notify(sender, \"Build complete\")",
-    "practiceTask": "Design a small notification system using composition: a service should receive a notifier object rather than inherit from it.",
-    "starterCode": "class MemoryStore:\n    def save(self, item):\n        print(\"Memory:\", item)\n\nclass FileStore:\n    def save(self, item):\n        print(\"File:\", item)\n\n# Write a function that accepts any store with save().\n",
+    "fullExample": "class Notification:  # Base class\n    def send(self, message):\n        return f\"Notification: {message}\"\n\nclass EmailNotification(Notification):\n    def send(self, message):\n        return f\"Email sent: {message}\"\n\nclass OrderService:\n    def __init__(self, notifier):\n        self.notifier = notifier  # Composition\n\n    def place_order(self):\n        return self.notifier.send(\"Your order is confirmed\")\n\nservice = OrderService(EmailNotification())\nprint(service.place_order())",
+    "practiceTask": "Create a class that contains another object and calls one of its methods.",
+    "starterCode": "class Lamp:\n    def turn_on(self):\n        return \"Light on\"\n\nclass Room:\n    def __init__(self, lamp):\n        self.lamp = lamp\n\n# Create a Room with a Lamp and call turn_on()\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not use inheritance only to reuse two lines.",
-        "dont": "Use composition or a helper when that is clearer.",
-        "example": "report = Report(formatter)"
-      },
-      {
-        "do": "Do not build deep inheritance trees.",
-        "dont": "Keep hierarchies shallow and meaningful.",
-        "example": "class Admin(User): ..."
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does composition mean?",
@@ -2824,49 +2359,45 @@
         "explanation": "Deep hierarchies make changes harder to understand."
       }
     ],
-    "exampleOutput": "Saved",
+    "exampleOutput": "Engine started",
     "quickInfo": [
       [
         "Composition",
-        "Build objects by giving them other objects"
+        "Has-a relationship; combine objects"
       ],
       [
         "Inheritance",
-        "Create a class based on another class"
+        "Is-a relationship; specialize a base class"
       ],
       [
-        "Prefer composition",
-        "Often simpler when behavior needs to be combined"
+        "Override",
+        "Replace inherited behavior in a subclass"
       ],
       [
-        "super()",
-        "Access behavior from a parent class"
-      ],
-      [
-        "Design goal",
-        "Use relationships that make the program easier to understand"
+        "Design tip",
+        "Composition often keeps code more flexible"
       ]
     ],
-    "intro": "Compare composition and inheritance and choose the simpler relationship for a design.",
-    "whyItMatters": "Prefer relationships that make responsibilities obvious. Inheritance should express a real “is-a” relationship, not merely share code.",
+    "intro": "Object-oriented programs can build larger behaviors from smaller objects. Composition means an object contains or uses another object; inheritance creates a specialized kind of class.",
+    "whyItMatters": "Reuse behavior by combining objects, and use inheritance only when one type truly specializes another.",
     "skills": [
-      "Build objects that contain other objects.",
-      "Recognize a genuine is-a relationship.",
-      "Override methods carefully.",
-      "Prefer composition when inheritance adds unnecessary coupling."
+      "Explain composition and inheritance.",
+      "Pass an object into another class.",
+      "Override a method.",
+      "Choose a design based on the relationship."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Identify whether five example relationships are “has-a” or “is-a”."
+        "task": "Make a Room that contains a Lamp."
       },
       {
         "level": "Independent",
-        "task": "Build a small composition example with two objects."
+        "task": "Create a base Notification class and override send() in a subclass."
       },
       {
         "level": "Challenge",
-        "task": "Compare a composition and inheritance design for the same problem and choose one."
+        "task": "Compare a composition-based design with an inheritance-based one."
       }
     ],
     "advancedNote": false
@@ -2879,43 +2410,20 @@
     "part": "Advanced Python",
     "partNumber": 10,
     "title": "Iterators & Generators",
-    "summary": "Iterators and generators are useful when data should be processed one item at a time. They are powerful, but they are an advanced tool rather than a beginner requirement.",
-    "definition": "An iterator produces values one at a time. A generator function uses yield to create an iterator lazily.",
-    "codeExample": "# Predict the result before running this example.\ndef count_up_to(limit):\n    n = 1\n    while n <= limit:\n        yield n\n        n += 1\n\nprint(list(count_up_to(5)))",
+    "summary": "Understand how Python produces values one at a time with iterators and yield.",
+    "definition": "An iterator provides values through next(). A generator function uses yield to produce a value and pause until the next value is requested.",
+    "codeExample": "def countdown(start):\n    while start > 0:\n        yield start\n        start -= 1\n\nfor value in countdown(3):\n    print(value)",
     "howItWorks": [
-      [
-        "1. Iterable: A value can provide an iterator.",
-        "numbers = [1, 2, 3]"
-      ],
-      [
-        "2. Iterator: next() retrieves one item.",
-        "it = iter(numbers)\nnext(it)"
-      ],
-      [
-        "3. Yield: A generator pauses and resumes.",
-        "def countdown(n):\n    while n:\n        yield n\n        n -= 1"
-      ],
-      [
-        "4. Choose: Lazy data is useful for large or streamed inputs.",
-        "for value in countdown(3): ..."
-      ]
+      "Iterable: An object you can loop over, such as a list or string.",
+      "Iterator: Produces the next value when next() is called.",
+      "yield: Returns a value and pauses a generator until it is resumed.",
+      "Memory: Generators can process large sequences without storing every result at once."
     ],
-    "fullExample": "def read_numbers(lines):\n    for line in lines:\n        value = line.strip()\n        if value:\n            yield int(value)\n\nfor number in read_numbers([\"10\", \"\", \"20\", \"30\"]):\n    print(number * 2)",
-    "practiceTask": "Create a generator that yields the first N even numbers and consume it with a for loop.",
-    "starterCode": "def positive_numbers(lines):\n    # Yield positive integers lazily\n    pass\n",
+    "fullExample": "def read_scores():\n    \"\"\"Generate one score at a time.\"\"\"\n    for score in [82, 95, 73, 88]:\n        yield score\n\nvalues = read_scores()\nprint(next(values))\nprint(next(values))\nprint(\"Remaining:\", list(values))\n\n# Iterators are exhausted after their values have been consumed.\n",
+    "practiceTask": "Write a generator that yields the numbers 1, 2, and 3, then print them with a for loop.",
+    "starterCode": "def small_numbers():\n    yield 1\n    # Yield 2 and 3 as well\n\nfor number in small_numbers():\n    print(number)\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not use generators just to look advanced.",
-        "dont": "Use them when lazy processing has a benefit.",
-        "example": "yield value"
-      },
-      {
-        "do": "Do not call next() blindly without considering exhaustion.",
-        "dont": "Iterate with for when manual control is unnecessary.",
-        "example": "for item in iterator: ..."
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does yield do?",
@@ -2975,49 +2483,45 @@
         "explanation": "StopIteration signals the end of an iterator."
       }
     ],
-    "exampleOutput": "[1, 2, 3, 4, 5]",
+    "exampleOutput": "3\n2\n1",
     "quickInfo": [
       [
-        "Iterator",
-        "An object that produces values one at a time"
+        "iter(value)",
+        "Creates an iterator from an iterable"
       ],
       [
-        "iter()",
-        "Gets an iterator from an iterable"
-      ],
-      [
-        "next()",
-        "Requests the next value"
-      ],
-      [
-        "Generator",
-        "A convenient way to create lazy iterators"
+        "next(iterator)",
+        "Gets the next item"
       ],
       [
         "yield",
-        "Produces a value while preserving generator state"
+        "Produces a value from a generator"
+      ],
+      [
+        "StopIteration",
+        "Signals that no values remain"
       ]
     ],
-    "intro": "Understand iteration, iter(), next(), yield, and lazy processing without overusing them.",
-    "whyItMatters": "Use generators when you genuinely want lazy processing or streaming behavior; a normal list is often clearer for small data.",
+    "intro": "Some data can be processed one value at a time instead of building a large list in memory. Iterators and generators support this pattern.",
+    "whyItMatters": "Understand how Python produces values one at a time with iterators and yield.",
     "skills": [
-      "Explain iterable versus iterator.",
-      "Use iter() and next() at a basic level.",
-      "Write a simple generator with yield.",
-      "Recognize when a list is simpler."
+      "Distinguish iterables and iterators.",
+      "Use iter() and next().",
+      "Write a generator with yield.",
+      "Explain lazy value production."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Use iter() and next() on a three-item list."
+        "task": "Call iter() and next() on a short list."
       },
       {
         "level": "Independent",
-        "task": "Write a generator that yields squares from 1 to N."
+        "task": "Write a generator that yields three numbers."
       },
       {
         "level": "Challenge",
-        "task": "Explain why the generator uses less immediate memory than building the full list."
+        "task": "Generate transformed values from a large range without building a list."
       }
     ],
     "advancedNote": true
@@ -3030,43 +2534,20 @@
     "part": "Advanced Python",
     "partNumber": 10,
     "title": "Decorators & Context Managers",
-    "summary": "Decorators and context managers are advanced Python tools that solve recurring problems such as wrapping behavior and guaranteeing cleanup. They should be understood after functions are comfortable.",
-    "definition": "A decorator wraps a callable to add behavior. A context manager controls setup and cleanup around a with block.",
-    "codeExample": "# Predict the result before running this example.\nfrom functools import wraps\n\ndef announce(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        print(\"Calling\", func.__name__)\n        return func(*args, **kwargs)\n    return wrapper\n\n@announce\ndef greet(name):\n    return f\"Hello {name}\"\n\nprint(greet(\"Sam\"))",
+    "summary": "Wrap functions with reusable behavior and manage resources safely with context managers.",
+    "definition": "A decorator accepts a function and returns a wrapped function. A context manager supports the with statement, commonly to guarantee cleanup.",
+    "codeExample": "from functools import wraps\n\ndef announce(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        print(\"Starting\")\n        return func(*args, **kwargs)\n    return wrapper\n\n@announce\ndef greet(name):\n    print(f\"Hello, {name}\")\n\ngreet(\"Ava\")",
     "howItWorks": [
-      [
-        "1. Wrap: A decorator receives a function and returns a wrapped function.",
-        "def logged(func): ..."
-      ],
-      [
-        "2. Apply: @logged changes how the function is used.",
-        "@logged\ndef save(): ..."
-      ],
-      [
-        "3. Manage: with establishes a controlled resource scope.",
-        "with open(\"notes.txt\") as file: ..."
-      ],
-      [
-        "4. Clean up: Context managers guarantee cleanup when leaving the block.",
-        "with resource():\n    use(resource)"
-      ]
+      "Decorator: A function that takes another function and returns a function.",
+      "@syntax: @announce above a definition is equivalent to greet = announce(greet).",
+      "wraps: Preserves useful metadata such as the wrapped function name.",
+      "Context manager: with ensures cleanup happens when a block exits."
     ],
-    "fullExample": "from contextlib import contextmanager\n\n@contextmanager\ndef managed_message():\n    print(\"start\")\n    try:\n        yield\n    finally:\n        print(\"cleanup\")\n\nwith managed_message():\n    print(\"work\")",
-    "practiceTask": "Use a with block to read a text file, then inspect a simple decorator example that logs when a function is called.",
-    "starterCode": "from functools import wraps\n\ndef log_call(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        # Add a useful log message, call func, and return its result\n        pass\n    return wrapper\n",
+    "fullExample": "from contextlib import contextmanager\nfrom functools import wraps\n\ndef trace(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        print(f\"Calling {func.__name__}\")\n        return func(*args, **kwargs)\n    return wrapper\n\n@trace\ndef multiply(a, b):\n    return a * b\n\n@contextmanager\ndef opened_message(name):\n    print(f\"Open {name}\")\n    try:\n        yield name\n    finally:\n        print(f\"Close {name}\")\n\nprint(multiply(3, 4))\nwith opened_message(\"resource\") as resource:\n    print(\"Using\", resource)",
+    "practiceTask": "Write a decorator that prints a short message before calling a function.",
+    "starterCode": "from functools import wraps\n\ndef announce(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        print(\"Starting\")\n        return func(*args, **kwargs)\n    return wrapper\n\n# Decorate a greet(name) function and call it\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not write a decorator before you understand the function it wraps.",
-        "dont": "Start from the plain function and add one behavior.",
-        "example": "@logged\ndef save(): ..."
-      },
-      {
-        "do": "Do not manually manage resources when with already expresses the lifecycle.",
-        "dont": "Use context managers for files and similar resources.",
-        "example": "with open(path) as file: ..."
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does a decorator generally do?",
@@ -3126,49 +2607,45 @@
         "explanation": "Context managers define a managed resource lifecycle."
       }
     ],
-    "exampleOutput": "Calling greet\nHello Sam",
+    "exampleOutput": "Starting\nHello, Ava",
     "quickInfo": [
       [
         "Decorator",
-        "Wraps a function/class to add behavior"
+        "Reusable behavior around a function"
       ],
       [
-        "@syntax",
-        "Applies a decorator to the definition below it"
+        "@decorator",
+        "Readable syntax for wrapping a function"
       ],
       [
-        "Context manager",
-        "Controls setup and cleanup around a block"
+        "functools.wraps",
+        "Preserves wrapped function metadata"
       ],
       [
         "with",
-        "Common syntax for using a context manager"
-      ],
-      [
-        "Caution",
-        "Understand the underlying function first; these are advanced tools"
+        "Manages setup and cleanup"
       ]
     ],
-    "intro": "Understand the purpose and basic shape of decorators and with statements.",
-    "whyItMatters": "Focus on what these tools accomplish before worrying about their implementation details.",
+    "intro": "Decorators add behavior around a function without changing its main code. Context managers set up and clean up resources reliably.",
+    "whyItMatters": "Wrap functions with reusable behavior and manage resources safely with context managers.",
     "skills": [
-      "Explain a decorator at a high level.",
-      "Recognize @decorator syntax.",
-      "Use with for managed resources.",
-      "Understand why cleanup should be reliable."
+      "Explain how decorators wrap functions.",
+      "Write a simple decorator.",
+      "Use functools.wraps.",
+      "Explain why context managers help resource safety."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Use with open(...) to read a small file."
+        "task": "Create a decorator that prints before a function call."
       },
       {
         "level": "Independent",
-        "task": "Write a decorator that prints “calling” before a function runs."
+        "task": "Use @wraps and confirm the decorated function keeps its name."
       },
       {
         "level": "Challenge",
-        "task": "Explain what cleanup a context manager protects you from forgetting."
+        "task": "Create a context manager with contextlib.contextmanager and finally cleanup."
       }
     ],
     "advancedNote": true
@@ -3181,43 +2658,20 @@
     "part": "Professional Python",
     "partNumber": 11,
     "title": "Type Hints & Documentation",
-    "summary": "Professional Python code should communicate intent to humans and tools. Type hints and documentation improve readability without changing Python into a statically typed language.",
-    "definition": "Type hints annotate expected types; Python generally does not enforce them at runtime. Docstrings explain what a module, function, or class does.",
-    "codeExample": "# Predict the result before running this example.\nfrom typing import Iterable\n\ndef total(values: Iterable[float]) -> float:\n    \"\"\"Return the sum of numeric values.\"\"\"\n    return sum(values)\n\nprint(total([1.5, 2.5]))",
+    "summary": "Make code easier to understand with annotations, docstrings, and clear contracts.",
+    "definition": "Annotations such as name: str and -> int document expected types. Docstrings explain what a function or module does, including important behavior and constraints.",
+    "codeExample": "def greet(name: str) -> str:\n    \"\"\"Return a short greeting.\"\"\"\n    return f\"Hello, {name}!\"\n\nprint(greet(\"Ava\"))",
     "howItWorks": [
-      [
-        "1. Annotate: State expected types.",
-        "def add(a: int, b: int) -> int:"
-      ],
-      [
-        "2. Document: Explain behavior and constraints.",
-        "def divide(a: float, b: float) -> float:\n    \"\"\"Return a divided by b.\"\"\""
-      ],
-      [
-        "3. Read: Type hints help readers and tools.",
-        "names: list[str] = []"
-      ],
-      [
-        "4. Verify: Runtime validation is still needed when inputs are untrusted.",
-        "if not isinstance(value, int): ..."
-      ]
+      "Parameter hints: name: str documents the expected input type.",
+      "Return hint: -> float documents the expected result.",
+      "Docstring: Explain purpose, assumptions, and important errors.",
+      "Reality check: Hints help tools and readers; they do not validate input by themselves."
     ],
-    "fullExample": "from dataclasses import dataclass\n\n@dataclass\nclass User:\n    name: str\n    age: int\n\ndef is_adult(user: User) -> bool:\n    \"\"\"Return True when the user is legally an adult in this example.\"\"\"\n    return user.age >= 18\n\nprint(is_adult(User(\"Sam\", 21)))",
-    "practiceTask": "Add type hints and a concise docstring to a function that calculates an order total.",
-    "starterCode": "def average(values: list[float]) -> float:\n    \"\"\"Return the arithmetic mean of values.\"\"\"\n    # Add validation and calculation\n    pass",
+    "fullExample": "def calculate_average(values: list[float]) -> float:\n    \"\"\"Return the average of a non-empty list of numbers.\n\n    Raises:\n        ValueError: If values is empty.\n    \"\"\"\n    if not values:\n        raise ValueError(\"values must not be empty\")\n    return sum(values) / len(values)\n\nprint(calculate_average([80.0, 90.0, 100.0]))\nprint(calculate_average.__doc__.splitlines()[0])",
+    "practiceTask": "Add a type hint and docstring to a function that converts minutes to seconds.",
+    "starterCode": "def to_seconds(minutes: int) -> int:\n    \"\"\"Convert minutes to seconds.\"\"\"\n    return minutes * 60\n\nprint(to_seconds(5))\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not claim type hints validate runtime input automatically.",
-        "dont": "Validate external data separately.",
-        "example": "age: int = int(raw)"
-      },
-      {
-        "do": "Do not write huge docstrings for obvious code.",
-        "dont": "Document behavior, inputs, outputs, and important constraints.",
-        "example": "\"\"\"Return the total price including tax.\"\"\""
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What do type hints primarily provide?",
@@ -3277,49 +2731,45 @@
         "explanation": "Useful documentation answers how to use the code and what it guarantees."
       }
     ],
-    "exampleOutput": "4.0",
+    "exampleOutput": "Hello, Ava!",
     "quickInfo": [
       [
-        "Type hints",
-        "Describe intended types without changing normal Python semantics"
+        "Parameter hint",
+        "name: str"
       ],
       [
-        "Example",
-        "def add(a: int, b: int) -> int:"
+        "Return hint",
+        "-> int"
       ],
       [
-        "Documentation",
-        "Docstrings explain what code does and how to use it"
+        "Docstring",
+        "A string describing the function or module"
       ],
       [
-        "Tools",
-        "Type checkers and editors can use annotations"
-      ],
-      [
-        "Best practice",
-        "Keep annotations accurate and useful rather than decorative"
+        "Static checking",
+        "Tools can find many type inconsistencies before runtime"
       ]
     ],
-    "intro": "Add useful type hints, docstrings, and clear function documentation.",
-    "whyItMatters": "Use hints where they clarify an interface, not as decoration on every trivial expression.",
+    "intro": "Type hints describe the kinds of values a function expects and returns. They help people and tools understand your intent, but Python does not automatically enforce them at runtime.",
+    "whyItMatters": "Make code easier to understand with annotations, docstrings, and clear contracts.",
     "skills": [
-      "Annotate function parameters and returns.",
-      "Use common collection type hints.",
-      "Write short useful docstrings.",
-      "Keep names and documentation consistent."
+      "Add parameter and return annotations.",
+      "Write useful docstrings.",
+      "Understand the limits of type hints.",
+      "Describe function contracts clearly."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Annotate a function with parameter and return types."
+        "task": "Annotate a function that doubles a number."
       },
       {
         "level": "Independent",
-        "task": "Document a small utility with a useful docstring."
+        "task": "Write a docstring that explains one expected error."
       },
       {
         "level": "Challenge",
-        "task": "Add type hints to a mini module and identify where runtime validation is still required."
+        "task": "Use list[str] and dict[str, int] hints in a small example."
       }
     ],
     "advancedNote": true
@@ -3332,43 +2782,20 @@
     "part": "Professional Python",
     "partNumber": 11,
     "title": "HTTP APIs",
-    "summary": "APIs let Python programs exchange data with other services. The important skill is understanding requests, responses, status codes, JSON, and failure handling.",
-    "definition": "An HTTP API exposes endpoints that clients can call. A response includes a status code and often structured data such as JSON.",
-    "codeExample": "# Predict the result before running this example.\nimport json\n\npayload = '{\"name\": \"Python\", \"level\": \"advanced\"}'\ndata = json.loads(payload)\nprint(data[\"name\"])",
+    "summary": "Understand requests and responses, JSON payloads, status codes, and safe API-client structure.",
+    "definition": "An HTTP request includes a method and URL. A response includes a status code and often a body such as JSON. Network calls can fail, so clients should use timeouts and handle errors.",
+    "codeExample": "import json\n\nresponse_text = '{\"name\": \"PyPath\", \"active\": true}'\ndata = json.loads(response_text)\nprint(data[\"name\"])\nprint(data[\"active\"])",
     "howItWorks": [
-      [
-        "1. Request: A client asks an endpoint for a resource.",
-        "GET /users/42"
-      ],
-      [
-        "2. Response: The server returns status and data.",
-        "200 OK + JSON"
-      ],
-      [
-        "3. Check: Do not assume success.",
-        "if response.status_code != 200: ..."
-      ],
-      [
-        "4. Parse: Convert JSON response data into Python structures.",
-        "data = response.json()"
-      ]
+      "Request: Choose a URL and method, then send the request.",
+      "Response: Check the status code before trusting the response body.",
+      "JSON: Parse response.json() into Python values.",
+      "Reliability: Set a timeout and handle request exceptions; keep API keys out of source code."
     ],
-    "fullExample": "def parse_user(payload: dict) -> str:\n    return payload.get(\"name\", \"Unknown\")\n\nfake_response = {\"name\": \"Sam\", \"role\": \"developer\"}\nprint(parse_user(fake_response))",
-    "practiceTask": "Inspect a sample API response represented as a Python dictionary and write code that handles a missing field safely. Live network calls may depend on the runtime.",
-    "starterCode": "def fetch_data(client, url):\n    # Ask client for data with a timeout, validate success, and return JSON\n    pass\n",
+    "fullExample": "\"\"\"Example API client structure; run with requests installed and network access.\"\"\"\nimport requests\n\nurl = \"https://httpbin.org/json\"\ntry:\n    response = requests.get(url, timeout=10)\n    response.raise_for_status()\n    data = response.json()\n    print(\"Status:\", response.status_code)\n    print(\"JSON keys:\", list(data.keys()))\nexcept requests.Timeout:\n    print(\"The request took too long.\")\nexcept requests.RequestException as error:\n    print(\"Request failed:\", error)\n",
+    "practiceTask": "Read a sample JSON response string with json.loads() and print one field. If you have a network-enabled local Python environment, try the optional HTTP request example.",
+    "starterCode": "import json\nresponse_text = '{\"status\": \"ok\", \"count\": 3}'\ndata = json.loads(response_text)\nprint(data[\"status\"])\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not assume every HTTP request succeeds.",
-        "dont": "Check status and handle expected failures.",
-        "example": "if response.status_code >= 400: ..."
-      },
-      {
-        "do": "Do not hard-code secrets into source code.",
-        "dont": "Use environment/configuration mechanisms outside the code.",
-        "example": "API_KEY = os.environ.get(\"API_KEY\")"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does HTTP 200 usually indicate?",
@@ -3428,53 +2855,49 @@
         "explanation": "Browser sandbox/network restrictions can affect live requests."
       }
     ],
-    "exampleOutput": "Python",
+    "exampleOutput": "PyPath\nTrue",
     "quickInfo": [
       [
-        "HTTP",
-        "A protocol commonly used for web communication"
+        "HTTP methods",
+        "GET reads; POST commonly submits data"
       ],
       [
-        "Request",
-        "A client sends a method such as GET or POST"
-      ],
-      [
-        "Response",
-        "A server returns a status, headers, and often data"
+        "Status codes",
+        "2xx success; 4xx client issue; 5xx server issue"
       ],
       [
         "JSON",
         "A common format for API request/response data"
       ],
       [
-        "Runtime",
-        "Browser network access may differ from local Python"
+        "Safety",
+        "Timeouts, error handling, and secret management matter"
       ]
     ],
-    "intro": "Understand HTTP requests and responses and design API code that handles failure explicitly.",
-    "whyItMatters": "The PyPath browser runtime may restrict network access. Treat live API calls as environment-dependent and understand the code even when a service cannot be reached.",
+    "intro": "An HTTP API lets one program request data or actions from another service. A client sends a request and interprets the response.",
+    "whyItMatters": "Understand requests and responses, JSON payloads, status codes, and safe API-client structure.",
     "skills": [
-      "Explain request/response flow.",
-      "Recognize common status-code categories.",
-      "Parse JSON responses.",
-      "Handle timeouts and non-success responses."
+      "Explain the request-response model.",
+      "Parse JSON data.",
+      "Recognize common HTTP status code groups.",
+      "Handle timeouts and request failures."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Identify method, endpoint, status code, and JSON body in a sample response."
+        "task": "Parse a sample API response using json.loads()."
       },
       {
         "level": "Independent",
-        "task": "Write a function that extracts a user name from a response dictionary safely."
+        "task": "Inspect a response status code and handle a non-success response."
       },
       {
         "level": "Challenge",
-        "task": "Design error handling for timeout, 404, 500, and invalid JSON cases."
+        "task": "Add timeout and exception handling to a requests client in a network-enabled environment."
       }
     ],
-    "advancedNote": false,
-    "runtimeNote": "This topic may depend on the Python runtime available in your browser. If the live environment cannot provide network access or sqlite3, use the lesson examples to understand the concept and run the same code in a full local Python environment."
+    "advancedNote": true,
+    "runtimeNote": "The browser runtime may restrict network access or database support. The local JSON example is self-contained; run HTTP or SQLite examples in a standard local Python environment if the browser compiler does not support them."
   },
   {
     "id": "l24",
@@ -3484,44 +2907,21 @@
     "part": "Professional Python",
     "partNumber": 11,
     "title": "SQLite & SQL",
-    "summary": "Databases are useful when data becomes structured, searchable, and persistent. SQL teaches a different way to ask for data than ordinary Python loops.",
-    "definition": "SQLite is an embedded database. SQL describes operations on tables and rows, while Python can use a database connection to execute those operations.",
-    "codeExample": "# Predict the result before running this example.\n# CRUD means Create, Read, Update, Delete.\ntasks = []\n\ntasks.append({\"id\": 1, \"title\": \"Learn CRUD\", \"done\": False})  # Create\nprint(tasks)  # Read\ntasks[0][\"done\"] = True  # Update\ndel tasks[0]  # Delete",
+    "summary": "Store structured records in a local database and query them with SQL.",
+    "definition": "SQL is a language for creating, reading, updating, and deleting database records. Parameterized queries keep values separate from SQL code.",
+    "codeExample": "import sqlite3\n\nwith sqlite3.connect(\":memory:\") as connection:\n    connection.execute(\"CREATE TABLE tasks (title TEXT, done INTEGER)\")\n    connection.execute(\"INSERT INTO tasks VALUES (?, ?)\", (\"Learn SQL\", 0))\n    rows = connection.execute(\"SELECT title, done FROM tasks\").fetchall()\n    print(rows)",
     "howItWorks": [
-      [
-        "1. Model: A table contains rows with named columns.",
-        "CREATE TABLE tasks (id INTEGER PRIMARY KEY, title TEXT)"
-      ],
-      [
-        "2. Insert: Add a row.",
-        "INSERT INTO tasks (title) VALUES (?)"
-      ],
-      [
-        "3. Query: Retrieve rows.",
-        "SELECT id, title FROM tasks"
-      ],
-      [
-        "4. Parameterize: Bind values instead of concatenating SQL.",
-        "cursor.execute(sql, (title,))"
-      ]
+      "Connect: sqlite3.connect() opens a database; :memory: creates a temporary in-memory database.",
+      "Create: CREATE TABLE defines columns and types.",
+      "Change: INSERT, UPDATE, and DELETE modify rows.",
+      "Query safely: use ? placeholders and pass values separately; do not build SQL by concatenating user input."
     ],
-    "fullExample": "# This browser lesson demonstrates CRUD safely with Python data structures.\n# SQLite is a separate database technology and is not required for this exercise.\n\ntasks = []\n\n\ndef create_task(title):\n    task = {\"id\": len(tasks) + 1, \"title\": title, \"done\": False}\n    tasks.append(task)\n    return task\n\n\ndef read_tasks():\n    return tasks\n\n\ndef update_task(task_id, done):\n    for task in tasks:\n        if task[\"id\"] == task_id:\n            task[\"done\"] = done\n            return task\n    return None\n\n\ndef delete_task(task_id):\n    for index, task in enumerate(tasks):\n        if task[\"id\"] == task_id:\n            return tasks.pop(index)\n    return None\n\n\ncreate_task(\"Learn CRUD\")\ncreate_task(\"Practice validation\")\nprint(\"Created:\", read_tasks())\nupdate_task(1, True)\nprint(\"Updated:\", read_tasks())\ndelete_task(2)\nprint(\"After delete:\", read_tasks())",
-    "practiceTask": "Design a small tasks table and write the SQL needed to insert, list, complete, and delete tasks. Use parameter placeholders. Browser SQLite support may vary.",
-    "starterCode": "def create_task(db, title):\n    # Execute a parameterized INSERT\n    pass\n\ndef list_tasks(db):\n    # Return task rows\n    pass",
+    "fullExample": "import sqlite3\n\nwith sqlite3.connect(\":memory:\") as connection:\n    connection.execute(\"CREATE TABLE products (id INTEGER PRIMARY KEY, name TEXT, price REAL)\")\n    connection.executemany(\n        \"INSERT INTO products (name, price) VALUES (?, ?)\",\n        [(\"Pen\", 1.5), (\"Notebook\", 4.0), (\"Bag\", 20.0)],\n    )\n    rows = connection.execute(\n        \"SELECT name, price FROM products WHERE price < ? ORDER BY price\", (10,)\n    ).fetchall()\n    for name, price in rows:\n        print(f\"{name}: {price:.2f}\")",
+    "practiceTask": "Create an in-memory SQLite table, insert one record with a parameterized query, and select it.",
+    "starterCode": "import sqlite3\nwith sqlite3.connect(\":memory:\") as connection:\n    # Create a table, insert a row using ?, and select it\n    pass\n",
     "minutes": 25,
     "projectId": "p04",
-    "doDont": [
-      {
-        "do": "Do not build SQL with string concatenation from user input.",
-        "dont": "Use parameterized queries.",
-        "example": "cursor.execute(\"SELECT ... WHERE name = ?\", (name,))"
-      },
-      {
-        "do": "Do not treat SQLite as a drop-in replacement for every file.",
-        "dont": "Use a database when querying structured relationships matters.",
-        "example": "SELECT ... WHERE ..."
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What is a row?",
@@ -3581,53 +2981,49 @@
         "explanation": "The runtime environment may not include sqlite3."
       }
     ],
-    "exampleOutput": "[{'id': 1, 'title': 'Learn CRUD', 'done': False}]",
+    "exampleOutput": "[('Learn SQL', 0)]",
     "quickInfo": [
       [
         "SQLite",
-        "A lightweight file-based relational database"
+        "A file-based relational database"
       ],
       [
-        "SQL",
-        "Language used to query and change relational data"
+        "CRUD",
+        "Create, read, update, delete"
       ],
       [
-        "Core operations",
-        "SELECT, INSERT, UPDATE, DELETE"
+        "SELECT",
+        "Reads matching rows"
       ],
       [
-        "Python",
-        "The sqlite3 module provides database access in standard Python"
-      ],
-      [
-        "Runtime",
-        "PyPath browser support may differ from a full local Python installation"
+        "Parameterized query",
+        "SQL uses ? placeholders for values"
       ]
     ],
-    "intro": "Understand tables, rows, primary keys, SELECT, INSERT, UPDATE, DELETE, and parameterized SQL.",
-    "whyItMatters": "PyPath’s browser Python runtime may not include sqlite3 in every deployment. Learn the SQL model here and use the code in a compatible Python environment when the browser runtime cannot load SQLite.",
+    "intro": "A database keeps structured data beyond a program run. SQLite stores a database in a local file and is included with standard Python builds that provide sqlite3.",
+    "whyItMatters": "Store structured records in a local database and query them with SQL.",
     "skills": [
-      "Explain table/row/column concepts.",
-      "Write basic SELECT/INSERT/UPDATE/DELETE statements.",
-      "Use parameters instead of string-built SQL.",
-      "Understand why databases differ from JSON files."
+      "Connect to SQLite.",
+      "Create tables and insert records.",
+      "Query data with SELECT and WHERE.",
+      "Use parameterized SQL safely."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Label the table, columns, and primary key in a sample schema."
+        "task": "Create a table and insert one row."
       },
       {
         "level": "Independent",
-        "task": "Write CREATE TABLE and basic CRUD SQL for tasks."
+        "task": "Select rows using WHERE and ORDER BY."
       },
       {
         "level": "Challenge",
-        "task": "Design a query that lists incomplete tasks ordered by id and explain why parameterization matters."
+        "task": "Add an update and delete operation using parameters."
       }
     ],
-    "advancedNote": false,
-    "runtimeNote": "This topic may depend on the Python runtime available in your browser. If the live environment cannot provide network access or sqlite3, use the lesson examples to understand the concept and run the same code in a full local Python environment."
+    "advancedNote": true,
+    "runtimeNote": "The browser runtime may restrict network access or database support. The local JSON example is self-contained; run HTTP or SQLite examples in a standard local Python environment if the browser compiler does not support them."
   },
   {
     "id": "l25",
@@ -3637,43 +3033,20 @@
     "part": "Professional Python",
     "partNumber": 11,
     "title": "Asyncio",
-    "summary": "Asynchronous programming helps a program make progress while it is waiting on tasks such as network operations. It is useful, but it is not a faster replacement for every loop.",
-    "definition": "asyncio provides cooperative concurrency. async defines a coroutine and await pauses it while another task can make progress.",
-    "codeExample": "# Predict the result before running this example.\nimport asyncio\n\nasync def fetch(name):\n    await asyncio.sleep(0.1)\n    return f\"done: {name}\"\n\nasync def main():\n    results = await asyncio.gather(fetch(\"A\"), fetch(\"B\"))\n    print(results)\n\nasyncio.run(main())",
+    "summary": "Understand asynchronous functions and use await to manage concurrent I/O tasks.",
+    "definition": "async def defines a coroutine function. await pauses that coroutine while an awaitable completes, allowing the event loop to run other work.",
+    "codeExample": "import asyncio\n\nasync def greet():\n    print(\"Hello\")\n    await asyncio.sleep(0)\n    print(\"Goodbye\")\n\nasyncio.run(greet())",
     "howItWorks": [
-      [
-        "1. Define: Mark a coroutine with async def.",
-        "async def fetch(): ..."
-      ],
-      [
-        "2. Await: Pause for an asynchronous operation.",
-        "result = await fetch()"
-      ],
-      [
-        "3. Schedule: Multiple tasks can overlap waiting time.",
-        "tasks = [asyncio.create_task(fetch())]"
-      ],
-      [
-        "4. Choose: CPU-heavy work usually needs a different strategy.",
-        "asyncio is not a magic CPU speedup."
-      ]
+      "async def: Defines a coroutine function.",
+      "await: Suspends the current coroutine until an awaitable completes.",
+      "asyncio.run(): Starts and manages an event loop for a top-level coroutine.",
+      "Use case: Concurrency helps with I/O waits, not ordinary CPU-bound calculations."
     ],
-    "fullExample": "import asyncio\n\nasync def job(number):\n    await asyncio.sleep(0.05)\n    return number * 2\n\nasync def main():\n    results = await asyncio.gather(*(job(n) for n in range(5)))\n    print(results)\n\nasyncio.run(main())",
-    "practiceTask": "Write a small async example with two coroutines that sleep for different durations, then observe that their waiting periods can overlap.",
-    "starterCode": "import asyncio\n\nasync def job(name):\n    # Simulate asynchronous I/O and return a result\n    pass\n\nasync def main():\n    # Run multiple jobs concurrently\n    pass\n\n# asyncio.run(main())",
+    "fullExample": "import asyncio\n\nasync def job(name, delay):\n    print(f\"Start {name}\")\n    await asyncio.sleep(delay)\n    print(f\"Finish {name}\")\n    return name\n\nasync def main():\n    results = await asyncio.gather(\n        job(\"A\", 0.2),\n        job(\"B\", 0.1),\n    )\n    print(\"Results:\", results)\n\nasyncio.run(main())\n# The finish order can differ from the start order.",
+    "practiceTask": "Write an async function that awaits asyncio.sleep(0) and then prints a message.",
+    "starterCode": "import asyncio\n\nasync def main():\n    await asyncio.sleep(0)\n    print(\"Finished\")\n\nasyncio.run(main())\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not use async just because it is modern.",
-        "dont": "Use it when concurrency solves a real waiting problem.",
-        "example": "async def fetch_data(): ..."
-      },
-      {
-        "do": "Do not call async functions like normal functions and expect the result.",
-        "dont": "Await them in an async context.",
-        "example": "result = await fetch_data()"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does await do?",
@@ -3733,49 +3106,45 @@
         "explanation": "The event loop can run other ready coroutines during the wait."
       }
     ],
-    "exampleOutput": "['done: A', 'done: B']",
+    "exampleOutput": "Hello\nGoodbye",
     "quickInfo": [
       [
-        "asyncio",
-        "Python’s standard library for asynchronous programming"
-      ],
-      [
-        "async def",
-        "Defines a coroutine function"
+        "Coroutine",
+        "A computation that can suspend and resume"
       ],
       [
         "await",
-        "Pauses a coroutine until an awaitable completes"
+        "Wait for an awaitable without blocking the event loop"
       ],
       [
-        "Best for",
-        "I/O-bound work such as network or other waiting tasks"
+        "gather()",
+        "Run multiple awaitables concurrently"
       ],
       [
-        "Important",
-        "Async code is not automatically faster for CPU-heavy work"
+        "Best fit",
+        "I/O-bound work with compatible async libraries"
       ]
     ],
-    "intro": "Understand async/await, coroutines, and when concurrency helps.",
-    "whyItMatters": "Use asyncio for I/O-bound concurrency when the libraries involved support it. Ordinary synchronous code is often simpler for small scripts.",
+    "intro": "Asynchronous code is useful when a program spends time waiting, such as for network responses. It does not automatically make CPU-heavy work faster.",
+    "whyItMatters": "Understand asynchronous functions and use await to manage concurrent I/O tasks.",
     "skills": [
-      "Define async functions.",
-      "Use await correctly.",
-      "Understand coroutine versus normal function.",
-      "Recognize I/O-bound versus CPU-bound work."
+      "Define and call coroutine functions.",
+      "Use await and asyncio.run().",
+      "Run concurrent tasks with gather().",
+      "Identify when async is and is not useful."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Identify which parts of a program are I/O-bound."
+        "task": "Run a coroutine with asyncio.run()."
       },
       {
         "level": "Independent",
-        "task": "Write one async function using asyncio.sleep()."
+        "task": "Use asyncio.gather() to run two short jobs."
       },
       {
         "level": "Challenge",
-        "task": "Run two simulated I/O tasks concurrently and compare the flow with sequential waiting."
+        "task": "Compare sequential waits with concurrent waits using async functions."
       }
     ],
     "advancedNote": true
@@ -3788,43 +3157,20 @@
     "part": "Professional Python",
     "partNumber": 11,
     "title": "Logging & Configuration",
-    "summary": "Print statements are useful while learning, but real applications need structured diagnostic messages and configuration that can change without editing code.",
-    "definition": "Logging records structured runtime information such as debug, info, warning, and error messages. Configuration separates changeable settings from program logic.",
-    "codeExample": "import logging\n\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(\"pypath\")\nlogger.info(\"Application started\")",
+    "summary": "Record useful runtime events and separate settings from application logic.",
+    "definition": "The logging module records events at levels such as DEBUG, INFO, WARNING, ERROR, and CRITICAL. Configuration keeps settings such as paths and log levels out of scattered hard-coded values.",
+    "codeExample": "import logging\n\nlogging.basicConfig(level=logging.INFO, format=\"%(levelname)s: %(message)s\")\nlogging.info(\"Application started\")\nlogging.warning(\"Using default settings\")",
     "howItWorks": [
-      [
-        "1. Configure: Choose a logging level and format.",
-        "logging.basicConfig(level=logging.INFO)"
-      ],
-      [
-        "2. Record: Log meaningful events.",
-        "logging.info(\"Loaded %s tasks\", count)"
-      ],
-      [
-        "3. Warn: Record unusual but recoverable states.",
-        "logging.warning(\"Using default settings\")"
-      ],
-      [
-        "4. Protect: Keep secrets out of logs.",
-        "logging.error(\"Request failed\")  # without API keys"
-      ]
+      "Configure: Choose the minimum level and a useful message format.",
+      "Record: Use logger.info(), warning(), or error() for meaningful events.",
+      "Context: Include useful identifiers without exposing private data.",
+      "Settings: Keep configurable paths and levels separate from business logic."
     ],
-    "fullExample": "import logging\n\nlogging.basicConfig(level=logging.INFO, format=\"%(levelname)s:%(message)s\")\nlogger = logging.getLogger(__name__)\n\nuser = \"Sam\"\nlogger.info(\"Processing user %s\", user)\nprint(\"Done\")",
-    "practiceTask": "Configure a logger and record a normal startup message, a warning for missing configuration, and an error for a failed operation without exposing secrets.",
-    "starterCode": "import logging\n\nlogger = logging.getLogger(__name__)\n# Configure logging and create a safe application configuration here\n",
+    "fullExample": "import logging\n\nlogging.basicConfig(\n    level=logging.INFO,\n    format=\"%(levelname)s:%(name)s:%(message)s\",\n)\nlogger = logging.getLogger(__name__)\n\ndef load_user(user_id):\n    logger.info(\"Loading user %s\", user_id)\n    if user_id < 1:\n        logger.warning(\"Invalid user id: %s\", user_id)\n        return None\n    return {\"id\": user_id, \"name\": \"Ava\"}\n\nprint(load_user(2))\nprint(load_user(0))\n# Never log passwords, tokens, or other secrets.",
+    "practiceTask": "Configure logging and record one info message and one warning.",
+    "starterCode": "import logging\nlogging.basicConfig(level=logging.INFO)\nlogger = logging.getLogger(__name__)\n# Add an info message and a warning\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not log passwords, tokens, or sensitive data.",
-        "dont": "Log safe context instead.",
-        "example": "logging.info(\"User login attempted\")"
-      },
-      {
-        "do": "Do not use logging as a substitute for clear errors.",
-        "dont": "Raise or handle exceptions appropriately.",
-        "example": "except ValueError:\n    logging.warning(\"Invalid age\")"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "Why use logging?",
@@ -3884,49 +3230,45 @@
         "explanation": "Logs should help diagnose behavior without leaking sensitive data."
       }
     ],
-    "exampleOutput": "INFO:pypath:Application started",
+    "exampleOutput": "INFO: Application started\nWARNING: Using default settings",
     "quickInfo": [
-      [
-        "Logging",
-        "Structured runtime information for diagnosing programs"
-      ],
       [
         "Levels",
         "DEBUG, INFO, WARNING, ERROR, CRITICAL"
       ],
       [
+        "Logger",
+        "Named object for recording events"
+      ],
+      [
         "Configuration",
-        "Keep settings separate from core program logic"
+        "Settings separated from program logic"
       ],
       [
         "Security",
-        "Never casually log passwords, tokens, or other secrets"
-      ],
-      [
-        "Benefit",
-        "Good logs help explain what happened without stopping the program"
+        "Never log secrets"
       ]
     ],
-    "intro": "Use logging levels and simple configuration patterns appropriately.",
-    "whyItMatters": "Log useful events and failures without leaking secrets or overwhelming the output.",
+    "intro": "print() is useful while learning, but real applications need consistent messages with severity levels and context.",
+    "whyItMatters": "Record useful runtime events and separate settings from application logic.",
     "skills": [
-      "Use logging instead of scattered debug prints.",
-      "Choose levels deliberately.",
-      "Keep configuration separate from core logic.",
-      "Never log passwords or secret tokens."
+      "Configure logging.",
+      "Choose appropriate severity levels.",
+      "Use a named logger.",
+      "Keep secrets out of logs."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Add info and warning log messages to a small script."
+        "task": "Add info and warning log messages."
       },
       {
         "level": "Independent",
-        "task": "Replace three debug print statements with logging."
+        "task": "Replace debug print statements with appropriate logging levels."
       },
       {
         "level": "Challenge",
-        "task": "Design a configuration object that supplies a file path and log level without hard-coding them in the business logic."
+        "task": "Read a log level from a configuration value and use it to configure logging."
       }
     ],
     "advancedNote": true
@@ -3939,43 +3281,20 @@
     "part": "Professional Python",
     "partNumber": 11,
     "title": "CLI, Git & Packaging",
-    "summary": "A real Python project needs a usable command-line interface, version history, and a repeatable way to organize and distribute code.",
-    "definition": "A CLI gives users commands and arguments. Git tracks project history. Packaging defines how Python code is structured and installed.",
-    "codeExample": "# Predict the result before running this example.\nimport argparse\n\nparser = argparse.ArgumentParser(description=\"Task tool\")\nparser.add_argument(\"--name\", default=\"world\")\nargs = parser.parse_args()\nprint(f\"Hello {args.name}\")",
+    "summary": "Build command-line tools, track changes with Git, and understand Python project packaging.",
+    "definition": "argparse parses command-line arguments. Git tracks changes in a repository. A pyproject.toml file is the modern central place for many Python project and tool settings.",
+    "codeExample": "import argparse\n\nparser = argparse.ArgumentParser()\nparser.add_argument(\"--name\", default=\"world\")\nargs = parser.parse_args([])  # Empty list makes this example predictable.\nprint(f\"Hello, {args.name}!\")",
     "howItWorks": [
-      [
-        "1. CLI: Turn arguments into program inputs.",
-        "parser.add_argument(\"--name\")"
-      ],
-      [
-        "2. Track: Save a meaningful change in Git.",
-        "git add .\ngit commit -m \"Add task filtering\""
-      ],
-      [
-        "3. Inspect: Check project history and state.",
-        "git status\ngit log --oneline"
-      ],
-      [
-        "4. Package: Describe a project for tools.",
-        "pyproject.toml"
-      ]
+      "CLI: Parse command-line options with argparse.",
+      "Git: status inspects changes; add stages; commit records a snapshot; log shows history.",
+      "Packaging: pyproject.toml stores project metadata and tool configuration.",
+      "Workflow: Make small changes, run tests, and commit with a meaningful message."
     ],
-    "fullExample": "import argparse\n\ndef greet(name: str) -> str:\n    return f\"Hello, {name}!\"\n\nparser = argparse.ArgumentParser()\nparser.add_argument(\"--name\", default=\"world\")\nargs = parser.parse_args()\nprint(greet(args.name))",
-    "practiceTask": "Plan a small CLI command and write the Git commands you would use to record that feature safely. You do not need a remote repository to practice the workflow.",
-    "starterCode": "def add_task(title: str) -> str:\n    return title\n\n# Add an argparse CLI around your reusable function\n",
+    "fullExample": "\"\"\"Save as greet.py and run: python greet.py --name Ava\"\"\"\nimport argparse\n\ndef greet(name: str) -> str:\n    return f\"Hello, {name}!\"\n\nparser = argparse.ArgumentParser(description=\"Greet someone\")\nparser.add_argument(\"--name\", default=\"world\", help=\"Name to greet\")\nargs = parser.parse_args()\nprint(greet(args.name))\n\n# Common Git workflow:\n# git status\n# git add greet.py\n# git commit -m \"Add greeting CLI\"",
+    "practiceTask": "Create an argparse program with a --name option and a sensible default.",
+    "starterCode": "import argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"--name\", default=\"world\")\nargs = parser.parse_args()\nprint(f\"Hello, {args.name}!\")\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not make giant commits with unrelated changes.",
-        "dont": "Commit one coherent change at a time.",
-        "example": "git commit -m \"Add task filtering\""
-      },
-      {
-        "do": "Do not commit secrets or generated clutter.",
-        "dont": "Use .gitignore and environment/configuration practices.",
-        "example": "*.env\n__pycache__/"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What does git status show?",
@@ -4035,49 +3354,45 @@
         "explanation": "pyproject.toml is a standard project configuration file."
       }
     ],
-    "exampleOutput": "Hello world",
+    "exampleOutput": "Hello, world!",
     "quickInfo": [
       [
-        "CLI",
-        "Command-line interface for running programs with commands/options"
+        "argparse",
+        "Builds command-line options"
       ],
       [
-        "Git",
-        "Version control for tracking code history"
+        "Git status / add / commit",
+        "Inspect, stage, and record changes"
       ],
       [
-        "Core Git",
-        "status, add, commit, log, branch, switch, pull, push"
+        "pyproject.toml",
+        "Project and tool configuration"
       ],
       [
-        "Packaging",
-        "Defines how Python projects are organized and installed"
-      ],
-      [
-        "Professional habit",
-        "Commit small meaningful changes with clear messages"
+        "README",
+        "Explains setup, usage, and tests"
       ]
     ],
-    "intro": "Build a simple CLI, understand essential Git commands, and recognize Python packaging concepts.",
-    "whyItMatters": "These are professional workflow skills: the goal is not memorizing every Git or packaging option, but understanding the normal development loop.",
+    "intro": "A command-line interface lets users control a program with arguments. Git records code history, while packaging metadata helps tools install or build a project.",
+    "whyItMatters": "Build command-line tools, track changes with Git, and understand Python project packaging.",
     "skills": [
-      "Use argparse at a basic level.",
-      "Understand add/commit/status/log/push/pull in Git.",
-      "Explain a package and pyproject.toml at a high level.",
-      "Keep source and project metadata organized."
+      "Parse CLI arguments with argparse.",
+      "Explain the basic Git workflow.",
+      "Recognize the role of pyproject.toml.",
+      "Document how a program is run."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Identify what each of git status, add, commit, and log tells you."
+        "task": "Add a --name option with a default."
       },
       {
         "level": "Independent",
-        "task": "Design an argparse CLI with one required command and one optional flag."
+        "task": "Add a numeric --count option and validate its use."
       },
       {
         "level": "Challenge",
-        "task": "Write a clean commit sequence for adding a feature, fixing a bug, and documenting the change."
+        "task": "Write the Git commands for checking, staging, committing, and reviewing a feature."
       }
     ],
     "advancedNote": true
@@ -4090,43 +3405,20 @@
     "part": "Professional Python",
     "partNumber": 11,
     "title": "Architecture & Refactoring",
-    "summary": "As programs grow, structure becomes part of correctness. Refactoring means improving internal design without changing intended behavior.",
-    "definition": "Architecture is the way responsibilities and dependencies are organized. Refactoring changes structure while preserving behavior.",
-    "codeExample": "# Predict the result before running this example.\nclass TaskService:\n    def __init__(self, store):\n        self.store = store\n\n    def complete(self, task_id):\n        task = self.store.get(task_id)\n        task.done = True\n        self.store.save(task)\n        return task",
+    "summary": "Separate responsibilities into focused functions and modules without changing behavior.",
+    "definition": "Architecture describes how parts of a program are organized. Refactoring changes internal structure while preserving intended behavior.",
+    "codeExample": "def calculate_total(price, quantity):\n    return price * quantity\n\ndef format_total(total):\n    return f\"Total: {total:.2f}\"\n\nprint(format_total(calculate_total(4.5, 3)))",
     "howItWorks": [
-      [
-        "1. Separate: Keep user interaction away from core calculations.",
-        "get_input() -> calculate() -> show_result()"
-      ],
-      [
-        "2. Extract: Move repeated behavior into one function.",
-        "def validate_age(value): ..."
-      ],
-      [
-        "3. Refactor: Change structure without changing behavior.",
-        "old code -> helper function"
-      ],
-      [
-        "4. Verify: Run tests after each meaningful refactor.",
-        "assert calculate_total(...) == expected"
-      ]
+      "Separate: Keep input/output away from the core calculation when possible.",
+      "Extract: Move one clear responsibility into a focused function.",
+      "Refactor: Improve structure without changing the expected result.",
+      "Verify: Run tests before and after each meaningful refactor."
     ],
-    "fullExample": "def complete_task(store, task_id):\n    task = store.get(task_id)\n    if task is None:\n        raise LookupError(\"Task not found\")\n    task[\"done\"] = True\n    store.save(task)\n    return task\n\nclass MemoryStore:\n    def __init__(self): self.data = {1: {\"done\": False}}\n    def get(self, task_id): return self.data.get(task_id)\n    def save(self, task): self.data[1] = task\n\nprint(complete_task(MemoryStore(), 1))",
-    "practiceTask": "Take a small program with input, calculation, and output in one function. Split it into focused functions without changing its behavior.",
-    "starterCode": "class TaskService:\n    def __init__(self, store):\n        self.store = store\n\n    def complete(self, task_id):\n        # Implement a tested business operation without direct file/database calls\n        pass",
+    "fullExample": "def calculate_total(price, quantity):\n    if price < 0 or quantity < 0:\n        raise ValueError(\"Price and quantity must be non-negative\")\n    return price * quantity\n\ndef format_receipt(items):\n    lines = []\n    total = 0\n    for name, price, quantity in items:\n        subtotal = calculate_total(price, quantity)\n        lines.append(f\"{name}: {subtotal:.2f}\")\n        total += subtotal\n    lines.append(f\"Total: {total:.2f}\")\n    return \"\\n\".join(lines)\n\nprint(format_receipt([(\"Pen\", 1.5, 2), (\"Book\", 4.0, 1)]))",
+    "practiceTask": "Split a short program into one function that calculates and another that formats the result.",
+    "starterCode": "def calculate_total(price, quantity):\n    return price * quantity\n\ndef format_total(total):\n    # Return a formatted total\n    pass\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not refactor code that you do not understand.",
-        "dont": "First make the behavior clear and tested.",
-        "example": "add tests before changing structure"
-      },
-      {
-        "do": "Do not create abstractions for one tiny line.",
-        "dont": "Extract only when a repeated or meaningful responsibility exists.",
-        "example": "def validate_input(...): ..."
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What is refactoring?",
@@ -4186,49 +3478,45 @@
         "explanation": "Architecture should make change and understanding easier."
       }
     ],
-    "exampleOutput": "No output (method definition only).",
+    "exampleOutput": "Total: 13.50",
     "quickInfo": [
       [
-        "Architecture",
-        "The high-level structure and responsibilities of a program"
+        "Responsibility",
+        "Each function should have a clear purpose"
       ],
       [
         "Refactoring",
-        "Improve internal code structure without changing intended behavior"
-      ],
-      [
-        "Separation",
-        "Keep responsibilities in focused modules/functions"
+        "Change structure without changing behavior"
       ],
       [
         "Duplication",
-        "Repeated logic is often a refactoring signal"
+        "Repeated logic may deserve a helper function"
       ],
       [
-        "Goal",
-        "Make change easier, not simply make the project larger"
+        "Safety",
+        "Tests help protect behavior during changes"
       ]
     ],
-    "intro": "Split responsibilities, reduce duplication, and refactor safely with tests as a safety net.",
-    "whyItMatters": "Good architecture is not a complicated folder tree. Start with clear boundaries that make the program easier to change and test.",
+    "intro": "Readable programs keep input/output, core logic, and storage concerns from becoming tangled together.",
+    "whyItMatters": "Separate responsibilities into focused functions and modules without changing behavior.",
     "skills": [
-      "Separate UI/input from business logic.",
-      "Keep functions and modules focused.",
-      "Refactor duplication into reusable code.",
-      "Use tests to protect behavior during changes."
+      "Separate responsibilities.",
+      "Extract focused helper functions.",
+      "Refactor without changing behavior.",
+      "Use tests to support structural changes."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Identify input, business logic, and output in a small script."
+        "task": "Identify input, logic, and output in a short script."
       },
       {
         "level": "Independent",
-        "task": "Split a mixed function into two or three focused functions."
+        "task": "Split a calculation and formatting step into functions."
       },
       {
         "level": "Challenge",
-        "task": "Remove one duplication, add a test, then refactor again while keeping all tests green."
+        "task": "Refactor repeated logic and prove behavior is unchanged with tests."
       }
     ],
     "advancedNote": true
@@ -4241,43 +3529,20 @@
     "part": "Professional Python",
     "partNumber": 11,
     "title": "Performance & Practical Optimization",
-    "summary": "Fast code matters when performance is actually a problem. Professional Python starts with correct, measurable code and then improves the bottleneck rather than guessing.",
-    "definition": "Performance is how efficiently a program uses time and memory. Optimization should be guided by measurement and the actual workload.",
-    "codeExample": "# Predict the result before running this example.\nimport time\n\nstart = time.perf_counter()\ntotal = sum(range(1_000_000))\nelapsed = time.perf_counter() - start\nprint(total, f\"{elapsed:.4f}s\")",
+    "summary": "Measure performance, recognize algorithmic costs, and optimize only where evidence supports it.",
+    "definition": "Performance concerns execution time and resource use. Big-O notation describes how work grows as input size grows; data-structure choices can change that growth.",
+    "codeExample": "values = list(range(100_000))\nlookup_set = set(values)\nprint(99_999 in lookup_set)\nprint(100_001 in lookup_set)",
     "howItWorks": [
-      [
-        "1. Notice: A list membership check scans items.",
-        "item in large_list"
-      ],
-      [
-        "2. Choose: A set is usually better for repeated membership.",
-        "item in large_set"
-      ],
-      [
-        "3. Avoid: Do not recompute the same expensive value.",
-        "cached = expensive()"
-      ],
-      [
-        "4. Measure: Compare real timings before claiming improvement.",
-        "time.perf_counter()"
-      ]
+      "Measure: Use time.perf_counter() or timeit to establish a baseline.",
+      "Complexity: A list membership check scans items; set membership is usually faster on average.",
+      "Optimize: Improve algorithms and avoid repeated expensive work before micro-optimizing.",
+      "Verify: Compare results as well as time; timings vary across machines."
     ],
-    "fullExample": "import time\n\nvalues = list(range(100_000))\nstart = time.perf_counter()\nresult = sum(values)\nelapsed = time.perf_counter() - start\nprint(\"sum:\", result)\nprint(\"seconds:\", round(elapsed, 6))",
-    "practiceTask": "Compare membership checks using a list and a set, then explain which one is appropriate when the program performs many lookups.",
-    "starterCode": "def slow_version(values):\n    # Implement a baseline\n    pass\n\ndef fast_version(values):\n    # Implement a measured alternative\n    pass",
+    "fullExample": "import time\n\nvalues = list(range(200_000))\nlookup_set = set(values)\ntarget = 199_999\n\nstart = time.perf_counter()\nfound_in_list = target in values\nlist_seconds = time.perf_counter() - start\n\nstart = time.perf_counter()\nfound_in_set = target in lookup_set\nset_seconds = time.perf_counter() - start\n\nprint(\"Same answer:\", found_in_list == found_in_set)\nprint(\"List lookup seconds:\", round(list_seconds, 6))\nprint(\"Set lookup seconds:\", round(set_seconds, 6))\n# Timings vary by machine; repeat measurements for meaningful comparisons.",
+    "practiceTask": "Compare membership checks in a list and set, then explain which is useful for repeated lookups.",
+    "starterCode": "values = list(range(10000))\nlookup = set(values)\n# Compare whether 9999 is in values and lookup\n",
     "minutes": 25,
-    "doDont": [
-      {
-        "do": "Do not optimize code you have not measured.",
-        "dont": "Find the actual bottleneck first.",
-        "example": "start = time.perf_counter()"
-      },
-      {
-        "do": "Do not sacrifice clarity for tiny gains.",
-        "dont": "Choose the simpler data structure that meets the need.",
-        "example": "seen = set(items)"
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What should come before optimization?",
@@ -4337,49 +3602,45 @@
         "explanation": "Evidence-driven optimization reduces unnecessary complexity."
       }
     ],
-    "exampleOutput": "499999500000 (runtime varies)",
+    "exampleOutput": "True\nFalse",
     "quickInfo": [
       [
-        "Performance",
-        "How efficiently a program uses time and resources"
+        "Big-O",
+        "Describes how work grows as input grows"
       ],
       [
-        "First step",
-        "Measure before optimizing"
+        "List membership",
+        "Typically O(n)"
       ],
       [
-        "Common tools",
-        "timeit and profiling help find slow areas"
-      ],
-      [
-        "Big impact",
-        "Better algorithms often matter more than micro-optimizations"
+        "Set membership",
+        "Typically O(1) average case"
       ],
       [
         "Rule",
-        "Keep optimization changes readable and evidence-based"
+        "Measure first; keep code readable"
       ]
     ],
-    "intro": "Understand basic complexity, choose suitable data structures, measure before optimizing, and recognize common performance traps.",
-    "whyItMatters": "Correctness and clarity come first. Learn a few high-value ideas such as set membership, avoiding repeated work, and profiling before reaching for complex tricks.",
+    "intro": "Fast-looking code is not always fast. Measure a baseline, find the bottleneck, make one change, and measure again.",
+    "whyItMatters": "Measure performance, recognize algorithmic costs, and optimize only where evidence supports it.",
     "skills": [
-      "Recognize common O(n) versus O(1)-average membership patterns.",
-      "Use sets/dictionaries for frequent membership or lookup.",
-      "Avoid repeated expensive work inside loops.",
-      "Measure before and after an optimization."
+      "Measure elapsed time.",
+      "Explain basic list-versus-set lookup costs.",
+      "Avoid unsupported performance claims.",
+      "Optimize based on measurements."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Identify which of five operations are likely repeated scans."
+        "task": "Find an item in a list and a set."
       },
       {
         "level": "Independent",
-        "task": "Replace repeated list membership checks with a set."
+        "task": "Measure repeated lookups using time.perf_counter()."
       },
       {
         "level": "Challenge",
-        "task": "Measure two approaches on a sample dataset and write a short conclusion."
+        "task": "Use timeit to compare two implementations on the same inputs."
       }
     ],
     "advancedNote": true
@@ -4392,44 +3653,21 @@
     "part": "Professional Python",
     "partNumber": 11,
     "title": "Build, Test & Ship",
-    "summary": "The final step is integration: turn your Python knowledge into a maintainable program, verify it, document it, and explain your design.",
-    "definition": "A finished program is more than code that runs once. It should meet a clear requirement, handle realistic input, be tested, understandable, and ready for another person to use.",
-    "codeExample": "# Predict the result before running this example.\ndef health_check() -> dict:\n    return {\"status\": \"ok\", \"service\": \"pypath\"}\n\nprint(health_check())",
+    "summary": "Combine Python skills into a small, tested, documented program that another person can run.",
+    "definition": "A deliverable program has clear behavior, readable structure, error handling for expected problems, tests, and basic usage documentation.",
+    "codeExample": "def health_check():\n    return {\"status\": \"ok\", \"service\": \"pypath\"}\n\nprint(health_check())",
     "howItWorks": [
-      [
-        "1. Plan: Define requirements and a small feature list.",
-        "Requirement: add, list, complete tasks"
-      ],
-      [
-        "2. Build: Implement one behavior at a time.",
-        "add_task(title)"
-      ],
-      [
-        "3. Verify: Test normal, edge, and invalid cases.",
-        "assert add_task(\"\") is False"
-      ],
-      [
-        "4. Ship: Explain setup, usage, and known limitations.",
-        "README: install -> run -> test"
-      ]
+      "Plan: Write down the required inputs, outputs, and success conditions.",
+      "Build: Use functions and suitable data structures; implement one behavior at a time.",
+      "Verify: Test normal, boundary, and invalid cases; keep tests repeatable.",
+      "Ship: Document setup, running, tests, and known limitations."
     ],
-    "fullExample": "from dataclasses import dataclass\n\n@dataclass\nclass Task:\n    title: str\n    done: bool = False\n\n    def complete(self) -> None:\n        self.done = True\n\ndef summarize(tasks: list[Task]) -> dict[str, int]:\n    return {\n        \"total\": len(tasks),\n        \"done\": sum(task.done for task in tasks),\n    }\n\ntasks = [Task(\"Learn\"), Task(\"Build\", True)]\nprint(summarize(tasks))",
-    "practiceTask": "Final skills check: build a small command-line program that accepts input, validates it, stores data in a list or dictionary, uses at least two functions, handles an expected error, and includes three assertions for core behavior.",
-    "starterCode": "# Final review scaffold\n# 1. Requirements\n# 2. Architecture\n# 3. Typed business logic\n# 4. Tests\n# 5. Persistence/API if needed\n# 6. Logging/security\n# 7. Performance check\n# 8. Documentation\n",
+    "fullExample": "from dataclasses import dataclass\n\n@dataclass\nclass Task:\n    title: str\n    done: bool = False\n\ndef add_task(tasks, title):\n    title = title.strip()\n    if not title:\n        raise ValueError(\"Task title cannot be empty\")\n    task = Task(title)\n    tasks.append(task)\n    return task\n\ndef summarize(tasks):\n    return {\"total\": len(tasks), \"done\": sum(task.done for task in tasks)}\n\ntasks = []\nadd_task(tasks, \"Learn Python\")\nadd_task(tasks, \"Write tests\")\ntasks[0].done = True\nassert summarize(tasks) == {\"total\": 2, \"done\": 1}\nprint(summarize(tasks))\n# Before shipping: test edge cases, document usage, and review dependencies.",
+    "practiceTask": "Plan a small task tracker with add and list behavior, then implement and test one function at a time.",
+    "starterCode": "def add_task(tasks, title):\n    title = title.strip()\n    if not title:\n        raise ValueError(\"Task title cannot be empty\")\n    tasks.append({\"title\": title, \"done\": False})\n    return tasks[-1]\n",
     "minutes": 25,
     "projectId": "p05",
-    "doDont": [
-      {
-        "do": "Do not call a program finished because it ran once.",
-        "dont": "Verify behavior with tests and realistic cases.",
-        "example": "python -m unittest"
-      },
-      {
-        "do": "Do not copy the final project solution.",
-        "dont": "Use the specification and your own design first.",
-        "example": "Write the feature list before coding."
-      }
-    ],
+    "doDont": [],
     "quiz": [
       {
         "question": "What should you do before building the final program?",
@@ -4492,50 +3730,45 @@
     "exampleOutput": "{'status': 'ok', 'service': 'pypath'}",
     "quickInfo": [
       [
-        "Goal",
-        "Turn a specification into a complete, maintainable Python application"
+        "Requirements",
+        "Describe observable behavior before coding"
       ],
       [
-        "Required skills",
-        "Planning, functions, validation, persistence, testing, and debugging"
-      ],
-      [
-        "Quality check",
-        "Normal, boundary, and invalid cases should be tested"
+        "Quality",
+        "Tests, validation, and readable structure"
       ],
       [
         "Documentation",
-        "Explain installation, usage, and important design choices"
+        "Setup, run instructions, and examples"
       ],
       [
-        "Outcome",
-        "A strong Python foundation—not mastery of every Python specialization"
+        "Next step",
+        "Continue building projects and specializing beyond this foundation"
       ]
     ],
-    "intro": "Combine core Python skills into a small application and demonstrate that you can plan, build, test, debug, document, and ship it.",
-    "whyItMatters": "Use this lesson as a practical skills check before the final project. You should be able to solve a small problem without following a full tutorial step by step.",
+    "intro": "Finishing software means more than getting one successful output. Define the goal, implement it in small steps, test realistic cases, and explain how to run it.",
+    "whyItMatters": "Combine Python skills into a small, tested, documented program that another person can run.",
     "skills": [
-      "Turn requirements into a small plan.",
-      "Build with functions and appropriate data structures.",
-      "Validate input and handle expected errors.",
-      "Write tests for important behavior.",
-      "Document how to run and use the program."
+      "Translate a requirement into small behaviors.",
+      "Combine functions and collections into an application.",
+      "Test normal and invalid cases.",
+      "Document how another person can run the program."
     ],
     "practiceLevels": [
       {
         "level": "Guided",
-        "task": "Turn a short specification into inputs, outputs, data, and functions."
+        "task": "Write a short feature list for a task tracker."
       },
       {
         "level": "Independent",
-        "task": "Build the skills-check program without copying a complete solution."
+        "task": "Implement add_task() and test normal and empty titles."
       },
       {
         "level": "Challenge",
-        "task": "Refactor it into modules, add logging, document it, and explain one design decision."
+        "task": "Add listing, completion, tests, and a README-style usage guide."
       }
     ],
-    "advancedNote": false
+    "advancedNote": true
   },
   {
     "id": "p01",

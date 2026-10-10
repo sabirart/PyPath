@@ -34,7 +34,7 @@ const readDays = () => {
 };
 const mq = (q) => window.matchMedia(q).matches;
 // The lesson and editor sit side by side from 1180px; the outline starts open only on wide screens.
-const defaultsFor = (bp) => ({ sidebar: bp === "desktop" && mq("(min-width: 1360px)"), progress: false, compiler: mq("(min-width: 1180px)") });
+const defaultsFor = (bp) => ({ sidebar: bp === "desktop" && mq("(min-width: 1360px)"), progress: false, compiler: true });
 
 export function AppProvider({ children }) {
   const bp = useBreakpoint();

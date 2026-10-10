@@ -1,6 +1,6 @@
 // Copyright (c) 2026 Sabir Hussain. All rights reserved. See LICENSE.
 import { useEffect, useRef } from "react";
-import { EditorView, keymap } from "@codemirror/view";
+import { EditorView, keymap, drawSelection, rectangularSelection, crosshairCursor } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
 import { indentLess, indentWithTab } from "@codemirror/commands";
 import { indentOnInput, indentUnit, syntaxHighlighting, HighlightStyle } from "@codemirror/language";
@@ -24,9 +24,12 @@ const base = EditorView.theme({
   ".cm-content": { padding: "10px 0" },
   ".cm-gutters": { backgroundColor: "var(--editor-bg)", color: "var(--muted)", border: "none" },
   ".cm-activeLine": { backgroundColor: "var(--active-line)" },
+  "&.cm-focused .cm-activeLine": { backgroundColor: "transparent !important" },
   ".cm-activeLineGutter": { backgroundColor: "var(--active-line)", color: "var(--text)" },
-  ".cm-cursor": { borderLeftColor: "var(--text)" },
-  ".cm-selectionBackground, &.cm-focused .cm-selectionBackground": { backgroundColor: "var(--selection) !important" },
+  ".cm-cursor, .cm-dropCursor": { borderLeftColor: "var(--text)", borderLeftWidth: "2px" },
+  ".cm-selectionBackground": { backgroundColor: "var(--selection) !important", opacity: "1 !important" },
+  "&.cm-focused .cm-selectionBackground": { backgroundColor: "var(--selection) !important", opacity: "1 !important" },
+  "& ::selection": { backgroundColor: "var(--selection) !important", color: "inherit" },
 });
 
 export default function CodeEditor({ value, onChange, onRun, onStop, running, onDownload, onReset, fileName = "main.py", label = "Python code editor" }) {
@@ -41,7 +44,7 @@ export default function CodeEditor({ value, onChange, onRun, onStop, running, on
       state: EditorState.create({
         doc: value,
         extensions: [
-          basicSetup, python(), base,
+          basicSetup, drawSelection(), rectangularSelection(), crosshairCursor(), python(), base,
           indentUnit.of("    "),
           indentOnInput(),
           syntaxHighlighting(pyStyle),
